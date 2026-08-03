@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caroline Chen — GALLERY WALK-THROUGH</title>
+<style>
+/* ============================================================
+   DARK ROOM GALLERY — strictly grayscale
+   #000 room · thin gray frames · hanging wires · CRT haze
+   ============================================================ */
+:root{
+  --bg:#000;
+  --ink:#e8e8e8;
+  --dim:#9a9a9a;
+  --faint:#858585;
+  --line:#3d3d3d;
+  --line-lit:#777;
+  --pane:#0a0a0a;
+  --mono:"SF Mono","Cascadia Code","JetBrains Mono",Consolas,"Courier New",monospace;
+  --glow-color:#8B5CF6;
+  animation:glowCycle 120s ease-in-out infinite;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+::selection{background:#666;color:#000;}
+html,body{
+  height:100%;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--mono);
+  transition:background .35s,color .35s;
+}
+
+/* ---------- NAV ---------- */
+#nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:60;
+  display:flex;
+  align-items:center;
+  gap:26px;
+  padding:16px 26px;
+  font-size:11px;
+  letter-spacing:.22em;
+  background:linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,0));
+  transition:background .35s;
+}
+#nav .brand{color:var(--ink);font-weight:600;margin-right:auto;user-select:none;}
+#nav .brand em{font-style:normal;color:var(--faint);}
+#nav a{
+  color:var(--dim);
+  text-decoration:none;
+  padding:4px 2px;
+  border-bottom:1px solid transparent;
+  transition:color .2s,border-color .2s;
+  user-select:none;
+}
+#nav a:hover{color:var(--ink);}
+#nav a.on{color:var(--ink);border-bottom-color:var(--ink);}
+/* ---------- OVERLAY TERMINAL WINDOWS ---------- */
+.overlay{
+  position:fixed;
+  inset:0;
+  z-index:80;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.62);
+  backdrop-filter:blur(2px);
+}
+.overlay.open{display:flex;}
+.term{
+  width:min(680px, calc(100vw - 40px));
+  max-height:min(78vh, 720px);
+  display:flex;
+  flex-direction:column;
+  background:var(--pane);
+  border:1px solid var(--line-lit);
+  box-shadow:0 0 60px rgba(0,0,0,.9), 0 0 0 1px #000;
+  animation:termIn .28s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes termIn{from{transform:scale(.94) translateY(12px);opacity:0;}to{transform:none;opacity:1;}}
+.term .tbar{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;
+  border-bottom:1px solid var(--line);
+  font-size:10px;letter-spacing:.2em;color:var(--dim);
+  user-select:none;
+}
+.term .tbar .x{
+  margin-left:auto;
+  cursor:pointer;
+  border:1px solid var(--faint);
+  color:var(--dim);
+  font-size:10px;
+  padding:1px 7px;
+  background:none;
+  font-family:var(--mono);
+  letter-spacing:0;
+}
+.term .tbar .x:hover{color:#000;background:#ccc;border-color:#ccc;}
+.term .tbody{
+  padding:22px 26px 28px;
+  overflow-y:auto;
+  font-size:12px;
+  line-height:1.85;
+  color:var(--ink);
+}
+#ov-resume,#ov-about{--ink:#d6d6d6;--faint:#a8a8a8;}
+#ov-resume .term{width:min(780px, calc(100vw - 40px));max-height:min(82vh, 780px);}
+#ov-resume .term .tbody{font-size:14px;line-height:1.65;}
+#ov-resume .term h2{font-size:13px;margin:26px 0 10px;}
+#ov-resume .term .kv{grid-template-columns:150px 1fr;gap:12px 18px;font-size:13px;}
+#ov-resume .term .kv dd{line-height:1.55;}
+#ov-resume .term .tag{font-size:10px;padding:3px 9px;}
+#ov-resume .term .btn{font-size:11px;padding:9px 20px;}
+.term .tbody::-webkit-scrollbar{width:6px;}
+.term .tbody::-webkit-scrollbar-thumb{background:var(--line);}
+.term h2{
+  font-size:12px;letter-spacing:.3em;color:var(--ink);
+  margin:22px 0 8px;font-weight:600;
+}
+.term h2:first-child{margin-top:0;}
+.term h2::before{content:"» ";color:var(--faint);}
+.term p{margin:0 0 12px;}
+.term .kv{display:grid;grid-template-columns:130px 1fr;gap:2px 16px;font-size:11px;}
+.term .kv dt{color:var(--faint);letter-spacing:.1em;}
+.term .kv dd{color:var(--ink);}
+.term a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--faint);}
+.term a:hover{text-decoration-color:var(--ink);}
+.term .tag,.id-card .tag{
+  display:inline-block;
+  border:1px solid var(--line);
+  color:var(--dim);
+  font-size:9px;
+  letter-spacing:.14em;
+  padding:2px 8px;
+  margin:0 6px 6px 0;
+}
+.id-card .tag{font-size:11px;padding:3px 9px;}
+.term .edit-note{
+  border:1px dashed var(--faint);
+  color:var(--dim);
+  font-size:10px;
+  padding:8px 12px;
+  margin:14px 0 0;
+  letter-spacing:.06em;
+}
+.term .cursor,.id-card .cursor{display:inline-block;width:7px;height:13px;background:var(--ink);vertical-align:-2px;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.term .btn{
+  display:inline-block;
+  border:1px solid var(--line-lit);
+  color:var(--ink);
+  padding:8px 18px;
+  font-size:10px;
+  letter-spacing:.24em;
+  text-decoration:none;
+  margin-top:10px;
+  transition:background .2s,color .2s;
+}
+.term .btn:hover{background:var(--ink);color:var(--bg);text-decoration:none;}
+/* ---------- VIDEO LIGHTBOX ---------- */
+.video-lightbox{
+  position:relative;
+  width:min(520px, 90vw);
+  aspect-ratio:848/1354;
+  background:#000;
+  border:1px solid var(--line-lit);
+  box-shadow:0 0 60px rgba(0,0,0,.9), 0 0 0 1px #000;
+  animation:termIn .28s cubic-bezier(.2,.9,.3,1.2);
+}
+.video-lightbox video{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.video-lightbox .x{
+  position:absolute;
+  top:8px;right:8px;
+  z-index:2;
+  cursor:pointer;
+  border:1px solid var(--faint);
+  color:var(--dim);
+  font-size:10px;
+  padding:2px 8px;
+  background:rgba(0,0,0,.6);
+  font-family:var(--mono);
+  letter-spacing:0;
+}
+.video-lightbox .x:hover{color:#000;background:#ccc;border-color:#ccc;}
+
+/* ---------- INTRO — cyberpunk ID scan ---------- */
+#intro{
+  position:fixed;inset:0;z-index:100;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+  transition:opacity .6s;
+}
+#intro::before{
+  content:"";
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.03) 0 1px, transparent 1px 3px);
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+.id-card{
+  position:relative;
+  width:min(920px, 100%);
+  border:1px solid var(--line-lit);
+  background:var(--pane);
+  box-shadow:0 0 0 6px var(--bg), 0 0 0 7px var(--line);
+}
+.id-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  height:28px;
+  padding:0 10px;
+  border-bottom:1px solid var(--line);
+  font-size:11px;letter-spacing:.12em;
+  color:var(--dim);
+  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+}
+.id-topbar .path{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.id-main{
+  display:flex;flex-direction:row;
+  border-bottom:1px solid var(--line);
+}
+.id-header{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  flex:0 0 250px;
+  padding:16px;
+  border-right:1px solid var(--line);
+  text-align:center;
+}
+.id-photo{
+  position:relative;
+  width:100%;
+  max-width:210px;
+  aspect-ratio:848/1354;
+  background:#000;
+  border:1px solid var(--line);
+  overflow:hidden;
+  cursor:pointer;
+  transition:filter .2s;
+}
+.id-photo:hover,.id-photo:focus-visible{filter:brightness(1.25);}
+.id-photo:focus-visible{outline:1px solid var(--line-lit);outline-offset:2px;}
+.id-photo video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.id-photo .expand{
+  position:absolute;
+  top:2px;left:2px;
+  font-size:8px;
+  color:#fff;
+  opacity:0;
+  transition:opacity .2s;
+  text-shadow:0 0 2px #000;
+  z-index:1;
+}
+.id-photo:hover .expand,.id-photo:focus-visible .expand{opacity:.85;}
+.id-photo .barcode{
+  position:absolute;
+  top:4px;bottom:4px;right:4px;
+  width:6px;
+  background:repeating-linear-gradient(to bottom,
+    rgba(255,255,255,.9) 0 2px, rgba(255,255,255,0) 2px 4px,
+    rgba(255,255,255,.5) 4px 5px, rgba(255,255,255,0) 5px 9px);
+  opacity:.6;
+  mix-blend-mode:difference;
+}
+.id-header-info{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  min-width:0;
+}
+.id-name{
+  font-size:17px;font-weight:600;letter-spacing:.06em;
+  color:var(--ink);
+}
+.id-role{
+  font-size:12px;letter-spacing:.04em;
+  color:var(--dim);
+}
+.id-data{
+  flex:1;
+  padding:14px;
+  display:flex;flex-direction:column;
+  gap:11px;
+  min-width:0;
+}
+.id-row{
+  display:flex;justify-content:space-between;gap:14px;
+  font-size:13px;letter-spacing:.04em;
+  border-bottom:1px solid var(--line);
+  padding-bottom:8px;
+  white-space:nowrap;
+}
+.id-row dt{color:var(--faint);flex:0 0 auto;}
+.id-row dd{color:var(--ink);text-align:right;overflow:hidden;text-overflow:ellipsis;}
+.id-log{
+  flex:1;
+  font-size:12px;line-height:1.7;
+  color:var(--dim);
+  letter-spacing:.02em;
+  min-height:72px;
+  white-space:pre-line;
+}
+.id-log .rdy{color:var(--ink);}
+.id-scan{
+  height:3px;
+  background:var(--line);
+  overflow:hidden;
+}
+.id-scan-fill{
+  height:100%;width:0%;
+  background:var(--ink);
+  transition:width .2s linear;
+}
+.id-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;
+  font-size:10.5px;letter-spacing:.12em;
+  color:var(--faint);
+}
+#intro-enter{
+  border:1px solid var(--line-lit);
+  background:none;
+  color:var(--dim);
+  font-family:var(--mono);
+  font-size:10px;letter-spacing:.2em;
+  padding:7px 16px;
+  cursor:not-allowed;
+  transition:color .2s,border-color .2s,opacity .2s;
+  opacity:.4;
+}
+#intro-enter.ready{
+  cursor:pointer;
+  opacity:1;
+  color:var(--ink);
+}
+#intro-enter.ready:hover{background:var(--ink);color:var(--bg);}
+
+#intro.dismissed{opacity:0;pointer-events:none;}
+.id-data{max-height:min(58vh,480px);overflow-y:auto;}
+.id-data::-webkit-scrollbar{width:6px;}
+.id-data::-webkit-scrollbar-thumb{background:var(--line);}
+.id-data a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--faint);}
+.id-data a:hover{text-decoration-color:var(--ink);}
+.id-bio{margin-top:2px;}
+.id-bio p{font-size:14.5px;line-height:1.7;color:var(--ink);margin:0 0 12px;}
+.id-tags{margin-bottom:10px;}
+.id-avail{font-size:13px;letter-spacing:.06em;color:var(--dim);}
+.id-avail b{color:var(--ink);}
+.id-desc{margin-top:2px;}
+.id-desc p{font-size:12px;line-height:1.6;color:var(--dim);margin:0;}
+
+/* ============================================================
+   THE WALL — 3D coverflow gallery (drag / scroll both directions)
+   ============================================================ */
+body{overflow:hidden;}
+#stage{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  overflow:hidden;
+  cursor:grab;
+  touch-action:none;
+  background:
+    radial-gradient(120% 82% at 50% 14%, rgba(255,255,255,.06), transparent 60%),
+    var(--bg);
+  perspective:1650px;
+  perspective-origin:50% 45%;
+}
+#stage.dragging{cursor:grabbing;}
+#deck{
+  position:absolute;
+  left:50%;
+  top:46%;
+  width:0;height:0;
+  transform-style:preserve-3d;
+}
+
+/* slow color-cycling glow, centered behind the deck so it lights each
+   project from the back as it passes through center */
+@property --glow-color{
+  syntax:'<color>';
+  inherits:true;
+  initial-value:#8B5CF6;
+}
+#glow{
+  position:absolute;
+  inset:-25%;
+  pointer-events:none;
+  --glow-color:#8B5CF6;
+  background:radial-gradient(circle at 50% 46%, var(--glow-color) 0%, transparent 60%);
+  filter:blur(90px);
+  opacity:.28;
+  mix-blend-mode:screen;
+  animation:glowCycle 120s ease-in-out infinite;
+}
+@keyframes glowCycle{
+  0%,100%{--glow-color:#8B5CF6;}  /* purple */
+  14.3%  {--glow-color:#FF5FAE;}  /* pink */
+  28.6%  {--glow-color:#F2E24B;}  /* yellow */
+  42.9%  {--glow-color:#A6FF3C;}  /* neon lime */
+  57.1%  {--glow-color:#3CFF8F;}  /* green */
+  71.4%  {--glow-color:#3C7DFF;}  /* blue */
+  85.7%  {--glow-color:#1E2A6E;}  /* dark blue */
+}
+@media (prefers-reduced-motion:reduce){#glow,:root{animation:none;}}
+
+/* floating haze / CRT grain / dust (kept from the room) */
+#haze{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    radial-gradient(135% 105% at 50% 48%, transparent 44%, rgba(0,0,0,.72) 100%),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.02) 0 1px, transparent 1px 3px);
+}
+#dust{
+  position:absolute;inset:-20%;z-index:3;pointer-events:none;opacity:.45;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 22%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 68% 14%, #fff, transparent),
+    radial-gradient(1px 1px at 34% 62%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 82% 48%, #fff, transparent),
+    radial-gradient(1px 1px at 47% 86%, #fff, transparent),
+    radial-gradient(1px 1px at 22% 74%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 91% 78%, #fff, transparent),
+    radial-gradient(1px 1px at 58% 36%, #fff, transparent);
+  background-size:520px 520px;
+  animation:drift 42s linear infinite;
+}
+@keyframes drift{to{background-position:520px 300px;}}
+@media (prefers-reduced-motion:reduce){#dust{animation:none;}}
+
+/* a single hanging screen / card */
+.card{
+  position:absolute;
+  left:0;top:0;
+  transform-origin:center center;
+  will-change:transform,opacity;
+  border-radius:16px;
+  overflow:hidden;
+  padding:0;
+  background:var(--pane);
+  border:1px solid var(--line);
+  box-shadow:0 34px 70px rgba(0,0,0,.62);
+  cursor:pointer;
+  backface-visibility:hidden;
+  font-family:var(--mono);
+}
+.card::after{               /* accent lip along the top edge, follows the room's color cycle */
+  content:"";
+  position:absolute;left:0;right:0;top:0;height:3px;
+  background:var(--glow-color);
+  opacity:.92;z-index:4;
+}
+.card .fill{position:absolute;inset:0;background:#0d0d0d;}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.card.empty .fill{
+  display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 8px, transparent 8px 16px), #101010;
+}
+.card.empty .fill span{
+  font-size:9px;letter-spacing:.22em;color:var(--faint);
+  border:1px dashed var(--faint);padding:6px 11px;
+}
+.card .grad{                /* base fade so side text/hint stays legible */
+  position:absolute;left:0;right:0;bottom:0;height:42%;pointer-events:none;
+  background:linear-gradient(to top, rgba(0,0,0,.55), transparent);
+}
+.card .scrim{               /* depth-dim, opacity driven by JS */
+  position:absolute;inset:0;background:#05060a;opacity:0;pointer-events:none;
+}
+.card .open-hint{
+  position:absolute;left:0;right:0;bottom:0;z-index:3;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 12px;
+  font-size:9px;letter-spacing:.28em;color:var(--ink);
+  opacity:0;transition:opacity .25s;
+}
+.card.active{box-shadow:0 46px 100px rgba(0,0,0,.82), 0 0 0 1px var(--glow-color);}
+.card.active .open-hint{opacity:.92;}
+.card:focus-visible{outline:none;box-shadow:0 46px 100px rgba(0,0,0,.82), 0 0 0 2px var(--ink);}
+
+/* persistent title bar — always shows the centred project */
+#nowbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:22px 20px 26px;
+  text-align:center;
+  pointer-events:none;
+  background:linear-gradient(to top, rgba(0,0,0,.9) 12%, rgba(0,0,0,0));
+}
+:root[data-theme="light"] #nowbar{background:linear-gradient(to top, rgba(246,241,230,.94) 12%, rgba(246,241,230,0));}
+#nowbar .no{font-size:9px;letter-spacing:.34em;color:var(--glow-color);font-weight:600;}
+#nowbar .tt{
+  font-size:clamp(17px,2.7vw,27px);letter-spacing:.14em;
+  color:var(--ink);font-weight:600;line-height:1.15;
+  transition:opacity .18s;
+}
+#nowbar .mm{font-size:12px;letter-spacing:.18em;color:var(--dim);min-height:12px;margin-top:7px;}
+#nowbar .cue{margin-top:8px;font-size:8.5px;letter-spacing:.26em;color:var(--faint);}
+#nowbar .cue b{color:var(--dim);font-weight:400;}
+
+/* left / right steppers */
+.arrow{
+  position:fixed;top:45%;z-index:41;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(10,10,10,.55);
+  border:1px solid var(--line);
+  color:var(--dim);
+  font-family:var(--mono);font-size:18px;line-height:1;
+  cursor:pointer;
+  transition:color .2s,border-color .2s,background .2s;
+  backdrop-filter:blur(2px);
+}
+.arrow:hover{color:var(--ink);border-color:var(--line-lit);background:rgba(22,22,22,.7);}
+.arrow:disabled{opacity:.22;cursor:default;}
+#arrow-prev{left:24px;}
+#arrow-next{right:24px;}
+#counter{
+  position:fixed;top:15px;right:24px;z-index:41;
+  font-size:10px;letter-spacing:.22em;color:var(--faint);
+}
+@media (max-width:600px){
+  .arrow{width:40px;height:40px;font-size:16px;}
+  #arrow-prev{left:10px;} #arrow-next{right:10px;}
+  #counter{top:54px;right:14px;}
+  #nowbar{padding:16px 16px 20px;}
+  #nowbar .cue{display:none;}
+}
+
+/* --- PROJECT DETAIL WINDOW --- */
+.term.proj{width:min(880px, calc(100vw - 36px));max-height:min(86vh,860px);}
+.proj-body{padding:0;overflow-y:auto;}
+.proj-body::-webkit-scrollbar{width:6px;}
+.proj-body::-webkit-scrollbar-thumb{background:var(--line);}
+.proj-hero{
+  position:relative;
+  width:100%;aspect-ratio:16/9;
+  background:#0d0d0d;border-bottom:1px solid var(--line);
+  border-top:3px solid var(--accent, var(--line-lit));
+  overflow:hidden;
+}
+.proj-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+.proj-hero.empty{
+  display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 8px, transparent 8px 16px), #101010;
+  color:var(--faint);font-size:10px;letter-spacing:.24em;
+}
+.proj-meta{padding:20px 24px 26px;}
+.proj-meta .no{font-size:10px;letter-spacing:.24em;color:var(--accent, var(--dim));font-weight:600;}
+.proj-meta h3{
+  font-size:19px;letter-spacing:.1em;font-weight:600;
+  margin:6px 0 10px;color:var(--ink);
+}
+.proj-meta .mm{font-size:13px;letter-spacing:.14em;color:var(--dim);margin-bottom:14px;}
+.proj-meta p{font-size:12.5px;line-height:1.8;color:var(--ink);margin:0 0 14px;}
+.proj-nav{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 24px;border-top:1px solid var(--line);
+  font-size:10px;letter-spacing:.18em;
+}
+.proj-nav button{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  background:none;border:1px solid var(--line);color:var(--dim);
+  padding:6px 12px;cursor:pointer;transition:color .2s,border-color .2s;
+}
+.proj-nav button:hover{color:var(--ink);border-color:var(--line-lit);}
+.proj-nav .btn{margin:0 0 0 auto;}
+.proj-nav .btn.off{opacity:.35;pointer-events:none;}
+
+/* --- INDEX WINDOW --- */
+.idx-row{
+  display:flex;align-items:center;gap:12px;
+  width:100%;
+  padding:10px 4px;
+  border:none;border-bottom:1px solid var(--line);
+  background:none;
+  font-family:var(--mono);
+  color:var(--dim);
+  text-align:left;
+  cursor:pointer;
+  transition:color .18s,padding-left .18s;
+}
+.idx-row:hover{color:var(--ink);padding-left:10px;}
+.idx-row .bullet{flex:0 0 auto;color:var(--faint);}
+.idx-row .no{font-size:10px;color:var(--dim);flex:0 0 26px;}
+.idx-row .tt{font-size:12px;letter-spacing:.16em;color:var(--ink);}
+.idx-row .mm{font-size:9.5px;letter-spacing:.14em;margin-left:auto;color:var(--dim);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+@media (max-width:560px){
+  #intro{align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px 40px;}
+  .id-main{flex-direction:column;}
+  .id-header{flex:none;width:100%;border-right:none;border-bottom:1px solid var(--line);}
+  .id-photo{max-width:190px;}
+  .id-header{padding:12px;gap:10px;}
+  .id-name{font-size:15px;}
+  .id-row{white-space:normal;}
+  .id-data{max-height:none;overflow-y:visible;}
+}
+@media (max-width:700px){
+  #nav{gap:14px;padding:14px 14px;font-size:9.5px;letter-spacing:.14em;}
+  #nav .brand{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0;}
+}
+@media (max-width:560px){
+  #nav .brand em{display:none;}
+  #nav{gap:11px;}
+}
+
+/* ---------- MOBILE: overlay windows & lists ---------- */
+@media (max-width:640px){
+  .term .kv,#ov-resume .term .kv{grid-template-columns:1fr;gap:2px 0;}
+  .term .kv dt{margin-top:14px;color:var(--ink);}
+  .term .kv dt:first-child{margin-top:0;}
+  .term .kv dd{margin-bottom:2px;}
+  #ov-resume .term .kv dt{margin-top:18px;}
+  .proj-nav{flex-wrap:wrap;row-gap:8px;}
+  .proj-nav .btn{flex:1 1 100%;order:3;margin-left:0;text-align:center;}
+}
+@media (max-width:480px){
+  .idx-row{flex-wrap:wrap;row-gap:4px;}
+  .idx-row .tt{flex:1 1 auto;min-width:0;}
+  .idx-row .mm{margin-left:38px;flex:1 0 100%;text-align:left;white-space:normal;}
+}
+</style>
+</head>
+<body>
+
+<script>
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  EDIT ME — PORTFOLIO CONFIG                                       ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
+const PORTFOLIO = {
+  name: "Caroline Chen",           // EDIT ME
+  handle: "GALLERY WALK-THROUGH",
+  email: "carolineche99@gmail.com",
+  resumeUrl: "assets/Caroline_Chen_Resume.pdf",                  // EDIT ME — link to your resume PDF ("" hides button)
+};
+
+/* Entry intro — cyberpunk ID-scan splash shown once on load.
+   video plays and loops continuously. */
+const INTRO = {
+  video: "assets/portfolio_intro.mp4",
+};
+
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  THE GALLERY — add / remove / reorder projects here.              ║
+   ║  Order in this array = order you walk past them (left → right).   ║
+   ║                                                                   ║
+   ║  {                                                                ║
+   ║    title : "PROJECT NAME",          // shown on the frame         ║
+   ║    meta  : "UX · 2025",             // small line under the title ║
+   ║    blurb : "one or two sentences.", // shown in the detail window ║
+   ║    thumb : "assets/thing.png",      // "" → wireframe placeholder ║
+   ║    accent: "#8B5CF6",               // frame accent, from thumb   ║
+   ║    url   : "https://…",             // "" → button disabled       ║
+   ║    tags  : ["UX","RESEARCH"],                                     ║
+   ║  }                                                                ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+
+const PROJECTS = [
+  {
+    title: "InterACE",
+    meta: "UX CASE STUDY· INTERACTION · 2024",
+    blurb: "Interview prep usually means rehearsing alone and hoping for the best. InterACE is an AI app that learns where you stumble and coaches you through it, so practice actually moves you somewhere.",
+    thumb: "assets/interace_thumb.png",
+    accent: "#7C5CFC",
+    url: "https://www.figma.com/proto/MbtfQ5xZ7t3U4Dy1Hq6QgE/DES112-InterACE-Case-Study?node-id=1-2&p=f&viewport=422%2C25%2C0.04&t=HOjDy5ylsCMUGnxX-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
+    tags: ["UX","PRODUCT DESIGN","FIGMA"],
+  },
+  {
+    title: "My aKDPHI Guides",
+    meta: "UX WRITING · DOCUMENTATION · 2025",
+    blurb: "People often bounce off a platform before they ever get comfortable with it. I built a visual onboarding guide for alpha Kappa Delta Phi chapter officers, walking Presidents, Secretaries, and Recruitment leads through the tools they actually use in the My aKDPhi portal: Role Assignment, Member Statuses, and Recruitment.",
+    thumb: "assets/akdphi_thumb.png",
+    accent: "#9C5FA8",
+    url: "https://akdphicaro.neocities.org/myaKDPhi/",
+    tags: ["UX WRITING","DOCUMENTATION","WEB", "HTML", "CSS"],
+  },
+  {
+    title: "Constructing Campus Identity",
+    meta: "DESIGN ETHNOGRAPHY · UX RESEARCH · 2026",
+    blurb: "UC Davis leans on horses, sheep, and cows to tell its story, but those symbols don't always match how the campus actually runs. This ethnographic portfolio traces that gap through fieldwork at the Equestrian Center, the Silo, and the Sheep Mowers mural, then proposes a satirical mascot, Sunpebble, to make the contradiction visible.",
+    thumb: "assets/campus_identity_thumb.png",
+    accent: "#4A90E2",
+    url: "assets/campus_identity.pdf",
+    tags: ["UX RESEARCH","ETHNOGRAPHY","FIELDWORK","NARRATIVE"],
+  },
+  {
+    title: "Chiaroscuro",
+    meta: "INTERACTIVE NARRATIVE · 2025",
+    blurb: "One choice, two realities. Chiaroscuro visualizes the gamble of recreational drug use as branching paths of euphoria and paranoia, letting you drift toward the high or the dread and feel the weight of not knowing which you'll get.",
+    thumb: "assets/chiaroscuro_thumb.png",
+    accent: "#6E93BF",
+    url: "https://des117.space/fa2025-mead/cache/interactive_narrative/",
+    tags: ["INTERACTIVE NARRATIVE","WEB", "HTML", "CSS", "GRAPHIC DESIGN"],
+  },
+  {
+    title: "Infinite Regress",
+    meta: "EDITORIAL · PUBLICATION DESIGN · 2025",
+    blurb: "Some thoughts don't resolve, they just keep asking for another reason. Infinite Regress is a 16-page booklet on the epistemic regress problem, set in a tunnel that never ends, and built as an interactive page-flip so you have to keep turning to find a ground that isn't there.",
+    thumb: "assets/infinite_regress_thumb.png",
+    accent: "#A13A3E",
+    url: "assets/infinite-regress-flipbook.html",
+    tags: ["EDITORIAL","PUBLICATION DESIGN","TYPOGRAPHY","INTERACTIVE","WEB"],
+  },
+  {
+    title: "Study ARC",
+    meta: "UX CASE STUDY · PRODUCT DESIGN · 2024",
+    blurb: "Most productivity tools just push students to do more. S.ARC is a time-management platform built around how people actually study, so planning a workload stops feeling like a punishment.",
+    thumb: "assets/studyarc_thumb.png",
+    accent: "#E3A47E",
+    fit: "contain", // wide 2-panel image — cover cropped the edges
+    url: "https://www.figma.com/proto/11bo1rlu05kqcEprjRrHap/DES112-Study-ARC-Case-Study?node-id=1-2&p=f&viewport=390%2C25%2C0.04&t=KnJVJd9x8oG9MuNc-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
+    tags: ["UX","PRODUCT DESIGN","FIGMA"],
+  },
+  {
+    title: "The Mask Compliance Report",
+    meta: "PHOTO ESSAY · SOCIETAL CRITIQUE · 2025",
+    blurb: "We're told success means always looking productive, whatever it costs underneath. This photo essay pulls off that mask to show the mental and physical fatigue we hide, and asks who the 'productive mindset' really serves.",
+    thumb: "assets/maskcompliance_thumb.png",
+    accent: "#B8B8B8",
+    fit: "contain", // title-card graphic — cover cropped the text off-center
+    url: "https://www.figma.com/proto/08DGix9iJJL4pW8C42ITtI/AHI189-Photo-Essay-FINAL?page-id=0%3A1&node-id=23-13&p=f&viewport=516%2C104%2C1.01&t=gAZFrztQEjf6mzTh-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=23%3A13",
+    tags: ["PHOTO ESSAY","PHOTOGRAPHY"],
+  },
+  {
+    title: "Form and Flesh",
+    meta: "WATERCOLOR & PAPER COLLAGE · 2023",
+    blurb: "A collision of organic warmth and synthetic edge. Fluid watercolor represents the unpredictable nature of human flesh, shattered and structured by hard-edged cybernetic cutouts. Where does the body end, and the machine begin?",
+    thumb: "assets/formandflesh_thumb.jpg",
+    accent: "#B5766B",
+    url: "https://www.figma.com/proto/3iWVoSJwswsKfEdT3nTUXp/Form-and-Flesh?node-id=1-2&p=f&viewport=61%2C113%2C0.29&t=v5orTz2DpH994sqh-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
+    tags: ["WATERCOLOR","COLLAGE","MIXED MEDIA","FINE ART"],
+  },
+  {
+    title: "Caroline's Blog",
+    meta: "BLOG · WEB DESIGN · 2025",
+    blurb: "The internet runs on ideas we've stopped questioning. This writing project digs into digital culture and online discourse, turning passing scroll thoughts into essays worth a second look.",
+    thumb: "assets/blog_thumb.png",
+    accent: "#6F74AE",
+    url: "https://des117.space/fa2025-mead/cache/blog/index.html",
+    tags: ["WEB DESIGN","BLOG","HTML","CSS","WRITING"],
+  },
+
+  /* ── poster prints: shown uncropped at their uploaded aspect ratio,
+        no accent / blurb / tags. ratio + fit:"contain" = full poster. ── */
+  {
+    title: "Clarendon Typeface Poster Print",
+    meta: "",
+    thumb: "assets/clarendon_poster.jpg",
+    fit: "contain",
+    ratio: "200/309",   // 1000 × 1545, uploaded dimensions
+    url: "",
+  },
+  {
+    title: "Corky Lee Zine",
+    meta: "SINOPHOBIA & ANTI-CHINESE SENTIMENT OF THE WEST",
+    blurb: "Photographs by Corky Lee.",
+    thumb: "assets/corky_lee_zine.jpg",
+    fit: "contain",
+    ratio: "9/7",       // 3375 × 2625, uploaded dimensions
+    url: "",
+  },
+  {
+    title: "C-STEM Success Signages",
+    meta: "PRINT DESIGN · EVENT SIGNAGE · 2025",
+    blurb: "Created for the 2025 6th Annual C-STEM Symposium, UC Davis Center for Integrated Computing and STEM Education. Two signs translating district-level math score gains, Hacienda La Puente USD's 344% jump in 6th grade standard-exceeding scores and McPherson Magnet School's 72% four-year SBAC math increase, into signage built to make the case for the program at a glance.",
+    thumb: "assets/cstem_signage_poster.jpg",
+    fit: "contain",
+    ratio: "1104/425",   // 6624 × 2550 composite, two 3300×2550 signs side by side
+    tags: ["PRINT DESIGN","DATA VISUALIZATION","EVENT SIGNAGE"],
+    url: "",
+  },
+];
+</script>
+
+<div id="intro">
+  <div class="id-card" role="dialog" aria-label="Identity file">
+    <div class="id-topbar">
+      <span class="path">https://carolinechen.design/gallery/room_01</span>
+    </div>
+    <div class="id-main">
+      <div class="id-header">
+        <div class="id-photo" id="id-photo" role="button" tabindex="0" aria-label="View intro video larger">
+          <span class="expand">⤢ EXPAND</span>
+          <video id="intro-video" muted playsinline autoplay preload="auto"></video>
+          <div class="barcode"></div>
+        </div>
+        <div class="id-header-info">
+          <div class="id-name" id="intro-name">CAROLINE CHEN</div>
+        </div>
+      </div>
+      <div class="id-data">
+        <dl class="id-row"><dt>IDENTITY</dt><dd>UX Designer / Occasional Multi-Medium Dabbler</dd></dl>
+        <dl class="id-row"><dt>LOCATION</dt><dd>San Mateo, CA</dd></dl>
+        <dl class="id-row"><dt>EDUCATION</dt><dd>UC Davis — BA Design / BS Managerial Econonmics</dd></dl>
+        <dl class="id-row"><dt>EMAIL</dt><dd><a id="intro-email" href="carolineche99@gmail.com"></a></dd></dl>
+        <dl class="id-row"><dt>SYSTEM MOTIVATOR</dt><dd>Absurd Optimism</dd></dl>
+        <dl class="id-row"><dt>RECOVERY MODE</dt><dd>Fail-Safe</dd></dl>
+        <dl class="id-row"><dt>CLEARANCE</dt><dd id="intro-status">SCANNING</dd></dl>
+        <pre class="id-log" id="intro-log"></pre>
+        <div class="id-scan" id="intro-scanbar"><div class="id-scan-fill" id="intro-fill"></div></div>
+        <div class="id-desc" id="intro-desc" hidden>
+          <p>I study real human habits in the wild and build them into digital tools, physical pieces, or whatever medium fits best. Big on productivity culture, tech irony, and bold experiments. Step inside. We can build something together.</p>
+        </div>
+      </div>
+    </div>
+    <div class="id-foot">
+      <span>NODE ACCESS · ONLINE</span>
+      <button id="intro-enter">ENTER →</button>
+    </div>
+  </div>
+</div>
+
+<nav id="nav">
+  <span class="brand"><span id="brand-name"></span> <em>· GALLERY WALK-THROUGH</em></span>
+  <a href="#" data-tab="index">INDEX</a>
+  <a href="#" data-tab="about">ABOUT</a>
+  <a href="#" data-tab="resume">RESUME</a>
+</nav>
+
+<!-- THE WALL -->
+<div id="stage">
+  <div id="glow"></div>
+  <div id="deck"></div>
+  <div id="dust"></div>
+  <div id="haze"></div>
+</div>
+
+<button class="arrow" id="arrow-prev" aria-label="Previous project">&#8249;</button>
+<button class="arrow" id="arrow-next" aria-label="Next project">&#8250;</button>
+<div id="counter">01 / 01</div>
+
+<div id="nowbar">
+  <div class="no" id="now-no">[01]</div>
+  <div class="tt" id="now-title">&mdash;</div>
+  <div class="mm" id="now-mm"></div>
+  <div class="cue">DRAG OR SCROLL TO BROWSE &middot; <b>PRESS THE CENTER SCREEN TO OPEN</b></div>
+</div>
+
+<!-- RESUME -->
+<div class="overlay" id="ov-resume">
+  <div class="term" role="dialog" aria-label="Resume">
+    <div class="tbar">/usr/caro/resume.pdf<button class="x" data-close>ESC</button></div>
+    <div class="tbody">
+      <h2>EDUCATION</h2>
+      <dl class="kv">
+        <dt>2022 – 2026</dt><dd>University of California, Davis<br><span style="color:var(--faint)">BS in Managerial Economics, BA in Design (UX &amp; Digital Systems Focus)</span></dd>
+        <dt>July 2025</dt><dd>National Taiwan University<br><span style="color:var(--faint)">Study Abroad Program in Law and Data</span></dd>
+      </dl>
+      <h2>SELECTED PROJECTS</h2>
+      <dl class="kv">
+        <dt>2026 – Present</dt><dd>Exhale (Dead Vapes Society): Social Habit-Tracking Platform<br><span style="color:var(--faint)">UX/UI Design, React Native, Figma, Product Strategy — leading UX strategy and interface design for a three-person startup team building a social habit-tracking app that pairs with a Bluetooth-enabled wearable sensor. Target launch September 2026; currently in the prototyping phase.</span></dd>
+        <dt>Winter 2026</dt><dd>Constructing Campus Identity: Design Ethnography Case Study<br><span style="color:var(--faint)">UX Research, Ethnographic Fieldwork, Concept Design — a quarter spent observing campus spaces and talking to students about how they actually experience UC Davis, compared against how the university brands itself; used the gap as the basis for a satirical concept character and narrative pitch.</span></dd>
+        <dt>Case Study</dt><dd>InterACE: AI-Powered Interview Prep App<br><span style="color:var(--faint)">UX/UI Design, Figma, Branding — designed the UX and brand identity for a concept app that personalizes interview prep, from user research to a high-fidelity prototype.</span></dd>
+        <dt>Apr 2025 – Present</dt><dd>My aKDPhi Guides: Visual Onboarding Website<br><span style="color:var(--faint)">UX/UI Design, HTML/CSS, Visual Systems — turned dense internal process documentation into a visual, step-by-step onboarding site.</span></dd>
+      </dl>
+      <h2>WORK EXPERIENCE</h2>
+      <dl class="kv">
+        <dt>Jan 2025 – May 2026</dt><dd>C-STEM Administrative and Marketing Assistant, UC Davis Center for Integrated Computing and STEM Education<br><span style="color:var(--faint)">Designed the templates, digital assets, and event materials that made up the program's visual brand; coordinated event logistics for community-facing initiatives with schools and stakeholders; grew Instagram engagement ~12% through consistent visual and storytelling strategy.</span></dd>
+        <dt>Additional</dt><dd>Transaction Coordinator Assistant, Aide Real Estate (Nov 2023 – Aug 2025)<br><span style="color:var(--faint)">PLS21 Peer Tutor, UC Davis Dept. of Plant Sciences (Sept – Dec 2023)</span></dd>
+      </dl>
+      <h2>LEADERSHIP &amp; CAMPUS INVOLVEMENT</h2>
+      <dl class="kv">
+        <dt>Sept 2025 – Mar 2026</dt><dd>Onboarding Lead, Bridge Builders Implementation Task Force — alpha Kappa Delta Phi<br><span style="color:var(--faint)">Trained and onboarded members on a new internal platform rolled out across all 67 chapters in the US and Canada; wrote the supporting documentation.</span></dd>
+        <dt>Apr 2025 – Jan 2026</dt><dd>Webmistress — alpha Kappa Delta Phi<br><span style="color:var(--faint)">Redesigned the chapter website from the ground up, rebuilding the visual system and navigation.</span></dd>
+        <dt>Jan 2026 – June 2026</dt><dd>Rush Chair &amp; VP Service — alpha Kappa Delta Phi<br><span style="color:var(--faint)">Directed spring rush recruitment and led chapter-wide service events focused on Breast Cancer Awareness.</span></dd>
+        <dt>Jan 2023 – May 2024</dt><dd>Member, Economics and Business Student Association<br><span style="color:var(--faint)">Finalist, KPMG-sponsored AI consulting case competition (market sizing, competitive analysis, financial projections for an AI-powered e-commerce pitch); third place, EBSA marketing case competition (Home Depot holiday campaign concept).</span></dd>
+      </dl>
+      <h2>SKILLS</h2>
+      <span class="tag">FIGMA</span><span class="tag">ADOBE ILLUSTRATOR</span><span class="tag">PHOTOSHOP</span><span class="tag">INDESIGN</span><span class="tag">WEBFLOW</span><span class="tag">RHINO</span><span class="tag">TYPOGRAPHY &amp; EDITORIAL DESIGN</span><span class="tag">HTML/CSS/JS</span><span class="tag">RSTUDIO</span>
+      <h2>DOWNLOAD</h2>
+      <a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener">▼ DOWNLOAD PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="overlay" id="ov-about">
+  <div class="term" role="dialog" aria-label="About">
+    <div class="tbar">/usr/caro/about.me<button class="x" data-close>ESC</button></div>
+    <div class="tbody">
+      <h2>ABOUT</h2>
+      <div class="id-bio">
+        <p>I'm <b>Caroline Chen</b>, a designer with a background in economics, which basically means
+        I like figuring out why people do irrational things on screens.</p>
+        <p>Growing up near San Francisco, I spent a lot of time wandering Chinatown, mostly drawn
+        to the subtle layout details in storefronts and the daily routines of people passing
+        through. That early curiosity about how people naturally navigate physical spaces is
+        really what pulled me toward design in the first place.</p>
+        <p>I recently wrapped up at <b>UC Davis</b> with a <b>BA in Design</b> and a <b>BS in Managerial
+        Economics</b>. These days, I focus on <b>user experience</b> and <b>ethnographic fieldwork</b>. I like
+        getting out into real spaces to observe actual human habits, then figuring out how those
+        behaviors translate into functional digital systems. A lot of my work digs into themes
+        around <b>productivity culture, habit loops, and the subtle social irony</b> built into the
+        tools we use every day.</p>
+        <p>Admittedly, I'm an iPad kid—it's my go-to digital sketchbook for pulling together
+        quick graphic assets and experimenting with textures. But I don't confine myself strictly
+        to digital work, either. My projects hop around between user interfaces, field research,
+        and physical print design.</p>
+        <p>A lot of my creative energy comes from deep-diving into the hyperpop and EDM scenes.
+        The raw stimulation and chaotic energy of the music push me to take bigger visual risks
+        and explore bolder ideas.</p>
+        <p>Going forward, I just want to decode real human habits, strip away the noise, and turn
+        them into thoughtful products with a great team. I'm naturally drawn to new tech,
+        unfamiliar ideas, and learning from how other people work. The final output always
+        matters, but for me, the shift in perspective and knowledge gained during the build is
+        where the real value lives.</p>
+        <div class="id-tags">
+          <span class="tag">UX RESEARCH</span><span class="tag">INTERACTION DESIGN</span><span class="tag">WEB DESIGN</span><span class="tag">GRAPHIC DESIGN</span><span class="tag">PRINT</span><span class="tag">EDITORIAL</span><span class="tag">FIGMA</span><span class="tag">HTML/CSS</span>
+        </div>
+        <p class="id-avail">AVAILABILITY: <b>OPEN TO WORK</b> <span class="cursor"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT DETAIL -->
+<div class="overlay" id="ov-project">
+  <div class="term proj" role="dialog" aria-label="Project">
+    <div class="tbar"><span id="proj-path">/gallery/</span><button class="x" data-close>ESC</button></div>
+    <div class="tbody proj-body">
+      <div class="proj-hero" id="proj-hero"></div>
+      <div class="proj-meta">
+        <div class="no" id="proj-no">[00]</div>
+        <h3 id="proj-title"></h3>
+        <div class="mm" id="proj-mm"></div>
+        <p id="proj-blurb"></p>
+        <div id="proj-tags"></div>
+      </div>
+    </div>
+    <div class="proj-nav">
+      <button id="proj-prev">← PREV</button>
+      <button id="proj-next">NEXT →</button>
+      <a class="btn" id="proj-open" href="#" target="_blank" rel="noopener">OPEN PROJECT ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- INDEX -->
+<div class="overlay" id="ov-index">
+  <div class="term" role="dialog" aria-label="Project index">
+    <div class="tbar">/gallery/index<button class="x" data-close>ESC</button></div>
+    <div class="tbody">
+      <h2>WALK-THROUGH · CONTENTS</h2>
+      <div id="idx-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO LIGHTBOX -->
+<div class="overlay" id="ov-video-lightbox">
+  <div class="video-lightbox" role="dialog" aria-label="Intro video, enlarged">
+    <button class="x" data-close aria-label="Close">ESC</button>
+    <video id="lightbox-video" muted playsinline autoplay loop></video>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ENGINE — you shouldn't need to edit below this line
+   ============================================================ */
+(() => {
+"use strict";
+const $ = s => document.querySelector(s);
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+$("#brand-name").textContent = PORTFOLIO.name;
+const em = $("#intro-email");
+em.textContent = PORTFOLIO.email;
+em.href = "mailto:"+PORTFOLIO.email;
+
+addEventListener("keydown", e => {
+  if(e.key==="Escape") closeOverlays();
+});
+
+/* ---------- tabs & overlays ---------- */
+const tabs = document.querySelectorAll("#nav a");
+function closeOverlays(){
+  document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("open"));
+  $("#lightbox-video").pause();
+  tabs.forEach(t=>t.classList.remove("on"));
+}
+tabs.forEach(t => t.addEventListener("click", e => {
+  e.preventDefault();
+  const tab = t.dataset.tab;
+  closeOverlays();
+  if(tab==="about")  { $("#ov-about").classList.add("open"); setTab("about"); }
+  if(tab==="resume") { $("#ov-resume").classList.add("open"); setTab("resume"); }
+  if(tab==="index")  { $("#ov-index").classList.add("open"); setTab("index"); }
+}));
+function setTab(name){
+  tabs.forEach(t=>t.classList.toggle("on", t.dataset.tab===name));
+}
+document.querySelectorAll("[data-close]").forEach(b =>
+  b.addEventListener("click", closeOverlays));
+document.querySelectorAll(".overlay").forEach(o =>
+  o.addEventListener("click", e => { if(e.target===o) closeOverlays(); }));
+
+/* resume download button */
+if(PORTFOLIO.resumeUrl){
+  $("#resume-btn").href = PORTFOLIO.resumeUrl;
+  $("#resume-btn").setAttribute("download", "Caroline_Chen_Resume.pdf");
+}else{
+  $("#resume-btn").style.opacity=".35";
+  $("#resume-btn").style.pointerEvents="none";
+}
+
+/* ---------- intro — cyberpunk ID scan (doubles as the ABOUT tab) ---------- */
+(function(){
+  const overlay = $("#intro");
+  const video = $("#intro-video");
+  const statusEl = $("#intro-status");
+  const logEl = $("#intro-log");
+  const fillEl = $("#intro-fill");
+  const enterBtn = $("#intro-enter");
+  const descEl = $("#intro-desc");
+  const scanBar = $("#intro-scanbar");
+
+  $("#intro-name").textContent = PORTFOLIO.name.toUpperCase();
+  enterBtn.disabled = true;
+
+  const logLines = [
+    "> mounting /system ............... OK",
+    "> verifying subject .............. OK",
+  ];
+
+  function finish(){
+    statusEl.textContent = "VERIFIED";
+    fillEl.style.width = "100%";
+    if(!logEl.textContent.includes("READY")) logEl.textContent += "  READY FOR ENTRY\n";
+    setTimeout(() => {
+      logEl.hidden = true;
+      scanBar.hidden = true;
+      descEl.hidden = false;
+    }, 550);
+    enterBtn.disabled = false;
+    enterBtn.classList.add("ready");
+  }
+  function dismiss(){
+    overlay.classList.add("dismissed");
+  }
+  enterBtn.addEventListener("click", dismiss);
+
+  // click/tap the ID photo to view the intro video larger
+  const idPhoto = $("#id-photo");
+  const lightboxOverlay = $("#ov-video-lightbox");
+  const lightboxVideo = $("#lightbox-video");
+  function openVideoLightbox(){
+    if(lightboxVideo.src !== video.src) lightboxVideo.src = INTRO.video;
+    lightboxVideo.currentTime = video.currentTime || 0;
+    lightboxOverlay.classList.add("open");
+    lightboxVideo.play().catch(()=>{});
+  }
+  idPhoto.addEventListener("click", openVideoLightbox);
+  idPhoto.addEventListener("keydown", e => {
+    if(e.key==="Enter" || e.key===" "){ e.preventDefault(); openVideoLightbox(); }
+  });
+
+  if(reduceMotion){
+    logEl.textContent = logLines.join("\n") + "\n";
+    video.addEventListener("loadedmetadata", () => { video.currentTime = video.duration; }, {once:true});
+    video.addEventListener("seeked", finish, {once:true});
+    video.addEventListener("error", finish, {once:true});
+    video.src = INTRO.video;
+    return;
+  }
+
+  let ln = 0;
+  (function typeLog(){
+    if(ln < logLines.length){
+      logEl.textContent += logLines[ln] + "\n";
+      ln++;
+      fillEl.style.width = Math.min(100, (ln/logLines.length)*100).toFixed(1) + "%";
+      setTimeout(typeLog, 700);
+    }else{
+      finish();
+    }
+  })();
+
+  // video loops continuously in the background — it no longer gates
+  // when the bio/enter unlock (finish()) happens.
+  video.loop = true;
+  let resumeAttempts = 0;
+  // browsers may pause a no-audio-track video as a power-saving "background media"
+  // measure even while the tab is active in some embedded/automation contexts — resume it.
+  video.addEventListener("pause", () => {
+    if(video.hidden || video.ended) return;
+    if(resumeAttempts++ > 5) return;
+    video.play().catch(()=>{});
+  });
+  video.src = INTRO.video;
+  video.play().catch(()=>{});
+})();
+
+/* ---------- THE WALL — 3D coverflow gallery ---------- */
+(function(){
+  const $ = s => document.querySelector(s);
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const stage = $("#stage");
+  const deck  = $("#deck");
+  const pad2  = n => String(n).padStart(2,"0");
+  const esc   = s => String(s??"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  const N = PROJECTS.length;
+
+  /* cards below keep their own uploaded aspect ratio instead of matching InterACE */
+  const UNIFORM_EXCEPTIONS = new Set([
+    "Clarendon Typeface Poster Print",
+    "Corky Lee Zine",
+    "C-STEM Success Signages",
+    "Form and Flesh",
+  ]);
+
+  /* ---- build the cards ---- */
+  const cards = PROJECTS.map((p,i) => {
+    const el = document.createElement("button");
+    el.className = "card" + (p.thumb ? "" : " empty");
+    el.dataset.i = i;
+    el.setAttribute("aria-label", `Open project ${pad2(i+1)} — ${p.title}`);
+    if(p.accent) el.style.setProperty("--accent", p.accent);
+    el.innerHTML =
+      (p.thumb
+        ? `<div class="fill"></div><img src="${esc(p.thumb)}" alt="${esc(p.title)}" draggable="false" style="object-fit:${p.fit||"cover"}">`
+        : `<div class="fill"><span>NO IMAGE</span></div>`) +
+      `<div class="grad"></div><div class="scrim"></div>` +
+      `<div class="open-hint">&#9707; OPEN PROJECT</div>`;
+    const img = el.querySelector("img");
+    if(img) img.addEventListener("error", () => {
+      el.classList.add("empty");
+      img.remove();
+      el.querySelector(".fill").innerHTML = '<span>IMAGE NOT FOUND</span>';
+    });
+    deck.appendChild(el);
+    const poster = /clarendon/i.test(p.thumb || "");   // the tall type poster stays a standard screen
+    const uniform = !poster && !UNIFORM_EXCEPTIONS.has(p.title);   // sized to match InterACE
+    return { ...p, i, el, img, poster, uniform, ar: 0, scrim: el.querySelector(".scrim") };
+  });
+
+  /* ---- responsive sizing: each screen takes its thumbnail's aspect ratio ---- */
+  let boxW = 520, boxH = 440, NW = 380;
+  function computeBox(){
+    const vh = innerHeight, vw = innerWidth;
+    boxH = Math.max(240, Math.min(vh * 0.60, 470));
+    boxW = Math.min(vw * 0.52, 560);
+    if(vw < 560){ boxH = Math.max(220, Math.min(vh * 0.50, 360)); boxW = Math.min(vw * 0.82, 430); }
+    NW = Math.min(boxW * 0.88, boxH * 1.24);            // nominal width driving spacing + depth
+  }
+  function sizeCard(c){
+    let w, h;
+    if(c.poster){                        // Clarendon: standard portrait screen, whole poster inside
+      h = boxH; w = Math.round(boxH * 0.70);
+      if(c.img) c.img.style.objectFit = "contain";
+    }else{
+      const ar = c.ar || 16/10;          // thumbnail width / height
+      h = Math.min(boxH, boxW / ar);     // fit inside the box, no cropping
+      w = h * ar;
+      if(c.img) c.img.style.objectFit = "cover";
+    }
+    c.cw = Math.round(w); c.ch = Math.round(h);
+    c.el.style.width  = c.cw + "px";
+    c.el.style.height = c.ch + "px";
+  }
+  function size(){ computeBox(); cards.forEach(sizeCard); }
+
+  /* measure each thumbnail once, then lock its screen to that shape.
+     "uniform" cards skip their own measurement and instead take InterACE's
+     ratio once it loads, so every screen but the exceptions matches it. */
+  computeBox();
+  function applyUniformAR(ar){
+    cards.forEach(c => { if(c.uniform){ c.ar = ar; sizeCard(c); } });
+    render();
+  }
+  cards.forEach(c => {
+    if(c.poster || !c.thumb || c.uniform) return;
+    const im = new Image();
+    im.onload  = () => { c.ar = im.naturalWidth / im.naturalHeight; sizeCard(c); render(); };
+    im.onerror = () => { c.ar = 16/10; sizeCard(c); render(); };
+    im.src = c.thumb;
+  });
+  const interace = cards.find(c => c.title === "InterACE");
+  if(interace && interace.thumb){
+    const im = new Image();
+    im.onload  = () => applyUniformAR(im.naturalWidth / im.naturalHeight);
+    im.onerror = () => applyUniformAR(16/9);
+    im.src = interace.thumb;
+  } else {
+    applyUniformAR(16/9);
+  }
+
+  /* ---- coverflow geometry (works for fractional offset) ---- */
+  function params(){
+    const vw = innerWidth;
+    return {
+      GAP1: Math.min(NW * 1.06, vw * 0.34),  // gap to the first neighbour
+      GAP2: NW * 0.34,                        // tighter clustering further out
+      ROT : 52,                               // max face turn, degrees
+      Z1  : NW * 0.62,                         // recede for the first neighbour
+      Z2  : NW * 0.46                          // recede per step beyond that
+    };
+  }
+  function place(o){
+    const P = params(), a = Math.abs(o), s = Math.sign(o) || 1;
+    let x, ry, z;
+    if(a <= 1){ x = o * P.GAP1;                    ry = -o * P.ROT; z = -a * P.Z1; }
+    else      { x = s * (P.GAP1 + (a-1) * P.GAP2); ry = -s * P.ROT; z = -(P.Z1 + (a-1) * P.Z2); }
+    const scale = Math.max(0.55, 1 - a * 0.085);
+    return { x, ry, z, scale };
+  }
+
+  const MAXVIS = 4.4;
+  let pos = 0, target = 0;
+  const clampT = v => Math.max(0, Math.min(N-1, v));
+
+  function render(){
+    cards.forEach(c => {
+      const o = c.i - pos, a = Math.abs(o);
+      if(a > MAXVIS){ c.el.style.visibility = "hidden"; return; }
+      c.el.style.visibility = "visible";
+      const t = place(o);
+      c.el.style.transform =
+        `translate(-50%,-50%) translate3d(${t.x.toFixed(1)}px,0,${t.z.toFixed(1)}px)` +
+        ` rotateY(${t.ry.toFixed(2)}deg) scale(${t.scale.toFixed(3)})`;
+      c.scrim.style.opacity = Math.min(0.6, a * 0.17).toFixed(2);
+      c.el.style.opacity = (a > MAXVIS - 1 ? Math.max(0, MAXVIS - a) : 1).toFixed(2);
+      c.el.classList.toggle("active", a < 0.5);
+    });
+    updateNow();
+  }
+
+  const nowTitle = $("#now-title");
+  function updateNow(){
+    const i = clampT(Math.round(pos)), it = cards[i];
+    $("#now-no").textContent = "[" + pad2(i+1) + "]";
+    nowTitle.textContent = it.title;
+    $("#now-mm").textContent = it.meta || "";
+    $("#now-no").style.setProperty("--accent", it.accent || "");
+    $("#counter").textContent = pad2(i+1) + " / " + pad2(N);
+    $("#arrow-prev").disabled = i <= 0;
+    $("#arrow-next").disabled = i >= N-1;
+  }
+
+  /* ---- ease pos -> target ---- */
+  let raf = 0;
+  function tick(){
+    raf = 0;
+    const k = reduceMotion ? 1 : 0.16;
+    pos += (target - pos) * k;
+    if(Math.abs(target - pos) < 0.0015){ pos = target; render(); return; }
+    render();
+    raf = requestAnimationFrame(tick);
+  }
+  function kick(){ if(!raf) raf = requestAnimationFrame(tick); }
+  function go(i, open){
+    target = clampT(i);
+    kick();
+    if(open) setTimeout(() => openProject(Math.round(target)), reduceMotion ? 0 : 240);
+  }
+
+  /* ---- drag to spin (both directions) ---- */
+  let down = false, moved = false, startX = 0, startPos = 0, downCard = null,
+      lastX = 0, lastT = 0, vel = 0;
+  const perPx = () => 1 / (params().GAP1 * 0.9);
+
+  stage.addEventListener("pointerdown", e => {
+    down = true; moved = false;
+    startX = lastX = e.clientX; lastT = performance.now();
+    startPos = pos = target; vel = 0;
+    downCard = e.target.closest(".card");
+    stage.classList.add("dragging");
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener("pointermove", e => {
+    if(!down) return;
+    const dx = e.clientX - startX;
+    if(Math.abs(dx) > 4) moved = true;
+    pos = target = clampT(startPos - dx * perPx());
+    const now = performance.now(), dt = now - lastT;
+    if(dt > 0){ vel = (e.clientX - lastX) / dt; lastX = e.clientX; lastT = now; }
+    render();
+  });
+  function release(){
+    if(!down) return;
+    down = false;
+    stage.classList.remove("dragging");
+    if(!moved && downCard){
+      const i = +downCard.dataset.i;
+      if(Math.round(pos) === i) openProject(i);   // pressed the centred screen -> open it
+      else go(i, false);                          // pressed a side screen -> bring it in
+    }else{
+      const flick = -vel * perPx() * 140;         // momentum, then snap to nearest
+      target = clampT(Math.round(pos + flick));
+      kick();
+    }
+    downCard = null;
+  }
+  stage.addEventListener("pointerup", release);
+  stage.addEventListener("pointercancel", () => { down = false; downCard = null; stage.classList.remove("dragging"); });
+  stage.addEventListener("dragstart", e => e.preventDefault());
+
+  /* ---- wheel / trackpad: pan left-right (accepts either axis) ---- */
+  let wheelAcc = 0;
+  stage.addEventListener("wheel", e => {
+    e.preventDefault();
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    wheelAcc += d;
+    if(Math.abs(wheelAcc) > 42){
+      target = clampT(Math.round(target) + Math.sign(wheelAcc));
+      wheelAcc = 0; kick();
+    }
+  }, { passive:false });
+
+  /* ---- keyboard ---- */
+  addEventListener("keydown", e => {
+    if(document.querySelector(".overlay.open")) return;
+    if(!$("#intro").classList.contains("dismissed")) return;
+    if(e.key === "ArrowRight"){ go(Math.round(target) + 1, false); e.preventDefault(); }
+    if(e.key === "ArrowLeft") { go(Math.round(target) - 1, false); e.preventDefault(); }
+    if(e.key === "Enter" || e.key === " "){ openProject(clampT(Math.round(pos))); e.preventDefault(); }
+  });
+
+  $("#arrow-prev").addEventListener("click", () => go(Math.round(target) - 1, false));
+  $("#arrow-next").addEventListener("click", () => go(Math.round(target) + 1, false));
+
+  /* ---- project detail popup (reuses #ov-project markup) ---- */
+  const ov = $("#ov-project"), heroEl = $("#proj-hero"), openBtn = $("#proj-open");
+  let current = 0;
+  function openProject(i){
+    const it = cards[i]; current = i;
+    $("#proj-path").textContent = "/gallery/" + (it.title||"untitled").toLowerCase().replace(/[^a-z0-9]+/g,"_");
+    $("#proj-no").style.setProperty("--accent", it.accent || "");
+    heroEl.style.setProperty("--accent", it.accent || "");
+    heroEl.className = "proj-hero" + (it.thumb ? "" : " empty");
+    heroEl.style.aspectRatio = it.ar ? String(it.ar) : (it.ratio || "");
+    const heroFit = it.poster ? "contain" : (it.fit || "cover");
+    heroEl.innerHTML = it.thumb
+      ? `<img src="${esc(it.thumb)}" alt="${esc(it.title)}" style="object-fit:${heroFit}">`
+      : `NO IMAGE SUPPLIED`;
+    const img = heroEl.querySelector("img");
+    if(img) img.addEventListener("error", () => {
+      heroEl.className = "proj-hero empty";
+      heroEl.textContent = "IMAGE NOT FOUND — " + it.thumb;
+    });
+    $("#proj-no").textContent    = "[" + pad2(i+1) + " / " + pad2(N) + "]";
+    $("#proj-title").textContent = it.title;
+    $("#proj-mm").textContent    = it.meta || "";
+    $("#proj-blurb").textContent = it.blurb || "";
+    $("#proj-tags").innerHTML    = (it.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
+    if(it.url){ openBtn.href = it.url; openBtn.classList.remove("off"); openBtn.textContent = "OPEN PROJECT ↗"; }
+    else      { openBtn.href = "#"; openBtn.classList.add("off");    openBtn.textContent = "NO LINK YET"; }
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("open"));
+    ov.classList.add("open");
+    openBtn.focus({ preventScroll:true });
+  }
+  function stepPopup(n){ const i = (current + n + N) % N; go(i, false); openProject(i); }
+  $("#proj-prev").addEventListener("click", () => stepPopup(-1));
+  $("#proj-next").addEventListener("click", () => stepPopup(1));
+  addEventListener("keydown", e => {
+    if(!ov.classList.contains("open")) return;
+    if(e.key === "ArrowLeft")  stepPopup(-1);
+    if(e.key === "ArrowRight") stepPopup(1);
+  });
+
+  /* ---- index list ---- */
+  $("#idx-list").innerHTML = cards.map(it =>
+    `<button class="idx-row" data-i="${it.i}">
+       <span class="bullet">&bull;</span>
+       <span class="no">[${pad2(it.i+1)}]</span>
+       <span class="tt">${esc(it.title)}</span>
+       <span class="mm">${esc(it.meta)}</span>
+     </button>`).join("");
+  $("#idx-list").addEventListener("click", e => {
+    const b = e.target.closest(".idx-row");
+    if(!b) return;
+    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("open"));
+    document.querySelectorAll("#nav a").forEach(t => t.classList.remove("on"));
+    go(+b.dataset.i, true);
+  });
+
+  /* ---- boot ---- */
+  size();
+  addEventListener("resize", () => { size(); render(); });
+  pos = target = 0;
+  render();
+})();
+
+})();
+</script>
+</body>
+</html>
