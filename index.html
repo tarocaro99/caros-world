@@ -643,7 +643,7 @@ const PORTFOLIO = {
   name: "Caroline Chen",           // EDIT ME
   handle: "GALLERY WALK-THROUGH",
   email: "carolineche99@gmail.com",
-  resumeUrl: "",                  // EDIT ME — link to your resume PDF ("" hides button)
+  resumeUrl: "assets/Caroline_Chen_Resume.pdf",                  // EDIT ME — link to your resume PDF ("" hides button)
 };
 
 /* Entry intro — cyberpunk ID-scan splash shown once on load.
@@ -881,7 +881,6 @@ const PROJECTS = [
       <span class="tag">FIGMA</span><span class="tag">ADOBE ILLUSTRATOR</span><span class="tag">PHOTOSHOP</span><span class="tag">INDESIGN</span><span class="tag">WEBFLOW</span><span class="tag">RHINO</span><span class="tag">TYPOGRAPHY &amp; EDITORIAL DESIGN</span><span class="tag">HTML/CSS/JS</span><span class="tag">RSTUDIO</span>
       <h2>DOWNLOAD</h2>
       <a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener">▼ DOWNLOAD PDF</a>
-      <p id="resume-btn-note" style="color:var(--faint);font-size:10px;margin-top:8px;">EDIT ME — set <b>PORTFOLIO.resumeUrl</b> in the config block to activate this button.</p>
     </div>
   </div>
 </div>
@@ -1011,7 +1010,7 @@ document.querySelectorAll(".overlay").forEach(o =>
 /* resume download button */
 if(PORTFOLIO.resumeUrl){
   $("#resume-btn").href = PORTFOLIO.resumeUrl;
-  $("#resume-btn-note").remove();
+  $("#resume-btn").setAttribute("download", "Caroline_Chen_Resume.pdf");
 }else{
   $("#resume-btn").style.opacity=".35";
   $("#resume-btn").style.pointerEvents="none";
