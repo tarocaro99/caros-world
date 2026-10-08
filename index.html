@@ -13,19 +13,19 @@
 /* night (black, cobalt, holographic) is the default world; day is pearl grey with pink and cobalt */
 (function(){
   var t = null;
-  try{ t = localStorage.getItem("cc-theme2"); }catch(e){}
+  try{ t = localStorage.getItem("cc-theme3"); }catch(e){}
   if(t !== "light" && t !== "dark") t = "dark";
   document.documentElement.dataset.theme = t;
 })();
 </script>
 <style>
 :root{
-  --bg:#07080E; --bg-2:#10121F; --ink:#EEEAF4; --ink-2:#BAB6CA; --ink-3:#7F7B95;
-  --rule:rgba(238,234,244,.12); --grid:rgba(255,255,255,.035);
-  --pink:#FF8FC8; --cobalt:#4660FF; --red:#FF4040; --jade:#7FE0C4; --cream:#EFE6D8;
-  --glass:rgba(22,24,44,.5); --glass-edge:rgba(255,255,255,.12);
-  --irid:linear-gradient(120deg,#ff9fd0,#b9a6ff 28%,#8fe9ff 50%,#fff1b8 72%,#ff9fd0);
-  --chrome:conic-gradient(from 210deg,#f4f6ff,#7d82a0,#ffffff,#4a4e66,#dfe3f5,#8a8fae,#ffffff,#5c6080,#f4f6ff);
+  --bg:#06120E; --bg-2:#0D1E18; --ink:#ECE6D8; --ink-2:#B9C2B8; --ink-3:#7E928A;
+  --rule:rgba(236,230,216,.12); --grid:rgba(114,217,179,.035);
+  --pink:#FF93C4; --cobalt:#72D9B3; --red:#FF4A63; --jade:#72D9B3; --cream:#ECE6D8;
+  --glass:rgba(10,30,24,.55); --glass-edge:rgba(114,217,179,.18);
+  --irid:linear-gradient(120deg,#ff93c4,#ffc9de 22%,#72d9b3 48%,#f2e6c8 70%,#ff93c4);
+  --chrome:conic-gradient(from 210deg,#bfe9d8,#3f8a6f,#e6fff4,#2b6652,#a6dcc6,#4c9a7e,#e6fff4,#356f5b,#bfe9d8);
   --disp:"Bodoni Moda","Didot",serif;
   --script:"Pinyon Script",cursive;
   --sans:"Bricolage Grotesque",system-ui,sans-serif;
@@ -35,10 +35,10 @@
   color-scheme:dark;
 }
 :root[data-theme="light"]{
-  --bg:#E5E3EA; --bg-2:#F3F1F6; --ink:#0D0D16; --ink-2:#45425A; --ink-3:#7E7B92;
-  --rule:rgba(13,13,22,.12); --grid:rgba(13,13,22,.045);
-  --pink:#E2468F; --cobalt:#2340FF; --red:#E8312A; --jade:#159C7A; --cream:#0D0D16;
-  --glass:rgba(255,255,255,.5); --glass-edge:rgba(255,255,255,.9);
+  --bg:#F1ECE1; --bg-2:#F8F4EC; --ink:#14231C; --ink-2:#44514A; --ink-3:#7D877F;
+  --rule:rgba(20,35,28,.13); --grid:rgba(28,133,100,.05);
+  --pink:#DE4D8C; --cobalt:#1C8564; --red:#D02A3A; --jade:#1C8564; --cream:#14231C;
+  --glass:rgba(255,252,244,.6); --glass-edge:rgba(28,133,100,.2);
   --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 .1  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   color-scheme:light;
 }
@@ -52,7 +52,7 @@ body{
   background-image:
     var(--grain),
     var(--lattice,none),
-    radial-gradient(760px 520px at 92% 30%,color-mix(in srgb,var(--cobalt) 20%,transparent),transparent 70%),
+    radial-gradient(760px 520px at 92% 30%,color-mix(in srgb,var(--jade) 14%,transparent),transparent 70%),
     radial-gradient(620px 460px at 4% 72%,color-mix(in srgb,var(--pink) 13%,transparent),transparent 70%),
     linear-gradient(var(--grid) 1px,transparent 1px),
     linear-gradient(90deg,var(--grid) 1px,transparent 1px);
@@ -127,8 +127,8 @@ section{position:relative;}
    HERO
    ============================================================ */
 #hero{position:relative;height:100vh;height:100svh;min-height:620px;overflow:hidden;
-  background:radial-gradient(60% 50% at 70% 35%,color-mix(in srgb,var(--cobalt) 35%,transparent),transparent 70%),var(--bg);}
-#gl{position:absolute;inset:0;width:100%;height:100%;display:block;}
+  background:radial-gradient(55% 50% at 70% 40%,color-mix(in srgb,var(--jade) 16%,transparent),transparent 70%),radial-gradient(30% 30% at 82% 22%,color-mix(in srgb,var(--pink) 12%,transparent),transparent 70%);}
+#art{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .namev{position:absolute;right:var(--gut);top:16%;z-index:3;writing-mode:vertical-rl;font-family:var(--han);font-weight:900;font-size:clamp(64px,7.5vw,132px);line-height:1;letter-spacing:.06em;user-select:none;}
 .namev::before,.namev::after{content:attr(data-t);position:absolute;inset:0;opacity:0;pointer-events:none;-webkit-background-clip:initial;background:none;}
 .namev::before{color:var(--red);transform:translate(-3px,0);}
@@ -199,8 +199,8 @@ section{position:relative;}
 .arch:hover{transform:translateY(-6px);}
 .arch .in{position:relative;width:100%;height:100%;border-radius:999px 999px 16px 16px;overflow:hidden;background:#111;}
 .arch video,#lightbox video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transform:scaleX(-1);filter:grayscale(1) contrast(1.2) brightness(1.05);}
-.ptint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;background:linear-gradient(175deg,rgba(70,96,255,.55),rgba(255,143,200,.35));}
-:root[data-theme="light"] .ptint{mix-blend-mode:soft-light;background:linear-gradient(175deg,rgba(255,143,200,.6),rgba(70,96,255,.35));}
+.ptint{position:absolute;inset:0;pointer-events:none;mix-blend-mode:color;background:linear-gradient(175deg,rgba(114,217,179,.5),rgba(255,147,196,.45));}
+:root[data-theme="light"] .ptint{mix-blend-mode:soft-light;background:linear-gradient(175deg,rgba(255,147,196,.6),rgba(28,133,100,.45));}
 .pix{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;
   background:conic-gradient(from 90deg at 2px 2px,transparent 90deg,#ffa6d6 0) 0 0/6px 6px;
   -webkit-mask-image:radial-gradient(circle at 78% 14%,#000 0 4%,transparent 9%),radial-gradient(circle at 16% 70%,#000 0 3%,transparent 7%),radial-gradient(circle at 84% 86%,#000 0 3%,transparent 7%);
@@ -222,13 +222,13 @@ section{position:relative;}
 
 /* ---------- RESUME ---------- */
 .cv-cta{display:grid;grid-template-columns:auto 1fr;gap:clamp(28px,5vw,80px);align-items:center;margin-top:44px;}
-.sheet-btn{position:relative;width:210px;aspect-ratio:8.5/11;border-radius:6px;background:#F7F5F2;box-shadow:0 40px 60px -30px color-mix(in srgb,var(--cobalt) 80%,transparent),0 0 0 1px rgba(255,255,255,.2);transform:rotate(-4deg);transition:transform .5s cubic-bezier(.2,1.3,.4,1);padding:22px 20px;overflow:hidden;}
+.sheet-btn{position:relative;width:210px;aspect-ratio:8.5/11;border-radius:6px;background:#F7F5F2;box-shadow:0 40px 60px -30px color-mix(in srgb,var(--jade) 60%,transparent),0 0 0 1px rgba(255,255,255,.2);transform:rotate(-4deg);transition:transform .5s cubic-bezier(.2,1.3,.4,1);padding:22px 20px;overflow:hidden;}
 .sheet-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 38%,rgba(255,170,220,.55) 46%,rgba(140,230,255,.45) 52%,transparent 60%);transform:translateX(-100%);transition:transform 1s;}
 .sheet-btn:hover{transform:rotate(0) translateY(-8px) scale(1.03);}
 .sheet-btn:hover::after{transform:translateX(100%);}
 .sheet-btn .ln{height:5px;border-radius:3px;background:#E1DEE6;margin-bottom:8px;}
 .sheet-btn .ln.t{height:11px;width:66%;background:#14141c;margin-bottom:14px;}
-.sheet-btn .ln.h{width:40%;background:#4660FF;opacity:.8;margin-top:14px;}
+.sheet-btn .ln.h{width:40%;background:#1C8564;opacity:.8;margin-top:14px;}
 .cv-copy h3{font-family:var(--disp);font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.015em;max-width:560px;}
 .cv-copy p{margin-top:12px;color:var(--ink-2);max-width:520px;}
 .cv-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
@@ -447,7 +447,7 @@ const FILTERS = [
   { k:"all", en:"All" }, { k:"ux", en:"UX & product" }, { k:"web", en:"Web" },
   { k:"editorial", en:"Editorial" }, { k:"print", en:"Print" }, { k:"art", en:"Art & photo" },
 ];
-const CAT_COLOR = { ux:"var(--cobalt)", web:"var(--jade)", editorial:"var(--red)", print:"var(--pink)", art:"#C9A6FF", all:"var(--ink-2)" };
+const CAT_COLOR = { ux:"var(--jade)", web:"#7FB8FF", editorial:"var(--red)", print:"var(--pink)", art:"#F2C65E", all:"var(--ink-2)" };
 </script>
 
 <div id="loader" role="presentation">
@@ -462,7 +462,7 @@ const CAT_COLOR = { ux:"var(--cobalt)", web:"var(--jade)", editorial:"var(--red)
     <svg class="badge" viewBox="0 0 100 100" aria-hidden="true">
       <defs>
         <path id="circ" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"/>
-        <radialGradient id="orb" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffb3dc"/><stop offset=".7" stop-color="#7f8cff"/><stop offset="1" stop-color="#1b1f4a"/></radialGradient>
+        <radialGradient id="orb" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffb3dc"/><stop offset=".7" stop-color="#72d9b3"/><stop offset="1" stop-color="#0d3a2c"/></radialGradient>
       </defs>
       <g class="ring"><text><textPath href="#circ" textLength="230" lengthAdjust="spacing" id="badge-text"></textPath></text></g>
       <circle cx="50" cy="50" r="14" fill="url(#orb)"/>
@@ -475,7 +475,6 @@ const CAT_COLOR = { ux:"var(--cobalt)", web:"var(--jade)", editorial:"var(--red)
     <a href="#resume" data-cv><span data-scr>Resume</span></a>
   </nav>
   <div class="tools">
-    <button class="tbtn" id="sound" aria-pressed="false" title="Guzheng over a soft beat, generated live"><span class="bars"><i></i><i></i><i></i></span><span class="lat">Sound</span></button>
     <button class="tbtn" id="theme" aria-pressed="false"><span class="moon-ic"></span><span class="lat">Day</span></button>
   </div>
 </header>
@@ -483,7 +482,7 @@ const CAT_COLOR = { ux:"var(--cobalt)", web:"var(--jade)", editorial:"var(--red)
 <main>
   <!-- HERO: a glass calla lily before a chrome moon gate, mirrored in still water -->
   <section id="hero">
-    <canvas id="gl" aria-hidden="true"></canvas>
+    <canvas id="art" aria-hidden="true"></canvas>
     <div class="namev holo" data-cn aria-hidden="true"></div>
     <div class="namev-cap" aria-hidden="true">Chen Jin'er</div>
     <div class="wrap">
@@ -492,7 +491,7 @@ const CAT_COLOR = { ux:"var(--cobalt)", web:"var(--jade)", editorial:"var(--red)
       <p class="hero-role"><span class="script">graphic, brand</span><span class="g">&amp; experience design</span></p>
       <p class="glasscard">I study real human habits in the wild and build them into digital tools, physical pieces, or whatever medium fits best. Big on productivity culture, tech irony, and bold experiments.</p>
     </div>
-    <div class="water-hint lbl">Touch the water</div>
+    <div class="water-hint lbl">Hover the flowers. Click anywhere.</div>
   </section>
 
   <!-- WORK -->
@@ -664,7 +663,7 @@ function drawLattice(){
   const g = c.getContext("2d"), img = g.createImageData(S, S), d = img.data;
   let seed = 11; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
   const pts = Array.from({ length:70 }, () => [r() * S, r() * S]);
-  const col = isDark() ? [120, 140, 255, 24] : [35, 64, 255, 18];
+  const col = isDark() ? [114, 217, 179, 20] : [28, 133, 100, 16];
   for(let y = 0; y < S; y++) for(let x = 0; x < S; x++){
     let d1 = 1e9, d2 = 1e9;
     for(const [px, py] of pts){
@@ -697,86 +696,7 @@ function scramble(el, dur = 620){
   el._raf = requestAnimationFrame(step);
 }
 
-/* ---------- SOUND: guzheng plucks over a soft beat, bubbly blips on hover ---------- */
-const Sound = (() => {
-  let ac = null, master, wet, on = false, timer = 0, step = 0, nextT = 0;
-  const bufs = {};
-  const SCALE = [293.66, 329.63, 369.99, 440, 493.88, 587.33, 659.25, 739.99, 880];
-  const ROOTS = [73.42, 61.74, 49.0, 55.0];
-  const BPM = 92, S16 = 60 / BPM / 4;
-  function init(){
-    ac = new (window.AudioContext || window.webkitAudioContext)();
-    master = ac.createGain(); master.gain.value = 0;
-    const comp = ac.createDynamicsCompressor(); master.connect(comp); comp.connect(ac.destination);
-    wet = ac.createGain(); wet.gain.value = .4;
-    const dl = ac.createDelay(1); dl.delayTime.value = S16 * 3;
-    const fb = ac.createGain(); fb.gain.value = .33;
-    const lp = ac.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2600;
-    wet.connect(dl); dl.connect(lp); lp.connect(fb); fb.connect(dl); lp.connect(master);
-    const rv = ac.createConvolver(), len = ac.sampleRate * 2.6, ib = ac.createBuffer(2, len, ac.sampleRate);
-    for(let c = 0; c < 2; c++){ const d = ib.getChannelData(c); for(let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3); }
-    rv.buffer = ib; const rg = ac.createGain(); rg.gain.value = .35;
-    wet.connect(rv); rv.connect(rg); rg.connect(master);
-  }
-  function ks(f){
-    if(bufs[f]) return bufs[f];
-    const sr = ac.sampleRate, N = Math.round(sr / f), len = Math.round(sr * 2.4);
-    const b = ac.createBuffer(1, len, sr), d = b.getChannelData(0), ring = new Float32Array(N);
-    let prev = 0;
-    for(let i = 0; i < N; i++){ const r = Math.random() * 2 - 1; ring[i] = (r + prev) * .5; prev = r; }
-    for(let i = 0, k = 0; i < len; i++){ const a = ring[k], nb = ring[(k + 1) % N]; d[i] = a; ring[k] = (a + nb) * .5 * .9986; k = (k + 1) % N; }
-    return bufs[f] = b;
-  }
-  function pluck(f, when, vel){
-    const s = ac.createBufferSource(); s.buffer = ks(f);
-    s.playbackRate.setValueAtTime(.982, when); s.playbackRate.linearRampToValueAtTime(1, when + .14);
-    const g = ac.createGain(); g.gain.value = vel;
-    const hp = ac.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 140;
-    s.connect(hp); hp.connect(g); g.connect(master); g.connect(wet); s.start(when);
-  }
-  function sub(f, when){
-    const o = ac.createOscillator(), g = ac.createGain();
-    o.type = "sine"; o.frequency.setValueAtTime(f * 2.2, when); o.frequency.exponentialRampToValueAtTime(f, when + .09);
-    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(.42, when + .015); g.gain.exponentialRampToValueAtTime(.001, when + .9);
-    o.connect(g); g.connect(master); o.start(when); o.stop(when + 1);
-  }
-  let noise = null;
-  function hat(when, v){
-    if(!noise){ noise = ac.createBuffer(1, ac.sampleRate * .1, ac.sampleRate); const d = noise.getChannelData(0); for(let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
-    const s = ac.createBufferSource(), hp = ac.createBiquadFilter(), g = ac.createGain();
-    s.buffer = noise; hp.type = "highpass"; hp.frequency.value = 7500;
-    g.gain.setValueAtTime(v, when); g.gain.exponentialRampToValueAtTime(.001, when + .05);
-    s.connect(hp); hp.connect(g); g.connect(master); s.start(when); s.stop(when + .06);
-  }
-  function blip(){
-    if(!on) return;
-    const t = ac.currentTime + .005, o = ac.createOscillator(), g = ac.createGain(), f = 600 + Math.random() * 500;
-    o.type = "sine"; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 2.4, t + .09);
-    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.08, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + .14);
-    o.connect(g); g.connect(master); o.start(t); o.stop(t + .16);
-  }
-  function schedule(){
-    while(nextT < ac.currentTime + .2){
-      const s = step % 16, bar = Math.floor(step / 16) % 4;
-      if(s === 0 || s === 10) sub(ROOTS[bar], nextT);
-      if(s % 4 === 2) hat(nextT, .07); else if(s % 2 === 1 && Math.random() < .3) hat(nextT, .025);
-      if(Math.random() < (s % 2 === 0 ? .42 : .1)) pluck(SCALE[(Math.random() * SCALE.length) | 0], nextT, .22 + Math.random() * .2);
-      nextT += S16; step++;
-    }
-  }
-  return {
-    toggle(){
-      if(!ac) init();
-      on = !on;
-      if(on){ ac.resume(); nextT = ac.currentTime + .06; master.gain.setTargetAtTime(.6, ac.currentTime, .5); timer = setInterval(schedule, 50); }
-      else { master.gain.setTargetAtTime(0, ac.currentTime, .25); clearInterval(timer); }
-      return on;
-    },
-    note(i, vel = .35){ if(on) pluck(SCALE[i % SCALE.length], ac.currentTime + .01, vel); },
-    blip,
-  };
-})();
-window.ccSound = Sound;
+const Sound = { note(){}, blip(){} };
 
 /* ---------- BOOT ---------- */
 $("#foot-mail").textContent = PORTFOLIO.email;
@@ -806,16 +726,12 @@ function syncTheme(){
 }
 $("#theme").addEventListener("click", () => {
   html.dataset.theme = isDark() ? "light" : "dark";
-  store.set("cc-theme2", html.dataset.theme);
+  store.set("cc-theme3", html.dataset.theme);
   syncTheme();
 });
 syncTheme();
 
-$("#sound").addEventListener("click", () => {
-  const on = Sound.toggle();
-  $("#sound").setAttribute("aria-pressed", String(on));
-  $("#sound").classList.toggle("playing", on);
-});
+
 
 (() => { const ld = $("#loader"), end = () => ld.classList.add("done"); ld.addEventListener("click", end); reduceMotion ? end() : setTimeout(end, 1100); })();
 
@@ -1066,360 +982,319 @@ addEventListener("keydown", e => {
 })();
 </script>
 
-<!-- HERO 3D: glass lily, chrome moon gate, glowing moon, ice-crack sky, rippling mirror water, bloom + pixel trail -->
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-} }
-</script>
-<script type="module">
-import * as THREE from "three";
-import { Reflector } from "three/addons/objects/Reflector.js";
-import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
-import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
-import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
-import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
-import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
-
+<!-- HERO: hand-drawn fine-line garden. Calla lilies and red spider lilies under a temple eave,
+     a lattice moon window, ink mountains, drifting cloud scrolls, pixel pollen. All drawn live. -->
+<script>
+(() => {
+"use strict";
 const hero = document.getElementById("hero");
-const canvas = document.getElementById("gl");
+const cv = document.getElementById("art"), ctx = cv.getContext("2d");
+const bgc = document.createElement("canvas"), bg = bgc.getContext("2d");
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const DPR = Math.min(devicePixelRatio || 1, 1.25);
-const renderer = new THREE.WebGLRenderer({ canvas, antialias:false, powerPreference:"high-performance" });
-renderer.setPixelRatio(DPR);
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.0;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+const isDark = () => document.documentElement.dataset.theme === "dark";
+const TAU = Math.PI * 2;
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const ease = x => 1 - Math.pow(1 - clamp(x, 0, 1), 3);
+const rng = s => () => (s = (s * 16807) % 2147483647) / 2147483647;
 
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x000000);
-const camera = new THREE.PerspectiveCamera(26, 1, .1, 120);
-const CAM = new THREE.Vector3(0, 1.0, 12);
-camera.position.copy(CAM);
-const WATER_Y = -1.55;
+let W = 1, H = 1, dpr = 1, S = 1, P = null, mobile = false;
+let flowers = [], umbels = [], reeds = [], clouds = [], pollen = [], ripples = [];
+const mouse = { x:-9999, y:-9999, vx:0, inside:false };
+let wind = 0, start = performance.now(), visible = true;
 
-/* ---------- reflections: a dark studio with coloured light panels ---------- */
-const pmrem = new THREE.PMREMGenerator(renderer);
-function makeEnv(dark){
-  const s = new THREE.Scene();
-  const C = dark ? ["#05061a","#0b0f3a","#000000"] : ["#e9e7f2","#ffffff","#9aa0c0"];
-  s.add(new THREE.Mesh(new THREE.SphereGeometry(20, 32, 16), new THREE.ShaderMaterial({
-    side:THREE.BackSide,
-    uniforms:{ top:{ value:new THREE.Color(C[0]) }, mid:{ value:new THREE.Color(C[1]) }, bot:{ value:new THREE.Color(C[2]) } },
-    vertexShader:`varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`,
-    fragmentShader:`uniform vec3 top, mid, bot; varying vec3 vP; void main(){ float y = vP.y; vec3 c = y > 0. ? mix(mid, top, smoothstep(0., .8, y)) : mix(mid, bot, smoothstep(0., -.6, y)); gl_FragColor = vec4(c, 1.); }`,
-  })));
-  const panel = (col, k, pos, w, h) => {
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color:new THREE.Color(col).multiplyScalar(k), side:THREE.DoubleSide }));
-    m.position.set(...pos); m.lookAt(0, 0, 0); s.add(m);
-  };
-  panel("#ffffff", 6, [3, 6, 6], 5, 3);
-  panel("#ff7fc0", 4, [-7, 2, 3], 3, 8);
-  panel("#6fe8ff", 4, [7, 1, -3], 3, 7);
-  panel("#3f5bff", 5, [0, -2, 8], 9, 1.2);
-  panel("#c4a0ff", 3, [-3, 5, -7], 5, 3);
-  panel("#fff0b0", 2, [6, -3, 4], 2, 2);
-  return pmrem.fromScene(s, .02).texture;
+function palette(){
+  return isDark()
+    ? { ink:"#ECE6D8", inkA:a => `rgba(236,230,216,${a})`, jade:"#72D9B3", jadeA:a => `rgba(114,217,179,${a})`, pink:"#FF93C4", pinkA:a => `rgba(255,147,196,${a})`, red:"#FF4A63", redA:a => `rgba(255,74,99,${a})`, gold:"#F2C65E", moon:"rgba(255,147,196,.9)" }
+    : { ink:"#14231C", inkA:a => `rgba(20,35,28,${a})`, jade:"#1C8564", jadeA:a => `rgba(28,133,100,${a})`, pink:"#DE4D8C", pinkA:a => `rgba(222,77,140,${a})`, red:"#D02A3C", redA:a => `rgba(208,42,60,${a})`, gold:"#BE8E1C", moon:"rgba(222,77,140,.85)" };
 }
-const ENV = { dark:makeEnv(true), light:makeEnv(false) };
 
-const key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, 5, 4); scene.add(key);
-const rimL = new THREE.PointLight(0xff6fb5, 7, 12); rimL.position.set(-2.5, 2.5, -1.5); scene.add(rimL);
-const rimR = new THREE.PointLight(0x4f6bff, 8, 14); rimR.position.set(3.5, 1.5, -2); scene.add(rimR);
-
-/* ---------- the sky: ice-crack window lattice, pixel stars, a slow scan of light ---------- */
-const skyU = { uT:{ value:0 }, cTop:{ value:new THREE.Color() }, cBot:{ value:new THREE.Color() }, cLine:{ value:new THREE.Color() } };
-const sky = new THREE.Mesh(new THREE.PlaneGeometry(80, 40), new THREE.ShaderMaterial({
-  uniforms:skyU, depthWrite:false,
-  vertexShader:`varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`,
-  fragmentShader:`
-    uniform float uT; uniform vec3 cTop, cBot, cLine; varying vec2 vUv;
-    vec2 h2(vec2 p){ p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))); return fract(sin(p) * 43758.5453); }
-    float crack(vec2 p){
-      vec2 i = floor(p), f = fract(p); float d1 = 8., d2 = 8.;
-      for(int y = -1; y <= 1; y++) for(int x = -1; x <= 1; x++){
-        vec2 g = vec2(float(x), float(y)), r = g + h2(i + g) - f; float d = dot(r, r);
-        if(d < d1){ d2 = d1; d1 = d; } else if(d < d2) d2 = d;
-      }
-      return sqrt(d2) - sqrt(d1);
-    }
-    void main(){
-      vec2 uv = vUv;
-      vec3 col = mix(cBot, cTop, smoothstep(.25, 1., uv.y));
-      float e = crack(uv * vec2(46., 23.));
-      float line = 1. - smoothstep(0., .04, e);
-      float sweep = smoothstep(.12, 0., abs(fract(uv.x * .7 + uv.y * .25 - uT * .025) - .5));
-      col += cLine * line * (.07 + .45 * sweep);
-      vec2 cell = floor(uv * vec2(320., 160.));
-      float h = fract(sin(dot(cell, vec2(12.99, 78.23))) * 43758.5);
-      col += vec3(.9, .85, 1.) * step(.9985, h) * (.4 + .6 * sin(uT * 2. + h * 60.)) * .9;
-      gl_FragColor = vec4(col, 1.);
-    }`,
-}));
-sky.position.set(0, 4, -22);
-scene.add(sky);
-
-/* ---------- moon, and a chrome moon gate around it ---------- */
-const moonMat = new THREE.MeshBasicMaterial({ color:0xffffff });
-const moon = new THREE.Mesh(new THREE.CircleGeometry(1.05, 96), moonMat);
-const haloMat = new THREE.MeshBasicMaterial({ color:0xffffff, transparent:true, opacity:.18, depthWrite:false });
-const halo = new THREE.Mesh(new THREE.CircleGeometry(1.5, 96), haloMat);
-const chrome = new THREE.MeshPhysicalMaterial({ color:"#eef0ff", metalness:1, roughness:.12, clearcoat:1, clearcoatRoughness:.05, envMapIntensity:1.6 });
-const gate = new THREE.Mesh(new THREE.TorusGeometry(2.45, .07, 40, 220), chrome);
-const arcMat = new THREE.MeshBasicMaterial({ color:new THREE.Color("#ff8fc8").multiplyScalar(2.2) });
-const arc1 = new THREE.Mesh(new THREE.TorusGeometry(2.72, .012, 8, 200, Math.PI * 1.45), arcMat);
-const arc2Mat = new THREE.MeshBasicMaterial({ color:new THREE.Color("#6f86ff").multiplyScalar(2.4) });
-const arc2 = new THREE.Mesh(new THREE.TorusGeometry(2.9, .009, 8, 200, Math.PI * .5), arc2Mat);
-const gateGroup = new THREE.Group();
-moon.position.z = -.9; halo.position.z = -1;
-gateGroup.add(halo, moon, gate, arc1, arc2);
-scene.add(gateGroup);
-
-/* ---------- calla lilies in iridescent glass ---------- */
-const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
-const veinTex = (() => {
-  const c = document.createElement("canvas"); c.width = 512; c.height = 64;
-  const g = c.getContext("2d"); g.fillStyle = "#808080"; g.fillRect(0, 0, 512, 64);
-  for(let i = 0; i < 170; i++){ const x = Math.random() * 512, w = .6 + Math.random() * 1.6, v = Math.round(128 + (Math.random() - .5) * 100); g.fillStyle = `rgb(${v},${v},${v})`; g.fillRect(x, 0, w, 64); }
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.NoColorSpace; return t;
-})();
-function spatheGeometry(){
-  const U = 90, V = 150, Hh = 2.3;
-  const pos = [], uv = [], cols = [], us = [], idx = [];
-  const base = new THREE.Color("#5fd3a8"), throat = new THREE.Color("#ff8fc8"), petal = new THREE.Color("#ffffff"), c = new THREE.Color();
-  for(let i = 0; i <= U; i++){
-    const u = i / U;
-    for(let j = 0; j <= V; j++){
-      const v = j / V * 2 - 1;
-      const span = THREE.MathUtils.lerp(2.14 * Math.PI, 1.2 * Math.PI, ss(.04, .6, u));
-      const th = Math.PI + v * span / 2;
-      let r = (.09 + .78 * Math.pow(u, 1.9)) * (1 + .06 * v);
-      r *= 1 + .32 * Math.pow(u, 2.6) * v * v;
-      r += Math.pow(u, 6) * Math.sin(v * 9) * .03;
-      const top = Hh * (1 + .36 * Math.exp(-v * v * 3.2) - .2 * v * v);
-      let y = u * top, x = Math.sin(th) * r, z = Math.cos(th) * r;
-      const tip = Math.pow(u, 5) * Math.exp(-v * v * 3.2);
-      z -= tip * .6; y -= tip * .08; y -= Math.pow(u, 3) * v * v * .26;
-      pos.push(x, y, z); uv.push((v + 1) / 2, u); us.push(u);
-      c.copy(base).lerp(throat, ss(.02, .3, u)).lerp(petal, ss(.3, .72, u)); cols.push(c.r, c.g, c.b);
-    }
-  }
-  for(let i = 0; i < U; i++) for(let j = 0; j < V; j++){ const a = i * (V + 1) + j, b = a + V + 1; idx.push(a, b, a + 1, b, b + 1, a + 1); }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
-  g.setAttribute("uv", new THREE.Float32BufferAttribute(uv, 2));
-  g.setAttribute("color", new THREE.Float32BufferAttribute(cols, 3));
-  g.setIndex(idx); g.computeVertexNormals();
-  g.userData = { U, V };
-  return g;
+/* ---------- small drawing helpers ---------- */
+const bez = (p0, p1, p2, p3, t) => { const u = 1 - t; return [u*u*u*p0[0] + 3*u*u*t*p1[0] + 3*u*t*t*p2[0] + t*t*t*p3[0], u*u*u*p0[1] + 3*u*u*t*p1[1] + 3*u*t*t*p2[1] + t*t*t*p3[1]]; };
+const lerp2 = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+function strokeBez(c, p0, p1, p2, p3, upto, seg = 22){
+  if(upto <= 0) return; upto = Math.min(1, upto);
+  const n = Math.max(1, Math.round(seg * upto));
+  c.beginPath(); c.moveTo(p0[0], p0[1]);
+  for(let i = 1; i <= n; i++){ const q = bez(p0, p1, p2, p3, i / n * upto); c.lineTo(q[0], q[1]); }
+  c.stroke();
 }
-const petalMat = new THREE.MeshPhysicalMaterial({
-  vertexColors:true, side:THREE.DoubleSide, roughness:.14, metalness:0,
-  transmission:.55, thickness:.45, ior:1.45, attenuationColor:new THREE.Color("#ffc2e0"), attenuationDistance:1.2,
-  iridescence:1, iridescenceIOR:1.8, iridescenceThicknessRange:[120, 900],
-  clearcoat:1, clearcoatRoughness:.05, sheen:.6, sheenColor:new THREE.Color("#ffb3dc"),
-  bumpMap:veinTex, bumpScale:1.2, envMapIntensity:1.8,
-});
-const goldMat = new THREE.MeshPhysicalMaterial({ color:"#f6c64a", metalness:.6, roughness:.35, clearcoat:.5, emissive:"#5a3000", emissiveIntensity:.3 });
-const stemMat = new THREE.MeshPhysicalMaterial({ color:"#6fe0bc", roughness:.18, transmission:.4, thickness:.3, clearcoat:1, envMapIntensity:1.4 });
-function makeCalla(withDew){
-  const g = new THREE.Group();
-  const geo = spatheGeometry();
-  g.add(new THREE.Mesh(geo, petalMat));
-  const sg = new THREE.CapsuleGeometry(.075, 1.0, 8, 24), sp = sg.attributes.position;
-  for(let i = 0; i < sp.count; i++){ const k = 1 + (Math.random() - .5) * .12; sp.setX(i, sp.getX(i) * k); sp.setZ(i, sp.getZ(i) * k); }
-  sg.computeVertexNormals();
-  const spadix = new THREE.Mesh(sg, goldMat); spadix.position.set(0, .82, -.14); spadix.rotation.x = -.1; g.add(spadix);
-  const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(0, .12, 0), new THREE.Vector3(.02, -1, .04), new THREE.Vector3(.1, -2.4, .08), new THREE.Vector3(.22, -4.6, .02)]);
-  g.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 80, .075, 20), stemMat));
-  if(withDew){
-    const n = geo.attributes.normal, p = geo.attributes.position, { U, V } = geo.userData;
-    const dew = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 20, 14), new THREE.MeshPhysicalMaterial({ color:"#ffffff", roughness:0, transmission:1, thickness:.25, ior:1.33, clearcoat:1, envMapIntensity:2 }), 9);
-    const ci = Math.round(U * .5) * (V + 1) + V / 2, sign = n.getZ(ci) > 0 ? 1 : -1;
-    const m = new THREE.Matrix4(), q = new THREE.Quaternion(), v = new THREE.Vector3(), nn = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
-    let s = 7; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
-    for(let k = 0; k < 9; k++){
-      const i = Math.round(U * (.4 + r() * .45)), j = Math.round(V * (.32 + r() * .36)), id = i * (V + 1) + j, rad = .016 + r() * .022;
-      nn.set(n.getX(id), n.getY(id), n.getZ(id)).multiplyScalar(sign).normalize();
-      v.set(p.getX(id), p.getY(id), p.getZ(id)).addScaledVector(nn, rad * .45);
-      q.setFromUnitVectors(up, nn); m.compose(v, q, new THREE.Vector3(rad, rad * .72, rad)); dew.setMatrixAt(k, m);
-    }
-    g.add(dew);
-  }
-  return g;
+function bezPts(p0, p1, p2, p3, upto, seg = 22){
+  const out = []; for(let i = 0; i <= seg; i++){ const t = i / seg * upto; out.push(bez(p0, p1, p2, p3, t)); } return out;
 }
-const flowers = new THREE.Group(); scene.add(flowers);
-const a = makeCalla(true); a.rotation.set(.3, .3, -.05); flowers.add(a);
-const b = makeCalla(false); b.scale.setScalar(.72); b.position.set(-1.3, -.5, -.9); b.rotation.set(.18, 1.6, .16); flowers.add(b);
-
-/* ---------- mirror water with ripples ---------- */
-const WaterShader = {
-  name:"PondShader",
-  uniforms:{ color:{ value:null }, tDiffuse:{ value:null }, textureMatrix:{ value:null },
-    uT:{ value:0 }, uTint:{ value:new THREE.Color("#04050c") }, uOpacity:{ value:.9 },
-    uD:{ value:[new THREE.Vector4(), new THREE.Vector4(), new THREE.Vector4(), new THREE.Vector4(), new THREE.Vector4(), new THREE.Vector4()] } },
-  vertexShader:`uniform mat4 textureMatrix; varying vec4 vUv; varying vec3 vW;
-    void main(){ vUv = textureMatrix * vec4(position, 1.); vW = (modelMatrix * vec4(position, 1.)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`,
-  fragmentShader:`
-    uniform sampler2D tDiffuse; uniform float uT, uOpacity; uniform vec3 uTint; uniform vec4 uD[6];
-    varying vec4 vUv; varying vec3 vW;
-    float H(vec2 p){
-      float h = sin(p.x * 1.3 + uT * .6) * .02 + sin(p.y * 3.1 - uT * 1.1 + p.x * .5) * .015 + sin((p.x + p.y) * 2.2 + uT * .8) * .01;
-      for(int i = 0; i < 6; i++){
-        vec4 d = uD[i]; float age = uT - d.z;
-        if(d.w <= 0. || age < 0. || age > 6.) continue;
-        float k = length(p - d.xy) - age * 1.4;
-        h += d.w * .09 * exp(-k * k * 6.) * sin(k * 15.) * exp(-age * .7);
-      }
-      return h;
-    }
-    void main(){
-      vec2 p = vW.xz; float e = .02;
-      vec2 n = vec2(H(p + vec2(e, 0.)) - H(p - vec2(e, 0.)), H(p + vec2(0., e)) - H(p - vec2(0., e))) / (2. * e);
-      vec4 uv = vUv; uv.xy += n * .06 * uv.w;
-      vec3 r = texture2DProj(tDiffuse, uv).rgb;
-      float fade = smoothstep(-20., -9., vW.z);
-      vec3 col = mix(uTint, r, .82 * fade);
-      col += vec3(.75, .8, 1.) * smoothstep(.12, .4, abs(n.y)) * .12;
-      gl_FragColor = vec4(col, 1.);
-      #include <tonemapping_fragment>
-      #include <colorspace_fragment>
-    }`,
-};
-const water = new Reflector(new THREE.PlaneGeometry(90, 34), { shader:WaterShader, clipBias:.003, textureWidth:1024, textureHeight:1024 });
-water.rotation.x = -Math.PI / 2; water.position.set(0, WATER_Y, -8);
-scene.add(water);
-const WU = water.material.uniforms;
-
-/* ---------- post: bloom, then a print/screen pass (fringing, scanlines, grain, a pixel trail behind the cursor) ---------- */
-const composer = new EffectComposer(renderer);
-composer.setPixelRatio(DPR);
-composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), .75, .55, .82);
-composer.addPass(bloom);
-composer.addPass(new OutputPass());
-const TRAIL = 18;
-const fx = new ShaderPass({
-  uniforms:{ tDiffuse:{ value:null }, uRes:{ value:new THREE.Vector2(1, 1) }, uT:{ value:0 }, uAspect:{ value:1 },
-    uPink:{ value:new THREE.Color("#ff8fc8") }, uDark:{ value:1 }, uTrail:{ value:Array.from({ length:TRAIL }, () => new THREE.Vector3()) } },
-  vertexShader:`varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.); }`,
-  fragmentShader:`
-    uniform sampler2D tDiffuse; uniform vec2 uRes; uniform float uT, uAspect, uDark; uniform vec3 uPink; uniform vec3 uTrail[${TRAIL}];
-    varying vec2 vUv;
-    float hash(vec2 p){ return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
-    void main(){
-      vec2 uv = vUv, d = uv - .5; float r = length(d);
-      vec3 col;
-      col.r = texture2D(tDiffuse, uv + d * .006 * r).r;
-      col.g = texture2D(tDiffuse, uv).g;
-      col.b = texture2D(tDiffuse, uv - d * .006 * r).b;
-      vec2 cs = vec2(7.), cell = floor(uv * uRes / cs), cuv = (cell + .5) * cs / uRes;
-      float f = 0.;
-      for(int i = 0; i < ${TRAIL}; i++){ vec3 p = uTrail[i]; if(p.z < .01) continue; vec2 q = (cuv - p.xy) * vec2(uAspect, 1.); f += p.z * exp(-dot(q, q) / .0016); }
-      float th = hash(cell + floor(uT * 6.) * .0);
-      if(f > .28 + th * .62){ vec2 inCell = fract(uv * uRes / cs); float sq = step(.12, inCell.x) * step(.12, inCell.y); col = mix(col, uPink, .85 * sq); }
-      col *= .96 + .04 * sin(uv.y * uRes.y * 1.3);
-      col += (hash(uv * uRes + uT * 37.) - .5) * (uDark > .5 ? .05 : .03);
-      col *= 1. - (uDark > .5 ? .38 : .15) * smoothstep(.45, .95, r);
-      gl_FragColor = vec4(col, 1.);
-    }`,
-});
-composer.addPass(fx);
-const trail = fx.uniforms.uTrail.value;
-let trailI = 0, lastTX = -1, lastTY = -1;
-
-/* ---------- themes ---------- */
-function applyTheme(){
-  const dark = !!window.__ccDark;
-  scene.environment = dark ? ENV.dark : ENV.light;
-  if(dark){
-    skyU.cTop.value.set("#0a1157"); skyU.cBot.value.set("#010208"); skyU.cLine.value.set("#5f78ff");
-    moonMat.color.set("#dfe5ff").multiplyScalar(1.25); haloMat.color.set("#5f78ff"); haloMat.opacity = .12;
-    WU.uTint.value.set("#020309");
-    bloom.strength = .55; bloom.threshold = .86; renderer.toneMappingExposure = .9; petalMat.transmission = .5;
-    fx.uniforms.uPink.value.set("#ff8fc8"); fx.uniforms.uDark.value = 1;
-  } else {
-    skyU.cTop.value.set("#6f80e6"); skyU.cBot.value.set("#ece6ee"); skyU.cLine.value.set("#2340ff"); petalMat.transmission = .15;
-    moonMat.color.set("#ff86bf").multiplyScalar(1.15); haloMat.color.set("#ffb3d6"); haloMat.opacity = .35;
-    WU.uTint.value.set("#d6d4de");
-    bloom.strength = .12; bloom.threshold = .99; renderer.toneMappingExposure = .95;
-    fx.uniforms.uPink.value.set("#e2468f"); fx.uniforms.uDark.value = 0;
-  }
-  scene.background.copy(skyU.cBot.value);
-}
-addEventListener("cc-theme", applyTheme);
-applyTheme();
+function poly(c, pts){ c.beginPath(); c.moveTo(pts[0][0], pts[0][1]); for(let i = 1; i < pts.length; i++) c.lineTo(pts[i][0], pts[i][1]); c.stroke(); }
 
 /* ---------- layout ---------- */
-let W = 1, H = 1;
-function resize(){
+function layout(){
   W = hero.clientWidth; H = hero.clientHeight;
-  if(!W || !H) return;
-  renderer.setSize(W, H, false);
-  composer.setSize(W, H);
-  bloom.resolution.set(W / 2, H / 2);
-  fx.uniforms.uRes.value.set(W * DPR, H * DPR);
-  fx.uniforms.uAspect.value = W / H;
-  water.getRenderTarget().setSize(Math.round(W * DPR * .5), Math.round(H * DPR * .5));
-  const asp = W / H; camera.aspect = asp;
-  const halfW = Math.tan(THREE.MathUtils.degToRad(13)) * 12 * asp;
-  if(asp > 1){
-    const x = halfW * .36;
-    flowers.position.set(x, -.95, 0); flowers.scale.setScalar(1);
-    gateGroup.position.set(x - 1.25, 1.25, -3.5); gateGroup.scale.setScalar(.95);
-    CAM.set(0, 1.0, 12);
-  } else {
-    flowers.position.set(.4, .7, 0); flowers.scale.setScalar(.8);
-    gateGroup.position.set(-.3, 2.4, -3.5); gateGroup.scale.setScalar(.7);
-    CAM.set(0, 1.4, 18);
-  }
-  camera.updateProjectionMatrix();
+  dpr = Math.min(devicePixelRatio || 1, 2);
+  for(const c of [cv, bgc]){ c.width = W * dpr; c.height = H * dpr; }
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); bg.setTransform(dpr, 0, 0, dpr, 0, 0);
+  mobile = W < 720;
+  S = mobile ? Math.min(H * .42, W * .85) : Math.min(H * .66, W * .46);
+  const ax = mobile ? W * .56 : W * .62, k = mobile ? .62 : 1;     // k squeezes everything upward on phones
+  const Y = f => mobile ? H * f * k : H * f;
+  flowers = [
+    { x:ax + S * .06,   y:Y(.7),  s:S * .5,  rot:-.12, ph:0,   bloom:0, seed:3 },
+    { x:ax - S * .3,    y:Y(.8),  s:S * .34, rot:.36,  ph:1.7, bloom:0, seed:9 },
+  ];
+  umbels = [
+    { bx:ax + S * .42, by:H + 20, hx:ax + S * .38, hy:Y(.4),  r:S * .32, ph:.6, bloom:0, seed:21, n:6 },
+    { bx:ax - S * .5,  by:H + 20, hx:ax - S * .42, hy:Y(.46), r:S * .21, ph:2.4, bloom:0, seed:33, n:5 },
+    { bx:ax + S * .0,  by:H + 20, hx:ax + S * .04, hy:Y(.3),  r:S * .16, ph:4.1, bloom:0, seed:47, n:4 },
+  ];
+  const rr = rng(77);
+  reeds = Array.from({ length: mobile ? 7 : 12 }, (_, i) => ({ x: ax - S * .9 + rr() * S * 1.8, h: S * (.35 + rr() * .55), lean: (rr() - .5) * .9, ph: rr() * 6, w: 2 + rr() * 3 }));
+  clouds = [
+    { x: W * .38, y: H * .2, s: S * .09, v: 6 },
+    { x: W * .9,  y: H * .52, s: S * .065, v: -4 },
+    { x: W * .12, y: H * .32, s: S * .05, v: 3 },
+  ];
+  P = palette();
+  drawBackground();
 }
-addEventListener("resize", resize); resize();
+
+/* ---------- the still layer: temple eave with hanging strands, lattice moon window, ink mountains ---------- */
+function drawBackground(){
+  const c = bg; c.clearRect(0, 0, W, H);
+  c.lineCap = "round"; c.lineJoin = "round";
+  const r = rng(5);
+
+  // moon window: double ring with an ice-crack lattice inside
+  const mx = mobile ? W * .56 : W * .63, my = mobile ? H * .3 : H * .46, mr = S * .5;
+  c.strokeStyle = P.jadeA(.5); c.lineWidth = 1;
+  c.beginPath(); c.arc(mx, my, mr, 0, TAU); c.stroke();
+  c.strokeStyle = P.jadeA(.25); c.beginPath(); c.arc(mx, my, mr + 7, 0, TAU); c.stroke();
+  c.save(); c.beginPath(); c.arc(mx, my, mr - 1, 0, TAU); c.clip();
+  const pts = Array.from({ length: 34 }, () => { const a = r() * TAU, d = Math.sqrt(r()) * mr * 1.05; return [mx + Math.cos(a) * d, my + Math.sin(a) * d]; });
+  c.strokeStyle = P.jadeA(.16); c.lineWidth = .8;
+  pts.forEach((p, i) => {
+    const near = pts.map((q, j) => [j, (q[0] - p[0]) ** 2 + (q[1] - p[1]) ** 2]).filter(v => v[0] !== i).sort((a, b) => a[1] - b[1]).slice(0, 3);
+    near.forEach(([j]) => { if(j > i){ c.beginPath(); c.moveTo(p[0], p[1]); c.lineTo(pts[j][0], pts[j][1]); c.stroke(); } });
+  });
+  c.restore();
+  // the moon itself: a ring of fine concentric lines, pink
+  const ox = mx + mr * .38, oy = my - mr * .42, orr = S * .12;
+  for(let k = 0; k < 9; k++){ c.strokeStyle = P.pinkA(.75 - k * .07); c.lineWidth = .8; c.beginPath(); c.arc(ox, oy, orr - k * orr / 9, 0, TAU); c.stroke(); }
+
+  // temple eave across the top: tiled roof that sweeps up at both ends, brackets, a beam
+  const x0 = mobile ? -W * .1 : W * .36, x1 = W * 1.06, y0 = mobile ? 78 : H * .085, span = x1 - x0;
+  const roofY = (u, off) => y0 + off - 46 * Math.pow(Math.abs(u - .5) * 2, 3.2) + 10 * Math.sin(u * Math.PI);
+  c.strokeStyle = P.inkA(.7);
+  for(let k = 0; k < 7; k++){
+    c.lineWidth = k === 6 ? 1.6 : .8;
+    c.beginPath();
+    for(let i = 0; i <= 120; i++){ const u = i / 120, x = x0 + u * span, y = roofY(u, k * 3.2); i ? c.lineTo(x, y) : c.moveTo(x, y); }
+    c.stroke();
+  }
+  // tile ends: tiny round caps along the lower edge
+  c.fillStyle = P.inkA(.65);
+  for(let x = x0 + 8; x < x1; x += 11){ const u = (x - x0) / span, y = roofY(u, 22); c.beginPath(); c.arc(x, y + 2.5, 2.1, 0, TAU); c.fill(); }
+  // brackets (dougong): stepped blocks under the eave
+  c.strokeStyle = P.inkA(.45); c.lineWidth = .8;
+  for(let x = x0 + span * .08; x < x1 - 20; x += mobile ? 70 : 96){
+    const u = (x - x0) / span, y = roofY(u, 26);
+    [[18, 5], [12, 5], [7, 6]].reduce((yy, [w, h]) => { c.strokeRect(x - w, yy, w * 2, h); return yy + h; }, y);
+  }
+  // beam and a lattice band beneath
+  const by = y0 + 50;
+  c.strokeStyle = P.inkA(.4);
+  c.beginPath(); c.moveTo(x0 + span * .05, by); c.lineTo(x1, by); c.stroke();
+  c.beginPath(); c.moveTo(x0 + span * .05, by + 12); c.lineTo(x1, by + 12); c.stroke();
+  for(let x = x0 + span * .05; x < x1; x += 12){ c.beginPath(); c.moveTo(x, by); c.lineTo(x + 6, by + 6); c.lineTo(x, by + 12); c.stroke(); }
+
+  // hanging strands from the beam, threaded with tiny beads (a nod to hanging calligraphy scrolls)
+  for(let i = 0; i < (mobile ? 6 : 11); i++){
+    const x = x0 + span * (.1 + r() * .85), len = H * (.08 + r() * .28);
+    c.strokeStyle = P.inkA(.22); c.lineWidth = .7;
+    c.beginPath(); c.moveTo(x, by + 12); c.lineTo(x, by + 12 + len); c.stroke();
+    for(let y = by + 22; y < by + 12 + len; y += 7 + r() * 16){ c.fillStyle = r() < .18 ? P.redA(.8) : P.inkA(.5); c.fillRect(x - 1.5, y, 3, r() < .3 ? 5 : 2.4); }
+  }
+
+  // ink mountains: each ridge drawn as a stack of fine parallel lines, like an engraved landscape
+  const ridges = [
+    { base: H * .86, amp: H * .14, seed: 2, n: 14, col: P.jadeA },
+    { base: H * .93, amp: H * .1,  seed: 8, n: 12, col: P.jadeA },
+    { base: H * 1.0, amp: H * .08, seed: 15, n: 10, col: P.inkA },
+  ];
+  ridges.forEach((rg, ri) => {
+    const rr = rng(rg.seed);
+    const peaks = Array.from({ length: 6 }, () => ({ x: rr() * W, h: .3 + rr() * .7, w: W * (.05 + rr() * .12) }));
+    const yAt = x => { let y = 0; peaks.forEach(p => { const k = (x - p.x) / p.w; y = Math.max(y, p.h * Math.exp(-k * k)); }); return rg.base - y * rg.amp; };
+    for(let k = 0; k < rg.n; k++){
+      c.strokeStyle = rg.col((.32 - ri * .06) * (1 - k / rg.n)); c.lineWidth = .8;
+      c.beginPath();
+      for(let x = -10; x <= W + 10; x += 6){ const y = yAt(x) + k * 4.2 + Math.sin(x * .03 + k) * .8; x < -5 ? c.moveTo(x, y) : c.lineTo(x, y); }
+      c.stroke();
+    }
+  });
+}
+
+/* ---------- calla lily: a fan of fine fluted lines, like an engraving ---------- */
+function drawCalla(f, prog, t){
+  const c = ctx, sway = Math.sin(t * .7 + f.ph) * .035 + wind * .9;
+  c.save(); c.translate(f.x, f.y); c.rotate(f.rot + sway); c.scale(f.s, f.s);
+  const lw = 1 / f.s;
+  // stem: three loose strands in jade
+  const L = (H - f.y) / f.s + .2;
+  c.strokeStyle = P.jadeA(.85);
+  for(let k = -1; k <= 1; k++){ c.lineWidth = lw * (k ? .7 : 1.1); strokeBez(c, [k * .012, 0], [k * .02 + .02, L * .3], [k * .03 - .03, L * .7], [k * .05, L], ease(prog * 1.6), 26); }
+  const b = f.bloom;
+  const lip = s => s < .5
+    ? bez([-.26, -1.0], [-.14, -1.2 - b * .04], [.06, -1.36 - b * .05], [.3, -1.38 - b * .06], s * 2)
+    : bez([.3, -1.38 - b * .06], [.42, -1.32], [.47, -1.16], [.38 + b * .04, -1.0], (s - .5) * 2);
+  const grad = c.createLinearGradient(0, 0, 0, -1.3);
+  grad.addColorStop(0, P.jadeA(.9)); grad.addColorStop(.18, P.pinkA(.95)); grad.addColorStop(.55, P.pinkA(.55)); grad.addColorStop(1, P.inkA(.85));
+  c.strokeStyle = grad;
+  const N = 38, p = ease(prog * 1.25 - .15);
+  for(let i = 0; i < N; i++){
+    const s = i / (N - 1), e = lip(s);
+    const shade = clamp(.25 + .9 * (1 - Math.abs(s - .3) * 1.5), .18, 1);
+    c.globalAlpha = shade; c.lineWidth = lw * (.6 + shade * .6);
+    const c1 = lerp2([-.2, -.34], [.16, -.4], s), c2 = lerp2([-.48 - b * .06, -.7], [.5 + b * .06, -.78], s);
+    strokeBez(c, [0, 0], c1, c2, e, p, 24);
+  }
+  c.globalAlpha = 1;
+  // rolled lip edge
+  if(p > .9){ c.strokeStyle = P.inkA(.9); c.lineWidth = lw * 1.5; const pts = []; for(let i = 0; i <= 30; i++) pts.push(lip(i / 30)); poly(c, pts); }
+  // spadix: a column of pixel stipple in gold
+  const r = rng(f.seed);
+  c.fillStyle = P.gold;
+  const nDots = Math.round(80 * p);
+  for(let i = 0; i < nDots; i++){ const u = r(), y = -.12 - u * .62, x = .02 + u * .05 + (r() - .5) * .045; c.fillRect(x, y, 1.8 * lw, 1.8 * lw); }
+  c.restore();
+}
+
+/* ---------- red spider lily: curled strap petals and long arching stamens ---------- */
+function drawUmbel(u, prog, t){
+  const c = ctx, sway = Math.sin(t * .6 + u.ph) * .03 + wind;
+  const dx = u.hx - u.bx, dy = u.hy - u.by, cs = Math.cos(sway), sn = Math.sin(sway);
+  const hx = u.bx + dx * cs - dy * sn, hy = u.by + dx * sn + dy * cs;
+  const lw = 1;
+  // stem
+  c.strokeStyle = P.jadeA(.85); c.lineWidth = 1.1;
+  const sp = ease(prog * 1.5);
+  strokeBez(c, [u.bx, u.by], [u.bx + (hx - u.bx) * .2 + 8, u.by + (hy - u.by) * .35], [u.bx + (hx - u.bx) * .8 - 6, u.by + (hy - u.by) * .75], [hx, hy], sp, 30);
+  c.strokeStyle = P.jadeA(.35); c.lineWidth = .6;
+  strokeBez(c, [u.bx + 3, u.by], [u.bx + (hx - u.bx) * .2 + 12, u.by + (hy - u.by) * .35], [u.bx + (hx - u.bx) * .8 - 2, u.by + (hy - u.by) * .75], [hx + 2, hy], sp, 30);
+  const p = ease(prog * 1.4 - .3);
+  if(p <= 0) return;
+  const r = rng(u.seed), R = u.r, bl = u.bloom;
+  for(let k = 0; k < u.n; k++){
+    const a = -Math.PI / 2 + (k / (u.n - 1) - .5) * 2.7 + (r() - .5) * .3 + sway * .5;
+    const d = [Math.cos(a), Math.sin(a)], perp = [-d[1], d[0]];
+    const fx = hx + d[0] * R * .1, fy = hy + d[1] * R * .1;
+    c.strokeStyle = P.jadeA(.7); c.lineWidth = .7; c.beginPath(); c.moveTo(hx, hy); c.lineTo(fx, fy); c.stroke();
+    // six strap petals, each three strands, curling back
+    for(let q = 0; q < 6; q++){
+      const pa = a + (q / 5 - .5) * 1.5 + (r() - .5) * .2, pd = [Math.cos(pa), Math.sin(pa)], pp = [-pd[1], pd[0]];
+      const Lp = R * (.26 + r() * .06) * (.85 + bl * .2), curl = (q % 2 ? 1 : -1) * (.5 + r() * .3);
+      for(let s = -1; s <= 1; s++){
+        const off = s * R * .012;
+        const p0 = [fx + pp[0] * off, fy + pp[1] * off];
+        const p1 = [fx + pd[0] * Lp * .5 + pp[0] * (off + Lp * .12 * curl), fy + pd[1] * Lp * .5 + pp[1] * (off + Lp * .12 * curl)];
+        const p2 = [fx + pd[0] * Lp * 1.05 + pp[0] * (Lp * .2 * curl), fy + pd[1] * Lp * 1.05 + pp[1] * (Lp * .2 * curl)];
+        const p3 = [fx + pd[0] * Lp * .78 + pp[0] * (Lp * .42 * curl) + off, fy + pd[1] * Lp * .78 + pp[1] * (Lp * .42 * curl)];
+        c.strokeStyle = s ? P.redA(.55) : P.red; c.lineWidth = s ? .6 : 1.1;
+        strokeBez(c, p0, p1, p2, p3, p, 16);
+      }
+    }
+    // six long stamens arching up and out, tipped with anthers that shed pixel pollen
+    for(let q = 0; q < 6; q++){
+      const sa = a + (q / 5 - .5) * .9 + (r() - .5) * .15, sd = [Math.cos(sa), Math.sin(sa)];
+      const Ls = R * (.7 + r() * .25) * (.82 + bl * .3);
+      const p1 = [fx + sd[0] * Ls * .45, fy + sd[1] * Ls * .45];
+      const p2 = [fx + sd[0] * Ls * .9, fy + sd[1] * Ls * .9 - Ls * .25];
+      const p3 = [fx + sd[0] * Ls * .98, fy + sd[1] * Ls * .7 - Ls * .5];
+      c.strokeStyle = P.pinkA(.9); c.lineWidth = .8;
+      strokeBez(c, [fx, fy], p1, p2, p3, p, 18);
+      if(p > .95){
+        c.strokeStyle = P.gold; c.lineWidth = 1.6;
+        c.beginPath(); c.moveTo(p3[0] - 3, p3[1] + 1); c.lineTo(p3[0] + 3, p3[1] - 1); c.stroke();
+        if(!reduceMotion && Math.random() < .004 + bl * .03) pollen.push({ x: p3[0], y: p3[1], vx: (Math.random() - .5) * .4, vy: -.2 - Math.random() * .5, life: 1, col: Math.random() < .5 ? P.pink : P.gold });
+      }
+    }
+  }
+}
+
+/* ---------- reeds: long sword leaves in fine double lines ---------- */
+function drawReeds(prog, t){
+  const c = ctx, p = ease(prog * 1.3);
+  reeds.forEach(rd => {
+    const sway = Math.sin(t * .8 + rd.ph) * .06 + wind * 1.4 + rd.lean;
+    const base = [rd.x, H + 6], tip = [rd.x + Math.sin(sway) * rd.h * .9, H - rd.h * Math.cos(sway * .6)];
+    const c1 = [rd.x + Math.sin(sway) * rd.h * .1, H - rd.h * .4], c2 = [rd.x + Math.sin(sway) * rd.h * .5, H - rd.h * .85];
+    c.strokeStyle = P.jadeA(.55); c.lineWidth = .9; strokeBez(c, base, c1, c2, tip, p, 24);
+    c.strokeStyle = P.jadeA(.3); c.lineWidth = .6; strokeBez(c, [base[0] + rd.w, base[1]], [c1[0] + rd.w, c1[1]], [c2[0] + rd.w * .5, c2[1]], tip, p, 24);
+  });
+}
+
+/* ---------- auspicious clouds (xiangyun) in fine line, drifting ---------- */
+function drawCloud(cl, t){
+  const c = ctx, s = cl.s;
+  let x = cl.x + ((t * cl.v) % (W + 400));
+  if(x > W + 200) x -= W + 400; if(x < -200) x += W + 400;
+  const y = cl.y + Math.sin(t * .4 + cl.s) * 4;
+  c.strokeStyle = P.jadeA(.55); c.lineWidth = .9;
+  const curl = (cx, cy, r0, dir) => { c.beginPath(); for(let a = 0; a < 4.6 * Math.PI; a += .15){ const rr = r0 * (1 - a / (5 * Math.PI)); const px = cx + Math.cos(a * dir) * rr, py = cy + Math.sin(a * dir) * rr * .9; a ? c.lineTo(px, py) : c.moveTo(px, py); } c.stroke(); };
+  curl(x, y, s, 1); curl(x - s * 1.5, y + s * .35, s * .62, -1); curl(x + s * 1.35, y + s * .45, s * .5, 1);
+  c.beginPath(); c.moveTo(x - s * 2.6, y + s * 1.05); c.bezierCurveTo(x - s * 1, y + s * 1.15, x + s * 1, y + s * .95, x + s * 2.8, y + s * 1.1); c.stroke();
+  c.beginPath(); c.moveTo(x - s * 2.2, y + s * 1.3); c.bezierCurveTo(x - s * .6, y + s * 1.4, x + s * .8, y + s * 1.25, x + s * 2.2, y + s * 1.35); c.stroke();
+}
 
 /* ---------- interaction ---------- */
-const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), -WATER_Y), hit = new THREE.Vector3();
-let drop = 0, clockT = 0, lastDrop = 0, tx = 0, ty = 0, px = 0, py = 0, visible = true;
-function addDrop(x, z, s){ WU.uD.value[drop % 6].set(x, z, clockT, s); drop++; }
-function waterAt(e){
-  const r = hero.getBoundingClientRect();
-  ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-  ray.setFromCamera(ndc, camera);
-  return ray.ray.intersectPlane(plane, hit) && hit.z < 8 && hit.z > -24 ? hit : null;
-}
+let lastMX = 0;
 hero.addEventListener("pointermove", e => {
-  const r = hero.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = 1 - (e.clientY - r.top) / r.height;
-  tx = x * 2 - 1; ty = y * 2 - 1;
-  if(Math.hypot((x - lastTX) * W, (y - lastTY) * H) > 18){ trail[trailI % TRAIL].set(x, y, 1); trailI++; lastTX = x; lastTY = y; }
-  if(clockT - lastDrop > .3){ const h = waterAt(e); if(h){ addDrop(h.x, h.z, .35); lastDrop = clockT; } }
+  const b = hero.getBoundingClientRect(); mouse.x = e.clientX - b.left; mouse.y = e.clientY - b.top; mouse.inside = true;
+  mouse.vx += (mouse.x - lastMX) * .0004; lastMX = mouse.x;
 });
+hero.addEventListener("pointerleave", () => { mouse.inside = false; mouse.x = mouse.y = -9999; });
 hero.addEventListener("pointerdown", e => {
   if(e.target.closest("a, button, .glasscard")) return;
-  const h = waterAt(e); if(h){ addDrop(h.x, h.z, 1); window.ccSound?.note((Math.random() * 9) | 0, .45); }
+  const b = hero.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
+  ripples.push({ x, y, r: 0 });
+  for(let i = 0; i < 26; i++) pollen.push({ x, y, vx: (Math.random() - .5) * 2.4, vy: (Math.random() - .5) * 2.4 - .6, life: 1, col: [P.pink, P.jade, P.gold, P.red][i % 4] });
 });
 new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(hero);
+addEventListener("resize", layout);
+addEventListener("cc-theme", () => { P = palette(); drawBackground(); });
 
-const clock = new THREE.Clock();
-let ambient = 0;
-function frame(){
+function frame(now){
   requestAnimationFrame(frame);
   if(!visible || document.hidden) return;
-  const t = reduceMotion ? 2 : clock.getElapsedTime();
-  clockT = t;
-  px += (tx - px) * .04; py += (ty - py) * .04;
-  camera.position.set(CAM.x + px * .5, CAM.y + py * .25, CAM.z);
-  camera.lookAt(CAM.x * 0 + px * .15, .45, 0);
-  flowers.rotation.y = Math.sin(t * .22) * .3 + px * .35;
-  b.rotation.z = .16 + Math.sin(t * .5 + 1) * .03;
-  gate.rotation.y = Math.sin(t * .3) * .08;
-  arc1.rotation.z = t * .18; arc2.rotation.z = -t * .27 + 1;
-  if(!reduceMotion && t - ambient > 3){ ambient = t; addDrop(flowers.position.x + (Math.random() - .5) * 4, Math.random() * 3 - 2, .45); }
-  for(let i = 0; i < TRAIL; i++) trail[i].z *= .94;
-  skyU.uT.value = t; WU.uT.value = t; fx.uniforms.uT.value = t;
-  composer.render();
+  const t = reduceMotion ? 0 : (now - start) / 1000, prog = reduceMotion ? 1.5 : t / 2.8;
+  mouse.vx *= .92; wind += (clamp(mouse.vx, -.08, .08) - wind) * .05;
+  // flowers open a little when the cursor comes near
+  flowers.forEach(f => { const d = Math.hypot(mouse.x - f.x, mouse.y - (f.y - f.s * .7)); f.bloom += ((d < f.s * .9 ? 1 : 0) - f.bloom) * .06; });
+  umbels.forEach(u => { const d = Math.hypot(mouse.x - u.hx, mouse.y - u.hy); u.bloom += ((d < u.r * 1.1 ? 1 : 0) - u.bloom) * .06; });
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.drawImage(bgc, 0, 0, W, H);
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  clouds.forEach(cl => drawCloud(cl, t));
+  drawReeds(prog, t);
+  umbels.slice().reverse().forEach((u, i) => drawUmbel(u, prog - i * .08, t));
+  flowers.slice().reverse().forEach((f, i) => drawCalla(f, prog - .15 - i * .1, t));
+
+  // ink ripples where you click
+  for(let i = ripples.length - 1; i >= 0; i--){
+    const rp = ripples[i]; rp.r += 1.6;
+    for(let k = 0; k < 3; k++){ const rr = rp.r - k * 9; if(rr <= 0) continue; ctx.strokeStyle = P.jadeA(Math.max(0, .6 - rp.r / 220)); ctx.lineWidth = .8; ctx.beginPath(); ctx.ellipse(rp.x, rp.y, rr, rr * .42, 0, 0, TAU); ctx.stroke(); }
+    if(rp.r > 140) ripples.splice(i, 1);
+  }
+  // pixel pollen drifting off the anthers
+  for(let i = pollen.length - 1; i >= 0; i--){
+    const q = pollen[i]; q.x += q.vx; q.y += q.vy; q.vx *= .985; q.vy = q.vy * .985 - .004; q.life -= .006;
+    ctx.globalAlpha = Math.max(0, q.life); ctx.fillStyle = q.col;
+    const s = q.life > .5 ? 3 : 2; ctx.fillRect(Math.round(q.x / 3) * 3, Math.round(q.y / 3) * 3, s, s);
+    if(q.life <= 0) pollen.splice(i, 1);
+  }
+  ctx.globalAlpha = 1;
+  if(pollen.length > 400) pollen.splice(0, pollen.length - 400);
 }
-frame();
+layout();
+requestAnimationFrame(frame);
+})();
 </script>
+
 </body>
 </html>
