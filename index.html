@@ -3,632 +3,382 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caroline Chen — GALLERY WALK-THROUGH</title>
+<title>Caroline Chen — Design</title>
+<meta name="description" content="Caroline Chen — graphic, brand and experience designer based in San Mateo, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@600;800&family=Familjen+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Pinyon+Script&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&text=%E9%99%88%E9%94%A6%E5%84%BF&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
-   DARK ROOM GALLERY — strictly grayscale
-   #000 room · thin gray frames · hanging wires · CRT haze
+   paper · jade · cinnabar · calla
    ============================================================ */
 :root{
-  --bg:#000;
-  --ink:#e8e8e8;
-  --dim:#9a9a9a;
-  --faint:#858585;
-  --line:#3d3d3d;
-  --line-lit:#777;
-  --pane:#0a0a0a;
-  --mono:"SF Mono","Cascadia Code","JetBrains Mono",Consolas,"Courier New",monospace;
-  --glow-color:#8B5CF6;
-  animation:glowCycle 120s ease-in-out infinite;
+  --paper:#EFEBE3;
+  --paper-2:#E5E0D5;
+  --ink:#16171B;
+  --ink-2:#47484E;
+  --ink-3:#808084;
+  --rule:rgba(22,23,27,.15);
+  --jade:#3F8A6E;
+  --jade-2:#9CC8B3;
+  --red:#C3392B;
+  --blue:#2443A6;
+  --pink:#E9B7C4;
+  --serif:"Instrument Serif","Times New Roman",serif;
+  --script:"Pinyon Script",cursive;
+  --han:"Noto Serif SC","Songti SC",serif;
+  --sans:"Familjen Grotesk",system-ui,sans-serif;
+  --small:"Share Tech Mono",ui-monospace,monospace;
+  --num:"Doto",ui-monospace,monospace;
+  --gut:clamp(16px,4vw,56px);
+  --bg-dim:1;
+  color-scheme:light;
 }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E0F12; --paper-2:#17181D; --ink:#ECE8E0; --ink-2:#B7B4AD; --ink-3:#7F7D79;
+    --rule:rgba(236,232,224,.15); --jade:#7CC9A6; --jade-2:#2F5E4C; --red:#E8604F; --blue:#8CA2F2; --pink:#B98395;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E0F12; --paper-2:#17181D; --ink:#ECE8E0; --ink-2:#B7B4AD; --ink-3:#7F7D79;
+  --rule:rgba(236,232,224,.15); --jade:#7CC9A6; --jade-2:#2F5E4C; --red:#E8604F; --blue:#8CA2F2; --pink:#B98395;
+  color-scheme:dark;
+}
+
 *{margin:0;padding:0;box-sizing:border-box;}
-::selection{background:#666;color:#000;}
-html,body{
-  height:100%;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--mono);
-  transition:background .35s,color .35s;
+[hidden]{display:none!important;}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .5s,color .5s;
 }
+::selection{background:var(--jade);color:var(--paper);}
+a{color:inherit;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:inherit;}
+:focus-visible{outline:1px solid var(--red);outline-offset:3px;}
+.sm{font-family:var(--small);font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
+.num{font-family:var(--num);font-weight:800;letter-spacing:.02em;}
+.script{font-family:var(--script);font-weight:400;}
 
-/* ---------- NAV ---------- */
-#nav{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:60;
-  display:flex;
-  align-items:center;
-  gap:26px;
-  padding:16px 26px;
-  font-size:11px;
-  letter-spacing:.22em;
-  background:linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,0));
-  transition:background .35s;
+/* paper grain */
+body::after{
+  content:"";position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.3;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .42  0 0 0 0 .38  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
-#nav .brand{color:var(--ink);font-weight:600;margin-right:auto;user-select:none;}
-#nav .brand em{font-style:normal;color:var(--faint);}
+:root[data-theme="dark"] body::after{mix-blend-mode:screen;opacity:.1;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{mix-blend-mode:screen;opacity:.1;}}
+
+/* ---------- background canvas ---------- */
+#bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;opacity:var(--bg-dim);transition:opacity .35s;}
+#bg.swap{opacity:0;}
+
+/* ---------- seal (陈锦儿, two-column stamp) ---------- */
+.seal{
+  display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
+  width:64px;height:64px;padding:5px;gap:0 2px;
+  background:var(--red);color:var(--paper);border-radius:3px;
+  font-family:var(--han);font-weight:900;line-height:1;
+  box-shadow:inset 0 0 0 2px var(--red), inset 0 0 0 3.5px var(--paper);
+}
+.seal span{display:grid;place-items:center;font-size:21px;}
+.seal span:first-child{grid-column:2;grid-row:1 / span 2;font-size:34px;}  /* 陈 reads first, right column */
+.seal span:nth-child(2){grid-column:1;grid-row:1;}
+.seal span:nth-child(3){grid-column:1;grid-row:2;}
+.seal.s{width:34px;height:34px;padding:3px;border-radius:2px;box-shadow:inset 0 0 0 1.2px var(--red), inset 0 0 0 2px var(--paper);}
+.seal.s span{font-size:11px;} .seal.s span:first-child{font-size:18px;}
+
+/* ---------- loader ---------- */
+#loader{
+  position:fixed;inset:0;z-index:100;background:var(--paper);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  transition:opacity .8s, visibility .8s;cursor:pointer;
+}
+#loader.done{opacity:0;visibility:hidden;}
+#loader .seal{width:92px;height:92px;animation:stamp .9s cubic-bezier(.2,.9,.25,1.1) both;}
+#loader .seal span{font-size:30px;} #loader .seal span:first-child{font-size:50px;}
+@keyframes stamp{0%{transform:scale(1.7) rotate(-8deg);opacity:0;}55%{opacity:1;}100%{transform:rotate(-2deg);opacity:1;}}
+#loader .ld-name{font-family:var(--serif);font-size:30px;font-style:italic;}
+#loader .ld-count{font-family:var(--num);font-weight:800;font-size:22px;color:var(--ink-3);}
+
+/* ---------- top bar ---------- */
+#top{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;gap:24px;
+  padding:16px var(--gut);
+}
+#top::before{
+  content:"";position:absolute;inset:0 0 -26px;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:linear-gradient(to bottom, var(--paper) 55%, transparent);
+}
+body.scrolled #top::before{opacity:1;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;}
+.brand .bn{font-family:var(--serif);font-size:21px;line-height:1;}
+.brand .bn i{font-family:var(--script);font-style:normal;font-size:24px;color:var(--jade);margin-left:2px;}
+#nav{display:flex;gap:clamp(14px,2.2vw,30px);align-items:center;}
 #nav a{
-  color:var(--dim);
-  text-decoration:none;
-  padding:4px 2px;
-  border-bottom:1px solid transparent;
-  transition:color .2s,border-color .2s;
-  user-select:none;
+  text-decoration:none;font-family:var(--small);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-2);padding:4px 0;position:relative;
 }
-#nav a:hover{color:var(--ink);}
-#nav a.on{color:var(--ink);border-bottom-color:var(--ink);}
-/* ---------- OVERLAY TERMINAL WINDOWS ---------- */
-.overlay{
-  position:fixed;
-  inset:0;
-  z-index:80;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  background:rgba(0,0,0,.62);
-  backdrop-filter:blur(2px);
-}
-.overlay.open{display:flex;}
-.term{
-  width:min(680px, calc(100vw - 40px));
-  max-height:min(78vh, 720px);
-  display:flex;
-  flex-direction:column;
-  background:var(--pane);
-  border:1px solid var(--line-lit);
-  box-shadow:0 0 60px rgba(0,0,0,.9), 0 0 0 1px #000;
-  animation:termIn .28s cubic-bezier(.2,.9,.3,1.2);
-}
-@keyframes termIn{from{transform:scale(.94) translateY(12px);opacity:0;}to{transform:none;opacity:1;}}
-.term .tbar{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;
-  border-bottom:1px solid var(--line);
-  font-size:10px;letter-spacing:.2em;color:var(--dim);
-  user-select:none;
-}
-.term .tbar .x{
-  margin-left:auto;
-  cursor:pointer;
-  border:1px solid var(--faint);
-  color:var(--dim);
-  font-size:10px;
-  padding:1px 7px;
-  background:none;
-  font-family:var(--mono);
-  letter-spacing:0;
-}
-.term .tbar .x:hover{color:#000;background:#ccc;border-color:#ccc;}
-.term .tbody{
-  padding:22px 26px 28px;
-  overflow-y:auto;
-  font-size:12px;
-  line-height:1.85;
-  color:var(--ink);
-}
-#ov-resume,#ov-about{--ink:#d6d6d6;--faint:#a8a8a8;}
-#ov-resume .term{width:min(780px, calc(100vw - 40px));max-height:min(82vh, 780px);}
-#ov-resume .term .tbody{font-size:14px;line-height:1.65;}
-#ov-resume .term h2{font-size:13px;margin:26px 0 10px;}
-#ov-resume .term .kv{grid-template-columns:150px 1fr;gap:12px 18px;font-size:13px;}
-#ov-resume .term .kv dd{line-height:1.55;}
-#ov-resume .term .tag{font-size:10px;padding:3px 9px;}
-#ov-resume .term .btn{font-size:11px;padding:9px 20px;}
-.term .tbody::-webkit-scrollbar{width:6px;}
-.term .tbody::-webkit-scrollbar-thumb{background:var(--line);}
-.term h2{
-  font-size:12px;letter-spacing:.3em;color:var(--ink);
-  margin:22px 0 8px;font-weight:600;
-}
-.term h2:first-child{margin-top:0;}
-.term h2::before{content:"» ";color:var(--faint);}
-.term p{margin:0 0 12px;}
-.term .kv{display:grid;grid-template-columns:130px 1fr;gap:2px 16px;font-size:11px;}
-.term .kv dt{color:var(--faint);letter-spacing:.1em;}
-.term .kv dd{color:var(--ink);}
-.term a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--faint);}
-.term a:hover{text-decoration-color:var(--ink);}
-.term .tag,.id-card .tag{
-  display:inline-block;
-  border:1px solid var(--line);
-  color:var(--dim);
-  font-size:9px;
-  letter-spacing:.14em;
-  padding:2px 8px;
-  margin:0 6px 6px 0;
-}
-.id-card .tag{font-size:11px;padding:3px 9px;}
-.term .edit-note{
-  border:1px dashed var(--faint);
-  color:var(--dim);
-  font-size:10px;
-  padding:8px 12px;
-  margin:14px 0 0;
-  letter-spacing:.06em;
-}
-.term .cursor,.id-card .cursor{display:inline-block;width:7px;height:13px;background:var(--ink);vertical-align:-2px;animation:blink 1s steps(1) infinite;}
-@keyframes blink{50%{opacity:0;}}
-.term .btn{
-  display:inline-block;
-  border:1px solid var(--line-lit);
-  color:var(--ink);
-  padding:8px 18px;
-  font-size:10px;
-  letter-spacing:.24em;
-  text-decoration:none;
-  margin-top:10px;
-  transition:background .2s,color .2s;
-}
-.term .btn:hover{background:var(--ink);color:var(--bg);text-decoration:none;}
-/* ---------- VIDEO LIGHTBOX ---------- */
-.video-lightbox{
-  position:relative;
-  width:min(520px, 90vw);
-  aspect-ratio:848/1354;
-  background:#000;
-  border:1px solid var(--line-lit);
-  box-shadow:0 0 60px rgba(0,0,0,.9), 0 0 0 1px #000;
-  animation:termIn .28s cubic-bezier(.2,.9,.3,1.2);
-}
-.video-lightbox video{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-}
-.video-lightbox .x{
-  position:absolute;
-  top:8px;right:8px;
-  z-index:2;
-  cursor:pointer;
-  border:1px solid var(--faint);
-  color:var(--dim);
-  font-size:10px;
-  padding:2px 8px;
-  background:rgba(0,0,0,.6);
-  font-family:var(--mono);
-  letter-spacing:0;
-}
-.video-lightbox .x:hover{color:#000;background:#ccc;border-color:#ccc;}
-
-/* ---------- INTRO — cyberpunk ID scan ---------- */
-#intro{
-  position:fixed;inset:0;z-index:100;
-  background:var(--bg);
-  display:flex;align-items:center;justify-content:center;
-  padding:24px;
-  transition:opacity .6s;
-}
-#intro::before{
-  content:"";
-  position:absolute;inset:0;
-  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.03) 0 1px, transparent 1px 3px);
-  mix-blend-mode:screen;
-  pointer-events:none;
-}
-.id-card{
-  position:relative;
-  width:min(920px, 100%);
-  border:1px solid var(--line-lit);
-  background:var(--pane);
-  box-shadow:0 0 0 6px var(--bg), 0 0 0 7px var(--line);
-}
-.id-topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  height:28px;
-  padding:0 10px;
-  border-bottom:1px solid var(--line);
-  font-size:11px;letter-spacing:.12em;
-  color:var(--dim);
-  overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
-}
-.id-topbar .path{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-.id-main{
-  display:flex;flex-direction:row;
-  border-bottom:1px solid var(--line);
-}
-.id-header{
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  flex:0 0 250px;
-  padding:16px;
-  border-right:1px solid var(--line);
-  text-align:center;
-}
-.id-photo{
-  position:relative;
-  width:100%;
-  max-width:210px;
-  aspect-ratio:848/1354;
-  background:#000;
-  border:1px solid var(--line);
-  overflow:hidden;
-  cursor:pointer;
-  transition:filter .2s;
-}
-.id-photo:hover,.id-photo:focus-visible{filter:brightness(1.25);}
-.id-photo:focus-visible{outline:1px solid var(--line-lit);outline-offset:2px;}
-.id-photo video{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-}
-.id-photo .expand{
-  position:absolute;
-  top:2px;left:2px;
-  font-size:8px;
-  color:#fff;
-  opacity:0;
-  transition:opacity .2s;
-  text-shadow:0 0 2px #000;
-  z-index:1;
-}
-.id-photo:hover .expand,.id-photo:focus-visible .expand{opacity:.85;}
-.id-photo .barcode{
-  position:absolute;
-  top:4px;bottom:4px;right:4px;
-  width:6px;
-  background:repeating-linear-gradient(to bottom,
-    rgba(255,255,255,.9) 0 2px, rgba(255,255,255,0) 2px 4px,
-    rgba(255,255,255,.5) 4px 5px, rgba(255,255,255,0) 5px 9px);
-  opacity:.6;
-  mix-blend-mode:difference;
-}
-.id-header-info{
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  min-width:0;
-}
-.id-name{
-  font-size:17px;font-weight:600;letter-spacing:.06em;
-  color:var(--ink);
-}
-.id-role{
-  font-size:12px;letter-spacing:.04em;
-  color:var(--dim);
-}
-.id-data{
-  flex:1;
-  padding:14px;
-  display:flex;flex-direction:column;
-  gap:11px;
-  min-width:0;
-}
-.id-row{
-  display:flex;justify-content:space-between;gap:14px;
-  font-size:13px;letter-spacing:.04em;
-  border-bottom:1px solid var(--line);
-  padding-bottom:8px;
-  white-space:nowrap;
-}
-.id-row dt{color:var(--faint);flex:0 0 auto;}
-.id-row dd{color:var(--ink);text-align:right;overflow:hidden;text-overflow:ellipsis;}
-.id-log{
-  flex:1;
-  font-size:12px;line-height:1.7;
-  color:var(--dim);
-  letter-spacing:.02em;
-  min-height:72px;
-  white-space:pre-line;
-}
-.id-log .rdy{color:var(--ink);}
-.id-scan{
-  height:3px;
-  background:var(--line);
-  overflow:hidden;
-}
-.id-scan-fill{
-  height:100%;width:0%;
-  background:var(--ink);
-  transition:width .2s linear;
-}
-.id-foot{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 14px;
-  font-size:10.5px;letter-spacing:.12em;
-  color:var(--faint);
-}
-#intro-enter{
-  border:1px solid var(--line-lit);
-  background:none;
-  color:var(--dim);
-  font-family:var(--mono);
-  font-size:10px;letter-spacing:.2em;
-  padding:7px 16px;
-  cursor:not-allowed;
-  transition:color .2s,border-color .2s,opacity .2s;
-  opacity:.4;
-}
-#intro-enter.ready{
-  cursor:pointer;
-  opacity:1;
-  color:var(--ink);
-}
-#intro-enter.ready:hover{background:var(--ink);color:var(--bg);}
-
-#intro.dismissed{opacity:0;pointer-events:none;}
-.id-data{max-height:min(58vh,480px);overflow-y:auto;}
-.id-data::-webkit-scrollbar{width:6px;}
-.id-data::-webkit-scrollbar-thumb{background:var(--line);}
-.id-data a{color:var(--ink);text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--faint);}
-.id-data a:hover{text-decoration-color:var(--ink);}
-.id-bio{margin-top:2px;}
-.id-bio p{font-size:14.5px;line-height:1.7;color:var(--ink);margin:0 0 12px;}
-.id-tags{margin-bottom:10px;}
-.id-avail{font-size:13px;letter-spacing:.06em;color:var(--dim);}
-.id-avail b{color:var(--ink);}
-.id-desc{margin-top:2px;}
-.id-desc p{font-size:12px;line-height:1.6;color:var(--dim);margin:0;}
-
-/* ============================================================
-   THE WALL — 3D coverflow gallery (drag / scroll both directions)
-   ============================================================ */
-body{overflow:hidden;}
-#stage{
-  position:fixed;
-  inset:0;
-  z-index:1;
-  overflow:hidden;
-  cursor:grab;
-  touch-action:none;
-  background:
-    radial-gradient(120% 82% at 50% 14%, rgba(255,255,255,.06), transparent 60%),
-    var(--bg);
-  perspective:1650px;
-  perspective-origin:50% 45%;
-}
-#stage.dragging{cursor:grabbing;}
-#deck{
-  position:absolute;
-  left:50%;
-  top:46%;
-  width:0;height:0;
-  transform-style:preserve-3d;
-}
-
-/* slow color-cycling glow, centered behind the deck so it lights each
-   project from the back as it passes through center */
-@property --glow-color{
-  syntax:'<color>';
-  inherits:true;
-  initial-value:#8B5CF6;
-}
-#glow{
-  position:absolute;
-  inset:-25%;
-  pointer-events:none;
-  --glow-color:#8B5CF6;
-  background:radial-gradient(circle at 50% 46%, var(--glow-color) 0%, transparent 60%);
-  filter:blur(90px);
-  opacity:.28;
-  mix-blend-mode:screen;
-  animation:glowCycle 120s ease-in-out infinite;
-}
-@keyframes glowCycle{
-  0%,100%{--glow-color:#8B5CF6;}  /* purple */
-  14.3%  {--glow-color:#FF5FAE;}  /* pink */
-  28.6%  {--glow-color:#F2E24B;}  /* yellow */
-  42.9%  {--glow-color:#A6FF3C;}  /* neon lime */
-  57.1%  {--glow-color:#3CFF8F;}  /* green */
-  71.4%  {--glow-color:#3C7DFF;}  /* blue */
-  85.7%  {--glow-color:#1E2A6E;}  /* dark blue */
-}
-@media (prefers-reduced-motion:reduce){#glow,:root{animation:none;}}
-
-/* floating haze / CRT grain / dust (kept from the room) */
-#haze{
-  position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:
-    radial-gradient(135% 105% at 50% 48%, transparent 44%, rgba(0,0,0,.72) 100%),
-    repeating-linear-gradient(to bottom, rgba(255,255,255,.02) 0 1px, transparent 1px 3px);
-}
-#dust{
-  position:absolute;inset:-20%;z-index:3;pointer-events:none;opacity:.45;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 22%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 68% 14%, #fff, transparent),
-    radial-gradient(1px 1px at 34% 62%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 82% 48%, #fff, transparent),
-    radial-gradient(1px 1px at 47% 86%, #fff, transparent),
-    radial-gradient(1px 1px at 22% 74%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 91% 78%, #fff, transparent),
-    radial-gradient(1px 1px at 58% 36%, #fff, transparent);
-  background-size:520px 520px;
-  animation:drift 42s linear infinite;
-}
-@keyframes drift{to{background-position:520px 300px;}}
-@media (prefers-reduced-motion:reduce){#dust{animation:none;}}
-
-/* a single hanging screen / card */
-.card{
-  position:absolute;
-  left:0;top:0;
-  transform-origin:center center;
-  will-change:transform,opacity;
-  border-radius:16px;
-  overflow:hidden;
-  padding:0;
-  background:var(--pane);
-  border:1px solid var(--line);
-  box-shadow:0 34px 70px rgba(0,0,0,.62);
-  cursor:pointer;
-  backface-visibility:hidden;
-  font-family:var(--mono);
-}
-.card::after{               /* accent lip along the top edge, follows the room's color cycle */
-  content:"";
-  position:absolute;left:0;right:0;top:0;height:3px;
-  background:var(--glow-color);
-  opacity:.92;z-index:4;
-}
-.card .fill{position:absolute;inset:0;background:#0d0d0d;}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-.card.empty .fill{
-  display:flex;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 8px, transparent 8px 16px), #101010;
-}
-.card.empty .fill span{
-  font-size:9px;letter-spacing:.22em;color:var(--faint);
-  border:1px dashed var(--faint);padding:6px 11px;
-}
-.card .grad{                /* base fade so side text/hint stays legible */
-  position:absolute;left:0;right:0;bottom:0;height:42%;pointer-events:none;
-  background:linear-gradient(to top, rgba(0,0,0,.55), transparent);
-}
-.card .scrim{               /* depth-dim, opacity driven by JS */
-  position:absolute;inset:0;background:#05060a;opacity:0;pointer-events:none;
-}
-.card .open-hint{
-  position:absolute;left:0;right:0;bottom:0;z-index:3;
-  display:flex;align-items:center;justify-content:center;gap:9px;
-  padding:14px 12px;
-  font-size:9px;letter-spacing:.28em;color:var(--ink);
-  opacity:0;transition:opacity .25s;
-}
-.card.active{box-shadow:0 46px 100px rgba(0,0,0,.82), 0 0 0 1px var(--glow-color);}
-.card.active .open-hint{opacity:.92;}
-.card:focus-visible{outline:none;box-shadow:0 46px 100px rgba(0,0,0,.82), 0 0 0 2px var(--ink);}
-
-/* persistent title bar — always shows the centred project */
-#nowbar{
-  position:fixed;left:0;right:0;bottom:0;z-index:40;
-  display:flex;flex-direction:column;align-items:center;gap:5px;
-  padding:22px 20px 26px;
-  text-align:center;
-  pointer-events:none;
-  background:linear-gradient(to top, rgba(0,0,0,.9) 12%, rgba(0,0,0,0));
-}
-:root[data-theme="light"] #nowbar{background:linear-gradient(to top, rgba(246,241,230,.94) 12%, rgba(246,241,230,0));}
-#nowbar .no{font-size:9px;letter-spacing:.34em;color:var(--glow-color);font-weight:600;}
-#nowbar .tt{
-  font-size:clamp(17px,2.7vw,27px);letter-spacing:.14em;
-  color:var(--ink);font-weight:600;line-height:1.15;
-  transition:opacity .18s;
-}
-#nowbar .mm{font-size:12px;letter-spacing:.18em;color:var(--dim);min-height:12px;margin-top:7px;}
-#nowbar .cue{margin-top:8px;font-size:8.5px;letter-spacing:.26em;color:var(--faint);}
-#nowbar .cue b{color:var(--dim);font-weight:400;}
-
-/* left / right steppers */
-.arrow{
-  position:fixed;top:45%;z-index:41;transform:translateY(-50%);
-  width:46px;height:46px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(10,10,10,.55);
-  border:1px solid var(--line);
-  color:var(--dim);
-  font-family:var(--mono);font-size:18px;line-height:1;
-  cursor:pointer;
+#nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+#nav a:hover,#nav a.on{color:var(--ink);}
+#nav a:hover::after,#nav a.on::after{transform:scaleX(1);}
+.tools{display:flex;gap:8px;align-items:center;}
+.tbtn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--small);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 12px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);
+  background:color-mix(in srgb,var(--paper) 70%,transparent);
   transition:color .2s,border-color .2s,background .2s;
-  backdrop-filter:blur(2px);
 }
-.arrow:hover{color:var(--ink);border-color:var(--line-lit);background:rgba(22,22,22,.7);}
-.arrow:disabled{opacity:.22;cursor:default;}
-#arrow-prev{left:24px;}
-#arrow-next{right:24px;}
-#counter{
-  position:fixed;top:15px;right:24px;z-index:41;
-  font-size:10px;letter-spacing:.22em;color:var(--faint);
-}
-@media (max-width:600px){
-  .arrow{width:40px;height:40px;font-size:16px;}
-  #arrow-prev{left:10px;} #arrow-next{right:10px;}
-  #counter{top:54px;right:14px;}
-  #nowbar{padding:16px 16px 20px;}
-  #nowbar .cue{display:none;}
-}
+.tbtn:hover{color:var(--ink);border-color:var(--ink);}
+.tbtn[aria-pressed="true"]{color:var(--paper);background:var(--ink);border-color:var(--ink);}
+.moon{width:12px;height:12px;border-radius:50%;background:currentColor;position:relative;overflow:hidden;}
+.moon::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--paper);left:4px;top:-3px;transition:background .5s;}
+.tbtn[aria-pressed="true"] .moon::after{background:var(--ink);}
+.bars{display:inline-flex;gap:2px;align-items:flex-end;height:11px;}
+.bars i{width:2px;height:3px;background:currentColor;}
+.tbtn.playing .bars i{animation:eq .9s ease-in-out infinite;}
+.tbtn.playing .bars i:nth-child(2){animation-delay:-.3s;} .tbtn.playing .bars i:nth-child(3){animation-delay:-.6s;}
+@keyframes eq{0%,100%{height:3px;}50%{height:11px;}}
 
-/* --- PROJECT DETAIL WINDOW --- */
-.term.proj{width:min(880px, calc(100vw - 36px));max-height:min(86vh,860px);}
-.proj-body{padding:0;overflow-y:auto;}
-.proj-body::-webkit-scrollbar{width:6px;}
-.proj-body::-webkit-scrollbar-thumb{background:var(--line);}
-.proj-hero{
-  position:relative;
-  width:100%;aspect-ratio:16/9;
-  background:#0d0d0d;border-bottom:1px solid var(--line);
-  border-top:3px solid var(--accent, var(--line-lit));
-  overflow:hidden;
-}
-.proj-hero img{width:100%;height:100%;object-fit:cover;display:block;}
-.proj-hero.empty{
-  display:flex;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 8px, transparent 8px 16px), #101010;
-  color:var(--faint);font-size:10px;letter-spacing:.24em;
-}
-.proj-meta{padding:20px 24px 26px;}
-.proj-meta .no{font-size:10px;letter-spacing:.24em;color:var(--accent, var(--dim));font-weight:600;}
-.proj-meta h3{
-  font-size:19px;letter-spacing:.1em;font-weight:600;
-  margin:6px 0 10px;color:var(--ink);
-}
-.proj-meta .mm{font-size:13px;letter-spacing:.14em;color:var(--dim);margin-bottom:14px;}
-.proj-meta p{font-size:12.5px;line-height:1.8;color:var(--ink);margin:0 0 14px;}
-.proj-nav{
-  display:flex;align-items:center;gap:10px;
-  padding:12px 24px;border-top:1px solid var(--line);
-  font-size:10px;letter-spacing:.18em;
-}
-.proj-nav button{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
-  background:none;border:1px solid var(--line);color:var(--dim);
-  padding:6px 12px;cursor:pointer;transition:color .2s,border-color .2s;
-}
-.proj-nav button:hover{color:var(--ink);border-color:var(--line-lit);}
-.proj-nav .btn{margin:0 0 0 auto;}
-.proj-nav .btn.off{opacity:.35;pointer-events:none;}
+/* bottom corners */
+#corner-l,#corner-r{position:fixed;bottom:16px;z-index:50;font-family:var(--small);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;}
+#corner-l{left:var(--gut);pointer-events:none;}
+#corner-r{right:var(--gut);display:flex;gap:6px;align-items:center;transition:opacity .4s;}
+#corner-r .lbl{margin-right:6px;}
+body.scrolled #corner-r{opacity:0;pointer-events:none;}
+.sbtn{font-family:var(--small);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:3px 2px;border-bottom:1px solid transparent;}
+.sbtn:hover{color:var(--ink);}
+.sbtn[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--red);}
 
-/* --- INDEX WINDOW --- */
-.idx-row{
-  display:flex;align-items:center;gap:12px;
-  width:100%;
-  padding:10px 4px;
-  border:none;border-bottom:1px solid var(--line);
-  background:none;
-  font-family:var(--mono);
-  color:var(--dim);
-  text-align:left;
-  cursor:pointer;
-  transition:color .18s,padding-left .18s;
-}
-.idx-row:hover{color:var(--ink);padding-left:10px;}
-.idx-row .bullet{flex:0 0 auto;color:var(--faint);}
-.idx-row .no{font-size:10px;color:var(--dim);flex:0 0 26px;}
-.idx-row .tt{font-size:12px;letter-spacing:.16em;color:var(--ink);}
-.idx-row .mm{font-size:9.5px;letter-spacing:.14em;margin-left:auto;color:var(--dim);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+main{position:relative;z-index:2;}
+section{position:relative;}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--gut);}
 
-@media (max-width:560px){
-  #intro{align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px 40px;}
-  .id-main{flex-direction:column;}
-  .id-header{flex:none;width:100%;border-right:none;border-bottom:1px solid var(--line);}
-  .id-photo{max-width:190px;}
-  .id-header{padding:12px;gap:10px;}
-  .id-name{font-size:15px;}
-  .id-row{white-space:normal;}
-  .id-data{max-height:none;overflow-y:visible;}
+/* ---------- HERO ---------- */
+#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
+#lily{position:absolute;top:0;right:0;width:58%;height:100%;display:block;pointer-events:none;z-index:1;}
+#hero .wrap{width:100%;position:relative;z-index:2;}
+.hero-copy{max-width:600px;padding-top:40px;}
+.hero-meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--ink-2);margin-bottom:26px;}
+.hero-meta span{display:flex;align-items:center;gap:8px;}
+.hero-meta .dot{width:7px;height:7px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 3px color-mix(in srgb,var(--jade) 25%,transparent);}
+.hero-name{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11vw,176px);line-height:.84;letter-spacing:-.025em;}
+.hero-role{margin-top:20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.hero-role .script{font-size:clamp(34px,4vw,58px);line-height:1;color:var(--jade);}
+.hero-role .g{font-family:var(--sans);font-weight:600;font-size:clamp(20px,2vw,28px);letter-spacing:-.01em;}
+.hero-statement{max-width:440px;margin-top:28px;font-size:16px;line-height:1.65;color:var(--ink-2);padding:12px 14px;margin-left:-14px;background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
+.hero-name-cn{
+  position:absolute;right:var(--gut);top:50%;transform:translateY(-50%);z-index:2;
+  writing-mode:vertical-rl;font-family:var(--han);font-weight:900;font-size:clamp(44px,6vw,92px);letter-spacing:.12em;
+  color:transparent;-webkit-text-stroke:1px var(--ink-3);user-select:none;pointer-events:none;
 }
-@media (max-width:700px){
-  #nav{gap:14px;padding:14px 14px;font-size:9.5px;letter-spacing:.14em;}
-  #nav .brand{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;min-width:0;}
-}
-@media (max-width:560px){
-  #nav .brand em{display:none;}
-  #nav{gap:11px;}
-}
+.scroll-cue{position:absolute;left:var(--gut);bottom:52px;z-index:2;display:flex;align-items:center;gap:12px;color:var(--ink-3);text-decoration:none;}
+.scroll-cue i{width:46px;height:1px;background:var(--ink-3);transform-origin:left;animation:line 2.4s ease-in-out infinite;}
+@keyframes line{0%{transform:scaleX(0);}50%{transform:scaleX(1);}100%{transform:scaleX(1);opacity:0;}}
 
-/* ---------- MOBILE: overlay windows & lists ---------- */
-@media (max-width:640px){
-  .term .kv,#ov-resume .term .kv{grid-template-columns:1fr;gap:2px 0;}
-  .term .kv dt{margin-top:14px;color:var(--ink);}
-  .term .kv dt:first-child{margin-top:0;}
-  .term .kv dd{margin-bottom:2px;}
-  #ov-resume .term .kv dt{margin-top:18px;}
-  .proj-nav{flex-wrap:wrap;row-gap:8px;}
-  .proj-nav .btn{flex:1 1 100%;order:3;margin-left:0;text-align:center;}
+/* ---------- section heads ---------- */
+.head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:10px 26px;padding-bottom:14px;border-bottom:1px solid var(--ink);}
+.head .num{font-size:clamp(38px,4.6vw,66px);line-height:.8;color:var(--red);}
+.head h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.6vw,84px);line-height:.9;letter-spacing:-.015em;}
+.head h2 em{font-family:var(--script);font-style:normal;color:var(--jade);font-size:.82em;}
+.head .aside{color:var(--ink-3);text-align:right;max-width:340px;}
+.sec{padding:clamp(100px,15vh,180px) 0 40px;}
+.panel{background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+
+/* ---------- WORK — reflecting pool ---------- */
+#work{background:var(--paper);}
+.pool-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;}
+.pool-head{position:absolute;left:0;right:0;top:84px;z-index:3;}
+.pool-track{
+  position:absolute;left:0;bottom:0;z-index:2;
+  display:flex;align-items:flex-end;gap:7vw;padding:0 34vw 0 var(--gut);
+  will-change:transform;
+}
+.pc{display:flex;flex-direction:column;align-items:flex-start;gap:12px;flex:none;}
+.pc-cap{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:baseline;min-width:240px;}
+.pc-n{font-family:var(--num);font-weight:800;font-size:22px;color:var(--red);line-height:1;}
+.pc-t{font-family:var(--serif);font-size:clamp(24px,2.3vw,34px);line-height:1;}
+.pc-s{grid-column:2;font-size:13.5px;line-height:1.4;color:var(--ink-2);max-width:340px;}
+.pc-img{display:block;object-fit:cover;background:var(--paper-2);border:1px solid var(--rule);transition:filter .4s;}
+.pc:hover .pc-img,.pc:focus-visible .pc-img{filter:brightness(1.06) saturate(1.08);}
+.pc:hover .pc-t{font-style:italic;}
+.pool-water{position:absolute;left:0;right:0;bottom:0;z-index:1;width:100%;display:block;}
+.pool-water.fallback{display:none;}
+.pool-line{position:absolute;left:0;right:0;z-index:2;height:1px;background:linear-gradient(90deg,transparent,var(--ink-3),transparent);opacity:.5;pointer-events:none;}
+.pool-idx{position:absolute;left:var(--gut);right:var(--gut);bottom:18px;z-index:3;display:flex;gap:4px;align-items:center;flex-wrap:wrap;}
+.pool-idx button{font-family:var(--num);font-weight:800;font-size:15px;color:color-mix(in srgb,var(--ink) 55%,transparent);padding:3px 6px;border-radius:999px;transition:color .2s,background .2s;}
+.pool-idx button:hover{color:var(--ink);}
+.pool-idx button.on{color:var(--paper);background:var(--ink);}
+.pool-idx .hint{margin-left:auto;color:color-mix(in srgb,var(--ink) 60%,transparent);}
+
+/* ---------- MOTION ---------- */
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:30px;}
+.mtile{display:flex;flex-direction:column;gap:10px;}
+.mtile .box{position:relative;aspect-ratio:4/5;border:1px solid var(--rule);overflow:hidden;background:var(--paper-2);}
+.mtile canvas,.mtile video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;}
+.mtile .row1{display:flex;gap:10px;align-items:baseline;}
+.mtile .num{font-size:18px;color:var(--red);}
+.mtile .mt{font-family:var(--serif);font-size:26px;line-height:1.05;}
+.mtile .ms{font-size:13.5px;color:var(--ink-2);line-height:1.45;}
+.mtile .act{align-self:flex-start;}
+.mtile.current .box{outline:1.5px solid var(--jade);outline-offset:4px;}
+.note{margin-top:30px;max-width:600px;color:var(--ink-2);}
+.note .cn{font-family:var(--han);font-size:1.25em;color:var(--red);}
+
+/* ---------- ABOUT — vanity mirror ---------- */
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start;margin-top:40px;}
+.mirror{
+  display:block;width:100%;max-width:420px;aspect-ratio:3/4;border-radius:50%;padding:16px;position:relative;
+  background:conic-gradient(from 200deg,#f6f6f4,#9b9c9e,#ffffff,#6b6c70,#e8e8e6,#8a8b8e,#fafaf8,#77787b,#f6f6f4);
+  box-shadow:0 40px 70px -30px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.18),inset 0 2px 1px rgba(255,255,255,.9),inset 0 -3px 6px rgba(0,0,0,.35);
+}
+.mirror::before{content:"";position:absolute;inset:9px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 0 0 3px rgba(0,0,0,.18);pointer-events:none;}
+.mirror .glass{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#111;box-shadow:inset 0 0 40px rgba(0,0,0,.65);}
+.mirror video{width:100%;height:100%;object-fit:cover;display:block;transform:scaleX(-1);filter:contrast(1.04);}
+.mirror .sheen{
+  position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:screen;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.28) 47%,rgba(255,255,255,.06) 52%,transparent 60%);
+  transform:translate(var(--mx,0px),var(--my,0px));transition:transform .2s ease-out;
+}
+.mirror .vign{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),inset 0 10px 30px rgba(255,255,255,.12);pointer-events:none;}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:0 22px;margin-top:30px;max-width:520px;}
+.facts dt,.facts dd{padding:10px 0;border-bottom:1px solid var(--rule);}
+.facts dt{font-family:var(--small);font-size:12px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;padding-top:12px;}
+.facts dd{font-size:15px;}
+.bio p{font-size:clamp(16px,1.3vw,18px);line-height:1.72;margin-bottom:1em;color:var(--ink-2);}
+.bio p:first-child{font-family:var(--serif);font-size:clamp(28px,2.7vw,40px);line-height:1.15;color:var(--ink);}
+.bio b{color:var(--ink);font-weight:600;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0;}
+.tag{font-family:var(--small);font-size:11.5px;letter-spacing:.05em;padding:4px 10px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);text-transform:uppercase;}
+
+/* ---------- RESUME ---------- */
+.cv{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:0 clamp(24px,4vw,64px);margin-top:10px;}
+.cv h3{font-family:var(--serif);font-weight:400;font-style:italic;font-size:28px;padding:20px 0 8px;border-top:1px solid var(--ink);}
+.cv-items{border-top:1px solid var(--ink);padding-top:8px;}
+.cv-item{display:grid;grid-template-columns:160px 1fr;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule);}
+.cv-item .when{font-family:var(--small);font-size:12.5px;color:var(--ink-3);padding-top:3px;}
+.cv-item .what{font-size:16.5px;font-weight:500;line-height:1.4;}
+.cv-item .desc{grid-column:2;font-size:14.5px;line-height:1.65;color:var(--ink-2);}
+.cv-skills{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0 14px;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-family:var(--small);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:11px 18px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--paper);
+  transition:background .2s,color .2s,border-color .2s;
+}
+.btn:hover{background:var(--jade);border-color:var(--jade);}
+.btn.off{opacity:.35;pointer-events:none;}
+
+/* ---------- FOOTER — Chinatown storefront neon ---------- */
+footer{position:relative;z-index:2;padding:clamp(100px,15vh,180px) 0 60px;}
+.foot{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;}
+.foot-big{font-family:var(--serif);font-size:clamp(46px,8vw,128px);line-height:.92;letter-spacing:-.02em;}
+.foot-big .script{color:var(--jade);font-size:.9em;}
+.foot-mail{display:inline-block;margin-top:26px;font-size:clamp(17px,1.8vw,22px);text-decoration:none;border-bottom:1px solid var(--jade);padding-bottom:3px;}
+.foot-mail:hover{color:var(--jade);}
+.sign{
+  position:relative;display:flex;gap:18px;align-items:stretch;
+  padding:22px 22px 18px;background:#121214;border-radius:10px;
+  box-shadow:0 30px 60px -25px rgba(0,0,0,.6),inset 0 0 0 1px #2a2a2e,inset 0 0 0 6px #121214,inset 0 0 0 7px #26262a;
+}
+.sign::before,.sign::after{content:"";position:absolute;top:-70px;width:1px;height:70px;background:linear-gradient(#0000,#777);}
+.sign::before{left:24%;} .sign::after{right:24%;}
+.neon-v{
+  writing-mode:vertical-rl;font-family:var(--han);font-weight:900;font-size:52px;line-height:1.05;letter-spacing:.06em;
+  color:#ffe3e3;
+  text-shadow:0 0 2px #fff,0 0 8px #ff3b4e,0 0 18px #ff3b4e,0 0 36px #ff2440,0 0 60px #ff2440;
+  animation:flicker 7s infinite;
+}
+.neon-r{display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:12px;}
+.neon-open{
+  font-family:var(--sans);font-weight:600;font-size:34px;letter-spacing:.12em;
+  color:#e6fff4;padding:4px 10px;border:2px solid #9effd5;border-radius:8px;
+  text-shadow:0 0 2px #fff,0 0 8px #3dffb0,0 0 20px #23e39a,0 0 40px #23e39a;
+  box-shadow:0 0 6px #3dffb0,0 0 18px #23e39a,inset 0 0 8px #23e39a;
+}
+.neon-sub{font-family:var(--script);font-size:30px;color:#ffeaf0;text-shadow:0 0 6px #ff7fa8,0 0 16px #ff4f8b;}
+@keyframes flicker{0%,18%,20%,52%,54%,100%{opacity:1;}19%,53%{opacity:.35;}}
+@media (prefers-reduced-motion:reduce){.neon-v{animation:none;}}
+.foot-fine{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:var(--ink-3);}
+
+/* ---------- DRAWER ---------- */
+#drawer{position:fixed;inset:0;z-index:80;visibility:hidden;}
+#drawer.open{visibility:visible;}
+#drawer .scrim{position:absolute;inset:0;background:color-mix(in srgb,#000 38%,transparent);opacity:0;transition:opacity .4s;}
+#drawer.open .scrim{opacity:1;}
+#drawer .sheet{
+  position:absolute;top:0;right:0;bottom:0;width:min(1040px,100vw);
+  background:var(--paper);border-left:1px solid var(--ink);
+  transform:translateX(100%);transition:transform .55s cubic-bezier(.2,.85,.15,1);
+  display:flex;flex-direction:column;
+}
+#drawer.open .sheet{transform:none;}
+.d-bar{display:flex;align-items:center;gap:12px;padding:14px clamp(16px,3vw,32px);border-bottom:1px solid var(--rule);}
+.d-bar .num{font-size:18px;color:var(--red);}
+.d-bar .path{color:var(--ink-3);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.d-body{flex:1;overflow-y:auto;padding:clamp(18px,3vw,36px) clamp(16px,3vw,40px) 40px;}
+.d-body h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.6vw,80px);line-height:.95;letter-spacing:-.015em;}
+.d-sub{font-size:clamp(17px,1.6vw,21px);color:var(--jade);margin:12px 0 26px;max-width:720px;line-height:1.4;}
+.d-media{display:flex;flex-direction:column;gap:18px;}
+.d-fig{border:1px solid var(--rule);padding:10px;background:var(--paper-2);}
+.d-fig img{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;margin:0 auto;}
+.d-text{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:20px 40px;margin-top:30px;}
+.d-text .meta{color:var(--ink-2);}
+.d-text p{font-size:17px;line-height:1.7;}
+.d-nav{display:flex;gap:8px;align-items:center;padding:12px clamp(16px,3vw,32px);border-top:1px solid var(--rule);}
+.d-nav .btn{margin-left:auto;}
+
+/* ---------- LIGHTBOX ---------- */
+#lightbox{position:fixed;inset:0;z-index:85;display:none;align-items:center;justify-content:center;background:color-mix(in srgb,var(--paper) 94%,transparent);padding:20px;}
+#lightbox.open{display:flex;}
+#lightbox .lb{position:relative;height:min(86vh,900px);aspect-ratio:848/1354;max-width:100%;}
+#lightbox video{width:100%;height:100%;object-fit:cover;display:block;background:#000;border-radius:4px;}
+#lightbox .tbtn{position:absolute;top:10px;right:10px;}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
+.rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .mgrid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  #nav{display:none;}
+}
+@media (max-width:820px){
+  .about,.cv{grid-template-columns:1fr;}
+  .d-text{grid-template-columns:1fr;}
+  .cv h3{border-top:none;}
+  .head{grid-template-columns:auto 1fr;}
+  .head .aside{grid-column:1 / -1;text-align:left;}
+}
+@media (max-width:720px){
+  #lily{width:100%;height:46%;top:56px;}
+  #corner-r,.scroll-cue{display:none;}
+  #hero{align-items:flex-end;}
+  .hero-copy{padding:0 0 90px;}
+  .hero-name-cn{top:96px;transform:none;font-size:34px;}
+  .hero-meta{margin-bottom:16px;}
+  .pool-head{top:72px;}
+  .pc-cap{min-width:0;}
+  .pc-s{font-size:12.5px;max-width:72vw;}
+  .pool-idx .hint{display:none;}
+  .cv-item{grid-template-columns:1fr;}
+  .cv-item .desc{grid-column:1;}
+  .foot{grid-template-columns:1fr;}
+  .sign{justify-self:start;}
+  #corner-l{display:none;}
+  .tbtn .lat{display:none;}
+  .brand .bn{font-size:18px;}
 }
 @media (max-width:480px){
-  .idx-row{flex-wrap:wrap;row-gap:4px;}
-  .idx-row .tt{flex:1 1 auto;min-width:0;}
-  .idx-row .mm{margin-left:38px;flex:1 0 100%;text-align:left;white-space:normal;}
+  .mgrid{grid-template-columns:1fr;}
+  #corner-r .lbl{display:none;}
 }
 </style>
 </head>
@@ -638,763 +388,1254 @@ body{overflow:hidden;}
 /* ╔══════════════════════════════════════════════════════════════════╗
    ║  EDIT ME — PORTFOLIO CONFIG                                       ║
    ╚══════════════════════════════════════════════════════════════════╝ */
-
 const PORTFOLIO = {
-  name: "Caroline Chen",           // EDIT ME
-  handle: "GALLERY WALK-THROUGH",
+  name: "Caroline Chen",
+  chinese: ["陈","锦","儿"],                    // seal + vertical name (design use only)
   email: "carolineche99@gmail.com",
-  resumeUrl: "assets/Caroline_Chen_Resume.pdf",                  // EDIT ME — link to your resume PDF ("" hides button)
-};
-
-/* Entry intro — cyberpunk ID-scan splash shown once on load.
-   video plays and loops continuously. */
-const INTRO = {
+  resumeUrl: "assets/Caroline_Chen_Resume.pdf", // "" hides the button
   video: "assets/portfolio_intro.mp4",
 };
 
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  THE GALLERY — add / remove / reorder projects here.              ║
-   ║  Order in this array = order you walk past them (left → right).   ║
-   ║                                                                   ║
-   ║  {                                                                ║
-   ║    title : "PROJECT NAME",          // shown on the frame         ║
-   ║    meta  : "UX · 2025",             // small line under the title ║
-   ║    blurb : "one or two sentences.", // shown in the detail window ║
-   ║    thumb : "assets/thing.png",      // "" → wireframe placeholder ║
-   ║    accent: "#8B5CF6",               // frame accent, from thumb   ║
-   ║    url   : "https://…",             // "" → button disabled       ║
-   ║    tags  : ["UX","RESEARCH"],                                     ║
-   ║  }                                                                ║
+   ║  WORK — order here = order across the pool (left → right).        ║
+   ║  sub    : one line on what the project entails                    ║
+   ║  gallery: images shown in the project drawer (instead of thumb)   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
-
 const PROJECTS = [
   {
     title: "InterACE",
-    meta: "UX CASE STUDY· INTERACTION · 2024",
+    sub: "An AI interview-prep app — user research, brand identity and a high-fidelity prototype.",
+    meta: "UX CASE STUDY · BRANDING · 2024",
     blurb: "Interview prep usually means rehearsing alone and hoping for the best. InterACE is an AI app that learns where you stumble and coaches you through it, so practice actually moves you somewhere.",
     thumb: "assets/interace_thumb.png",
-    accent: "#7C5CFC",
     url: "https://www.figma.com/proto/MbtfQ5xZ7t3U4Dy1Hq6QgE/DES112-InterACE-Case-Study?node-id=1-2&p=f&viewport=422%2C25%2C0.04&t=HOjDy5ylsCMUGnxX-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
-    tags: ["UX","PRODUCT DESIGN","FIGMA"],
+    tags: ["UX","PRODUCT DESIGN","BRANDING","FIGMA"],
   },
   {
     title: "My aKDPHI Guides",
+    sub: "A visual onboarding site for chapter officers — UX writing, information design and an HTML/CSS build.",
     meta: "UX WRITING · DOCUMENTATION · 2025",
     blurb: "People often bounce off a platform before they ever get comfortable with it. I built a visual onboarding guide for alpha Kappa Delta Phi chapter officers, walking Presidents, Secretaries, and Recruitment leads through the tools they actually use in the My aKDPhi portal: Role Assignment, Member Statuses, and Recruitment.",
     thumb: "assets/akdphi_thumb.png",
-    accent: "#9C5FA8",
     url: "https://akdphicaro.neocities.org/myaKDPhi/",
-    tags: ["UX WRITING","DOCUMENTATION","WEB", "HTML", "CSS"],
+    tags: ["UX WRITING","DOCUMENTATION","WEB","HTML","CSS"],
   },
   {
     title: "Constructing Campus Identity",
+    sub: "Design ethnography — fieldwork, a critique of UC Davis branding and a satirical mascot concept.",
     meta: "DESIGN ETHNOGRAPHY · UX RESEARCH · 2026",
     blurb: "UC Davis leans on horses, sheep, and cows to tell its story, but those symbols don't always match how the campus actually runs. This ethnographic portfolio traces that gap through fieldwork at the Equestrian Center, the Silo, and the Sheep Mowers mural, then proposes a satirical mascot, Sunpebble, to make the contradiction visible.",
     thumb: "assets/campus_identity_thumb.png",
-    accent: "#4A90E2",
     url: "assets/campus_identity.pdf",
     tags: ["UX RESEARCH","ETHNOGRAPHY","FIELDWORK","NARRATIVE"],
   },
   {
     title: "Chiaroscuro",
+    sub: "A branching interactive story — narrative design, visual identity and a hand-coded web build.",
     meta: "INTERACTIVE NARRATIVE · 2025",
     blurb: "One choice, two realities. Chiaroscuro visualizes the gamble of recreational drug use as branching paths of euphoria and paranoia, letting you drift toward the high or the dread and feel the weight of not knowing which you'll get.",
     thumb: "assets/chiaroscuro_thumb.png",
-    accent: "#6E93BF",
     url: "https://des117.space/fa2025-mead/cache/interactive_narrative/",
-    tags: ["INTERACTIVE NARRATIVE","WEB", "HTML", "CSS", "GRAPHIC DESIGN"],
+    tags: ["INTERACTIVE NARRATIVE","WEB","HTML","CSS","GRAPHIC DESIGN"],
   },
   {
     title: "Infinite Regress",
+    sub: "A 16-page booklet on the regress problem — editorial layout, typography and a page-flip web edition.",
     meta: "EDITORIAL · PUBLICATION DESIGN · 2025",
     blurb: "Some thoughts don't resolve, they just keep asking for another reason. Infinite Regress is a 16-page booklet on the epistemic regress problem, set in a tunnel that never ends, and built as an interactive page-flip so you have to keep turning to find a ground that isn't there.",
     thumb: "assets/infinite_regress_thumb.png",
-    accent: "#A13A3E",
     url: "assets/infinite-regress-flipbook.html",
     tags: ["EDITORIAL","PUBLICATION DESIGN","TYPOGRAPHY","INTERACTIVE","WEB"],
   },
   {
     title: "Study ARC",
+    sub: "A time-management platform for students — research, user flows and a Figma prototype.",
     meta: "UX CASE STUDY · PRODUCT DESIGN · 2024",
     blurb: "Most productivity tools just push students to do more. S.ARC is a time-management platform built around how people actually study, so planning a workload stops feeling like a punishment.",
     thumb: "assets/studyarc_thumb.png",
-    accent: "#E3A47E",
-    fit: "contain", // wide 2-panel image — cover cropped the edges
     url: "https://www.figma.com/proto/11bo1rlu05kqcEprjRrHap/DES112-Study-ARC-Case-Study?node-id=1-2&p=f&viewport=390%2C25%2C0.04&t=KnJVJd9x8oG9MuNc-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
     tags: ["UX","PRODUCT DESIGN","FIGMA"],
   },
   {
     title: "The Mask Compliance Report",
+    sub: "A photo essay on productivity culture — photography, sequencing and layout.",
     meta: "PHOTO ESSAY · SOCIETAL CRITIQUE · 2025",
     blurb: "We're told success means always looking productive, whatever it costs underneath. This photo essay pulls off that mask to show the mental and physical fatigue we hide, and asks who the 'productive mindset' really serves.",
     thumb: "assets/maskcompliance_thumb.png",
-    accent: "#B8B8B8",
-    fit: "contain", // title-card graphic — cover cropped the text off-center
     url: "https://www.figma.com/proto/08DGix9iJJL4pW8C42ITtI/AHI189-Photo-Essay-FINAL?page-id=0%3A1&node-id=23-13&p=f&viewport=516%2C104%2C1.01&t=gAZFrztQEjf6mzTh-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=23%3A13",
     tags: ["PHOTO ESSAY","PHOTOGRAPHY"],
   },
   {
     title: "Form and Flesh",
+    sub: "A mixed-media series — fluid watercolor cut through with hard-edged paper collage.",
     meta: "WATERCOLOR & PAPER COLLAGE · 2023",
     blurb: "A collision of organic warmth and synthetic edge. Fluid watercolor represents the unpredictable nature of human flesh, shattered and structured by hard-edged cybernetic cutouts. Where does the body end, and the machine begin?",
     thumb: "assets/formandflesh_thumb.jpg",
-    accent: "#B5766B",
     url: "https://www.figma.com/proto/3iWVoSJwswsKfEdT3nTUXp/Form-and-Flesh?node-id=1-2&p=f&viewport=61%2C113%2C0.29&t=v5orTz2DpH994sqh-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
     tags: ["WATERCOLOR","COLLAGE","MIXED MEDIA","FINE ART"],
   },
   {
     title: "Caroline's Blog",
+    sub: "Essays on digital culture and online discourse — writing plus a hand-built blog site.",
     meta: "BLOG · WEB DESIGN · 2025",
     blurb: "The internet runs on ideas we've stopped questioning. This writing project digs into digital culture and online discourse, turning passing scroll thoughts into essays worth a second look.",
     thumb: "assets/blog_thumb.png",
-    accent: "#6F74AE",
     url: "https://des117.space/fa2025-mead/cache/blog/index.html",
     tags: ["WEB DESIGN","BLOG","HTML","CSS","WRITING"],
   },
-
-  /* ── poster prints: shown uncropped at their uploaded aspect ratio,
-        no accent / blurb / tags. ratio + fit:"contain" = full poster. ── */
   {
-    title: "Clarendon Typeface Poster Print",
-    meta: "",
+    title: "Clarendon Type Poster",
+    sub: "A type specimen poster — exploring the Clarendon slab serif in print.",
+    meta: "TYPOGRAPHY · POSTER PRINT",
+    blurb: "",
     thumb: "assets/clarendon_poster.jpg",
-    fit: "contain",
-    ratio: "200/309",   // 1000 × 1545, uploaded dimensions
     url: "",
+    tags: ["TYPOGRAPHY","POSTER","PRINT"],
   },
   {
     title: "Corky Lee Zine",
-    meta: "SINOPHOBIA & ANTI-CHINESE SENTIMENT OF THE WEST",
+    sub: "A zine on Sinophobia and anti-Chinese sentiment in the West, built around Corky Lee's photographs.",
+    meta: "ZINE · EDITORIAL · PRINT",
     blurb: "Photographs by Corky Lee.",
     thumb: "assets/corky_lee_zine.jpg",
-    fit: "contain",
-    ratio: "9/7",       // 3375 × 2625, uploaded dimensions
     url: "",
+    tags: ["ZINE","EDITORIAL","PRINT"],
   },
   {
     title: "C-STEM Success Signages",
+    sub: "Event signage for a STEM symposium — turning district math-score gains into at-a-glance data graphics.",
     meta: "PRINT DESIGN · EVENT SIGNAGE · 2025",
     blurb: "Created for the 2025 6th Annual C-STEM Symposium, UC Davis Center for Integrated Computing and STEM Education. Two signs translating district-level math score gains, Hacienda La Puente USD's 344% jump in 6th grade standard-exceeding scores and McPherson Magnet School's 72% four-year SBAC math increase, into signage built to make the case for the program at a glance.",
     thumb: "assets/cstem_signage_poster.jpg",
-    fit: "contain",
-    ratio: "1104/425",   // 6624 × 2550 composite, two 3300×2550 signs side by side
-    tags: ["PRINT DESIGN","DATA VISUALIZATION","EVENT SIGNAGE"],
+    gallery: ["assets/cstemsignage_1.jpg","assets/cstemsignage_2.jpg"],
     url: "",
+    tags: ["PRINT DESIGN","DATA VISUALIZATION","EVENT SIGNAGE"],
   },
+];
+
+/* ╔══════════════════════════════════════════════════════════════════╗
+   ║  MOTION — videos and live code pieces.                            ║
+   ║  { kind:"video", src:"assets/x.mp4", title, sub }                 ║
+   ║  { kind:"scene", scene:"tide" | "brocade" | "halftone" }          ║
+   ╚══════════════════════════════════════════════════════════════════╝ */
+const MOTION = [
+  { kind:"video", src:"assets/portfolio_intro.mp4", title:"Portrait, Glitched", sub:"Self-portrait video loop." },
+  { kind:"scene", scene:"tide" },
+  { kind:"scene", scene:"brocade" },
+  { kind:"scene", scene:"halftone" },
 ];
 </script>
 
-<div id="intro">
-  <div class="id-card" role="dialog" aria-label="Identity file">
-    <div class="id-topbar">
-      <span class="path">https://carolinechen.design/gallery/room_01</span>
-    </div>
-    <div class="id-main">
-      <div class="id-header">
-        <div class="id-photo" id="id-photo" role="button" tabindex="0" aria-label="View intro video larger">
-          <span class="expand">⤢ EXPAND</span>
-          <video id="intro-video" muted playsinline autoplay preload="auto"></video>
-          <div class="barcode"></div>
-        </div>
-        <div class="id-header-info">
-          <div class="id-name" id="intro-name">CAROLINE CHEN</div>
-        </div>
-      </div>
-      <div class="id-data">
-        <dl class="id-row"><dt>IDENTITY</dt><dd>UX Designer / Occasional Multi-Medium Dabbler</dd></dl>
-        <dl class="id-row"><dt>LOCATION</dt><dd>San Mateo, CA</dd></dl>
-        <dl class="id-row"><dt>EDUCATION</dt><dd>UC Davis — BA Design / BS Managerial Econonmics</dd></dl>
-        <dl class="id-row"><dt>EMAIL</dt><dd><a id="intro-email" href="carolineche99@gmail.com"></a></dd></dl>
-        <dl class="id-row"><dt>SYSTEM MOTIVATOR</dt><dd>Absurd Optimism</dd></dl>
-        <dl class="id-row"><dt>RECOVERY MODE</dt><dd>Fail-Safe</dd></dl>
-        <dl class="id-row"><dt>CLEARANCE</dt><dd id="intro-status">SCANNING</dd></dl>
-        <pre class="id-log" id="intro-log"></pre>
-        <div class="id-scan" id="intro-scanbar"><div class="id-scan-fill" id="intro-fill"></div></div>
-        <div class="id-desc" id="intro-desc" hidden>
-          <p>I study real human habits in the wild and build them into digital tools, physical pieces, or whatever medium fits best. Big on productivity culture, tech irony, and bold experiments. Step inside. We can build something together.</p>
-        </div>
-      </div>
-    </div>
-    <div class="id-foot">
-      <span>NODE ACCESS · ONLINE</span>
-      <button id="intro-enter">ENTER →</button>
-    </div>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div id="loader" role="presentation">
+  <div class="seal" data-seal></div>
+  <div class="ld-name">Caroline Chen</div>
+  <div class="ld-count" id="ld-count">000</div>
+</div>
+
+<header id="top">
+  <a class="brand" href="#hero" aria-label="Back to top">
+    <span class="seal s" data-seal></span>
+    <span class="bn">Caroline <i>Chen</i></span>
+  </a>
+  <nav id="nav" aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#motion">Motion</a>
+    <a href="#about">About</a>
+    <a href="#resume">Resume</a>
+  </nav>
+  <div class="tools">
+    <button class="tbtn" id="sound" aria-pressed="false" title="Guzheng over a soft beat — generated live"><span class="bars"><i></i><i></i><i></i></span><span class="lat">Sound</span></button>
+    <button class="tbtn" id="theme" aria-pressed="false"><span class="moon"></span><span class="lat">Dark mode</span></button>
   </div>
-</div>
+</header>
 
-<nav id="nav">
-  <span class="brand"><span id="brand-name"></span> <em>· GALLERY WALK-THROUGH</em></span>
-  <a href="#" data-tab="index">INDEX</a>
-  <a href="#" data-tab="about">ABOUT</a>
-  <a href="#" data-tab="resume">RESUME</a>
-</nav>
+<div id="corner-l" class="sm"><span id="clock">San Mateo, CA</span></div>
+<div id="corner-r"><span class="lbl sm">Background</span><span id="scene-btns" style="display:flex;gap:10px"></span></div>
 
-<!-- THE WALL -->
-<div id="stage">
-  <div id="glow"></div>
-  <div id="deck"></div>
-  <div id="dust"></div>
-  <div id="haze"></div>
-</div>
-
-<button class="arrow" id="arrow-prev" aria-label="Previous project">&#8249;</button>
-<button class="arrow" id="arrow-next" aria-label="Next project">&#8250;</button>
-<div id="counter">01 / 01</div>
-
-<div id="nowbar">
-  <div class="no" id="now-no">[01]</div>
-  <div class="tt" id="now-title">&mdash;</div>
-  <div class="mm" id="now-mm"></div>
-  <div class="cue">DRAG OR SCROLL TO BROWSE &middot; <b>PRESS THE CENTER SCREEN TO OPEN</b></div>
-</div>
-
-<!-- RESUME -->
-<div class="overlay" id="ov-resume">
-  <div class="term" role="dialog" aria-label="Resume">
-    <div class="tbar">/usr/caro/resume.pdf<button class="x" data-close>ESC</button></div>
-    <div class="tbody">
-      <h2>EDUCATION</h2>
-      <dl class="kv">
-        <dt>2022 – 2026</dt><dd>University of California, Davis<br><span style="color:var(--faint)">BS in Managerial Economics, BA in Design (UX &amp; Digital Systems Focus)</span></dd>
-        <dt>July 2025</dt><dd>National Taiwan University<br><span style="color:var(--faint)">Study Abroad Program in Law and Data</span></dd>
-      </dl>
-      <h2>SELECTED PROJECTS</h2>
-      <dl class="kv">
-        <dt>2026 – Present</dt><dd>Exhale (Dead Vapes Society): Social Habit-Tracking Platform<br><span style="color:var(--faint)">UX/UI Design, React Native, Figma, Product Strategy — leading UX strategy and interface design for a three-person startup team building a social habit-tracking app that pairs with a Bluetooth-enabled wearable sensor. Target launch September 2026; currently in the prototyping phase.</span></dd>
-        <dt>Winter 2026</dt><dd>Constructing Campus Identity: Design Ethnography Case Study<br><span style="color:var(--faint)">UX Research, Ethnographic Fieldwork, Concept Design — a quarter spent observing campus spaces and talking to students about how they actually experience UC Davis, compared against how the university brands itself; used the gap as the basis for a satirical concept character and narrative pitch.</span></dd>
-        <dt>Case Study</dt><dd>InterACE: AI-Powered Interview Prep App<br><span style="color:var(--faint)">UX/UI Design, Figma, Branding — designed the UX and brand identity for a concept app that personalizes interview prep, from user research to a high-fidelity prototype.</span></dd>
-        <dt>Apr 2025 – Present</dt><dd>My aKDPhi Guides: Visual Onboarding Website<br><span style="color:var(--faint)">UX/UI Design, HTML/CSS, Visual Systems — turned dense internal process documentation into a visual, step-by-step onboarding site.</span></dd>
-      </dl>
-      <h2>WORK EXPERIENCE</h2>
-      <dl class="kv">
-        <dt>Jan 2025 – May 2026</dt><dd>C-STEM Administrative and Marketing Assistant, UC Davis Center for Integrated Computing and STEM Education<br><span style="color:var(--faint)">Designed the templates, digital assets, and event materials that made up the program's visual brand; coordinated event logistics for community-facing initiatives with schools and stakeholders; grew Instagram engagement ~12% through consistent visual and storytelling strategy.</span></dd>
-        <dt>Additional</dt><dd>Transaction Coordinator Assistant, Aide Real Estate (Nov 2023 – Aug 2025)<br><span style="color:var(--faint)">PLS21 Peer Tutor, UC Davis Dept. of Plant Sciences (Sept – Dec 2023)</span></dd>
-      </dl>
-      <h2>LEADERSHIP &amp; CAMPUS INVOLVEMENT</h2>
-      <dl class="kv">
-        <dt>Sept 2025 – Mar 2026</dt><dd>Onboarding Lead, Bridge Builders Implementation Task Force — alpha Kappa Delta Phi<br><span style="color:var(--faint)">Trained and onboarded members on a new internal platform rolled out across all 67 chapters in the US and Canada; wrote the supporting documentation.</span></dd>
-        <dt>Apr 2025 – Jan 2026</dt><dd>Webmistress — alpha Kappa Delta Phi<br><span style="color:var(--faint)">Redesigned the chapter website from the ground up, rebuilding the visual system and navigation.</span></dd>
-        <dt>Jan 2026 – June 2026</dt><dd>Rush Chair &amp; VP Service — alpha Kappa Delta Phi<br><span style="color:var(--faint)">Directed spring rush recruitment and led chapter-wide service events focused on Breast Cancer Awareness.</span></dd>
-        <dt>Jan 2023 – May 2024</dt><dd>Member, Economics and Business Student Association<br><span style="color:var(--faint)">Finalist, KPMG-sponsored AI consulting case competition (market sizing, competitive analysis, financial projections for an AI-powered e-commerce pitch); third place, EBSA marketing case competition (Home Depot holiday campaign concept).</span></dd>
-      </dl>
-      <h2>SKILLS</h2>
-      <span class="tag">FIGMA</span><span class="tag">ADOBE ILLUSTRATOR</span><span class="tag">PHOTOSHOP</span><span class="tag">INDESIGN</span><span class="tag">WEBFLOW</span><span class="tag">RHINO</span><span class="tag">TYPOGRAPHY &amp; EDITORIAL DESIGN</span><span class="tag">HTML/CSS/JS</span><span class="tag">RSTUDIO</span>
-      <h2>DOWNLOAD</h2>
-      <a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener">▼ DOWNLOAD PDF</a>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<div class="overlay" id="ov-about">
-  <div class="term" role="dialog" aria-label="About">
-    <div class="tbar">/usr/caro/about.me<button class="x" data-close>ESC</button></div>
-    <div class="tbody">
-      <h2>ABOUT</h2>
-      <div class="id-bio">
-        <p>I'm <b>Caroline Chen</b>, a designer with a background in economics, which basically means
-        I like figuring out why people do irrational things on screens.</p>
-        <p>Growing up near San Francisco, I spent a lot of time wandering Chinatown, mostly drawn
-        to the subtle layout details in storefronts and the daily routines of people passing
-        through. That early curiosity about how people naturally navigate physical spaces is
-        really what pulled me toward design in the first place.</p>
-        <p>I recently wrapped up at <b>UC Davis</b> with a <b>BA in Design</b> and a <b>BS in Managerial
-        Economics</b>. These days, I focus on <b>user experience</b> and <b>ethnographic fieldwork</b>. I like
-        getting out into real spaces to observe actual human habits, then figuring out how those
-        behaviors translate into functional digital systems. A lot of my work digs into themes
-        around <b>productivity culture, habit loops, and the subtle social irony</b> built into the
-        tools we use every day.</p>
-        <p>Admittedly, I'm an iPad kid—it's my go-to digital sketchbook for pulling together
-        quick graphic assets and experimenting with textures. But I don't confine myself strictly
-        to digital work, either. My projects hop around between user interfaces, field research,
-        and physical print design.</p>
-        <p>A lot of my creative energy comes from deep-diving into the hyperpop and EDM scenes.
-        The raw stimulation and chaotic energy of the music push me to take bigger visual risks
-        and explore bolder ideas.</p>
-        <p>Going forward, I just want to decode real human habits, strip away the noise, and turn
-        them into thoughtful products with a great team. I'm naturally drawn to new tech,
-        unfamiliar ideas, and learning from how other people work. The final output always
-        matters, but for me, the shift in perspective and knowledge gained during the build is
-        where the real value lives.</p>
-        <div class="id-tags">
-          <span class="tag">UX RESEARCH</span><span class="tag">INTERACTION DESIGN</span><span class="tag">WEB DESIGN</span><span class="tag">GRAPHIC DESIGN</span><span class="tag">PRINT</span><span class="tag">EDITORIAL</span><span class="tag">FIGMA</span><span class="tag">HTML/CSS</span>
-        </div>
-        <p class="id-avail">AVAILABILITY: <b>OPEN TO WORK</b> <span class="cursor"></span></p>
+<main>
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="lily" aria-hidden="true"></canvas>
+    <div class="hero-name-cn" aria-hidden="true" id="cn-vert"></div>
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="hero-meta sm"><span><i class="dot"></i>Open to work</span><span>San Mateo, CA</span><span>Portfolio 2026</span></div>
+        <h1 class="hero-name">Caroline<br>Chen</h1>
+        <p class="hero-role"><span class="script">graphic, brand</span><span class="g">&amp; experience design.</span></p>
+        <p class="hero-statement">I study real human habits in the wild and build them into digital tools, physical pieces, or whatever medium fits best. Big on productivity culture, tech irony, and bold experiments.</p>
       </div>
     </div>
-  </div>
-</div>
+    <a class="scroll-cue sm" href="#work"><i></i><span>Scroll to the water</span></a>
+  </section>
 
-<!-- PROJECT DETAIL -->
-<div class="overlay" id="ov-project">
-  <div class="term proj" role="dialog" aria-label="Project">
-    <div class="tbar"><span id="proj-path">/gallery/</span><button class="x" data-close>ESC</button></div>
-    <div class="tbody proj-body">
-      <div class="proj-hero" id="proj-hero"></div>
-      <div class="proj-meta">
-        <div class="no" id="proj-no">[00]</div>
-        <h3 id="proj-title"></h3>
-        <div class="mm" id="proj-mm"></div>
-        <p id="proj-blurb"></p>
-        <div id="proj-tags"></div>
+  <!-- WORK — reflecting pool -->
+  <section id="work" aria-label="Selected work">
+    <div class="pool-stick" id="pool">
+      <div class="pool-head">
+        <div class="wrap">
+          <div class="head">
+            <span class="num">01</span>
+            <h2>Selected <em>work</em></h2>
+            <span class="aside sm">Scroll to wade through · touch the water</span>
+          </div>
+        </div>
+      </div>
+      <div class="pool-track" id="track"></div>
+      <canvas class="pool-water" id="water"></canvas>
+      <canvas class="pool-water fallback" id="water2"></canvas>
+      <div class="pool-line" id="pool-line"></div>
+      <div class="pool-idx" id="pool-idx"></div>
+    </div>
+  </section>
+
+  <!-- MOTION -->
+  <section id="motion" class="sec panel">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="num">02</span>
+        <h2>Motion &amp; <em>backgrounds</em></h2>
+        <span class="aside sm">Video · live code</span>
+      </div>
+      <div class="mgrid" id="mgrid"></div>
+      <p class="note rv">The backgrounds on this site are drawn live in code: blue-and-white porcelain waves under a red sun, a brocade that ripples like silk (<span class="cn">锦</span>, the jǐn in my name, means brocade), and a halftone cloud under a glass lens. Hover over them, and use any one as the page background.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="sec panel">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="num">03</span>
+        <h2>About</h2>
+        <span class="aside sm">Bay Area · UC Davis '26</span>
+      </div>
+      <div class="about">
+        <div class="rv">
+          <button class="mirror" id="portrait" aria-label="Play portrait video larger">
+            <div class="glass"><video id="about-video" muted playsinline loop preload="metadata"></video><span class="sheen" id="sheen"></span><span class="vign"></span></div>
+          </button>
+          <dl class="facts">
+            <dt>Identity</dt><dd>Graphic · Brand · Experience Designer</dd>
+            <dt>Education</dt><dd>UC Davis — BA Design / BS Managerial Economics</dd>
+            <dt>Favorite flower</dt><dd>Calla lilies</dd>
+            <dt>System motivator</dt><dd>Absurd Optimism</dd>
+            <dt>Recovery mode</dt><dd>Fail-Safe</dd>
+          </dl>
+        </div>
+        <div class="bio rv">
+          <p>I'm Caroline Chen, a designer with a background in economics, which basically means I like figuring out why people do irrational things on screens.</p>
+          <p>Growing up near San Francisco, I spent a lot of time wandering Chinatown, mostly drawn to the subtle layout details in storefronts and the daily routines of people passing through. That early curiosity about how people naturally navigate physical spaces is really what pulled me toward design in the first place.</p>
+          <p>I recently wrapped up at <b>UC Davis</b> with a <b>BA in Design</b> and a <b>BS in Managerial Economics</b>. These days, I focus on <b>user experience</b> and <b>ethnographic fieldwork</b>. I like getting out into real spaces to observe actual human habits, then figuring out how those behaviors translate into functional digital systems. A lot of my work digs into themes around <b>productivity culture, habit loops, and the subtle social irony</b> built into the tools we use every day.</p>
+          <p>Admittedly, I'm an iPad kid—it's my go-to digital sketchbook for pulling together quick graphic assets and experimenting with textures. But I don't confine myself strictly to digital work, either. My projects hop around between user interfaces, field research, and physical print design.</p>
+          <p>A lot of my creative energy comes from deep-diving into the hyperpop and EDM scenes. The raw stimulation and chaotic energy of the music push me to take bigger visual risks and explore bolder ideas.</p>
+          <p>Going forward, I just want to decode real human habits, strip away the noise, and turn them into thoughtful products with a great team. I'm naturally drawn to new tech, unfamiliar ideas, and learning from how other people work. The final output always matters, but for me, the shift in perspective and knowledge gained during the build is where the real value lives.</p>
+          <div class="tags">
+            <span class="tag">Graphic Design</span><span class="tag">Branding</span><span class="tag">UX Research</span><span class="tag">Interaction Design</span><span class="tag">Web Design</span><span class="tag">Print</span><span class="tag">Editorial</span><span class="tag">Figma</span><span class="tag">HTML/CSS</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="proj-nav">
-      <button id="proj-prev">← PREV</button>
-      <button id="proj-next">NEXT →</button>
-      <a class="btn" id="proj-open" href="#" target="_blank" rel="noopener">OPEN PROJECT ↗</a>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" class="sec panel">
+    <div class="wrap">
+      <div class="head rv">
+        <span class="num">04</span>
+        <h2>Resume</h2>
+        <span class="aside"><a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener">↓ Download PDF</a></span>
+      </div>
+      <div class="cv rv">
+        <h3>Education</h3>
+        <div class="cv-items">
+          <div class="cv-item"><div class="when">2022 – 2026</div><div class="what">University of California, Davis</div><div class="desc">BS in Managerial Economics, BA in Design (UX &amp; Digital Systems Focus)</div></div>
+          <div class="cv-item"><div class="when">July 2025</div><div class="what">National Taiwan University</div><div class="desc">Study Abroad Program in Law and Data</div></div>
+        </div>
+
+        <h3>Selected projects</h3>
+        <div class="cv-items">
+          <div class="cv-item"><div class="when">2026 – Present</div><div class="what">Exhale (Dead Vapes Society): Social Habit-Tracking Platform</div><div class="desc">UX/UI Design, React Native, Figma, Product Strategy — leading UX strategy and interface design for a three-person startup team building a social habit-tracking app that pairs with a Bluetooth-enabled wearable sensor. Target launch September 2026; currently in the prototyping phase.</div></div>
+          <div class="cv-item"><div class="when">Winter 2026</div><div class="what">Constructing Campus Identity: Design Ethnography Case Study</div><div class="desc">UX Research, Ethnographic Fieldwork, Concept Design — a quarter spent observing campus spaces and talking to students about how they actually experience UC Davis, compared against how the university brands itself; used the gap as the basis for a satirical concept character and narrative pitch.</div></div>
+          <div class="cv-item"><div class="when">Case Study</div><div class="what">InterACE: AI-Powered Interview Prep App</div><div class="desc">UX/UI Design, Figma, Branding — designed the UX and brand identity for a concept app that personalizes interview prep, from user research to a high-fidelity prototype.</div></div>
+          <div class="cv-item"><div class="when">Apr 2025 – Present</div><div class="what">My aKDPhi Guides: Visual Onboarding Website</div><div class="desc">UX/UI Design, HTML/CSS, Visual Systems — turned dense internal process documentation into a visual, step-by-step onboarding site.</div></div>
+        </div>
+
+        <h3>Experience</h3>
+        <div class="cv-items">
+          <div class="cv-item"><div class="when">Jan 2025 – May 2026</div><div class="what">C-STEM Administrative and Marketing Assistant, UC Davis Center for Integrated Computing and STEM Education</div><div class="desc">Designed the templates, digital assets, and event materials that made up the program's visual brand; coordinated event logistics for community-facing initiatives with schools and stakeholders; grew Instagram engagement ~12% through consistent visual and storytelling strategy.</div></div>
+          <div class="cv-item"><div class="when">Nov 2023 – Aug 2025</div><div class="what">Transaction Coordinator Assistant, Aide Real Estate</div></div>
+          <div class="cv-item"><div class="when">Sept – Dec 2023</div><div class="what">PLS21 Peer Tutor, UC Davis Dept. of Plant Sciences</div></div>
+        </div>
+
+        <h3>Leadership</h3>
+        <div class="cv-items">
+          <div class="cv-item"><div class="when">Sept 2025 – Mar 2026</div><div class="what">Onboarding Lead, Bridge Builders Implementation Task Force — alpha Kappa Delta Phi</div><div class="desc">Trained and onboarded members on a new internal platform rolled out across all 67 chapters in the US and Canada; wrote the supporting documentation.</div></div>
+          <div class="cv-item"><div class="when">Apr 2025 – Jan 2026</div><div class="what">Webmistress — alpha Kappa Delta Phi</div><div class="desc">Redesigned the chapter website from the ground up, rebuilding the visual system and navigation.</div></div>
+          <div class="cv-item"><div class="when">Jan 2026 – June 2026</div><div class="what">Rush Chair &amp; VP Service — alpha Kappa Delta Phi</div><div class="desc">Directed spring rush recruitment and led chapter-wide service events focused on Breast Cancer Awareness.</div></div>
+          <div class="cv-item"><div class="when">Jan 2023 – May 2024</div><div class="what">Member, Economics and Business Student Association</div><div class="desc">Finalist, KPMG-sponsored AI consulting case competition (market sizing, competitive analysis, financial projections for an AI-powered e-commerce pitch); third place, EBSA marketing case competition (Home Depot holiday campaign concept).</div></div>
+        </div>
+
+        <h3>Skills</h3>
+        <div class="cv-items">
+          <div class="cv-skills">
+            <span class="tag">Figma</span><span class="tag">Adobe Illustrator</span><span class="tag">Photoshop</span><span class="tag">InDesign</span><span class="tag">Webflow</span><span class="tag">Rhino</span><span class="tag">Typography &amp; Editorial Design</span><span class="tag">HTML/CSS/JS</span><span class="tag">RStudio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="panel">
+  <div class="wrap">
+    <div class="foot rv">
+      <div>
+        <div class="sm" style="color:var(--ink-3);margin-bottom:18px">Contact</div>
+        <div class="foot-big">We can build<br>something <span class="script">together.</span></div>
+        <a class="foot-mail" id="foot-mail" href="#"></a>
+      </div>
+      <div class="sign" aria-label="Open to work">
+        <div class="neon-v" id="neon-v"></div>
+        <div class="neon-r"><div class="neon-open">OPEN</div><div class="neon-sub">to work</div></div>
+      </div>
+    </div>
+    <div class="foot-fine sm"><span>© 2026 Caroline Chen</span><span>San Mateo, California</span></div>
+  </div>
+</footer>
+
+<!-- project drawer -->
+<div id="drawer" aria-hidden="true">
+  <div class="scrim" data-close></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="d-title">
+    <div class="d-bar">
+      <span class="num" id="d-no"></span>
+      <span class="path sm" id="d-meta-top"></span>
+      <button class="tbtn" id="d-close" data-close>Close ✕</button>
+    </div>
+    <div class="d-body" id="d-body">
+      <h2 id="d-title"></h2>
+      <p class="d-sub" id="d-sub"></p>
+      <div class="d-media" id="d-media"></div>
+      <div class="d-text">
+        <div>
+          <div class="meta sm" id="d-meta"></div>
+          <div class="tags" id="d-tags"></div>
+        </div>
+        <p id="d-blurb"></p>
+      </div>
+    </div>
+    <div class="d-nav">
+      <button class="tbtn" id="d-prev">← Prev</button>
+      <button class="tbtn" id="d-next">Next →</button>
+      <a class="btn" id="d-open" href="#" target="_blank" rel="noopener">Open project ↗</a>
     </div>
   </div>
 </div>
 
-<!-- INDEX -->
-<div class="overlay" id="ov-index">
-  <div class="term" role="dialog" aria-label="Project index">
-    <div class="tbar">/gallery/index<button class="x" data-close>ESC</button></div>
-    <div class="tbody">
-      <h2>WALK-THROUGH · CONTENTS</h2>
-      <div id="idx-list"></div>
-    </div>
-  </div>
-</div>
-
-<!-- VIDEO LIGHTBOX -->
-<div class="overlay" id="ov-video-lightbox">
-  <div class="video-lightbox" role="dialog" aria-label="Intro video, enlarged">
-    <button class="x" data-close aria-label="Close">ESC</button>
-    <video id="lightbox-video" muted playsinline autoplay loop></video>
+<!-- video lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Portrait video">
+  <div class="lb">
+    <video id="lb-video" muted playsinline loop></video>
+    <button class="tbtn" data-close>Close ✕</button>
   </div>
 </div>
 
 <script>
-/* ============================================================
-   ENGINE — you shouldn't need to edit below this line
-   ============================================================ */
 (() => {
 "use strict";
-const $ = s => document.querySelector(s);
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const TAU = Math.PI * 2;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const pad = (n, l=2) => String(n).padStart(l, "0");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const store = {
+  get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
+};
 
-$("#brand-name").textContent = PORTFOLIO.name;
-const em = $("#intro-email");
-em.textContent = PORTFOLIO.email;
-em.href = "mailto:"+PORTFOLIO.email;
+/* ============================================================
+   NOISE — seeded 3D value noise + fbm
+   ============================================================ */
+const Noise = (() => {
+  const p = new Uint8Array(512);
+  let s = 20261007;
+  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const perm = [...Array(256).keys()];
+  for(let i = 255; i > 0; i--){ const j = (rnd() * (i + 1)) | 0; [perm[i], perm[j]] = [perm[j], perm[i]]; }
+  for(let i = 0; i < 512; i++) p[i] = perm[i & 255];
+  const h = (x, y, z) => p[p[p[x & 255] + (y & 255)] + (z & 255)] / 255;
+  const fade = t => t * t * (3 - 2 * t);
+  const lerp = (a, b, t) => a + (b - a) * t;
+  function n3(x, y, z){
+    const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z);
+    const fx = fade(x - X), fy = fade(y - Y), fz = fade(z - Z);
+    return lerp(
+      lerp(lerp(h(X,Y,Z),   h(X+1,Y,Z),   fx), lerp(h(X,Y+1,Z),   h(X+1,Y+1,Z),   fx), fy),
+      lerp(lerp(h(X,Y,Z+1), h(X+1,Y,Z+1), fx), lerp(h(X,Y+1,Z+1), h(X+1,Y+1,Z+1), fx), fy), fz);
+  }
+  function fbm(x, y, z, oct = 3){
+    let v = 0, a = .5, norm = 0;
+    for(let o = 0; o < oct; o++){ v += a * n3(x, y, z); norm += a; x *= 2.03; y *= 2.03; z *= 1.7; a *= .5; }
+    return v / norm;
+  }
+  return { n3, fbm };
+})();
+const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
 
-addEventListener("keydown", e => {
-  if(e.key==="Escape") closeOverlays();
+/* palette, read from CSS so every canvas follows the theme */
+let PAL = {};
+const html = document.documentElement;
+const isDark = () => html.dataset.theme === "dark" || (!html.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+function readPalette(){
+  const cs = getComputedStyle(html);
+  const g = k => cs.getPropertyValue(k).trim();
+  PAL = { paper:g("--paper"), paper2:g("--paper-2"), ink:g("--ink"), ink3:g("--ink-3"), blue:g("--blue"), red:g("--red"),
+          pink:g("--pink"), jade:g("--jade"), jade2:g("--jade-2"), dark:isDark() };
+}
+const hexRGB = h => { h = h.replace("#",""); if(h.length === 3) h = h.replace(/./g, "$&$&"); const n = parseInt(h, 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
+
+/* ============================================================
+   SCENES — each returns { resize(w,h), draw(t, ptr) }
+   ============================================================ */
+const SCENES = {
+
+  /* porcelain line-waves breaking around a cliff, under a red sun */
+  tide: {
+    title:"Tide", sub:"Blue-and-white porcelain waves breaking around a cliff, under a red sun.",
+    make(ctx, mini){
+      let w = 0, h = 0;
+      return {
+        resize(W, H){ w = W; h = H; },
+        draw(t, ptr){
+          ctx.fillStyle = PAL.paper; ctx.fillRect(0, 0, w, h);
+          const sx = w * .7, sy = h * .27, sr = Math.min(w, h) * .09;
+          ctx.fillStyle = PAL.red; ctx.beginPath(); ctx.arc(sx, sy, sr, 0, TAU); ctx.fill();
+          const top = h * .32, gap = mini ? 6 : 9, L = Math.ceil((h - top) / gap) + 2;
+          const step = mini ? 4 : 6, R = mini ? 70 : 160;
+          const cx1 = w * .68 + Math.sin(t * .07) * w * .015, cx2 = w * .28;
+          for(let i = 0; i < L; i++){
+            const f = i / L, base = top + i * gap, amp = .35 + .65 * f, k = Math.max(0, f - .15);
+            const line = new Path2D();
+            for(let x = -step; x <= w + step; x += step){
+              let y = base;
+              y += ((Noise.n3(x * .0032, i * .06, t * .12) - .5) * gap * 5.5 +
+                    (Noise.n3(x * .013 + 40, i * .14, t * .26) - .5) * gap * 1.8) * amp;
+              const d1 = (x - cx1) / (w * .03 + w * .055 * (1 - f));
+              const d2 = (x - cx2) / (w * .05 + w * .07 * (1 - f));
+              y -= k * h * .55 * Math.exp(-d1 * d1) + k * h * .24 * Math.exp(-d2 * d2);
+              if(ptr.active){
+                const dx = x - ptr.x, dy = base - ptr.y, d = Math.sqrt(dx * dx + dy * dy);
+                if(d < R) y += Math.sin(d * .07 - t * 4) * (mini ? 6 : 13) * (1 - d / R);
+              }
+              if(x === -step) line.moveTo(x, y); else line.lineTo(x, y);
+            }
+            const fill = new Path2D(line);
+            fill.lineTo(w + step, h + 10); fill.lineTo(-step, h + 10); fill.closePath();
+            ctx.fillStyle = PAL.paper; ctx.fill(fill);
+            ctx.strokeStyle = PAL.blue; ctx.globalAlpha = .3 + .65 * f; ctx.lineWidth = .6 + .9 * f;
+            ctx.stroke(line); ctx.globalAlpha = 1;
+          }
+        },
+      };
+    },
+  },
+
+  /* 锦 — woven threads billowing like silk; a cloud motif surfaces in cinnabar */
+  brocade: {
+    title:"Brocade", sub:"Woven jade and cinnabar threads that billow like silk.",
+    make(ctx, mini){
+      let w = 0, h = 0;
+      return {
+        resize(W, H){ w = W; h = H; },
+        draw(t, ptr){
+          ctx.fillStyle = PAL.paper; ctx.fillRect(0, 0, w, h);
+          const gap = mini ? 4 : 6, step = mini ? 6 : 8, R = mini ? 70 : 170;
+          const paths = [0,1,2,3,4,5].map(() => new Path2D());
+          for(let y = -gap * 4; y < h + gap * 4; y += gap){
+            let px = 0, py = 0;
+            for(let x = 0; x <= w + step; x += step){
+              let yy = y + (Noise.n3(x * .0035, y * .004, t * .14) - .5) * 46
+                         + Math.sin(x * .009 + y * .005 + t * .55) * 9;
+              if(ptr.active){
+                const dx = x - ptr.x, dy = y - ptr.y, d2 = dx * dx + dy * dy;
+                yy += dy * .5 * Math.exp(-d2 / (R * R));
+              }
+              if(x > 0){
+                const slope = (yy - py) / step;
+                const shade = slope < -.25 ? 0 : slope > .25 ? 2 : 1;
+                const m = Noise.n3(x * .006 + 50, y * .011, t * .05);
+                const c = (m > .6 || (m > .54 && m < .56)) ? 1 : 0;
+                const P = paths[c * 3 + shade];
+                P.moveTo(px, py); P.lineTo(x, yy);
+              }
+              px = x; py = yy;
+            }
+          }
+          const alphas = [.4, .72, 1];
+          ctx.lineWidth = gap * .62; ctx.lineCap = "butt";
+          for(let c = 0; c < 2; c++) for(let s = 0; s < 3; s++){
+            ctx.strokeStyle = c ? PAL.red : PAL.jade; ctx.globalAlpha = alphas[s] * (c ? .9 : .75);
+            ctx.stroke(paths[c * 3 + s]);
+          }
+          ctx.globalAlpha = 1;
+        },
+      };
+    },
+  },
+
+  /* flowing halftone cloud, magnified under a glass lens at the cursor */
+  halftone: {
+    title:"Halftone", sub:"A drifting halftone cloud, magnified under a glass lens.",
+    make(ctx, mini){
+      let w = 0, h = 0;
+      return {
+        resize(W, H){ w = W; h = H; },
+        draw(t, ptr){
+          ctx.fillStyle = PAL.paper; ctx.fillRect(0, 0, w, h);
+          const s = mini ? 7 : 11, R = mini ? 60 : Math.min(180, w * .15), sc = mini ? 1.6 : 1;
+          const blue = new Path2D(), jade = new Path2D(), red = new Path2D();
+          for(let y = s / 2; y < h; y += s){
+            for(let x = s / 2; x < w; x += s){
+              let sx = x, sy = y, lens = false;
+              if(ptr.active){
+                const dx = x - ptr.x, dy = y - ptr.y, d = Math.sqrt(dx * dx + dy * dy);
+                if(d < R){ lens = true; const k = .42 + .58 * (d / R) * (d / R); sx = ptr.x + dx * k; sy = ptr.y + dy * k; }
+              }
+              const X = sx * .0038 * sc, Y = sy * .0052 * sc;
+              const q = Noise.n3(X * .8, Y * .8, t * .05);
+              const v = Noise.fbm(X + q * 1.7 - t * .025, Y + q * .9, t * .04, 3);
+              const m = smooth(.44, .7, v);
+              if(m < .05) continue;
+              const r = s * .5 * m;
+              const path = v > .7 ? (v > .76 ? red : jade) : blue;
+              if(lens) path.rect(x - r, y - r, r * 2, r * 2);
+              else { path.moveTo(x + r, y); path.arc(x, y, r, 0, TAU); }
+            }
+          }
+          ctx.fillStyle = PAL.blue; ctx.fill(blue);
+          ctx.fillStyle = PAL.jade; ctx.fill(jade);
+          ctx.fillStyle = PAL.red;  ctx.fill(red);
+          if(ptr.active && !mini){
+            ctx.save(); ctx.strokeStyle = PAL.ink; ctx.lineWidth = 1; ctx.globalAlpha = .5;
+            ctx.beginPath(); ctx.arc(ptr.x, ptr.y, R, 0, TAU); ctx.stroke();
+            ctx.restore();
+          }
+        },
+      };
+    },
+  },
+};
+const SCENE_KEYS = Object.keys(SCENES);
+
+/* ============================================================
+   RUNNER — one RAF loop drives every live canvas
+   ============================================================ */
+const runners = new Set();
+function mount(canvas, key, mini){
+  const ctx = canvas.getContext("2d");
+  const r = { canvas, ctx, key, mini, impl:null, ptr:{ x:-9999, y:-9999, active:false }, visible:true, t0:performance.now() };
+  r.set = k => { r.key = k; r.impl = SCENES[k].make(ctx, mini); r.resize(); };
+  r.resize = () => {
+    const b = canvas.getBoundingClientRect();
+    const dpr = Math.min(devicePixelRatio || 1, mini ? 1.5 : 1.75);
+    canvas.width = Math.max(1, Math.round(b.width * dpr)); canvas.height = Math.max(1, Math.round(b.height * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    r.impl.resize(b.width, b.height);
+    if(reduceMotion) r.draw(performance.now());
+  };
+  r.draw = now => r.impl.draw(reduceMotion ? 8 : (now - r.t0) / 1000, r.ptr);
+  r.set(key);
+  runners.add(r);
+  return r;
+}
+const frameHooks = [];
+function loop(now){
+  if(!document.hidden){
+    runners.forEach(r => { if(r.visible) r.draw(now); });
+    frameHooks.forEach(f => f(now));
+  }
+  requestAnimationFrame(loop);
+}
+
+/* ============================================================
+   SOUND — guzheng plucks (Karplus–Strong) over a soft sub + hats
+   ============================================================ */
+const Sound = (() => {
+  let ac = null, master, wet, on = false, timer = 0, step = 0, nextT = 0;
+  const bufs = {};
+  // D major pentatonic — the guzheng's home scale
+  const SCALE = [293.66, 329.63, 369.99, 440, 493.88, 587.33, 659.25, 739.99, 880];
+  const ROOTS = [73.42, 61.74, 49.0, 55.0];   // D – B – G – A
+  const BPM = 92, S16 = 60 / BPM / 4;
+  function init(){
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    master = ac.createGain(); master.gain.value = 0;
+    const comp = ac.createDynamicsCompressor();
+    master.connect(comp); comp.connect(ac.destination);
+    wet = ac.createGain(); wet.gain.value = .4;
+    const dl = ac.createDelay(1); dl.delayTime.value = S16 * 3;
+    const fb = ac.createGain(); fb.gain.value = .33;
+    const lp = ac.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2600;
+    wet.connect(dl); dl.connect(lp); lp.connect(fb); fb.connect(dl); lp.connect(master);
+    const rv = ac.createConvolver(), len = ac.sampleRate * 2.6, ib = ac.createBuffer(2, len, ac.sampleRate);
+    for(let c = 0; c < 2; c++){ const d = ib.getChannelData(c); for(let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 3); }
+    rv.buffer = ib; const rg = ac.createGain(); rg.gain.value = .35;
+    wet.connect(rv); rv.connect(rg); rg.connect(master);
+  }
+  function ks(f){
+    if(bufs[f]) return bufs[f];
+    const sr = ac.sampleRate, N = Math.round(sr / f), len = Math.round(sr * 2.4);
+    const b = ac.createBuffer(1, len, sr), d = b.getChannelData(0), ring = new Float32Array(N);
+    let prev = 0;
+    for(let i = 0; i < N; i++){ const r = Math.random() * 2 - 1; ring[i] = (r + prev) * .5; prev = r; }
+    for(let i = 0, k = 0; i < len; i++){ const a = ring[k], nb = ring[(k + 1) % N]; d[i] = a; ring[k] = (a + nb) * .5 * .9986; k = (k + 1) % N; }
+    return bufs[f] = b;
+  }
+  function pluck(f, when, vel){
+    const s = ac.createBufferSource(); s.buffer = ks(f);
+    s.playbackRate.setValueAtTime(.982, when);                 // the little slide-in a guzheng player bends into
+    s.playbackRate.linearRampToValueAtTime(1, when + .14);
+    const g = ac.createGain(); g.gain.value = vel;
+    const hp = ac.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 140;
+    s.connect(hp); hp.connect(g); g.connect(master); g.connect(wet);
+    s.start(when);
+  }
+  function sub(f, when){
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = "sine"; o.frequency.setValueAtTime(f * 2.2, when); o.frequency.exponentialRampToValueAtTime(f, when + .09);
+    g.gain.setValueAtTime(0, when); g.gain.linearRampToValueAtTime(.42, when + .015); g.gain.exponentialRampToValueAtTime(.001, when + .9);
+    o.connect(g); g.connect(master); o.start(when); o.stop(when + 1);
+  }
+  let noise = null;
+  function hat(when, v){
+    if(!noise){ noise = ac.createBuffer(1, ac.sampleRate * .1, ac.sampleRate); const d = noise.getChannelData(0); for(let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
+    const s = ac.createBufferSource(), hp = ac.createBiquadFilter(), g = ac.createGain();
+    s.buffer = noise; hp.type = "highpass"; hp.frequency.value = 7500;
+    g.gain.setValueAtTime(v, when); g.gain.exponentialRampToValueAtTime(.001, when + .05);
+    s.connect(hp); hp.connect(g); g.connect(master); s.start(when); s.stop(when + .06);
+  }
+  function schedule(){
+    while(nextT < ac.currentTime + .2){
+      const s = step % 16, bar = Math.floor(step / 16) % 4;
+      if(s === 0 || s === 10) sub(ROOTS[bar], nextT);
+      if(s % 4 === 2) hat(nextT, .07);
+      else if(s % 2 === 1 && Math.random() < .3) hat(nextT, .025);
+      if(Math.random() < (s % 2 === 0 ? .42 : .1)) pluck(SCALE[(Math.random() * SCALE.length) | 0], nextT, .22 + Math.random() * .2);
+      nextT += S16; step++;
+    }
+  }
+  return {
+    get on(){ return on; },
+    toggle(){
+      if(!ac) init();
+      on = !on;
+      if(on){ ac.resume(); nextT = ac.currentTime + .06; master.gain.setTargetAtTime(.6, ac.currentTime, .5); timer = setInterval(schedule, 50); }
+      else { master.gain.setTargetAtTime(0, ac.currentTime, .25); clearInterval(timer); }
+      return on;
+    },
+    note(i, vel = .35){ if(on) pluck(SCALE[i % SCALE.length], ac.currentTime + .01, vel); },
+  };
+})();
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+const savedTheme = store.get("cc-theme");
+if(savedTheme) html.dataset.theme = savedTheme;
+readPalette();
+
+// identity
+const [c1, c2, c3] = PORTFOLIO.chinese;
+$$("[data-seal]").forEach(s => s.innerHTML = `<span>${c1}</span><span>${c2}</span><span>${c3}</span>`);
+$("#cn-vert").textContent = $("#neon-v").textContent = PORTFOLIO.chinese.join("");
+$("#foot-mail").textContent = PORTFOLIO.email;
+$("#foot-mail").href = "mailto:" + PORTFOLIO.email;
+if(PORTFOLIO.resumeUrl){ $("#resume-btn").href = PORTFOLIO.resumeUrl; $("#resume-btn").setAttribute("download", "Caroline_Chen_Resume.pdf"); }
+else $("#resume-btn").classList.add("off");
+
+// background scene
+let sceneKey = store.get("cc-scene");
+if(!SCENES[sceneKey]) sceneKey = "tide";
+const bg = mount($("#bg"), sceneKey, false);
+function setScene(k, animate){
+  const c = $("#bg");
+  const apply = () => {
+    bg.set(k); sceneKey = k; store.set("cc-scene", k);
+    $$("#scene-btns .sbtn").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === k)));
+    $$(".mtile[data-scene]").forEach(m => m.classList.toggle("current", m.dataset.scene === k));
+    c.classList.remove("swap");
+  };
+  if(reduceMotion || !animate){ apply(); return; }
+  c.classList.add("swap"); setTimeout(apply, 330);
+}
+$("#scene-btns").innerHTML = SCENE_KEYS.map(k => `<button class="sbtn" data-k="${k}" aria-pressed="false">${SCENES[k].title}</button>`).join("");
+$("#scene-btns").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if(b) setScene(b.dataset.k, true); });
+
+// theme
+function syncTheme(){
+  readPalette();
+  $("#theme").setAttribute("aria-pressed", String(PAL.dark));
+  window.__ccDark = PAL.dark;
+  dispatchEvent(new Event("cc-theme"));
+  if(reduceMotion) runners.forEach(r => r.draw(performance.now()));
+}
+$("#theme").addEventListener("click", () => {
+  html.dataset.theme = isDark() ? "light" : "dark";
+  store.set("cc-theme", html.dataset.theme);
+  syncTheme();
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncTheme);
+
+// sound
+$("#sound").addEventListener("click", () => {
+  const on = Sound.toggle();
+  $("#sound").setAttribute("aria-pressed", String(on));
+  $("#sound").classList.toggle("playing", on);
 });
 
-/* ---------- tabs & overlays ---------- */
-const tabs = document.querySelectorAll("#nav a");
-function closeOverlays(){
-  document.querySelectorAll(".overlay").forEach(o=>o.classList.remove("open"));
-  $("#lightbox-video").pause();
-  tabs.forEach(t=>t.classList.remove("on"));
-}
-tabs.forEach(t => t.addEventListener("click", e => {
-  e.preventDefault();
-  const tab = t.dataset.tab;
-  closeOverlays();
-  if(tab==="about")  { $("#ov-about").classList.add("open"); setTab("about"); }
-  if(tab==="resume") { $("#ov-resume").classList.add("open"); setTab("resume"); }
-  if(tab==="index")  { $("#ov-index").classList.add("open"); setTab("index"); }
-}));
-function setTab(name){
-  tabs.forEach(t=>t.classList.toggle("on", t.dataset.tab===name));
-}
-document.querySelectorAll("[data-close]").forEach(b =>
-  b.addEventListener("click", closeOverlays));
-document.querySelectorAll(".overlay").forEach(o =>
-  o.addEventListener("click", e => { if(e.target===o) closeOverlays(); }));
-
-/* resume download button */
-if(PORTFOLIO.resumeUrl){
-  $("#resume-btn").href = PORTFOLIO.resumeUrl;
-  $("#resume-btn").setAttribute("download", "Caroline_Chen_Resume.pdf");
-}else{
-  $("#resume-btn").style.opacity=".35";
-  $("#resume-btn").style.pointerEvents="none";
-}
-
-/* ---------- intro — cyberpunk ID scan (doubles as the ABOUT tab) ---------- */
+// loader
 (function(){
-  const overlay = $("#intro");
-  const video = $("#intro-video");
-  const statusEl = $("#intro-status");
-  const logEl = $("#intro-log");
-  const fillEl = $("#intro-fill");
-  const enterBtn = $("#intro-enter");
-  const descEl = $("#intro-desc");
-  const scanBar = $("#intro-scanbar");
-
-  $("#intro-name").textContent = PORTFOLIO.name.toUpperCase();
-  enterBtn.disabled = true;
-
-  const logLines = [
-    "> mounting /system ............... OK",
-    "> verifying subject .............. OK",
-  ];
-
-  function finish(){
-    statusEl.textContent = "VERIFIED";
-    fillEl.style.width = "100%";
-    if(!logEl.textContent.includes("READY")) logEl.textContent += "  READY FOR ENTRY\n";
-    setTimeout(() => {
-      logEl.hidden = true;
-      scanBar.hidden = true;
-      descEl.hidden = false;
-    }, 550);
-    enterBtn.disabled = false;
-    enterBtn.classList.add("ready");
-  }
-  function dismiss(){
-    overlay.classList.add("dismissed");
-  }
-  enterBtn.addEventListener("click", dismiss);
-
-  // click/tap the ID photo to view the intro video larger
-  const idPhoto = $("#id-photo");
-  const lightboxOverlay = $("#ov-video-lightbox");
-  const lightboxVideo = $("#lightbox-video");
-  function openVideoLightbox(){
-    if(lightboxVideo.src !== video.src) lightboxVideo.src = INTRO.video;
-    lightboxVideo.currentTime = video.currentTime || 0;
-    lightboxOverlay.classList.add("open");
-    lightboxVideo.play().catch(()=>{});
-  }
-  idPhoto.addEventListener("click", openVideoLightbox);
-  idPhoto.addEventListener("keydown", e => {
-    if(e.key==="Enter" || e.key===" "){ e.preventDefault(); openVideoLightbox(); }
-  });
-
-  if(reduceMotion){
-    logEl.textContent = logLines.join("\n") + "\n";
-    video.addEventListener("loadedmetadata", () => { video.currentTime = video.duration; }, {once:true});
-    video.addEventListener("seeked", finish, {once:true});
-    video.addEventListener("error", finish, {once:true});
-    video.src = INTRO.video;
-    return;
-  }
-
-  let ln = 0;
-  (function typeLog(){
-    if(ln < logLines.length){
-      logEl.textContent += logLines[ln] + "\n";
-      ln++;
-      fillEl.style.width = Math.min(100, (ln/logLines.length)*100).toFixed(1) + "%";
-      setTimeout(typeLog, 700);
-    }else{
-      finish();
-    }
-  })();
-
-  // video loops continuously in the background — it no longer gates
-  // when the bio/enter unlock (finish()) happens.
-  video.loop = true;
-  let resumeAttempts = 0;
-  // browsers may pause a no-audio-track video as a power-saving "background media"
-  // measure even while the tab is active in some embedded/automation contexts — resume it.
-  video.addEventListener("pause", () => {
-    if(video.hidden || video.ended) return;
-    if(resumeAttempts++ > 5) return;
-    video.play().catch(()=>{});
-  });
-  video.src = INTRO.video;
-  video.play().catch(()=>{});
+  const ld = $("#loader"), cnt = $("#ld-count");
+  const end = () => ld.classList.add("done");
+  ld.addEventListener("click", end);
+  if(reduceMotion){ end(); return; }
+  const t0 = performance.now(), D = 1400;
+  (function tick(now){
+    const p = Math.min(1, (now - t0) / D);
+    cnt.textContent = pad(Math.round(p * 100), 3);
+    if(p < 1) requestAnimationFrame(tick); else setTimeout(end, 250);
+  })(t0);
 })();
 
-/* ---------- THE WALL — 3D coverflow gallery ---------- */
-(function(){
-  const $ = s => document.querySelector(s);
-  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const stage = $("#stage");
-  const deck  = $("#deck");
-  const pad2  = n => String(n).padStart(2,"0");
-  const esc   = s => String(s??"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// pointer → background
+addEventListener("pointermove", e => { bg.ptr.x = e.clientX; bg.ptr.y = e.clientY; bg.ptr.active = true; }, { passive:true });
+document.addEventListener("pointerleave", () => { bg.ptr.active = false; });
+addEventListener("pointerup", e => { if(e.pointerType === "touch") bg.ptr.active = false; });
 
-  const N = PROJECTS.length;
+// clock
+const fmt = new Intl.DateTimeFormat("en-US", { timeZone:"America/Los_Angeles", hour:"numeric", minute:"2-digit" });
+const tickClock = () => { $("#clock").textContent = "San Mateo, CA — " + fmt.format(new Date()); };
+tickClock(); setInterval(tickClock, 20000);
 
-  /* cards below keep their own uploaded aspect ratio instead of matching InterACE */
-  const UNIFORM_EXCEPTIONS = new Set([
-    "Clarendon Typeface Poster Print",
-    "Corky Lee Zine",
-    "C-STEM Success Signages",
-    "Form and Flesh",
-  ]);
+// scroll state
+const navLinks = $$("#nav a");
+function onScroll(){
+  const y = scrollY, H = innerHeight;
+  document.body.classList.toggle("scrolled", y > H * .3);
+  html.style.setProperty("--bg-dim", String(Math.max(0, 1 - y / H * 1.1)));
+  bg.visible = y < H * 1.05;
+}
+addEventListener("scroll", onScroll, { passive:true }); onScroll();
+const secObs = new IntersectionObserver(es => es.forEach(e => {
+  if(!e.isIntersecting) return;
+  navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+}), { rootMargin:"-45% 0px -50% 0px" });
+$$("main section").forEach(s => secObs.observe(s));
+const rvObs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add("in"); rvObs.unobserve(e.target); }
+}), { threshold:.12 });
+$$(".rv").forEach(el => rvObs.observe(el));
 
-  /* ---- build the cards ---- */
-  const cards = PROJECTS.map((p,i) => {
-    const el = document.createElement("button");
-    el.className = "card" + (p.thumb ? "" : " empty");
-    el.dataset.i = i;
-    el.setAttribute("aria-label", `Open project ${pad2(i+1)} — ${p.title}`);
-    if(p.accent) el.style.setProperty("--accent", p.accent);
-    el.innerHTML =
-      (p.thumb
-        ? `<div class="fill"></div><img src="${esc(p.thumb)}" alt="${esc(p.title)}" draggable="false" style="object-fit:${p.fit||"cover"}">`
-        : `<div class="fill"><span>NO IMAGE</span></div>`) +
-      `<div class="grad"></div><div class="scrim"></div>` +
-      `<div class="open-hint">&#9707; OPEN PROJECT</div>`;
-    const img = el.querySelector("img");
-    if(img) img.addEventListener("error", () => {
-      el.classList.add("empty");
-      img.remove();
-      el.querySelector(".fill").innerHTML = '<span>IMAGE NOT FOUND</span>';
-    });
-    deck.appendChild(el);
-    const poster = /clarendon/i.test(p.thumb || "");   // the tall type poster stays a standard screen
-    const uniform = !poster && !UNIFORM_EXCEPTIONS.has(p.title);   // sized to match InterACE
-    return { ...p, i, el, img, poster, uniform, ar: 0, scrim: el.querySelector(".scrim") };
-  });
+/* ============================================================
+   WORK — the reflecting pool.
+   Vertical scroll walks the row of projects sideways; below the
+   waterline a WebGL surface mirrors them, rippling where you touch.
+   ============================================================ */
+const N = PROJECTS.length;
+const sec = $("#work"), pool = $("#pool"), track = $("#track");
+track.innerHTML = PROJECTS.map((p, i) => `
+  <button class="pc" data-i="${i}" aria-label="Open ${esc(p.title)}">
+    <span class="pc-cap"><span class="pc-n">${pad(i + 1)}</span><span class="pc-t">${esc(p.title)}</span><span class="pc-s">${esc(p.sub)}</span></span>
+    <img class="pc-img" src="${esc(p.thumb)}" alt="" decoding="async">
+  </button>`).join("");
+$("#pool-idx").innerHTML = PROJECTS.map((p, i) => `<button data-i="${i}" aria-label="Go to ${esc(p.title)}">${pad(i + 1)}</button>`).join("") +
+  `<span class="hint sm">Click a project to open it</span>`;
+const cards = $$(".pc").map((el, i) => ({ el, img:el.querySelector("img"), i, ar:4 / 3, left:0, w:0, h:0 }));
 
-  /* ---- responsive sizing: each screen takes its thumbnail's aspect ratio ---- */
-  let boxW = 520, boxH = 440, NW = 380;
-  function computeBox(){
-    const vh = innerHeight, vw = innerWidth;
-    boxH = Math.max(240, Math.min(vh * 0.60, 470));
-    boxW = Math.min(vw * 0.52, 560);
-    if(vw < 560){ boxH = Math.max(220, Math.min(vh * 0.50, 360)); boxW = Math.min(vw * 0.82, 430); }
-    NW = Math.min(boxW * 0.88, boxH * 1.24);            // nominal width driving spacing + depth
-  }
-  function sizeCard(c){
-    let w, h;
-    if(c.poster){                        // Clarendon: standard portrait screen, whole poster inside
-      h = boxH; w = Math.round(boxH * 0.70);
-      if(c.img) c.img.style.objectFit = "contain";
-    }else{
-      const ar = c.ar || 16/10;          // thumbnail width / height
-      h = Math.min(boxH, boxW / ar);     // fit inside the box, no cropping
-      w = h * ar;
-      if(c.img) c.img.style.objectFit = "cover";
+/* the water itself */
+const Water = (() => {
+  const glc = $("#water"), c2 = $("#water2");
+  const mirror = document.createElement("canvas"), mctx = mirror.getContext("2d");
+  let gl = null, prog, tex, uni = {}, fallback = false, W = 0, H = 0, dpr = 1;
+  const drops = [];   // {x,y,t,s}
+  let clock = 0, lastAmbient = 0;
+
+  const VS = `attribute vec2 p; varying vec2 vUv; void main(){ vUv = p * .5 + .5; gl_Position = vec4(p, 0., 1.); }`;
+  const FS = `
+    precision highp float;
+    uniform sampler2D uTex; uniform vec2 uRes; uniform float uT; uniform vec4 uD[10];
+    uniform vec3 uTint; uniform vec3 uHi;
+    varying vec2 vUv;
+    float H(vec2 p){
+      float depth = p.y / uRes.y;
+      float h = sin(p.x * .018 + uT * .9 + sin(p.y * .045 + uT * .5) * 2.) * .5
+              + sin(p.x * .031 - p.y * .11 + uT * 1.6) * .35
+              + sin(p.x * .007 + p.y * .05 - uT * .7) * .6;
+      h *= .35 + depth * 1.3;
+      for(int i = 0; i < 10; i++){
+        vec4 d = uD[i];
+        if(d.w <= 0.) continue;
+        float age = uT - d.z;
+        if(age < 0. || age > 4.5) continue;
+        vec2 q = p - d.xy; q.y *= 2.6;               // rings flatten with perspective
+        float k = length(q) - age * 160.;
+        h += d.w * exp(-k * k / 700.) * sin(k * .17) * exp(-age * .85) * 3.2;
+      }
+      return h;
     }
-    c.cw = Math.round(w); c.ch = Math.round(h);
-    c.el.style.width  = c.cw + "px";
-    c.el.style.height = c.ch + "px";
-  }
-  function size(){ computeBox(); cards.forEach(sizeCard); }
+    void main(){
+      vec2 p = vec2(vUv.x, 1. - vUv.y) * uRes;
+      float e = 1.5;
+      vec2 n = vec2(H(p + vec2(e, 0.)) - H(p - vec2(e, 0.)), H(p + vec2(0., e)) - H(p - vec2(0., e)));
+      float depth = p.y / uRes.y;
+      vec2 uv = (p + n * (5. + depth * 20.)) / uRes;
+      uv = clamp(uv, vec2(0.), vec2(1.));
+      vec3 col = texture2D(uTex, uv).rgb;
+      col = mix(uTint, col, mix(.9, .5, depth));     // brighter mirror near the horizon, deeper tint below
+      vec3 N = normalize(vec3(-n * 1.3, 1.));
+      float spec = pow(clamp(dot(N, normalize(vec3(.25, -.55, 1.))), 0., 1.), 70.);
+      col += uHi * spec * .55;
+      col += uHi * exp(-p.y * .2) * .12;
+      gl_FragColor = vec4(col, 1.);
+    }`;
 
-  /* measure each thumbnail once, then lock its screen to that shape.
-     "uniform" cards skip their own measurement and instead take InterACE's
-     ratio once it loads, so every screen but the exceptions matches it. */
-  computeBox();
-  function applyUniformAR(ar){
-    cards.forEach(c => { if(c.uniform){ c.ar = ar; sizeCard(c); } });
-    render();
+  function initGL(){
+    gl = glc.getContext("webgl", { antialias:false, premultipliedAlpha:false });
+    if(!gl){ goFallback(); return; }
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
+    gl.linkProgram(prog);
+    if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){ goFallback(); return; }
+    gl.useProgram(prog);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    ["uTex","uRes","uT","uD","uTint","uHi"].forEach(k => uni[k] = gl.getUniformLocation(prog, k));
+    gl.viewport(0, 0, glc.width, glc.height);
   }
+  function goFallback(){ fallback = true; glc.style.display = "none"; c2.classList.remove("fallback"); resize(W, H); }
+
+  function resize(w, h){
+    W = w; H = h; dpr = Math.min(devicePixelRatio || 1, 1.5);
+    mirror.width = Math.max(1, Math.round(w)); mirror.height = Math.max(1, Math.round(h));
+    const target = fallback ? c2 : glc;
+    target.style.height = h + "px";
+    target.width = Math.max(1, Math.round(w * dpr)); target.height = Math.max(1, Math.round(h * dpr));
+    if(!fallback && gl) gl.viewport(0, 0, target.width, target.height);
+  }
+
+  function paintMirror(tx){
+    mctx.setTransform(1, 0, 0, 1, 0, 0);
+    mctx.fillStyle = PAL.paper2; mctx.fillRect(0, 0, W, H);
+    const squash = .92;
+    for(const c of cards){
+      const x = c.left + tx;
+      if(x > W || x + c.w < 0 || !c.img.complete || !c.img.naturalWidth) continue;
+      const rh = c.h * squash;
+      // object-fit: cover crop, mirrored vertically about the waterline
+      const iw = c.img.naturalWidth, ih = c.img.naturalHeight, boxAR = c.w / c.h, imAR = iw / ih;
+      let sx = 0, sy = 0, sw = iw, sh = ih;
+      if(imAR > boxAR){ sw = ih * boxAR; sx = (iw - sw) / 2; } else { sh = iw / boxAR; sy = (ih - sh) / 2; }
+      mctx.setTransform(1, 0, 0, -1, x, rh);
+      mctx.drawImage(c.img, sx, sy, sw, sh, 0, 0, c.w, rh);
+    }
+    mctx.setTransform(1, 0, 0, 1, 0, 0);
+  }
+
+  function render(t, tx){
+    if(!W || !H) return;
+    clock = reduceMotion ? 3 : t;
+    if(!reduceMotion && t - lastAmbient > 2.2 + Math.random() * 2){       // the odd drop falling on its own
+      lastAmbient = t; addDrop(Math.random() * W, H * (.25 + Math.random() * .6), .35);
+    }
+    paintMirror(tx);
+    if(!fallback && !gl) initGL();
+    if(!fallback){
+      try{ gl.bindTexture(gl.TEXTURE_2D, tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, mirror); }
+      catch(err){ goFallback(); }   // file:// pages taint the canvas; fall back to a 2D ripple
+    }
+    if(!fallback){
+      const arr = new Float32Array(40);
+      drops.forEach((d, i) => { arr[i * 4] = d.x; arr[i * 4 + 1] = d.y; arr[i * 4 + 2] = d.t; arr[i * 4 + 3] = d.s; });
+      gl.uniform1i(uni.uTex, 0); gl.uniform2f(uni.uRes, W, H); gl.uniform1f(uni.uT, clock);
+      gl.uniform4fv(uni.uD, arr);
+      gl.uniform3fv(uni.uTint, hexRGB(PAL.dark ? "#0b1416" : "#c9d6d0"));
+      gl.uniform3fv(uni.uHi, hexRGB(PAL.dark ? "#cfe9df" : "#ffffff"));
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    } else {
+      const ctx = c2.getContext("2d");
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.fillStyle = PAL.paper2; ctx.fillRect(0, 0, W, H);
+      for(let y = 0; y < H; y += 2){
+        let dx = Math.sin(y * .16 - clock * 2) * (1 + y * .05);
+        for(const d of drops){ const age = clock - d.t, k = Math.abs(y - d.y) * 2.6 - age * 160; if(age > 0 && age < 4) dx += Math.sin(k * .17) * Math.exp(-k * k / 700) * 8 * d.s * Math.exp(-age); }
+        ctx.drawImage(mirror, 0, y, W, 2, dx, y, W, 2);
+      }
+      const g = ctx.createLinearGradient(0, 0, 0, H);
+      g.addColorStop(0, PAL.dark ? "rgba(11,20,22,0)" : "rgba(201,214,208,0)");
+      g.addColorStop(1, PAL.dark ? "rgba(11,20,22,.7)" : "rgba(201,214,208,.6)");
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    }
+  }
+  function addDrop(x, y, s){
+    drops.push({ x, y, t:clock, s });
+    if(drops.length > 10) drops.shift();
+  }
+  // touching the water
+  let lastX = -1e9, lastY = -1e9, lastT = 0;
+  [glc, c2].forEach(cv => {
+    cv.addEventListener("pointermove", e => {
+      const b = cv.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
+      if(Math.hypot(x - lastX, y - lastY) > 46 && clock - lastT > .07){ addDrop(x, y, .45); lastX = x; lastY = y; lastT = clock; }
+    });
+    cv.addEventListener("pointerdown", e => {
+      const b = cv.getBoundingClientRect(); addDrop(e.clientX - b.left, e.clientY - b.top, 1);
+      Sound.note((Math.random() * 9) | 0, .45);
+    });
+  });
+  return { resize, render };
+})();
+
+let dist = 0, tx = 0;
+function layoutPool(){
+  const W = innerWidth, H = pool.clientHeight, mobile = W < 720;
+  const horizon = Math.round(H * (mobile ? .66 : .63));
+  const waterH = H - horizon;
+  const headB = $(".pool-head").getBoundingClientRect().height + (mobile ? 72 : 84);
+  const capH = mobile ? 88 : 78;
+  const avail = horizon - headB - capH - 18;
+  const pattern = [1, .76, .9, .7, .84, .74];
   cards.forEach(c => {
-    if(c.poster || !c.thumb || c.uniform) return;
-    const im = new Image();
-    im.onload  = () => { c.ar = im.naturalWidth / im.naturalHeight; sizeCard(c); render(); };
-    im.onerror = () => { c.ar = 16/10; sizeCard(c); render(); };
-    im.src = c.thumb;
+    let h = avail * pattern[c.i % pattern.length], w = h * c.ar;
+    const maxW = W * (mobile ? .8 : .5);
+    if(w > maxW){ w = maxW; h = w / c.ar; }
+    c.img.style.width = Math.round(w) + "px"; c.img.style.height = Math.round(h) + "px";
   });
-  const interace = cards.find(c => c.title === "InterACE");
-  if(interace && interace.thumb){
-    const im = new Image();
-    im.onload  = () => applyUniformAR(im.naturalWidth / im.naturalHeight);
-    im.onerror = () => applyUniformAR(16/9);
-    im.src = interace.thumb;
-  } else {
-    applyUniformAR(16/9);
+  track.style.bottom = waterH + "px";
+  $("#pool-line").style.top = horizon + "px";
+  dist = Math.max(0, track.scrollWidth - W);
+  sec.style.height = (dist + H) + "px";
+  cards.forEach(c => { c.left = c.el.offsetLeft; c.w = c.img.offsetWidth; c.h = c.img.offsetHeight; });
+  Water.resize(W, waterH);
+}
+cards.forEach(c => {
+  const set = () => { if(c.img.naturalWidth){ c.ar = c.img.naturalWidth / c.img.naturalHeight; layoutPool(); } };
+  if(c.img.complete) set(); else c.img.addEventListener("load", set, { once:true });
+});
+
+const poolProgress = () => dist ? clamp((scrollY - sec.offsetTop) / dist, 0, 1) : 0;
+let activeIdx = -1;
+frameHooks.push(now => {
+  const r = sec.getBoundingClientRect();
+  if(r.bottom < 0 || r.top > innerHeight) return;
+  const target = -poolProgress() * dist;
+  tx += (target - tx) * (reduceMotion ? 1 : .14);
+  track.style.transform = `translate3d(${tx.toFixed(2)}px,0,0)`;
+  // which project sits nearest the reading line
+  let best = 0, bd = 1e9;
+  cards.forEach(c => { const d = Math.abs(c.left + tx + c.w / 2 - innerWidth * .4); if(d < bd){ bd = d; best = c.i; } });
+  if(best !== activeIdx){ activeIdx = best; $$("#pool-idx button").forEach((b, i) => b.classList.toggle("on", i === best)); }
+  Water.render(now / 1000, tx);
+});
+$("#pool-idx").addEventListener("click", e => {
+  const b = e.target.closest("button[data-i]"); if(!b) return;
+  const c = cards[+b.dataset.i];
+  const target = clamp(c.left - innerWidth * .4 + c.w / 2, 0, dist);
+  scrollTo({ top: sec.offsetTop + target, behavior: reduceMotion ? "auto" : "smooth" });
+});
+track.addEventListener("mouseover", e => {
+  const b = e.target.closest(".pc"); if(!b || b.contains(e.relatedTarget)) return;
+  Sound.note(+b.dataset.i, .3);
+});
+
+/* ============================================================
+   PROJECT DRAWER
+   ============================================================ */
+const drawer = $("#drawer");
+let current = 0, lastFocus = null;
+function openProject(i){
+  const p = PROJECTS[i]; current = i;
+  if(!drawer.classList.contains("open")) lastFocus = document.activeElement;
+  $("#d-no").textContent = pad(i + 1) + " / " + pad(N);
+  $("#d-meta-top").textContent = p.meta;
+  $("#d-title").textContent = p.title;
+  $("#d-sub").textContent = p.sub;
+  $("#d-meta").textContent = p.meta;
+  $("#d-blurb").textContent = p.blurb || "";
+  $("#d-tags").innerHTML = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
+  const imgs = (p.gallery && p.gallery.length ? p.gallery : [p.thumb]).filter(Boolean);
+  $("#d-media").innerHTML = imgs.map((src, k) => `
+    <figure class="d-fig"><img src="${esc(src)}" alt="${esc(p.title)}${k ? " — detail " + k : ""}"></figure>`).join("");
+  const open = $("#d-open");
+  if(p.url){ open.href = p.url; open.classList.remove("off"); open.textContent = "Open project ↗"; }
+  else { open.href = "#"; open.classList.add("off"); open.textContent = "Print piece"; }
+  $("#d-body").scrollTop = 0;
+  drawer.classList.add("open"); drawer.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  $("#d-close").focus({ preventScroll:true });
+}
+function closeAll(){
+  if(drawer.classList.contains("open")){
+    drawer.classList.remove("open"); drawer.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    lastFocus?.focus?.({ preventScroll:true });
   }
-
-  /* ---- coverflow geometry (works for fractional offset) ---- */
-  function params(){
-    const vw = innerWidth;
-    return {
-      GAP1: Math.min(NW * 1.06, vw * 0.34),  // gap to the first neighbour
-      GAP2: NW * 0.34,                        // tighter clustering further out
-      ROT : 52,                               // max face turn, degrees
-      Z1  : NW * 0.62,                         // recede for the first neighbour
-      Z2  : NW * 0.46                          // recede per step beyond that
-    };
+  if($("#lightbox").classList.contains("open")){ $("#lightbox").classList.remove("open"); $("#lb-video").pause(); }
+}
+track.addEventListener("click", e => { const b = e.target.closest(".pc"); if(b) openProject(+b.dataset.i); });
+$$("[data-close]").forEach(b => b.addEventListener("click", closeAll));
+$("#lightbox").addEventListener("click", e => { if(e.target.id === "lightbox") closeAll(); });
+$("#d-prev").addEventListener("click", () => openProject((current - 1 + N) % N));
+$("#d-next").addEventListener("click", () => openProject((current + 1) % N));
+addEventListener("keydown", e => {
+  if(e.key === "Escape") closeAll();
+  if(!drawer.classList.contains("open")) return;
+  if(e.key === "ArrowLeft")  openProject((current - 1 + N) % N);
+  if(e.key === "ArrowRight") openProject((current + 1) % N);
+  if(e.key === "Tab"){
+    const f = $$("#drawer .sheet button, #drawer .sheet a:not(.off)");
+    if(e.shiftKey && document.activeElement === f[0]){ f[f.length - 1].focus(); e.preventDefault(); }
+    else if(!e.shiftKey && document.activeElement === f[f.length - 1]){ f[0].focus(); e.preventDefault(); }
   }
-  function place(o){
-    const P = params(), a = Math.abs(o), s = Math.sign(o) || 1;
-    let x, ry, z;
-    if(a <= 1){ x = o * P.GAP1;                    ry = -o * P.ROT; z = -a * P.Z1; }
-    else      { x = s * (P.GAP1 + (a-1) * P.GAP2); ry = -s * P.ROT; z = -(P.Z1 + (a-1) * P.Z2); }
-    const scale = Math.max(0.55, 1 - a * 0.085);
-    return { x, ry, z, scale };
+});
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+$("#mgrid").innerHTML = MOTION.map((m, i) => {
+  if(m.kind === "scene"){
+    const S = SCENES[m.scene];
+    return `<div class="mtile rv" data-scene="${m.scene}">
+      <div class="box"><canvas aria-label="${esc(S.title)} — live code piece"></canvas></div>
+      <div class="row1"><span class="num">${pad(i + 1)}</span><span class="mt">${esc(S.title)}</span></div>
+      <div class="ms">${esc(S.sub)}</div>
+      <button class="tbtn act" data-set="${m.scene}">Use as background</button>
+    </div>`;
   }
+  return `<div class="mtile rv">
+    <div class="box"><video src="${esc(m.src)}" muted playsinline loop preload="metadata"></video></div>
+    <div class="row1"><span class="num">${pad(i + 1)}</span><span class="mt">${esc(m.title)}</span></div>
+    <div class="ms">${esc(m.sub)}</div>
+    <button class="tbtn act" data-play="${esc(m.src)}">Play large</button>
+  </div>`;
+}).join("");
+$$(".mtile").forEach(el => rvObs.observe(el));
+$$(".mtile[data-scene]").forEach(el => {
+  const cv = el.querySelector("canvas");
+  const r = mount(cv, el.dataset.scene, true);
+  r.visible = false;
+  cv.addEventListener("pointermove", e => { const b = cv.getBoundingClientRect(); r.ptr.x = e.clientX - b.left; r.ptr.y = e.clientY - b.top; r.ptr.active = true; });
+  cv.addEventListener("pointerleave", () => { r.ptr.active = false; });
+  new IntersectionObserver(es => es.forEach(e => { r.visible = e.isIntersecting; if(e.isIntersecting && reduceMotion) r.draw(performance.now()); })).observe(cv);
+});
+const vidObs = new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); }), { threshold:.2 });
+$$(".mtile video").forEach(v => { if(!reduceMotion) vidObs.observe(v); });
+$("#mgrid").addEventListener("click", e => {
+  const s = e.target.closest("[data-set]"); if(s){ setScene(s.dataset.set, true); scrollTo({ top:0, behavior: reduceMotion ? "auto" : "smooth" }); return; }
+  const p = e.target.closest("[data-play]"); if(p) openVideo(p.dataset.play);
+});
 
-  const MAXVIS = 4.4;
-  let pos = 0, target = 0;
-  const clampT = v => Math.max(0, Math.min(N-1, v));
+// about — the vanity mirror; the glare slides as you move
+const av = $("#about-video");
+av.src = PORTFOLIO.video;
+if(!reduceMotion) vidObs.observe(av);
+const mirrorEl = $("#portrait"), sheen = $("#sheen");
+addEventListener("pointermove", e => {
+  const b = mirrorEl.getBoundingClientRect();
+  if(b.bottom < 0 || b.top > innerHeight) return;
+  const nx = clamp((e.clientX - (b.left + b.width / 2)) / innerWidth, -1, 1), ny = clamp((e.clientY - (b.top + b.height / 2)) / innerHeight, -1, 1);
+  sheen.style.setProperty("--mx", (nx * 90).toFixed(1) + "px"); sheen.style.setProperty("--my", (ny * 60).toFixed(1) + "px");
+}, { passive:true });
+function openVideo(src){
+  const v = $("#lb-video");
+  if(v.getAttribute("src") !== src) v.src = src;
+  $("#lightbox").classList.add("open"); v.currentTime = 0; v.play().catch(() => {});
+  $("#lightbox [data-close]").focus({ preventScroll:true });
+}
+mirrorEl.addEventListener("click", () => openVideo(PORTFOLIO.video));
 
-  function render(){
-    cards.forEach(c => {
-      const o = c.i - pos, a = Math.abs(o);
-      if(a > MAXVIS){ c.el.style.visibility = "hidden"; return; }
-      c.el.style.visibility = "visible";
-      const t = place(o);
-      c.el.style.transform =
-        `translate(-50%,-50%) translate3d(${t.x.toFixed(1)}px,0,${t.z.toFixed(1)}px)` +
-        ` rotateY(${t.ry.toFixed(2)}deg) scale(${t.scale.toFixed(3)})`;
-      c.scrim.style.opacity = Math.min(0.6, a * 0.17).toFixed(2);
-      c.el.style.opacity = (a > MAXVIS - 1 ? Math.max(0, MAXVIS - a) : 1).toFixed(2);
-      c.el.classList.toggle("active", a < 0.5);
-    });
-    updateNow();
-  }
-
-  const nowTitle = $("#now-title");
-  function updateNow(){
-    const i = clampT(Math.round(pos)), it = cards[i];
-    $("#now-no").textContent = "[" + pad2(i+1) + "]";
-    nowTitle.textContent = it.title;
-    $("#now-mm").textContent = it.meta || "";
-    $("#now-no").style.setProperty("--accent", it.accent || "");
-    $("#counter").textContent = pad2(i+1) + " / " + pad2(N);
-    $("#arrow-prev").disabled = i <= 0;
-    $("#arrow-next").disabled = i >= N-1;
-  }
-
-  /* ---- ease pos -> target ---- */
-  let raf = 0;
-  function tick(){
-    raf = 0;
-    const k = reduceMotion ? 1 : 0.16;
-    pos += (target - pos) * k;
-    if(Math.abs(target - pos) < 0.0015){ pos = target; render(); return; }
-    render();
-    raf = requestAnimationFrame(tick);
-  }
-  function kick(){ if(!raf) raf = requestAnimationFrame(tick); }
-  function go(i, open){
-    target = clampT(i);
-    kick();
-    if(open) setTimeout(() => openProject(Math.round(target)), reduceMotion ? 0 : 240);
-  }
-
-  /* ---- drag to spin (both directions) ---- */
-  let down = false, moved = false, startX = 0, startPos = 0, downCard = null,
-      lastX = 0, lastT = 0, vel = 0;
-  const perPx = () => 1 / (params().GAP1 * 0.9);
-
-  stage.addEventListener("pointerdown", e => {
-    down = true; moved = false;
-    startX = lastX = e.clientX; lastT = performance.now();
-    startPos = pos = target; vel = 0;
-    downCard = e.target.closest(".card");
-    stage.classList.add("dragging");
-    stage.setPointerCapture(e.pointerId);
-  });
-  stage.addEventListener("pointermove", e => {
-    if(!down) return;
-    const dx = e.clientX - startX;
-    if(Math.abs(dx) > 4) moved = true;
-    pos = target = clampT(startPos - dx * perPx());
-    const now = performance.now(), dt = now - lastT;
-    if(dt > 0){ vel = (e.clientX - lastX) / dt; lastX = e.clientX; lastT = now; }
-    render();
-  });
-  function release(){
-    if(!down) return;
-    down = false;
-    stage.classList.remove("dragging");
-    if(!moved && downCard){
-      const i = +downCard.dataset.i;
-      if(Math.round(pos) === i) openProject(i);   // pressed the centred screen -> open it
-      else go(i, false);                          // pressed a side screen -> bring it in
-    }else{
-      const flick = -vel * perPx() * 140;         // momentum, then snap to nearest
-      target = clampT(Math.round(pos + flick));
-      kick();
-    }
-    downCard = null;
-  }
-  stage.addEventListener("pointerup", release);
-  stage.addEventListener("pointercancel", () => { down = false; downCard = null; stage.classList.remove("dragging"); });
-  stage.addEventListener("dragstart", e => e.preventDefault());
-
-  /* ---- wheel / trackpad: pan left-right (accepts either axis) ---- */
-  let wheelAcc = 0;
-  stage.addEventListener("wheel", e => {
-    e.preventDefault();
-    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    wheelAcc += d;
-    if(Math.abs(wheelAcc) > 42){
-      target = clampT(Math.round(target) + Math.sign(wheelAcc));
-      wheelAcc = 0; kick();
-    }
-  }, { passive:false });
-
-  /* ---- keyboard ---- */
-  addEventListener("keydown", e => {
-    if(document.querySelector(".overlay.open")) return;
-    if(!$("#intro").classList.contains("dismissed")) return;
-    if(e.key === "ArrowRight"){ go(Math.round(target) + 1, false); e.preventDefault(); }
-    if(e.key === "ArrowLeft") { go(Math.round(target) - 1, false); e.preventDefault(); }
-    if(e.key === "Enter" || e.key === " "){ openProject(clampT(Math.round(pos))); e.preventDefault(); }
-  });
-
-  $("#arrow-prev").addEventListener("click", () => go(Math.round(target) - 1, false));
-  $("#arrow-next").addEventListener("click", () => go(Math.round(target) + 1, false));
-
-  /* ---- project detail popup (reuses #ov-project markup) ---- */
-  const ov = $("#ov-project"), heroEl = $("#proj-hero"), openBtn = $("#proj-open");
-  let current = 0;
-  function openProject(i){
-    const it = cards[i]; current = i;
-    $("#proj-path").textContent = "/gallery/" + (it.title||"untitled").toLowerCase().replace(/[^a-z0-9]+/g,"_");
-    $("#proj-no").style.setProperty("--accent", it.accent || "");
-    heroEl.style.setProperty("--accent", it.accent || "");
-    heroEl.className = "proj-hero" + (it.thumb ? "" : " empty");
-    heroEl.style.aspectRatio = it.ar ? String(it.ar) : (it.ratio || "");
-    const heroFit = it.poster ? "contain" : (it.fit || "cover");
-    heroEl.innerHTML = it.thumb
-      ? `<img src="${esc(it.thumb)}" alt="${esc(it.title)}" style="object-fit:${heroFit}">`
-      : `NO IMAGE SUPPLIED`;
-    const img = heroEl.querySelector("img");
-    if(img) img.addEventListener("error", () => {
-      heroEl.className = "proj-hero empty";
-      heroEl.textContent = "IMAGE NOT FOUND — " + it.thumb;
-    });
-    $("#proj-no").textContent    = "[" + pad2(i+1) + " / " + pad2(N) + "]";
-    $("#proj-title").textContent = it.title;
-    $("#proj-mm").textContent    = it.meta || "";
-    $("#proj-blurb").textContent = it.blurb || "";
-    $("#proj-tags").innerHTML    = (it.tags||[]).map(t => `<span class="tag">${esc(t)}</span>`).join("");
-    if(it.url){ openBtn.href = it.url; openBtn.classList.remove("off"); openBtn.textContent = "OPEN PROJECT ↗"; }
-    else      { openBtn.href = "#"; openBtn.classList.add("off");    openBtn.textContent = "NO LINK YET"; }
-    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("open"));
-    ov.classList.add("open");
-    openBtn.focus({ preventScroll:true });
-  }
-  function stepPopup(n){ const i = (current + n + N) % N; go(i, false); openProject(i); }
-  $("#proj-prev").addEventListener("click", () => stepPopup(-1));
-  $("#proj-next").addEventListener("click", () => stepPopup(1));
-  addEventListener("keydown", e => {
-    if(!ov.classList.contains("open")) return;
-    if(e.key === "ArrowLeft")  stepPopup(-1);
-    if(e.key === "ArrowRight") stepPopup(1);
-  });
-
-  /* ---- index list ---- */
-  $("#idx-list").innerHTML = cards.map(it =>
-    `<button class="idx-row" data-i="${it.i}">
-       <span class="bullet">&bull;</span>
-       <span class="no">[${pad2(it.i+1)}]</span>
-       <span class="tt">${esc(it.title)}</span>
-       <span class="mm">${esc(it.meta)}</span>
-     </button>`).join("");
-  $("#idx-list").addEventListener("click", e => {
-    const b = e.target.closest(".idx-row");
-    if(!b) return;
-    document.querySelectorAll(".overlay").forEach(o => o.classList.remove("open"));
-    document.querySelectorAll("#nav a").forEach(t => t.classList.remove("on"));
-    go(+b.dataset.i, true);
-  });
-
-  /* ---- boot ---- */
-  size();
-  addEventListener("resize", () => { size(); render(); });
-  pos = target = 0;
-  render();
+/* ============================================================
+   RESIZE + START
+   ============================================================ */
+setScene(sceneKey, false);
+syncTheme();
+layoutPool();
+let rz = 0;
+addEventListener("resize", () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { runners.forEach(r => r.resize()); layoutPool(); }); });
+document.fonts?.ready.then(() => { runners.forEach(r => r.resize()); layoutPool(); });
+if(reduceMotion){ runners.forEach(r => r.draw(performance.now())); }
+requestAnimationFrame(loop);
 })();
+</script>
 
-})();
+<!-- 3D calla lilies + a jade bangle (three.js) -->
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+import * as THREE from "three";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+const canvas = document.getElementById("lily");
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), .04).texture;
+
+const camera = new THREE.PerspectiveCamera(26, 1, .1, 60);
+camera.position.set(0, 1.1, 10.5);
+camera.lookAt(0, .5, 0);
+
+const key = new THREE.DirectionalLight(0xfff1e4, 1.6); key.position.set(3, 5, 4); scene.add(key);
+const rim = new THREE.DirectionalLight(0xffd6e4, 1.4); rim.position.set(-4, 2, -4); scene.add(rim);
+scene.add(new THREE.AmbientLight(0xffffff, .25));
+
+const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+/* the spathe: a sheet that wraps into a tube at the base, opens into a
+   funnel, rolls its lip outward and rises to a pointed tip at the back */
+function spatheGeometry(){
+  const U = 90, V = 150, Hh = 2.3;
+  const pos = [], us = [], idx = [];
+  for(let i = 0; i <= U; i++){
+    const u = i / U;
+    for(let j = 0; j <= V; j++){
+      const v = j / V * 2 - 1;
+      const span = THREE.MathUtils.lerp(2.14 * Math.PI, 1.2 * Math.PI, ss(.04, .6, u));
+      const th = Math.PI + v * span / 2;
+      let r = (.09 + .78 * Math.pow(u, 1.9)) * (1 + .06 * v);
+      r *= 1 + .32 * Math.pow(u, 2.6) * v * v;
+      const top = Hh * (1 + .36 * Math.exp(-v * v * 3.2) - .2 * v * v);
+      let y = u * top, x = Math.sin(th) * r, z = Math.cos(th) * r;
+      const tip = Math.pow(u, 5) * Math.exp(-v * v * 3.2);
+      z -= tip * .6; y -= tip * .08;
+      y -= Math.pow(u, 3) * v * v * .26;
+      pos.push(x, y, z); us.push(u);
+    }
+  }
+  for(let i = 0; i < U; i++) for(let j = 0; j < V; j++){
+    const a = i * (V + 1) + j, b = a + V + 1;
+    idx.push(a, b, a + 1, b, b + 1, a + 1);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute("color", new THREE.Float32BufferAttribute(new Float32Array(pos.length), 3));
+  g.setIndex(idx); g.computeVertexNormals();
+  g.userData.u = us;
+  return g;
+}
+function paintSpathe(g, dark){
+  const base = new THREE.Color(dark ? "#2b4a35" : "#a9c99a");
+  const throat = new THREE.Color(dark ? "#5a2048" : "#fbf1e8");
+  const petal = new THREE.Color(dark ? "#3a1430" : "#f7f3ec");    // dark mode grows a "black" calla
+  const col = g.attributes.color, c = new THREE.Color();
+  g.userData.u.forEach((u, i) => {
+    c.copy(base).lerp(throat, ss(.02, .32, u)).lerp(petal, ss(.3, .7, u));
+    col.setXYZ(i, c.r, c.g, c.b);
+  });
+  col.needsUpdate = true;
+}
+
+const jadeMat = new THREE.MeshPhysicalMaterial({
+  color:"#5c9c7f", roughness:.16, metalness:0, transmission:.55, thickness:.8, ior:1.62,
+  clearcoat:1, clearcoatRoughness:.08, attenuationColor:new THREE.Color("#2c6a50"), attenuationDistance:.7,
+});
+function makeCalla(){
+  const g = new THREE.Group();
+  const geo = spatheGeometry();
+  const mat = new THREE.MeshPhysicalMaterial({
+    vertexColors:true, side:THREE.DoubleSide, roughness:.42, metalness:0,
+    sheen:1, sheenRoughness:.45, sheenColor:new THREE.Color("#ffe6ee"),
+    clearcoat:.35, clearcoatRoughness:.4, iridescence:.35, iridescenceIOR:1.3,
+  });
+  g.add(new THREE.Mesh(geo, mat));
+  // spadix — the golden rod inside, with a pollen-rough surface
+  const sg = new THREE.CapsuleGeometry(.075, 1.0, 8, 24);
+  const sp = sg.attributes.position;
+  for(let i = 0; i < sp.count; i++){ const k = 1 + (Math.random() - .5) * .12; sp.setX(i, sp.getX(i) * k); sp.setZ(i, sp.getZ(i) * k); }
+  sg.computeVertexNormals();
+  const spadix = new THREE.Mesh(sg, new THREE.MeshStandardMaterial({ color:"#e5b42c", roughness:.85, emissive:"#5a3a00", emissiveIntensity:.25 }));
+  spadix.position.set(0, .82, -.14); spadix.rotation.x = -.1;
+  g.add(spadix);
+  // stem
+  const curve = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, .12, 0), new THREE.Vector3(.02, -1, .04), new THREE.Vector3(.1, -2.4, .08), new THREE.Vector3(.22, -4.2, .02)]);
+  g.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 80, .075, 20), new THREE.MeshPhysicalMaterial({ color:"#4f8a5e", roughness:.35, clearcoat:.5 })));
+  g.userData = { geo, mat };
+  return g;
+}
+
+const flowers = new THREE.Group();
+scene.add(flowers);
+const a = makeCalla(); a.rotation.set(.32, .3, -.05); flowers.add(a);
+const b = makeCalla(); b.scale.setScalar(.72); b.position.set(-1.25, -.55, -.9); b.rotation.set(.18, 1.6, .16); flowers.add(b);
+
+// a jade bangle, hung in the air beside them
+const bangle = new THREE.Mesh(new THREE.TorusGeometry(.78, .13, 64, 160), jadeMat);
+bangle.position.set(.95, -1.35, .4); bangle.rotation.set(1.1, .3, .2);
+scene.add(bangle);
+
+function applyTheme(){
+  const dark = !!window.__ccDark;
+  [a, b].forEach(f => {
+    paintSpathe(f.userData.geo, dark);
+    f.userData.mat.sheenColor.set(dark ? "#b46a9a" : "#ffe6ee");
+    f.userData.mat.iridescence = dark ? .6 : .35;
+  });
+  jadeMat.color.set(dark ? "#4f9a7a" : "#5c9c7f");
+  renderer.toneMappingExposure = dark ? 1.15 : 1.05;
+}
+addEventListener("cc-theme", applyTheme);
+applyTheme();
+
+function resize(){
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if(!w || !h) return;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.position.z = w / h < .8 ? 13.5 : 11.5;
+  camera.updateProjectionMatrix();
+}
+addEventListener("resize", resize); resize();
+
+let px = 0, py = 0, tx = 0, ty = 0, visible = true;
+addEventListener("pointermove", e => { tx = e.clientX / innerWidth * 2 - 1; ty = e.clientY / innerHeight * 2 - 1; }, { passive:true });
+new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(document.getElementById("hero"));
+
+const clock = new THREE.Clock();
+function frame(){
+  requestAnimationFrame(frame);
+  if(!visible || document.hidden) return;
+  const t = reduceMotion ? 2 : clock.getElapsedTime();
+  px += (tx - px) * .05; py += (ty - py) * .05;
+  flowers.rotation.y = Math.sin(t * .22) * .35 + px * .45;
+  flowers.rotation.x = py * .08;
+  flowers.position.y = -.45 + Math.sin(t * .6) * .05;
+  b.rotation.z = .16 + Math.sin(t * .5 + 1) * .03;
+  bangle.rotation.z = .2 + t * .25;
+  bangle.rotation.x = 1.1 + Math.sin(t * .4) * .15 + py * .2;
+  bangle.position.y = -1.35 + Math.sin(t * .7 + .6) * .07;
+  renderer.render(scene, camera);
+}
+frame();
 </script>
 </body>
 </html>
