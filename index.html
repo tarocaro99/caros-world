@@ -7,7 +7,7 @@
 <meta name="description" content="Caroline Chen, graphic, brand and experience designer based in San Mateo, CA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Bricolage+Grotesque:opsz,wght@12..96,300..700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Grenze+Gotisch:wght@300..800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&display=swap&text=%E9%99%88%E9%94%A6%E5%84%BF" rel="stylesheet">
 <script>
 /* night (black, cobalt, holographic) is the default world; day is pearl grey with pink and cobalt */
@@ -27,8 +27,8 @@
   --irid:linear-gradient(120deg,#ff93c4,#ffc9de 22%,#72d9b3 48%,#f2e6c8 70%,#ff93c4);
   --chrome:conic-gradient(from 210deg,#bfe9d8,#3f8a6f,#e6fff4,#2b6652,#a6dcc6,#4c9a7e,#e6fff4,#356f5b,#bfe9d8);
   --disp:"Bodoni Moda","Didot",serif;
-  --script:"Pinyon Script",cursive;
-  --sans:"Bricolage Grotesque",system-ui,sans-serif;
+  --script:"Grenze Gotisch","Bodoni Moda",serif;
+  --sans:"Newsreader","Iowan Old Style",Georgia,serif;
   --han:"Noto Serif SC","Songti SC",serif;
   --gut:clamp(16px,4vw,60px);
   --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
@@ -351,6 +351,111 @@ footer .wrap a,footer .wrap button,.sign{pointer-events:auto;}
   .arch{max-width:120px !important;margin:0 !important;flex:none;}
   .facts{margin-top:0 !important;}
 }
+
+/* ============================================================
+   TYPE + TEXTURE PASS
+   Newsreader (text), Bodoni Moda (display), Grenze Gotisch (cyber-gothic accent),
+   Noto Serif SC (name only). No pills, no grotesk. Textures: reeded glass,
+   halftone, chrome ribs, riso grain, liquid glass edges.
+   ============================================================ */
+body{font-size:17px;line-height:1.55;font-optical-sizing:auto;
+  background-image:
+    var(--grain),var(--grain),
+    var(--lattice,none),
+    radial-gradient(760px 520px at 92% 30%,color-mix(in srgb,var(--jade) 14%,transparent),transparent 70%),
+    radial-gradient(620px 460px at 4% 72%,color-mix(in srgb,var(--pink) 13%,transparent),transparent 70%),
+    repeating-linear-gradient(90deg,var(--grid) 0 1px,transparent 1px 7px);
+  background-size:200px 200px,137px 137px,760px 760px,100% 1700px,100% 1700px,100% 100%;
+  background-repeat:repeat,repeat,repeat,repeat-y,repeat-y,repeat;}
+:root{--grid:rgba(114,217,179,.022);}
+:root[data-theme="light"]{--grid:rgba(28,133,100,.035);}
+
+/* small labels: engraved small caps, like a print colophon */
+.lbl,.cap .type,.d-type,.tag-row .k,.facts dt,.namev-cap{font-family:var(--sans);font-variant-caps:all-small-caps;font-size:14px;letter-spacing:.14em;font-weight:500;text-transform:none;}
+#cur .txt{font-family:var(--disp);font-style:italic;font-weight:500;font-size:14px;}
+
+/* gothic accent sizing (it runs larger than the old script) */
+.brand .bn i{font-size:22px;font-weight:600;margin-left:5px;}
+.hero-role .script{font-size:clamp(30px,3.3vw,48px);font-weight:500;letter-spacing:.01em;
+  color:transparent;-webkit-background-clip:text;background-clip:text;background-image:var(--irid);background-size:220% 220%;animation:holo 9s linear infinite;text-shadow:none;}
+.head h2 em,.bio p:first-child em,.foot-big .script{font-weight:500;font-size:.86em;}
+.neon-sub{font-size:28px;font-weight:600;}
+.neon-open{font-family:var(--disp);font-weight:700;letter-spacing:.14em;}
+
+/* nav: italic serif, gothic numeral */
+#nav a{font-size:16px;font-style:italic;font-weight:400;}
+#nav a::before{content:attr(data-n);font-family:var(--script);font-style:normal;font-size:12px;color:var(--pink);margin-right:6px;vertical-align:2px;}
+
+/* proof-mark frames instead of pills: hairline box with corner ticks */
+.hero-meta span,.tbtn,.chip,.tag{border-radius:0;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:none;position:relative;
+  --tk:var(--ink-3);
+  background-image:
+    linear-gradient(var(--tk),var(--tk)),linear-gradient(var(--tk),var(--tk)),
+    linear-gradient(var(--tk),var(--tk)),linear-gradient(var(--tk),var(--tk)),
+    linear-gradient(var(--tk),var(--tk)),linear-gradient(var(--tk),var(--tk)),
+    linear-gradient(var(--tk),var(--tk)),linear-gradient(var(--tk),var(--tk));
+  background-repeat:no-repeat;
+  background-size:7px 1px,1px 7px,7px 1px,1px 7px,7px 1px,1px 7px,7px 1px,1px 7px;
+  background-position:0 0,0 0,100% 0,100% 0,0 100%,0 100%,100% 100%,100% 100%;}
+.hero-meta span{font-variant-caps:all-small-caps;letter-spacing:.14em;font-size:15px;padding:4px 12px;}
+.tbtn{font-style:italic;font-size:14.5px;padding:6px 13px;}
+.tbtn:hover,.chip:hover,.tag:hover{--tk:var(--pink);}
+.tbtn[aria-pressed="true"]{color:var(--ink);background-color:transparent;--tk:var(--pink);}
+.tbtn[aria-pressed="true"] .moon-ic::after{background:var(--bg);}
+.chip{font-style:italic;font-size:16px;padding:6px 14px;margin-right:6px;}
+.chip[aria-pressed="true"]{background-color:transparent;color:var(--ink);--tk:var(--pink);
+  text-decoration:underline wavy color-mix(in srgb,var(--jade) 80%,transparent);text-decoration-thickness:1px;text-underline-offset:6px;}
+.tag{font-size:15px;padding:3px 10px;box-shadow:none !important;}
+.tag.hot{background-color:transparent;font-style:italic;--tk:var(--pink);}
+.tag.hot::before{width:5px;height:5px;box-shadow:none;}
+.tag.ai{background-color:transparent;--tk:var(--jade);}
+.view{border-radius:0;font-family:var(--disp);font-style:italic;font-weight:500;font-size:14px;}
+
+/* buttons: square, with a chrome sheen that slides across */
+.btn{border-radius:0;font-family:var(--disp);font-style:italic;font-weight:500;font-size:16px;letter-spacing:.01em;position:relative;overflow:hidden;}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.55) 45%,rgba(255,147,196,.35) 52%,transparent 66%);transform:translateX(-120%);transition:transform .9s cubic-bezier(.2,.8,.2,1);pointer-events:none;}
+.btn:hover::after{transform:translateX(120%);}
+
+/* section numerals: gothic, filled with a halftone that swells on hover */
+.head .num{font-family:var(--script);font-style:normal;font-weight:700;font-size:clamp(70px,7.4vw,118px);line-height:.78;-webkit-text-stroke:0;
+  color:transparent;-webkit-background-clip:text;background-clip:text;
+  background-image:radial-gradient(circle,var(--pink) 0 34%,transparent 38%),radial-gradient(circle,var(--jade) 0 30%,transparent 34%);
+  background-size:6px 6px,6px 6px;background-position:0 0,3px 3px;transition:background-size .5s cubic-bezier(.2,.8,.2,1);}
+.head:hover .num{background-image:radial-gradient(circle,var(--pink) 0 34%,transparent 38%),radial-gradient(circle,var(--jade) 0 30%,transparent 34%);background-size:9px 9px,9px 9px;-webkit-text-stroke:0;animation:none;}
+
+/* the vertical name: chrome cut by reeded-glass ribs, shifts on hover */
+.namev{color:transparent;-webkit-background-clip:text;background-clip:text;animation:none;
+  background-image:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.0) 0 5px,rgba(255,255,255,.55) 6px,rgba(0,0,0,.18) 8px,rgba(255,255,255,0) 9px),
+    linear-gradient(180deg,#fff 0%,#ffc2dd 18%,#7fe0bd 40%,#f6efe0 55%,#ff93c4 72%,#3fa883 88%,#fff 100%);
+  background-size:9px 100%,100% 260%;background-position:0 0,0 0;transition:background-position 1.4s cubic-bezier(.2,.8,.2,1);
+  filter:drop-shadow(0 0 18px color-mix(in srgb,var(--pink) 30%,transparent));}
+.namev:hover{background-position:4px 0,0 100%;}
+:root[data-theme="light"] .namev{background-image:
+    repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 5px,rgba(255,255,255,.6) 6px,rgba(0,0,0,.2) 8px,rgba(255,255,255,0) 9px),
+    linear-gradient(180deg,#1c8564 0%,#de4d8c 30%,#14231c 52%,#1c8564 74%,#de4d8c 100%);filter:none;}
+
+/* liquid glass: thicker bevel, specular top edge, iridescent rim that melts (SVG turbulence) */
+.glasscard{border-radius:22px 22px 26px 18px;padding:16px 20px 18px;font-size:17px;line-height:1.5;color:var(--ink);
+  background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.02) 40%,rgba(114,217,179,.06)),var(--glass);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -10px 24px -14px rgba(255,147,196,.45),inset 8px 0 18px -14px rgba(114,217,179,.6),0 24px 50px -30px rgba(0,0,0,.6);}
+.glasscard::before{filter:url(#melt);padding:2px;}
+.glasscard::after{content:"";position:absolute;left:14%;right:30%;top:5px;height:6px;border-radius:50%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);filter:blur(2px);pointer-events:none;}
+:root[data-theme="light"] .glasscard{color:var(--ink-2);}
+
+/* project frames: keep images clean, only the mount gets a thin chrome rim */
+.mount{border-radius:4px;border:none;padding:7px;background:var(--glass);box-shadow:inset 0 0 0 1px var(--glass-edge);}
+.mount::before{border-radius:4px;}
+.ph{border-radius:2px;}
+.cap h3{font-weight:500;}
+.cap p{font-size:16px;}
+
+/* body copy */
+.bio p{font-size:clamp(17px,1.3vw,19px);line-height:1.65;}
+.skills h4{font-family:var(--script);font-style:normal;font-weight:600;font-size:30px;}
+.facts dd{font-size:15.5px !important;}
+.cv-copy p,.d-sub,.d-text p{font-size:18px;}
+@media (prefers-reduced-motion:reduce){.hero-role .script{animation:none;}}
 </style>
 </head>
 <body>
@@ -496,6 +601,14 @@ const CAT_COLOR = { ux:"var(--jade)", web:"#7FB8FF", editorial:"var(--red)", pri
   <div class="ld-name">Caroline Chen</div>
 </div>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="melt" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency=".012 .035" numOctaves="2" seed="4" result="n">
+      <animate attributeName="baseFrequency" dur="14s" values=".012 .035;.016 .028;.012 .035" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 <div id="cur" aria-hidden="true"><div class="ring"><span class="txt"></span></div></div>
 
 <header id="top">
@@ -511,9 +624,9 @@ const CAT_COLOR = { ux:"var(--jade)", web:"#7FB8FF", editorial:"var(--red)", pri
     <span class="bn">Caroline<i>Chen</i></span>
   </a>
   <nav id="nav" aria-label="Sections">
-    <a href="#work"><span data-scr>Work</span></a>
-    <a href="#about"><span data-scr>About</span></a>
-    <a href="#resume" data-cv><span data-scr>Resume</span></a>
+    <a href="#work" data-n="i."><span data-scr>Work</span></a>
+    <a href="#about" data-n="ii."><span data-scr>About</span></a>
+    <a href="#resume" data-cv data-n="iii."><span data-scr>Resume</span></a>
   </nav>
   <div class="tools">
     <button class="tbtn" id="theme" aria-pressed="false"><span class="moon-ic"></span><span class="lat">Day</span></button>
@@ -1342,6 +1455,44 @@ function frame(now){
   }
   ctx.globalAlpha = 1;
   if(pollen.length > 400) pollen.splice(0, pollen.length - 400);
+  reeded(t);
+}
+
+/* ---------- reeded glass: a vertical pane of fluted glass that slices the garden into
+   refracted strips. It drifts on its own and leans toward the cursor. ---------- */
+const snap = document.createElement("canvas"), sn = snap.getContext("2d");
+let paneX = -1;
+function reeded(t){
+  if(snap.width !== cv.width || snap.height !== cv.height){ snap.width = cv.width; snap.height = cv.height; }
+  sn.clearRect(0, 0, snap.width, snap.height); sn.drawImage(cv, 0, 0);
+  const pw = mobile ? W * .34 : Math.min(W * .2, 300), rib = mobile ? 9 : 12;
+  const idle = W * (mobile ? .56 : .6) + Math.sin(t * .18) * W * .08;
+  const want = mouse.inside && !mobile ? clamp(mouse.x, pw / 2, W - pw / 2) : idle;
+  paneX = paneX < 0 ? want : paneX + (want - paneX) * .035;
+  const x0 = Math.round(paneX - pw / 2), top = mobile ? H * .12 : H * .08, ph = H - top;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(x0, top, pw, ph); ctx.clip();
+  ctx.clearRect(x0, top, pw, ph);
+  // faint tint so the pane reads as glass even over empty space
+  const tint = ctx.createLinearGradient(x0, 0, x0 + pw, 0);
+  tint.addColorStop(0, P.jadeA(.05)); tint.addColorStop(.5, P.pinkA(.07)); tint.addColorStop(1, P.jadeA(.05));
+  ctx.fillStyle = tint; ctx.fillRect(x0, top, pw, ph);
+  for(let x = x0, i = 0; x < x0 + pw; x += rib, i++){
+    // each flute shows a wider slice, squeezed and shifted: the classic reeded refraction
+    const shift = Math.sin(i * 1.7 + t * .4) * rib * .9;
+    const sx = (x - rib * .9 + shift) * dpr, sw = rib * 2.6 * dpr;
+    ctx.drawImage(snap, sx, top * dpr, sw, ph * dpr, x, top + Math.sin(i * .9) * 3, rib, ph);
+    // flute shading: bright edge, soft shadow
+    const g = ctx.createLinearGradient(x, 0, x + rib, 0);
+    g.addColorStop(0, "rgba(255,255,255,.16)"); g.addColorStop(.18, "rgba(255,255,255,0)");
+    g.addColorStop(.8, "rgba(0,0,0,0)"); g.addColorStop(1, isDark() ? "rgba(0,0,0,.28)" : "rgba(20,35,28,.12)");
+    ctx.fillStyle = g; ctx.fillRect(x, top, rib, ph);
+  }
+  // a thin iridescent rim on the pane's two edges
+  const rim = ctx.createLinearGradient(0, top, 0, H);
+  rim.addColorStop(0, P.pinkA(.7)); rim.addColorStop(.5, P.jadeA(.6)); rim.addColorStop(1, P.pinkA(.15));
+  ctx.fillStyle = rim; ctx.fillRect(x0, top, 1, ph); ctx.fillRect(x0 + pw - 1, top, 1, ph);
+  ctx.restore();
 }
 layout();
 requestAnimationFrame(frame);
