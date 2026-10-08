@@ -3,352 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caroline Chen — Design</title>
-<meta name="description" content="Caroline Chen — graphic, brand and experience designer based in San Mateo, CA.">
+<title>Caroline Chen · Design</title>
+<meta name="description" content="Caroline Chen, graphic, brand and experience designer based in San Mateo, CA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Doto:wght@600;800&family=Familjen+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Pinyon+Script&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;900&text=%E9%99%88%E9%94%A6%E5%84%BF&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Bricolage+Grotesque:opsz,wght@12..96,300..700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script>
+/* every hanzi used on the page, so the Chinese webfonts only ship these glyphs */
+window.HANZI = "陈锦儿作品关于履历联系金鱼佛焰苞肉穗玉镯茎习惯讽刺梅花莲云墨光水影风铃纸剪灯笔字梦游星雨露香色青红粉绿白黑山海月日心眼手骨皮肉丝织布纹镜里外上下中东西南北春夏秋冬平面品牌体验研究印刷网页编辑艺术设计开放工作生活城市旧金山唐人街圣马特奥加州年号第图样本标签声音明暗模式下载打开关闭前后看点击游泳喂食";
+(function(){
+  const q = encodeURIComponent(window.HANZI);
+  const l = document.createElement("link");
+  l.rel = "stylesheet";
+  l.href = "https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@500;900&display=swap&text=" + q;
+  document.head.appendChild(l);
+})();
+</script>
 <style>
 /* ============================================================
-   paper · jade · cinnabar · calla
+   cream · blush · sage · oxblood, with iridescent hyperpop leaks
    ============================================================ */
 :root{
-  --paper:#EFEBE3;
-  --paper-2:#E5E0D5;
-  --ink:#16171B;
-  --ink-2:#47484E;
-  --ink-3:#808084;
-  --rule:rgba(22,23,27,.15);
-  --jade:#3F8A6E;
-  --jade-2:#9CC8B3;
-  --red:#C3392B;
-  --blue:#2443A6;
-  --pink:#E9B7C4;
-  --serif:"Instrument Serif","Times New Roman",serif;
+  --paper:#F7F3EE;
+  --paper-2:#EEE7E0;
+  --ink:#1B1519;
+  --ink-2:#4B4147;
+  --ink-3:#8C8186;
+  --rule:rgba(27,21,25,.14);
+  --blush:#F3C9D3;
+  --pink:#E2457F;
+  --sage:#9DB89A;
+  --ox:#7C1D2C;
+  --lilac:#BBA6F5;
+  --cyan:#3CCFDD;
+  --orange:#FF7A2E;
+  --glass:rgba(255,255,255,.46);
+  --glass-edge:rgba(255,255,255,.75);
+  --irid:linear-gradient(120deg,#ffd1e3,#c9b8ff 30%,#b8f3ff 55%,#fff2c4 78%,#ffd1e3);
+  --disp:"Bodoni Moda","Didot",serif;
   --script:"Pinyon Script",cursive;
+  --sans:"Bricolage Grotesque",system-ui,sans-serif;
+  --brush:"Ma Shan Zheng","Noto Serif SC",serif;
   --han:"Noto Serif SC","Songti SC",serif;
-  --sans:"Familjen Grotesk",system-ui,sans-serif;
-  --small:"Share Tech Mono",ui-monospace,monospace;
-  --num:"Doto",ui-monospace,monospace;
-  --gut:clamp(16px,4vw,56px);
-  --bg-dim:1;
+  --gut:clamp(16px,4vw,60px);
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#0E0F12; --paper-2:#17181D; --ink:#ECE8E0; --ink-2:#B7B4AD; --ink-3:#7F7D79;
-    --rule:rgba(236,232,224,.15); --jade:#7CC9A6; --jade-2:#2F5E4C; --red:#E8604F; --blue:#8CA2F2; --pink:#B98395;
+    --paper:#100C0F; --paper-2:#1B1519; --ink:#F4EDEF; --ink-2:#C6B9BF; --ink-3:#877B81;
+    --rule:rgba(244,237,239,.14); --blush:#4A2232; --pink:#FF77AB; --sage:#7FA48A; --ox:#E35A6D;
+    --lilac:#A893F5; --glass:rgba(32,24,30,.5); --glass-edge:rgba(255,255,255,.16);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#0E0F12; --paper-2:#17181D; --ink:#ECE8E0; --ink-2:#B7B4AD; --ink-3:#7F7D79;
-  --rule:rgba(236,232,224,.15); --jade:#7CC9A6; --jade-2:#2F5E4C; --red:#E8604F; --blue:#8CA2F2; --pink:#B98395;
+  --paper:#100C0F; --paper-2:#1B1519; --ink:#F4EDEF; --ink-2:#C6B9BF; --ink-3:#877B81;
+  --rule:rgba(244,237,239,.14); --blush:#4A2232; --pink:#FF77AB; --sage:#7FA48A; --ox:#E35A6D;
+  --lilac:#A893F5; --glass:rgba(32,24,30,.5); --glass-edge:rgba(255,255,255,.16);
   color-scheme:dark;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 [hidden]{display:none!important;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
 body{
   background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:16px;line-height:1.6;
+  font-family:var(--sans);font-size:16px;line-height:1.6;font-optical-sizing:auto;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
   transition:background .5s,color .5s;
 }
-::selection{background:var(--jade);color:var(--paper);}
+::selection{background:var(--pink);color:#fff;}
 a{color:inherit;}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;text-align:inherit;}
-:focus-visible{outline:1px solid var(--red);outline-offset:3px;}
-.sm{font-family:var(--small);font-size:12px;letter-spacing:.06em;text-transform:uppercase;}
-.num{font-family:var(--num);font-weight:800;letter-spacing:.02em;}
+:focus-visible{outline:1.5px solid var(--pink);outline-offset:3px;}
+.lbl{font-family:var(--sans);font-size:12.5px;font-weight:500;letter-spacing:.01em;color:var(--ink-3);}
+.lbl .h{font-family:var(--han);font-weight:500;margin-left:.35em;}
+.han{font-family:var(--han);}
+.brush{font-family:var(--brush);font-weight:400;}
 .script{font-family:var(--script);font-weight:400;}
 
-/* paper grain */
-body::after{
-  content:"";position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.3;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .45  0 0 0 0 .42  0 0 0 0 .38  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-}
-:root[data-theme="dark"] body::after{mix-blend-mode:screen;opacity:.1;}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{mix-blend-mode:screen;opacity:.1;}}
-
-/* ---------- background canvas ---------- */
-#bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;opacity:var(--bg-dim);transition:opacity .35s;}
-#bg.swap{opacity:0;}
-
-/* ---------- seal (陈锦儿, two-column stamp) ---------- */
+/* seal (陈锦儿) */
 .seal{
   display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;
   width:64px;height:64px;padding:5px;gap:0 2px;
-  background:var(--red);color:var(--paper);border-radius:3px;
+  background:var(--ox);color:var(--paper);border-radius:3px;
   font-family:var(--han);font-weight:900;line-height:1;
-  box-shadow:inset 0 0 0 2px var(--red), inset 0 0 0 3.5px var(--paper);
+  box-shadow:inset 0 0 0 2px var(--ox), inset 0 0 0 3.5px var(--paper);
 }
 .seal span{display:grid;place-items:center;font-size:21px;}
-.seal span:first-child{grid-column:2;grid-row:1 / span 2;font-size:34px;}  /* 陈 reads first, right column */
+.seal span:first-child{grid-column:2;grid-row:1 / span 2;font-size:34px;}
 .seal span:nth-child(2){grid-column:1;grid-row:1;}
 .seal span:nth-child(3){grid-column:1;grid-row:2;}
-.seal.s{width:34px;height:34px;padding:3px;border-radius:2px;box-shadow:inset 0 0 0 1.2px var(--red), inset 0 0 0 2px var(--paper);}
+.seal.s{width:34px;height:34px;padding:3px;border-radius:2px;box-shadow:inset 0 0 0 1.2px var(--ox), inset 0 0 0 2px var(--paper);transition:transform .4s cubic-bezier(.3,1.6,.5,1);}
 .seal.s span{font-size:11px;} .seal.s span:first-child{font-size:18px;}
+.brand:hover .seal.s{transform:rotate(-8deg) scale(1.08);}
 
-/* ---------- loader ---------- */
-#loader{
-  position:fixed;inset:0;z-index:100;background:var(--paper);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
-  transition:opacity .8s, visibility .8s;cursor:pointer;
-}
-#loader.done{opacity:0;visibility:hidden;}
-#loader .seal{width:92px;height:92px;animation:stamp .9s cubic-bezier(.2,.9,.25,1.1) both;}
+/* loader */
+#loader{position:fixed;inset:0;z-index:100;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .7s, visibility .7s;cursor:pointer;}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none;}
+#loader .seal{width:92px;height:92px;animation:stamp .8s cubic-bezier(.2,.9,.25,1.1) both;}
 #loader .seal span{font-size:30px;} #loader .seal span:first-child{font-size:50px;}
 @keyframes stamp{0%{transform:scale(1.7) rotate(-8deg);opacity:0;}55%{opacity:1;}100%{transform:rotate(-2deg);opacity:1;}}
-#loader .ld-name{font-family:var(--serif);font-size:30px;font-style:italic;}
-#loader .ld-count{font-family:var(--num);font-weight:800;font-size:22px;color:var(--ink-3);}
+#loader .ld-name{font-family:var(--disp);font-style:italic;font-size:30px;}
 
-/* ---------- top bar ---------- */
-#top{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;gap:24px;
-  padding:16px var(--gut);
-}
-#top::before{
-  content:"";position:absolute;inset:0 0 -26px;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
-  background:linear-gradient(to bottom, var(--paper) 55%, transparent);
-}
+/* cursor follower (fine pointers only) */
+#cur{position:fixed;left:0;top:0;z-index:120;pointer-events:none;width:0;height:0;display:none;}
+@media (pointer:fine){#cur{display:block;}}
+#cur .ring{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;border:1px solid var(--ink);
+  display:grid;place-items:center;transition:width .35s cubic-bezier(.2,.9,.3,1.2),height .35s cubic-bezier(.2,.9,.3,1.2),left .35s cubic-bezier(.2,.9,.3,1.2),top .35s cubic-bezier(.2,.9,.3,1.2),background .3s,border-color .3s,opacity .3s;opacity:.55;}
+#cur .txt{font-family:var(--sans);font-size:11.5px;font-weight:600;color:#fff;opacity:0;transition:opacity .2s;white-space:nowrap;}
+#cur.big .ring{width:86px;height:86px;left:-43px;top:-43px;background:var(--pink);border-color:var(--pink);opacity:.95;}
+#cur.big .txt{opacity:1;}
+#cur.hide .ring{opacity:0;}
+
+/* top bar */
+#top{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:24px;padding:14px var(--gut);transition:transform .45s cubic-bezier(.2,.8,.2,1);}
+#top::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:var(--glass);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--rule);}
 body.scrolled #top::before{opacity:1;}
+body.hide-top #top{transform:translateY(-110%);}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto;}
-.brand .bn{font-family:var(--serif);font-size:21px;line-height:1;}
-.brand .bn i{font-family:var(--script);font-style:normal;font-size:24px;color:var(--jade);margin-left:2px;}
-#nav{display:flex;gap:clamp(14px,2.2vw,30px);align-items:center;}
-#nav a{
-  text-decoration:none;font-family:var(--small);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink-2);padding:4px 0;position:relative;
-}
-#nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.brand .bn{font-family:var(--disp);font-size:20px;line-height:1;font-weight:500;}
+.brand .bn i{font-family:var(--script);font-style:normal;font-size:25px;color:var(--pink);margin-left:3px;font-weight:400;}
+#nav{display:flex;gap:clamp(16px,2.4vw,34px);align-items:center;}
+#nav a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--ink-2);padding:4px 0;position:relative;display:inline-flex;gap:6px;align-items:baseline;}
+#nav a .h{font-family:var(--han);font-size:12px;color:var(--ink-3);transition:color .3s;}
+#nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--pink);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(.2,.8,.2,1);}
 #nav a:hover,#nav a.on{color:var(--ink);}
-#nav a:hover::after,#nav a.on::after{transform:scaleX(1);}
+#nav a:hover .h,#nav a.on .h{color:var(--pink);}
+#nav a:hover::after,#nav a.on::after{transform:scaleX(1);transform-origin:left;}
 .tools{display:flex;gap:8px;align-items:center;}
-.tbtn{
-  display:inline-flex;align-items:center;gap:8px;
-  font-family:var(--small);font-size:12px;letter-spacing:.06em;text-transform:uppercase;
-  padding:7px 12px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);
-  background:color-mix(in srgb,var(--paper) 70%,transparent);
-  transition:color .2s,border-color .2s,background .2s;
-}
-.tbtn:hover{color:var(--ink);border-color:var(--ink);}
+.tbtn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:7px 13px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);
+  background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:color .2s,border-color .2s,background .2s,transform .3s cubic-bezier(.3,1.6,.5,1);}
+.tbtn:hover{color:var(--ink);border-color:var(--ink);transform:translateY(-1px);}
 .tbtn[aria-pressed="true"]{color:var(--paper);background:var(--ink);border-color:var(--ink);}
 .moon{width:12px;height:12px;border-radius:50%;background:currentColor;position:relative;overflow:hidden;}
 .moon::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:var(--paper);left:4px;top:-3px;transition:background .5s;}
 .tbtn[aria-pressed="true"] .moon::after{background:var(--ink);}
 .bars{display:inline-flex;gap:2px;align-items:flex-end;height:11px;}
-.bars i{width:2px;height:3px;background:currentColor;}
+.bars i{width:2px;height:3px;background:currentColor;border-radius:1px;}
 .tbtn.playing .bars i{animation:eq .9s ease-in-out infinite;}
 .tbtn.playing .bars i:nth-child(2){animation-delay:-.3s;} .tbtn.playing .bars i:nth-child(3){animation-delay:-.6s;}
 @keyframes eq{0%,100%{height:3px;}50%{height:11px;}}
-
-/* bottom corners */
-#corner-l,#corner-r{position:fixed;bottom:16px;z-index:50;font-family:var(--small);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;}
-#corner-l{left:var(--gut);pointer-events:none;}
-#corner-r{right:var(--gut);display:flex;gap:6px;align-items:center;transition:opacity .4s;}
-#corner-r .lbl{margin-right:6px;}
-body.scrolled #corner-r{opacity:0;pointer-events:none;}
-.sbtn{font-family:var(--small);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:3px 2px;border-bottom:1px solid transparent;}
-.sbtn:hover{color:var(--ink);}
-.sbtn[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--red);}
 
 main{position:relative;z-index:2;}
 section{position:relative;}
 .wrap{max-width:1440px;margin:0 auto;padding:0 var(--gut);}
 
-/* ---------- HERO ---------- */
-#hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;}
-#lily{position:absolute;top:0;right:0;width:58%;height:100%;display:block;pointer-events:none;z-index:1;}
-#hero .wrap{width:100%;position:relative;z-index:2;}
-.hero-copy{max-width:600px;padding-top:40px;}
-.hero-meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--ink-2);margin-bottom:26px;}
-.hero-meta span{display:flex;align-items:center;gap:8px;}
-.hero-meta .dot{width:7px;height:7px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 3px color-mix(in srgb,var(--jade) 25%,transparent);}
-.hero-name{font-family:var(--serif);font-weight:400;font-size:clamp(64px,11vw,176px);line-height:.84;letter-spacing:-.025em;}
-.hero-role{margin-top:20px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
-.hero-role .script{font-size:clamp(34px,4vw,58px);line-height:1;color:var(--jade);}
-.hero-role .g{font-family:var(--sans);font-weight:600;font-size:clamp(20px,2vw,28px);letter-spacing:-.01em;}
-.hero-statement{max-width:440px;margin-top:28px;font-size:16px;line-height:1.65;color:var(--ink-2);padding:12px 14px;margin-left:-14px;background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
-.hero-name-cn{
-  position:absolute;right:var(--gut);top:50%;transform:translateY(-50%);z-index:2;
-  writing-mode:vertical-rl;font-family:var(--han);font-weight:900;font-size:clamp(44px,6vw,92px);letter-spacing:.12em;
-  color:transparent;-webkit-text-stroke:1px var(--ink-3);user-select:none;pointer-events:none;
+/* ---------- HERO: lilies behind reeded glass ---------- */
+#hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--paper);}
+#lily{position:absolute;inset:0;width:100%;height:100%;display:block;}
+#hud{position:absolute;inset:0;pointer-events:none;z-index:2;}
+#hud svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+#hud line{stroke:var(--ink);stroke-width:.75;opacity:.55;}
+#hud circle{fill:none;stroke:var(--ink);stroke-width:.75;opacity:.7;}
+.tag-hud{position:absolute;left:0;top:0;font-size:11px;line-height:1.35;color:var(--ink);white-space:nowrap;padding:5px 8px;
+  background:var(--glass);border:1px solid var(--glass-edge);border-radius:6px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  opacity:0;transition:opacity .6s;}
+.tag-hud.on{opacity:1;}
+.tag-hud b{display:block;font-family:var(--han);font-weight:500;font-size:12.5px;}
+.tag-hud span{color:var(--ink-3);}
+#hero .wrap{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:clamp(40px,8vh,90px);pointer-events:none;}
+#hero .wrap > *{pointer-events:auto;}
+.hero-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-2);padding:5px 11px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-edge);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.hero-meta .dot{width:7px;height:7px;border-radius:50%;background:#2fbf71;box-shadow:0 0 0 3px rgba(47,191,113,.25);animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(47,191,113,0);}}
+.hero-name{font-family:var(--disp);font-weight:500;font-size:clamp(66px,12.5vw,210px);line-height:.82;letter-spacing:-.035em;}
+.hero-name .it{font-style:italic;font-weight:400;}
+.hero-name .ch{display:inline-block;transition:transform .5s cubic-bezier(.2,1.4,.4,1),color .3s;}
+.hero-name .ch:hover{transform:translateY(-.08em) rotate(-4deg);color:var(--pink);}
+.hero-row{display:flex;gap:clamp(20px,4vw,60px);align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-top:20px;}
+.hero-role{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.hero-role .script{font-size:clamp(34px,4vw,58px);line-height:1;color:var(--pink);}
+.hero-role .g{font-family:var(--disp);font-style:italic;font-size:clamp(20px,2vw,28px);}
+.glasscard{
+  position:relative;max-width:420px;font-size:15.5px;line-height:1.6;color:var(--ink-2);padding:16px 18px;border-radius:18px;
+  background:var(--glass);backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);
+  box-shadow:inset 0 1px 0 var(--glass-edge),0 20px 40px -24px rgba(60,20,40,.35);
 }
-.scroll-cue{position:absolute;left:var(--gut);bottom:52px;z-index:2;display:flex;align-items:center;gap:12px;color:var(--ink-3);text-decoration:none;}
-.scroll-cue i{width:46px;height:1px;background:var(--ink-3);transform-origin:left;animation:line 2.4s ease-in-out infinite;}
-@keyframes line{0%{transform:scaleX(0);}50%{transform:scaleX(1);}100%{transform:scaleX(1);opacity:0;}}
+.glasscard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--irid);background-size:200% 200%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:irid 8s linear infinite;pointer-events:none;}
+@keyframes irid{to{background-position:200% 200%;}}
+.hint-hero{position:absolute;right:var(--gut);top:84px;z-index:3;text-align:right;}
+@media (prefers-reduced-motion:reduce){.glasscard::before,.hero-meta .dot{animation:none;}}
+
+/* ---------- ticker ---------- */
+.ticker{position:relative;z-index:2;overflow:hidden;border-block:1px solid var(--ink);background:var(--paper);padding:14px 0;white-space:nowrap;}
+.ticker-in{display:inline-flex;gap:0;will-change:transform;}
+.ticker-in span{font-family:var(--disp);font-style:italic;font-size:clamp(22px,2.6vw,36px);padding:0 .5em;}
+.ticker-in span.h{font-family:var(--brush);font-style:normal;color:var(--pink);}
+.ticker-in span.d{color:var(--ink-3);font-style:normal;}
 
 /* ---------- section heads ---------- */
-.head{display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:10px 26px;padding-bottom:14px;border-bottom:1px solid var(--ink);}
-.head .num{font-size:clamp(38px,4.6vw,66px);line-height:.8;color:var(--red);}
-.head h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.6vw,84px);line-height:.9;letter-spacing:-.015em;}
-.head h2 em{font-family:var(--script);font-style:normal;color:var(--jade);font-size:.82em;}
-.head .aside{color:var(--ink-3);text-align:right;max-width:340px;}
-.sec{padding:clamp(100px,15vh,180px) 0 40px;}
-.panel{background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.sec{padding:clamp(90px,13vh,150px) 0 40px;}
+.head{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:10px 24px;padding-bottom:16px;border-bottom:1px solid var(--ink);}
+.head .wm{position:absolute;right:-.06em;bottom:-.28em;font-family:var(--brush);font-size:clamp(150px,22vw,330px);line-height:1;color:var(--blush);opacity:.6;z-index:-1;pointer-events:none;user-select:none;letter-spacing:-.05em;}
+.head .num{font-family:var(--disp);font-style:italic;font-size:clamp(34px,4vw,58px);line-height:.8;color:var(--ox);}
+.head h2{font-family:var(--disp);font-weight:500;font-size:clamp(44px,6.4vw,100px);line-height:.88;letter-spacing:-.03em;}
+.head h2 em{font-family:var(--script);font-style:normal;color:var(--pink);font-size:.8em;font-weight:400;letter-spacing:0;}
+.head .aside{text-align:right;max-width:340px;}
 
-/* ---------- WORK — reflecting pool ---------- */
-#work{background:var(--paper);}
-.pool-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;}
-.pool-head{position:absolute;left:0;right:0;top:84px;z-index:3;}
-.pool-track{
-  position:absolute;left:0;bottom:0;z-index:2;
-  display:flex;align-items:flex-end;gap:7vw;padding:0 34vw 0 var(--gut);
-  will-change:transform;
+/* ---------- WORK ---------- */
+#work{z-index:2;}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 34px;align-items:center;}
+.chip{font-size:13.5px;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--rule);color:var(--ink-2);transition:all .25s;}
+.chip:hover{border-color:var(--ink);color:var(--ink);}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+.chip sup{font-size:10px;margin-left:3px;opacity:.6;}
+.filters .count{margin-left:auto;}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(28px,4vw,56px) clamp(18px,2.4vw,34px);}
+.card{position:relative;grid-column:span 6;display:flex;flex-direction:column;gap:14px;perspective:1100px;}
+.card.s7{grid-column:span 7;} .card.s5{grid-column:span 5;} .card.s4{grid-column:span 4;}
+.card.s5,.card.s4{margin-top:clamp(0px,6vw,90px);}
+.card.gone{display:none;}
+.card-hit{position:absolute;inset:0;z-index:4;border-radius:14px;}
+.glass{
+  position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:var(--paper-2);
+  transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
+  box-shadow:0 30px 50px -36px rgba(60,20,40,.5);
 }
-.pc{display:flex;flex-direction:column;align-items:flex-start;gap:12px;flex:none;}
-.pc-cap{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:baseline;min-width:240px;}
-.pc-n{font-family:var(--num);font-weight:800;font-size:22px;color:var(--red);line-height:1;}
-.pc-t{font-family:var(--serif);font-size:clamp(24px,2.3vw,34px);line-height:1;}
-.pc-s{grid-column:2;font-size:13.5px;line-height:1.4;color:var(--ink-2);max-width:340px;}
-.pc-img{display:block;object-fit:cover;background:var(--paper-2);border:1px solid var(--rule);transition:filter .4s;}
-.pc:hover .pc-img,.pc:focus-visible .pc-img{filter:brightness(1.06) saturate(1.08);}
-.pc:hover .pc-t{font-style:italic;}
-.pool-water{position:absolute;left:0;right:0;bottom:0;z-index:1;width:100%;display:block;}
-.pool-water.fallback{display:none;}
-.pool-line{position:absolute;left:0;right:0;z-index:2;height:1px;background:linear-gradient(90deg,transparent,var(--ink-3),transparent);opacity:.5;pointer-events:none;}
-.pool-idx{position:absolute;left:var(--gut);right:var(--gut);bottom:18px;z-index:3;display:flex;gap:4px;align-items:center;flex-wrap:wrap;}
-.pool-idx button{font-family:var(--num);font-weight:800;font-size:15px;color:color-mix(in srgb,var(--ink) 55%,transparent);padding:3px 6px;border-radius:999px;transition:color .2s,background .2s;}
-.pool-idx button:hover{color:var(--ink);}
-.pool-idx button.on{color:var(--paper);background:var(--ink);}
-.pool-idx .hint{margin-left:auto;color:color-mix(in srgb,var(--ink) 60%,transparent);}
+.card.s4 .glass,.card.s5 .glass{aspect-ratio:4/5;}
+.card:hover .glass{box-shadow:0 40px 70px -30px rgba(120,30,70,.45);}
+.strip{position:absolute;top:0;bottom:0;overflow:hidden;}
+.strip img{position:absolute;top:0;height:100%;object-fit:cover;max-width:none;
+  transform:scaleX(var(--s,1.6)) translateX(var(--o,0px));transition:transform .55s cubic-bezier(.2,.8,.2,1);will-change:transform;}
+.strip::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,.10),rgba(255,255,255,0) 30%,rgba(255,255,255,.22) 82%,rgba(255,255,255,.04));
+  opacity:var(--g,1);transition:opacity .55s;}
+.glass .leak{position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:screen;opacity:0;transition:opacity .5s;
+  background:radial-gradient(closest-side at var(--lx,50%) var(--ly,50%),rgba(255,140,200,.55),rgba(170,150,255,.35) 45%,rgba(120,240,255,.15) 70%,transparent);}
+.card:hover .leak{opacity:1;}
+.glass .fig{position:absolute;left:10px;top:10px;z-index:3;font-size:11px;font-weight:600;color:#fff;padding:3px 8px;border-radius:999px;background:rgba(20,12,16,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.card-cap{display:grid;grid-template-columns:auto 1fr auto;gap:2px 14px;align-items:baseline;}
+.card-cap .n{font-family:var(--disp);font-style:italic;font-size:22px;color:var(--ox);line-height:1;}
+.card-cap .t{font-family:var(--disp);font-weight:500;font-size:clamp(24px,2.3vw,34px);line-height:1.02;letter-spacing:-.015em;}
+.card-cap .yr{font-size:13px;color:var(--ink-3);}
+.card-cap .s{grid-column:2 / -1;font-size:14.5px;line-height:1.45;color:var(--ink-2);max-width:460px;}
+.card:hover .card-cap .t{font-style:italic;color:var(--pink);}
 
-/* ---------- MOTION ---------- */
-.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:30px;}
-.mtile{display:flex;flex-direction:column;gap:10px;}
-.mtile .box{position:relative;aspect-ratio:4/5;border:1px solid var(--rule);overflow:hidden;background:var(--paper-2);}
-.mtile canvas,.mtile video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;}
-.mtile .row1{display:flex;gap:10px;align-items:baseline;}
-.mtile .num{font-size:18px;color:var(--red);}
-.mtile .mt{font-family:var(--serif);font-size:26px;line-height:1.05;}
-.mtile .ms{font-size:13.5px;color:var(--ink-2);line-height:1.45;}
-.mtile .act{align-self:flex-start;}
-.mtile.current .box{outline:1.5px solid var(--jade);outline-offset:4px;}
-.note{margin-top:30px;max-width:600px;color:var(--ink-2);}
-.note .cn{font-family:var(--han);font-size:1.25em;color:var(--red);}
-
-/* ---------- ABOUT — vanity mirror ---------- */
-.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start;margin-top:40px;}
+/* ---------- ABOUT ---------- */
+#about{overflow:hidden;}
+.atmo{position:absolute;inset:0;z-index:0;pointer-events:none;padding:30px var(--gut);font-size:12.5px;line-height:1.7;text-align:justify;text-align-last:justify;overflow:hidden;color:var(--ink);opacity:.07;word-spacing:.2em;}
+.atmo.lit{opacity:.6;color:var(--pink);font-weight:600;
+  -webkit-mask-image:radial-gradient(circle 190px at var(--mx,-999px) var(--my,-999px),#000 0,rgba(0,0,0,.4) 45%,transparent 100%);
+          mask-image:radial-gradient(circle 190px at var(--mx,-999px) var(--my,-999px),#000 0,rgba(0,0,0,.4) 45%,transparent 100%);}
+#about .wrap{position:relative;z-index:1;}
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start;margin-top:44px;}
 .mirror{
   display:block;width:100%;max-width:420px;aspect-ratio:3/4;border-radius:50%;padding:16px;position:relative;
   background:conic-gradient(from 200deg,#f6f6f4,#9b9c9e,#ffffff,#6b6c70,#e8e8e6,#8a8b8e,#fafaf8,#77787b,#f6f6f4);
   box-shadow:0 40px 70px -30px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.18),inset 0 2px 1px rgba(255,255,255,.9),inset 0 -3px 6px rgba(0,0,0,.35);
+  transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(.2,.8,.2,1);
 }
+.mirror-wrap{perspective:900px;}
 .mirror::before{content:"";position:absolute;inset:9px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 0 0 3px rgba(0,0,0,.18);pointer-events:none;}
-.mirror .glass{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#111;box-shadow:inset 0 0 40px rgba(0,0,0,.65);}
+.mirror .gl{position:relative;width:100%;height:100%;border-radius:50%;overflow:hidden;background:#111;box-shadow:inset 0 0 40px rgba(0,0,0,.65);}
 .mirror video{width:100%;height:100%;object-fit:cover;display:block;transform:scaleX(-1);filter:contrast(1.04);}
-.mirror .sheen{
-  position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:screen;
-  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.28) 47%,rgba(255,255,255,.06) 52%,transparent 60%);
-  transform:translate(var(--mx,0px),var(--my,0px));transition:transform .2s ease-out;
-}
-.mirror .vign{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),inset 0 10px 30px rgba(255,255,255,.12);pointer-events:none;}
+.mirror .sheen{position:absolute;inset:-20%;pointer-events:none;mix-blend-mode:screen;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.3) 47%,rgba(255,200,230,.1) 52%,transparent 60%);
+  transform:translate(var(--mx,0px),var(--my,0px));transition:transform .2s ease-out;}
 .facts{display:grid;grid-template-columns:auto 1fr;gap:0 22px;margin-top:30px;max-width:520px;}
 .facts dt,.facts dd{padding:10px 0;border-bottom:1px solid var(--rule);}
-.facts dt{font-family:var(--small);font-size:12px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;padding-top:12px;}
+.facts dt{font-size:13px;font-weight:500;color:var(--ink-3);padding-top:12px;}
 .facts dd{font-size:15px;}
 .bio p{font-size:clamp(16px,1.3vw,18px);line-height:1.72;margin-bottom:1em;color:var(--ink-2);}
-.bio p:first-child{font-family:var(--serif);font-size:clamp(28px,2.7vw,40px);line-height:1.15;color:var(--ink);}
+.bio p:first-child{font-family:var(--disp);font-size:clamp(28px,2.7vw,40px);line-height:1.12;color:var(--ink);letter-spacing:-.01em;}
+.bio p:first-child em{font-family:var(--script);font-style:normal;color:var(--pink);}
 .bio b{color:var(--ink);font-weight:600;}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0;}
-.tag{font-family:var(--small);font-size:11.5px;letter-spacing:.05em;padding:4px 10px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);text-transform:uppercase;}
+.tag{font-size:12.5px;font-weight:500;padding:4px 11px;border:1px solid var(--rule);border-radius:999px;color:var(--ink-2);transition:all .25s;}
+.tag:hover{background:var(--blush);border-color:var(--blush);color:var(--ink);transform:rotate(-3deg);}
 
 /* ---------- RESUME ---------- */
 .cv{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:0 clamp(24px,4vw,64px);margin-top:10px;}
-.cv h3{font-family:var(--serif);font-weight:400;font-style:italic;font-size:28px;padding:20px 0 8px;border-top:1px solid var(--ink);}
+.cv h3{font-family:var(--disp);font-weight:400;font-style:italic;font-size:30px;padding:20px 0 8px;border-top:1px solid var(--ink);}
+.cv h3 .h{font-family:var(--brush);font-style:normal;color:var(--pink);font-size:.8em;margin-left:8px;}
 .cv-items{border-top:1px solid var(--ink);padding-top:8px;}
-.cv-item{display:grid;grid-template-columns:160px 1fr;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule);}
-.cv-item .when{font-family:var(--small);font-size:12.5px;color:var(--ink-3);padding-top:3px;}
-.cv-item .what{font-size:16.5px;font-weight:500;line-height:1.4;}
+.cv-item{display:grid;grid-template-columns:170px 1fr;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule);position:relative;transition:padding-left .35s cubic-bezier(.2,.8,.2,1);}
+.cv-item::before{content:"";position:absolute;left:0;top:50%;width:0;height:1.5px;background:var(--pink);transition:width .35s cubic-bezier(.2,.8,.2,1);}
+.cv-item:hover{padding-left:22px;}
+.cv-item:hover::before{width:12px;}
+.cv-item .when{font-size:13px;color:var(--ink-3);padding-top:3px;}
+.cv-item .what{font-size:16.5px;font-weight:600;line-height:1.4;}
 .cv-item .desc{grid-column:2;font-size:14.5px;line-height:1.65;color:var(--ink-2);}
 .cv-skills{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0 14px;}
-.btn{
-  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
-  font-family:var(--small);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
-  padding:11px 18px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--paper);
-  transition:background .2s,color .2s,border-color .2s;
-}
-.btn:hover{background:var(--jade);border-color:var(--jade);}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:14px;font-weight:600;padding:11px 20px;border:1px solid var(--ink);border-radius:999px;background:var(--ink);color:var(--paper);transition:background .25s,color .25s,border-color .25s,transform .3s cubic-bezier(.3,1.6,.5,1);}
+.btn:hover{background:var(--pink);border-color:var(--pink);color:#fff;transform:translateY(-2px) rotate(-1.5deg);}
 .btn.off{opacity:.35;pointer-events:none;}
 
-/* ---------- FOOTER — Chinatown storefront neon ---------- */
-footer{position:relative;z-index:2;padding:clamp(100px,15vh,180px) 0 60px;}
+/* ---------- FOOTER: goldfish pond + storefront neon ---------- */
+footer{position:relative;z-index:2;padding:clamp(100px,15vh,180px) 0 50px;overflow:hidden;}
+#pond{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;}
+footer .wrap{position:relative;z-index:1;pointer-events:none;}
+footer .wrap a,footer .wrap button,.sign{pointer-events:auto;}
 .foot{display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;}
-.foot-big{font-family:var(--serif);font-size:clamp(46px,8vw,128px);line-height:.92;letter-spacing:-.02em;}
-.foot-big .script{color:var(--jade);font-size:.9em;}
-.foot-mail{display:inline-block;margin-top:26px;font-size:clamp(17px,1.8vw,22px);text-decoration:none;border-bottom:1px solid var(--jade);padding-bottom:3px;}
-.foot-mail:hover{color:var(--jade);}
-.sign{
-  position:relative;display:flex;gap:18px;align-items:stretch;
-  padding:22px 22px 18px;background:#121214;border-radius:10px;
-  box-shadow:0 30px 60px -25px rgba(0,0,0,.6),inset 0 0 0 1px #2a2a2e,inset 0 0 0 6px #121214,inset 0 0 0 7px #26262a;
-}
+.foot-big{font-family:var(--disp);font-weight:500;font-size:clamp(48px,8.4vw,136px);line-height:.9;letter-spacing:-.03em;}
+.foot-big .script{color:var(--pink);font-size:.9em;letter-spacing:0;}
+.foot-mail{display:inline-block;margin-top:26px;font-family:var(--disp);font-style:italic;font-size:clamp(20px,2.2vw,28px);text-decoration:none;border-bottom:1.5px solid var(--pink);padding-bottom:3px;transition:color .2s;}
+.foot-mail:hover{color:var(--pink);}
+.sign{position:relative;display:flex;gap:18px;align-items:stretch;padding:22px 22px 18px;background:#121214;border-radius:10px;
+  box-shadow:0 30px 60px -25px rgba(0,0,0,.6),inset 0 0 0 1px #2a2a2e,inset 0 0 0 6px #121214,inset 0 0 0 7px #26262a;transition:transform .5s cubic-bezier(.3,1.5,.5,1);transform-origin:50% -70px;}
+.sign:hover{transform:rotate(-3deg);}
 .sign::before,.sign::after{content:"";position:absolute;top:-70px;width:1px;height:70px;background:linear-gradient(#0000,#777);}
 .sign::before{left:24%;} .sign::after{right:24%;}
-.neon-v{
-  writing-mode:vertical-rl;font-family:var(--han);font-weight:900;font-size:52px;line-height:1.05;letter-spacing:.06em;
-  color:#ffe3e3;
-  text-shadow:0 0 2px #fff,0 0 8px #ff3b4e,0 0 18px #ff3b4e,0 0 36px #ff2440,0 0 60px #ff2440;
-  animation:flicker 7s infinite;
-}
+.neon-v{writing-mode:vertical-rl;font-family:var(--han);font-weight:900;font-size:52px;line-height:1.05;letter-spacing:.06em;color:#ffe3e3;
+  text-shadow:0 0 2px #fff,0 0 8px #ff3b4e,0 0 18px #ff3b4e,0 0 36px #ff2440,0 0 60px #ff2440;animation:flicker 7s infinite;}
 .neon-r{display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:12px;}
-.neon-open{
-  font-family:var(--sans);font-weight:600;font-size:34px;letter-spacing:.12em;
-  color:#e6fff4;padding:4px 10px;border:2px solid #9effd5;border-radius:8px;
-  text-shadow:0 0 2px #fff,0 0 8px #3dffb0,0 0 20px #23e39a,0 0 40px #23e39a;
-  box-shadow:0 0 6px #3dffb0,0 0 18px #23e39a,inset 0 0 8px #23e39a;
-}
+.neon-open{font-family:var(--sans);font-weight:700;font-size:34px;letter-spacing:.12em;color:#e6fff4;padding:4px 10px;border:2px solid #9effd5;border-radius:8px;
+  text-shadow:0 0 2px #fff,0 0 8px #3dffb0,0 0 20px #23e39a,0 0 40px #23e39a;box-shadow:0 0 6px #3dffb0,0 0 18px #23e39a,inset 0 0 8px #23e39a;}
+.sign:hover .neon-open{animation:flicker .6s 2;}
 .neon-sub{font-family:var(--script);font-size:30px;color:#ffeaf0;text-shadow:0 0 6px #ff7fa8,0 0 16px #ff4f8b;}
 @keyframes flicker{0%,18%,20%,52%,54%,100%{opacity:1;}19%,53%{opacity:.35;}}
 @media (prefers-reduced-motion:reduce){.neon-v{animation:none;}}
-.foot-fine{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);color:var(--ink-3);}
+.foot-fine{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:60px;padding-top:18px;border-top:1px solid var(--rule);}
 
-/* ---------- DRAWER ---------- */
+/* ---------- DRAWER (a glass window) ---------- */
 #drawer{position:fixed;inset:0;z-index:80;visibility:hidden;}
 #drawer.open{visibility:visible;}
-#drawer .scrim{position:absolute;inset:0;background:color-mix(in srgb,#000 38%,transparent);opacity:0;transition:opacity .4s;}
+#drawer .scrim{position:absolute;inset:0;background:rgba(20,8,14,.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;transition:opacity .4s;}
 #drawer.open .scrim{opacity:1;}
-#drawer .sheet{
-  position:absolute;top:0;right:0;bottom:0;width:min(1040px,100vw);
-  background:var(--paper);border-left:1px solid var(--ink);
-  transform:translateX(100%);transition:transform .55s cubic-bezier(.2,.85,.15,1);
-  display:flex;flex-direction:column;
-}
+#drawer .sheet{position:absolute;top:12px;right:12px;bottom:12px;width:min(1040px,calc(100vw - 24px));background:var(--paper);border-radius:18px;overflow:hidden;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.5),0 0 0 1px var(--rule);transform:translateX(calc(100% + 24px));transition:transform .6s cubic-bezier(.2,.85,.15,1);display:flex;flex-direction:column;}
 #drawer.open .sheet{transform:none;}
-.d-bar{display:flex;align-items:center;gap:12px;padding:14px clamp(16px,3vw,32px);border-bottom:1px solid var(--rule);}
-.d-bar .num{font-size:18px;color:var(--red);}
-.d-bar .path{color:var(--ink-3);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.d-body{flex:1;overflow-y:auto;padding:clamp(18px,3vw,36px) clamp(16px,3vw,40px) 40px;}
-.d-body h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.6vw,80px);line-height:.95;letter-spacing:-.015em;}
-.d-sub{font-size:clamp(17px,1.6vw,21px);color:var(--jade);margin:12px 0 26px;max-width:720px;line-height:1.4;}
+.d-bar{display:flex;align-items:center;gap:12px;padding:12px clamp(14px,2.6vw,26px);border-bottom:1px solid var(--rule);background:var(--paper-2);}
+.lights{display:flex;gap:7px;}
+.lights i{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff8,transparent 45%),var(--c);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.25);}
+.d-bar .path{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;}
+.d-body{flex:1;overflow-y:auto;padding:clamp(18px,3vw,36px) clamp(16px,3vw,40px) 40px;overscroll-behavior:contain;}
+.d-body h2{font-family:var(--disp);font-weight:500;font-size:clamp(40px,5.6vw,82px);line-height:.95;letter-spacing:-.025em;}
+.d-sub{font-size:clamp(17px,1.6vw,21px);color:var(--ink-2);margin:12px 0 26px;max-width:720px;line-height:1.45;}
 .d-media{display:flex;flex-direction:column;gap:18px;}
-.d-fig{border:1px solid var(--rule);padding:10px;background:var(--paper-2);}
-.d-fig img{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;margin:0 auto;}
+.d-fig{border-radius:12px;overflow:hidden;background:var(--paper-2);padding:10px;}
+.d-fig img{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;margin:0 auto;border-radius:6px;}
 .d-text{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:20px 40px;margin-top:30px;}
-.d-text .meta{color:var(--ink-2);}
 .d-text p{font-size:17px;line-height:1.7;}
 .d-nav{display:flex;gap:8px;align-items:center;padding:12px clamp(16px,3vw,32px);border-top:1px solid var(--rule);}
 .d-nav .btn{margin-left:auto;}
 
-/* ---------- LIGHTBOX ---------- */
-#lightbox{position:fixed;inset:0;z-index:85;display:none;align-items:center;justify-content:center;background:color-mix(in srgb,var(--paper) 94%,transparent);padding:20px;}
+#lightbox{position:fixed;inset:0;z-index:85;display:none;align-items:center;justify-content:center;background:rgba(20,8,14,.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px;}
 #lightbox.open{display:flex;}
 #lightbox .lb{position:relative;height:min(86vh,900px);aspect-ratio:848/1354;max-width:100%;}
-#lightbox video{width:100%;height:100%;object-fit:cover;display:block;background:#000;border-radius:4px;}
+#lightbox video{width:100%;height:100%;object-fit:cover;display:block;background:#000;border-radius:14px;}
 #lightbox .tbtn{position:absolute;top:10px;right:10px;}
 
-/* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1);}
 .rv.in{opacity:1;transform:none;}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
 
-/* ---------- responsive ---------- */
-@media (max-width:1080px){
-  .mgrid{grid-template-columns:repeat(2,minmax(0,1fr));}
+/* responsive */
+@media (max-width:1000px){
   #nav{display:none;}
+  .card,.card.s7,.card.s5,.card.s4{grid-column:span 6;}
+  .card.s5,.card.s4{margin-top:0;}
+  .card .glass{aspect-ratio:4/5;}
 }
 @media (max-width:820px){
   .about,.cv{grid-template-columns:1fr;}
@@ -357,28 +367,18 @@ footer{position:relative;z-index:2;padding:clamp(100px,15vh,180px) 0 60px;}
   .head{grid-template-columns:auto 1fr;}
   .head .aside{grid-column:1 / -1;text-align:left;}
 }
-@media (max-width:720px){
-  #lily{width:100%;height:46%;top:56px;}
-  #corner-r,.scroll-cue{display:none;}
-  #hero{align-items:flex-end;}
-  .hero-copy{padding:0 0 90px;}
-  .hero-name-cn{top:96px;transform:none;font-size:34px;}
-  .hero-meta{margin-bottom:16px;}
-  .pool-head{top:72px;}
-  .pc-cap{min-width:0;}
-  .pc-s{font-size:12.5px;max-width:72vw;}
-  .pool-idx .hint{display:none;}
+@media (max-width:640px){
+  .card,.card.s7,.card.s5,.card.s4{grid-column:1 / -1;}
+  .card .glass,.card.s4 .glass,.card.s5 .glass{aspect-ratio:4/3;}
+  .hint-hero,#hud{display:none;}
   .cv-item{grid-template-columns:1fr;}
   .cv-item .desc{grid-column:1;}
   .foot{grid-template-columns:1fr;}
   .sign{justify-self:start;}
-  #corner-l{display:none;}
   .tbtn .lat{display:none;}
   .brand .bn{font-size:18px;}
-}
-@media (max-width:480px){
-  .mgrid{grid-template-columns:1fr;}
-  #corner-r .lbl{display:none;}
+  .filters .count{display:none;}
+  .glasscard{font-size:14.5px;}
 }
 </style>
 </head>
@@ -386,249 +386,230 @@ footer{position:relative;z-index:2;padding:clamp(100px,15vh,180px) 0 60px;}
 
 <script>
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  EDIT ME — PORTFOLIO CONFIG                                       ║
+   ║  EDIT ME: PORTFOLIO CONFIG                                        ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 const PORTFOLIO = {
   name: "Caroline Chen",
-  chinese: ["陈","锦","儿"],                    // seal + vertical name (design use only)
+  chinese: ["陈","锦","儿"],                    // seal + neon sign
   email: "carolineche99@gmail.com",
   resumeUrl: "assets/Caroline_Chen_Resume.pdf", // "" hides the button
   video: "assets/portfolio_intro.mp4",
 };
 
 /* ╔══════════════════════════════════════════════════════════════════╗
-   ║  WORK — order here = order across the pool (left → right).        ║
-   ║  sub    : one line on what the project entails                    ║
-   ║  gallery: images shown in the project drawer (instead of thumb)   ║
+   ║  WORK: order here = order in the grid.                             ║
+   ║  cat    : filter groups (ux, web, print, editorial, art)           ║
+   ║  gallery: images shown in the project window (instead of thumb)   ║
    ╚══════════════════════════════════════════════════════════════════╝ */
 const PROJECTS = [
   {
-    title: "InterACE",
-    sub: "An AI interview-prep app — user research, brand identity and a high-fidelity prototype.",
-    meta: "UX CASE STUDY · BRANDING · 2024",
+    title: "InterACE", year: "2024", cat: ["ux"],
+    sub: "An AI interview-prep app: user research, brand identity and a high-fidelity prototype.",
+    meta: "UX case study · Branding · 2024",
     blurb: "Interview prep usually means rehearsing alone and hoping for the best. InterACE is an AI app that learns where you stumble and coaches you through it, so practice actually moves you somewhere.",
     thumb: "assets/interace_thumb.png",
     url: "https://www.figma.com/proto/MbtfQ5xZ7t3U4Dy1Hq6QgE/DES112-InterACE-Case-Study?node-id=1-2&p=f&viewport=422%2C25%2C0.04&t=HOjDy5ylsCMUGnxX-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
-    tags: ["UX","PRODUCT DESIGN","BRANDING","FIGMA"],
+    tags: ["UX","Product design","Branding","Figma"],
   },
   {
-    title: "My aKDPHI Guides",
-    sub: "A visual onboarding site for chapter officers — UX writing, information design and an HTML/CSS build.",
-    meta: "UX WRITING · DOCUMENTATION · 2025",
+    title: "My aKDPHI Guides", year: "2025", cat: ["ux","web"],
+    sub: "A visual onboarding site for chapter officers: UX writing, information design and an HTML/CSS build.",
+    meta: "UX writing · Documentation · 2025",
     blurb: "People often bounce off a platform before they ever get comfortable with it. I built a visual onboarding guide for alpha Kappa Delta Phi chapter officers, walking Presidents, Secretaries, and Recruitment leads through the tools they actually use in the My aKDPhi portal: Role Assignment, Member Statuses, and Recruitment.",
     thumb: "assets/akdphi_thumb.png",
     url: "https://akdphicaro.neocities.org/myaKDPhi/",
-    tags: ["UX WRITING","DOCUMENTATION","WEB","HTML","CSS"],
+    tags: ["UX writing","Documentation","Web","HTML","CSS"],
   },
   {
-    title: "Constructing Campus Identity",
-    sub: "Design ethnography — fieldwork, a critique of UC Davis branding and a satirical mascot concept.",
-    meta: "DESIGN ETHNOGRAPHY · UX RESEARCH · 2026",
+    title: "Constructing Campus Identity", year: "2026", cat: ["ux","editorial"],
+    sub: "Design ethnography: fieldwork, a critique of UC Davis branding and a satirical mascot concept.",
+    meta: "Design ethnography · UX research · 2026",
     blurb: "UC Davis leans on horses, sheep, and cows to tell its story, but those symbols don't always match how the campus actually runs. This ethnographic portfolio traces that gap through fieldwork at the Equestrian Center, the Silo, and the Sheep Mowers mural, then proposes a satirical mascot, Sunpebble, to make the contradiction visible.",
     thumb: "assets/campus_identity_thumb.png",
     url: "assets/campus_identity.pdf",
-    tags: ["UX RESEARCH","ETHNOGRAPHY","FIELDWORK","NARRATIVE"],
+    tags: ["UX research","Ethnography","Fieldwork","Narrative"],
   },
   {
-    title: "Chiaroscuro",
-    sub: "A branching interactive story — narrative design, visual identity and a hand-coded web build.",
-    meta: "INTERACTIVE NARRATIVE · 2025",
+    title: "Chiaroscuro", year: "2025", cat: ["web","art"],
+    sub: "A branching interactive story: narrative design, visual identity and a hand-coded web build.",
+    meta: "Interactive narrative · 2025",
     blurb: "One choice, two realities. Chiaroscuro visualizes the gamble of recreational drug use as branching paths of euphoria and paranoia, letting you drift toward the high or the dread and feel the weight of not knowing which you'll get.",
     thumb: "assets/chiaroscuro_thumb.png",
     url: "https://des117.space/fa2025-mead/cache/interactive_narrative/",
-    tags: ["INTERACTIVE NARRATIVE","WEB","HTML","CSS","GRAPHIC DESIGN"],
+    tags: ["Interactive narrative","Web","HTML","CSS","Graphic design"],
   },
   {
-    title: "Infinite Regress",
-    sub: "A 16-page booklet on the regress problem — editorial layout, typography and a page-flip web edition.",
-    meta: "EDITORIAL · PUBLICATION DESIGN · 2025",
+    title: "Infinite Regress", year: "2025", cat: ["editorial","print","web"],
+    sub: "A 16-page booklet on the regress problem: editorial layout, typography and a page-flip web edition.",
+    meta: "Editorial · Publication design · 2025",
     blurb: "Some thoughts don't resolve, they just keep asking for another reason. Infinite Regress is a 16-page booklet on the epistemic regress problem, set in a tunnel that never ends, and built as an interactive page-flip so you have to keep turning to find a ground that isn't there.",
     thumb: "assets/infinite_regress_thumb.png",
     url: "assets/infinite-regress-flipbook.html",
-    tags: ["EDITORIAL","PUBLICATION DESIGN","TYPOGRAPHY","INTERACTIVE","WEB"],
+    tags: ["Editorial","Publication design","Typography","Interactive","Web"],
   },
   {
-    title: "Study ARC",
-    sub: "A time-management platform for students — research, user flows and a Figma prototype.",
-    meta: "UX CASE STUDY · PRODUCT DESIGN · 2024",
+    title: "Study ARC", year: "2024", cat: ["ux"],
+    sub: "A time-management platform for students: research, user flows and a Figma prototype.",
+    meta: "UX case study · Product design · 2024",
     blurb: "Most productivity tools just push students to do more. S.ARC is a time-management platform built around how people actually study, so planning a workload stops feeling like a punishment.",
     thumb: "assets/studyarc_thumb.png",
     url: "https://www.figma.com/proto/11bo1rlu05kqcEprjRrHap/DES112-Study-ARC-Case-Study?node-id=1-2&p=f&viewport=390%2C25%2C0.04&t=KnJVJd9x8oG9MuNc-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
-    tags: ["UX","PRODUCT DESIGN","FIGMA"],
+    tags: ["UX","Product design","Figma"],
   },
   {
-    title: "The Mask Compliance Report",
-    sub: "A photo essay on productivity culture — photography, sequencing and layout.",
-    meta: "PHOTO ESSAY · SOCIETAL CRITIQUE · 2025",
+    title: "The Mask Compliance Report", year: "2025", cat: ["editorial","art"],
+    sub: "A photo essay on productivity culture: photography, sequencing and layout.",
+    meta: "Photo essay · Societal critique · 2025",
     blurb: "We're told success means always looking productive, whatever it costs underneath. This photo essay pulls off that mask to show the mental and physical fatigue we hide, and asks who the 'productive mindset' really serves.",
     thumb: "assets/maskcompliance_thumb.png",
     url: "https://www.figma.com/proto/08DGix9iJJL4pW8C42ITtI/AHI189-Photo-Essay-FINAL?page-id=0%3A1&node-id=23-13&p=f&viewport=516%2C104%2C1.01&t=gAZFrztQEjf6mzTh-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=23%3A13",
-    tags: ["PHOTO ESSAY","PHOTOGRAPHY"],
+    tags: ["Photo essay","Photography"],
   },
   {
-    title: "Form and Flesh",
-    sub: "A mixed-media series — fluid watercolor cut through with hard-edged paper collage.",
-    meta: "WATERCOLOR & PAPER COLLAGE · 2023",
+    title: "Form and Flesh", year: "2023", cat: ["art"],
+    sub: "A mixed-media series: fluid watercolor cut through with hard-edged paper collage.",
+    meta: "Watercolor & paper collage · 2023",
     blurb: "A collision of organic warmth and synthetic edge. Fluid watercolor represents the unpredictable nature of human flesh, shattered and structured by hard-edged cybernetic cutouts. Where does the body end, and the machine begin?",
     thumb: "assets/formandflesh_thumb.jpg",
     url: "https://www.figma.com/proto/3iWVoSJwswsKfEdT3nTUXp/Form-and-Flesh?node-id=1-2&p=f&viewport=61%2C113%2C0.29&t=v5orTz2DpH994sqh-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
-    tags: ["WATERCOLOR","COLLAGE","MIXED MEDIA","FINE ART"],
+    tags: ["Watercolor","Collage","Mixed media","Fine art"],
   },
   {
-    title: "Caroline's Blog",
-    sub: "Essays on digital culture and online discourse — writing plus a hand-built blog site.",
-    meta: "BLOG · WEB DESIGN · 2025",
+    title: "Caroline's Blog", year: "2025", cat: ["web","editorial"],
+    sub: "Essays on digital culture and online discourse, plus a hand-built blog site.",
+    meta: "Blog · Web design · 2025",
     blurb: "The internet runs on ideas we've stopped questioning. This writing project digs into digital culture and online discourse, turning passing scroll thoughts into essays worth a second look.",
     thumb: "assets/blog_thumb.png",
     url: "https://des117.space/fa2025-mead/cache/blog/index.html",
-    tags: ["WEB DESIGN","BLOG","HTML","CSS","WRITING"],
+    tags: ["Web design","Blog","HTML","CSS","Writing"],
   },
   {
-    title: "Clarendon Type Poster",
-    sub: "A type specimen poster — exploring the Clarendon slab serif in print.",
-    meta: "TYPOGRAPHY · POSTER PRINT",
+    title: "Clarendon Type Poster", year: "", cat: ["print"],
+    sub: "A type specimen poster exploring the Clarendon slab serif in print.",
+    meta: "Typography · Poster print",
     blurb: "",
     thumb: "assets/clarendon_poster.jpg",
     url: "",
-    tags: ["TYPOGRAPHY","POSTER","PRINT"],
+    tags: ["Typography","Poster","Print"],
   },
   {
-    title: "Corky Lee Zine",
+    title: "Corky Lee Zine", year: "", cat: ["print","editorial"],
     sub: "A zine on Sinophobia and anti-Chinese sentiment in the West, built around Corky Lee's photographs.",
-    meta: "ZINE · EDITORIAL · PRINT",
+    meta: "Zine · Editorial · Print",
     blurb: "Photographs by Corky Lee.",
     thumb: "assets/corky_lee_zine.jpg",
     url: "",
-    tags: ["ZINE","EDITORIAL","PRINT"],
+    tags: ["Zine","Editorial","Print"],
   },
   {
-    title: "C-STEM Success Signages",
-    sub: "Event signage for a STEM symposium — turning district math-score gains into at-a-glance data graphics.",
-    meta: "PRINT DESIGN · EVENT SIGNAGE · 2025",
+    title: "C-STEM Success Signages", year: "2025", cat: ["print"],
+    sub: "Event signage for a STEM symposium, turning district math-score gains into at-a-glance data graphics.",
+    meta: "Print design · Event signage · 2025",
     blurb: "Created for the 2025 6th Annual C-STEM Symposium, UC Davis Center for Integrated Computing and STEM Education. Two signs translating district-level math score gains, Hacienda La Puente USD's 344% jump in 6th grade standard-exceeding scores and McPherson Magnet School's 72% four-year SBAC math increase, into signage built to make the case for the program at a glance.",
     thumb: "assets/cstem_signage_poster.jpg",
     gallery: ["assets/cstemsignage_1.jpg","assets/cstemsignage_2.jpg"],
     url: "",
-    tags: ["PRINT DESIGN","DATA VISUALIZATION","EVENT SIGNAGE"],
+    tags: ["Print design","Data visualization","Event signage"],
   },
 ];
-
-/* ╔══════════════════════════════════════════════════════════════════╗
-   ║  MOTION — videos and live code pieces.                            ║
-   ║  { kind:"video", src:"assets/x.mp4", title, sub }                 ║
-   ║  { kind:"scene", scene:"tide" | "brocade" | "halftone" }          ║
-   ╚══════════════════════════════════════════════════════════════════╝ */
-const MOTION = [
-  { kind:"video", src:"assets/portfolio_intro.mp4", title:"Portrait, Glitched", sub:"Self-portrait video loop." },
-  { kind:"scene", scene:"tide" },
-  { kind:"scene", scene:"brocade" },
-  { kind:"scene", scene:"halftone" },
+const FILTERS = [
+  { k:"all", en:"All", zh:"全部" },
+  { k:"ux", en:"UX & product", zh:"体验" },
+  { k:"web", en:"Web", zh:"网页" },
+  { k:"editorial", en:"Editorial", zh:"编辑" },
+  { k:"print", en:"Print", zh:"印刷" },
+  { k:"art", en:"Art & photo", zh:"艺术" },
 ];
 </script>
-
-<canvas id="bg" aria-hidden="true"></canvas>
 
 <div id="loader" role="presentation">
   <div class="seal" data-seal></div>
   <div class="ld-name">Caroline Chen</div>
-  <div class="ld-count" id="ld-count">000</div>
 </div>
+
+<div id="cur" aria-hidden="true"><div class="ring"><span class="txt"></span></div></div>
 
 <header id="top">
   <a class="brand" href="#hero" aria-label="Back to top">
     <span class="seal s" data-seal></span>
-    <span class="bn">Caroline <i>Chen</i></span>
+    <span class="bn">Caroline<i>Chen</i></span>
   </a>
   <nav id="nav" aria-label="Sections">
-    <a href="#work">Work</a>
-    <a href="#motion">Motion</a>
-    <a href="#about">About</a>
-    <a href="#resume">Resume</a>
+    <a href="#work"><span data-scr>Work</span><span class="h">作品</span></a>
+    <a href="#about"><span data-scr>About</span><span class="h">关于</span></a>
+    <a href="#resume"><span data-scr>Resume</span><span class="h">履历</span></a>
   </nav>
   <div class="tools">
-    <button class="tbtn" id="sound" aria-pressed="false" title="Guzheng over a soft beat — generated live"><span class="bars"><i></i><i></i><i></i></span><span class="lat">Sound</span></button>
-    <button class="tbtn" id="theme" aria-pressed="false"><span class="moon"></span><span class="lat">Dark mode</span></button>
+    <button class="tbtn" id="sound" aria-pressed="false" title="Guzheng over a soft beat, generated live" data-cur="声音"><span class="bars"><i></i><i></i><i></i></span><span class="lat">Sound</span></button>
+    <button class="tbtn" id="theme" aria-pressed="false" data-cur="明暗"><span class="moon"></span><span class="lat">Dark mode</span></button>
   </div>
 </header>
 
-<div id="corner-l" class="sm"><span id="clock">San Mateo, CA</span></div>
-<div id="corner-r"><span class="lbl sm">Background</span><span id="scene-btns" style="display:flex;gap:10px"></span></div>
-
 <main>
-  <!-- HERO -->
+  <!-- HERO: real lilies, seen through reeded glass. Your cursor wipes the glass clear. -->
   <section id="hero">
     <canvas id="lily" aria-hidden="true"></canvas>
-    <div class="hero-name-cn" aria-hidden="true" id="cn-vert"></div>
+    <div id="hud" aria-hidden="true">
+      <svg id="hud-svg"></svg>
+    </div>
+    <div class="hint-hero lbl">Move to wipe the glass<span class="h">看</span></div>
     <div class="wrap">
-      <div class="hero-copy">
-        <div class="hero-meta sm"><span><i class="dot"></i>Open to work</span><span>San Mateo, CA</span><span>Portfolio 2026</span></div>
-        <h1 class="hero-name">Caroline<br>Chen</h1>
-        <p class="hero-role"><span class="script">graphic, brand</span><span class="g">&amp; experience design.</span></p>
-        <p class="hero-statement">I study real human habits in the wild and build them into digital tools, physical pieces, or whatever medium fits best. Big on productivity culture, tech irony, and bold experiments.</p>
+      <div class="hero-meta"><span><i class="dot"></i>Open to work</span><span>San Mateo, CA</span><span>Portfolio 2026</span></div>
+      <h1 class="hero-name" id="hero-name" aria-label="Caroline Chen">Caroline<br><span class="it">Chen</span></h1>
+      <div class="hero-row">
+        <p class="hero-role"><span class="script">graphic, brand</span><span class="g">&amp; experience design</span></p>
+        <p class="glasscard">I study real human habits in the wild and build them into digital tools, physical pieces, or whatever medium fits best. Big on productivity culture, tech irony, and bold experiments.</p>
       </div>
-    </div>
-    <a class="scroll-cue sm" href="#work"><i></i><span>Scroll to the water</span></a>
-  </section>
-
-  <!-- WORK — reflecting pool -->
-  <section id="work" aria-label="Selected work">
-    <div class="pool-stick" id="pool">
-      <div class="pool-head">
-        <div class="wrap">
-          <div class="head">
-            <span class="num">01</span>
-            <h2>Selected <em>work</em></h2>
-            <span class="aside sm">Scroll to wade through · touch the water</span>
-          </div>
-        </div>
-      </div>
-      <div class="pool-track" id="track"></div>
-      <canvas class="pool-water" id="water"></canvas>
-      <canvas class="pool-water fallback" id="water2"></canvas>
-      <div class="pool-line" id="pool-line"></div>
-      <div class="pool-idx" id="pool-idx"></div>
     </div>
   </section>
 
-  <!-- MOTION -->
-  <section id="motion" class="sec panel">
+  <div class="ticker" aria-hidden="true"><div class="ticker-in" id="ticker"></div></div>
+
+  <!-- WORK -->
+  <section id="work" class="sec" aria-label="Selected work">
     <div class="wrap">
       <div class="head rv">
-        <span class="num">02</span>
-        <h2>Motion &amp; <em>backgrounds</em></h2>
-        <span class="aside sm">Video · live code</span>
+        <span class="wm" aria-hidden="true">作品</span>
+        <span class="num">01</span>
+        <h2><span data-scr>Selected</span> <em>work</em></h2>
+        <span class="aside lbl">Hover a piece to wipe its glass. Click to open.</span>
       </div>
-      <div class="mgrid" id="mgrid"></div>
-      <p class="note rv">The backgrounds on this site are drawn live in code: blue-and-white porcelain waves under a red sun, a brocade that ripples like silk (<span class="cn">锦</span>, the jǐn in my name, means brocade), and a halftone cloud under a glass lens. Hover over them, and use any one as the page background.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+      <div class="grid" id="grid"></div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="sec panel">
+  <section id="about" class="sec">
+    <div class="atmo" id="atmo" aria-hidden="true"></div>
+    <div class="atmo lit" id="atmo-lit" aria-hidden="true"></div>
     <div class="wrap">
       <div class="head rv">
-        <span class="num">03</span>
-        <h2>About</h2>
-        <span class="aside sm">Bay Area · UC Davis '26</span>
+        <span class="wm" aria-hidden="true">关于</span>
+        <span class="num">02</span>
+        <h2><span data-scr>About</span></h2>
+        <span class="aside lbl">Bay Area · UC Davis '26</span>
       </div>
       <div class="about">
         <div class="rv">
-          <button class="mirror" id="portrait" aria-label="Play portrait video larger">
-            <div class="glass"><video id="about-video" muted playsinline loop preload="metadata"></video><span class="sheen" id="sheen"></span><span class="vign"></span></div>
-          </button>
+          <div class="mirror-wrap">
+            <button class="mirror" id="portrait" aria-label="Play portrait video larger" data-cur="Play">
+              <div class="gl"><video id="about-video" muted playsinline loop preload="metadata"></video><span class="sheen" id="sheen"></span></div>
+            </button>
+          </div>
           <dl class="facts">
             <dt>Identity</dt><dd>Graphic · Brand · Experience Designer</dd>
-            <dt>Education</dt><dd>UC Davis — BA Design / BS Managerial Economics</dd>
+            <dt>Education</dt><dd>UC Davis, BA Design / BS Managerial Economics</dd>
             <dt>Favorite flower</dt><dd>Calla lilies</dd>
             <dt>System motivator</dt><dd>Absurd Optimism</dd>
             <dt>Recovery mode</dt><dd>Fail-Safe</dd>
           </dl>
         </div>
         <div class="bio rv">
-          <p>I'm Caroline Chen, a designer with a background in economics, which basically means I like figuring out why people do irrational things on screens.</p>
+          <p>I'm Caroline Chen, a designer with a background in economics, which basically means I like figuring out why people do <em>irrational</em> things on screens.</p>
           <p>Growing up near San Francisco, I spent a lot of time wandering Chinatown, mostly drawn to the subtle layout details in storefronts and the daily routines of people passing through. That early curiosity about how people naturally navigate physical spaces is really what pulled me toward design in the first place.</p>
           <p>I recently wrapped up at <b>UC Davis</b> with a <b>BA in Design</b> and a <b>BS in Managerial Economics</b>. These days, I focus on <b>user experience</b> and <b>ethnographic fieldwork</b>. I like getting out into real spaces to observe actual human habits, then figuring out how those behaviors translate into functional digital systems. A lot of my work digs into themes around <b>productivity culture, habit loops, and the subtle social irony</b> built into the tools we use every day.</p>
-          <p>Admittedly, I'm an iPad kid—it's my go-to digital sketchbook for pulling together quick graphic assets and experimenting with textures. But I don't confine myself strictly to digital work, either. My projects hop around between user interfaces, field research, and physical print design.</p>
+          <p>Admittedly, I'm an iPad kid. It's my go-to digital sketchbook for pulling together quick graphic assets and experimenting with textures. But I don't confine myself strictly to digital work, either. My projects hop around between user interfaces, field research, and physical print design.</p>
           <p>A lot of my creative energy comes from deep-diving into the hyperpop and EDM scenes. The raw stimulation and chaotic energy of the music push me to take bigger visual risks and explore bolder ideas.</p>
           <p>Going forward, I just want to decode real human habits, strip away the noise, and turn them into thoughtful products with a great team. I'm naturally drawn to new tech, unfamiliar ideas, and learning from how other people work. The final output always matters, but for me, the shift in perspective and knowledge gained during the build is where the real value lives.</p>
           <div class="tags">
@@ -640,41 +621,42 @@ const MOTION = [
   </section>
 
   <!-- RESUME -->
-  <section id="resume" class="sec panel">
+  <section id="resume" class="sec">
     <div class="wrap">
       <div class="head rv">
-        <span class="num">04</span>
-        <h2>Resume</h2>
-        <span class="aside"><a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener">↓ Download PDF</a></span>
+        <span class="wm" aria-hidden="true">履历</span>
+        <span class="num">03</span>
+        <h2><span data-scr>Resume</span></h2>
+        <span class="aside"><a class="btn" id="resume-btn" href="#" target="_blank" rel="noopener" data-cur="下载">Download PDF ↓</a></span>
       </div>
       <div class="cv rv">
         <h3>Education</h3>
         <div class="cv-items">
-          <div class="cv-item"><div class="when">2022 – 2026</div><div class="what">University of California, Davis</div><div class="desc">BS in Managerial Economics, BA in Design (UX &amp; Digital Systems Focus)</div></div>
+          <div class="cv-item"><div class="when">2022 to 2026</div><div class="what">University of California, Davis</div><div class="desc">BS in Managerial Economics, BA in Design (UX &amp; Digital Systems Focus)</div></div>
           <div class="cv-item"><div class="when">July 2025</div><div class="what">National Taiwan University</div><div class="desc">Study Abroad Program in Law and Data</div></div>
         </div>
 
         <h3>Selected projects</h3>
         <div class="cv-items">
-          <div class="cv-item"><div class="when">2026 – Present</div><div class="what">Exhale (Dead Vapes Society): Social Habit-Tracking Platform</div><div class="desc">UX/UI Design, React Native, Figma, Product Strategy — leading UX strategy and interface design for a three-person startup team building a social habit-tracking app that pairs with a Bluetooth-enabled wearable sensor. Target launch September 2026; currently in the prototyping phase.</div></div>
-          <div class="cv-item"><div class="when">Winter 2026</div><div class="what">Constructing Campus Identity: Design Ethnography Case Study</div><div class="desc">UX Research, Ethnographic Fieldwork, Concept Design — a quarter spent observing campus spaces and talking to students about how they actually experience UC Davis, compared against how the university brands itself; used the gap as the basis for a satirical concept character and narrative pitch.</div></div>
-          <div class="cv-item"><div class="when">Case Study</div><div class="what">InterACE: AI-Powered Interview Prep App</div><div class="desc">UX/UI Design, Figma, Branding — designed the UX and brand identity for a concept app that personalizes interview prep, from user research to a high-fidelity prototype.</div></div>
-          <div class="cv-item"><div class="when">Apr 2025 – Present</div><div class="what">My aKDPhi Guides: Visual Onboarding Website</div><div class="desc">UX/UI Design, HTML/CSS, Visual Systems — turned dense internal process documentation into a visual, step-by-step onboarding site.</div></div>
+          <div class="cv-item"><div class="when">2026 to now</div><div class="what">Exhale (Dead Vapes Society): Social Habit-Tracking Platform</div><div class="desc">UX/UI Design, React Native, Figma, Product Strategy. Leading UX strategy and interface design for a three-person startup team building a social habit-tracking app that pairs with a Bluetooth-enabled wearable sensor. Target launch September 2026; currently in the prototyping phase.</div></div>
+          <div class="cv-item"><div class="when">Winter 2026</div><div class="what">Constructing Campus Identity: Design Ethnography Case Study</div><div class="desc">UX Research, Ethnographic Fieldwork, Concept Design. A quarter spent observing campus spaces and talking to students about how they actually experience UC Davis, compared against how the university brands itself; used the gap as the basis for a satirical concept character and narrative pitch.</div></div>
+          <div class="cv-item"><div class="when">Case Study</div><div class="what">InterACE: AI-Powered Interview Prep App</div><div class="desc">UX/UI Design, Figma, Branding. Designed the UX and brand identity for a concept app that personalizes interview prep, from user research to a high-fidelity prototype.</div></div>
+          <div class="cv-item"><div class="when">Apr 2025 to now</div><div class="what">My aKDPhi Guides: Visual Onboarding Website</div><div class="desc">UX/UI Design, HTML/CSS, Visual Systems. Turned dense internal process documentation into a visual, step-by-step onboarding site.</div></div>
         </div>
 
         <h3>Experience</h3>
         <div class="cv-items">
-          <div class="cv-item"><div class="when">Jan 2025 – May 2026</div><div class="what">C-STEM Administrative and Marketing Assistant, UC Davis Center for Integrated Computing and STEM Education</div><div class="desc">Designed the templates, digital assets, and event materials that made up the program's visual brand; coordinated event logistics for community-facing initiatives with schools and stakeholders; grew Instagram engagement ~12% through consistent visual and storytelling strategy.</div></div>
-          <div class="cv-item"><div class="when">Nov 2023 – Aug 2025</div><div class="what">Transaction Coordinator Assistant, Aide Real Estate</div></div>
-          <div class="cv-item"><div class="when">Sept – Dec 2023</div><div class="what">PLS21 Peer Tutor, UC Davis Dept. of Plant Sciences</div></div>
+          <div class="cv-item"><div class="when">Jan 2025 to May 2026</div><div class="what">C-STEM Administrative and Marketing Assistant, UC Davis Center for Integrated Computing and STEM Education</div><div class="desc">Designed the templates, digital assets, and event materials that made up the program's visual brand; coordinated event logistics for community-facing initiatives with schools and stakeholders; grew Instagram engagement ~12% through consistent visual and storytelling strategy.</div></div>
+          <div class="cv-item"><div class="when">Nov 2023 to Aug 2025</div><div class="what">Transaction Coordinator Assistant, Aide Real Estate</div></div>
+          <div class="cv-item"><div class="when">Sept to Dec 2023</div><div class="what">PLS21 Peer Tutor, UC Davis Dept. of Plant Sciences</div></div>
         </div>
 
         <h3>Leadership</h3>
         <div class="cv-items">
-          <div class="cv-item"><div class="when">Sept 2025 – Mar 2026</div><div class="what">Onboarding Lead, Bridge Builders Implementation Task Force — alpha Kappa Delta Phi</div><div class="desc">Trained and onboarded members on a new internal platform rolled out across all 67 chapters in the US and Canada; wrote the supporting documentation.</div></div>
-          <div class="cv-item"><div class="when">Apr 2025 – Jan 2026</div><div class="what">Webmistress — alpha Kappa Delta Phi</div><div class="desc">Redesigned the chapter website from the ground up, rebuilding the visual system and navigation.</div></div>
-          <div class="cv-item"><div class="when">Jan 2026 – June 2026</div><div class="what">Rush Chair &amp; VP Service — alpha Kappa Delta Phi</div><div class="desc">Directed spring rush recruitment and led chapter-wide service events focused on Breast Cancer Awareness.</div></div>
-          <div class="cv-item"><div class="when">Jan 2023 – May 2024</div><div class="what">Member, Economics and Business Student Association</div><div class="desc">Finalist, KPMG-sponsored AI consulting case competition (market sizing, competitive analysis, financial projections for an AI-powered e-commerce pitch); third place, EBSA marketing case competition (Home Depot holiday campaign concept).</div></div>
+          <div class="cv-item"><div class="when">Sept 2025 to Mar 2026</div><div class="what">Onboarding Lead, Bridge Builders Implementation Task Force, alpha Kappa Delta Phi</div><div class="desc">Trained and onboarded members on a new internal platform rolled out across all 67 chapters in the US and Canada; wrote the supporting documentation.</div></div>
+          <div class="cv-item"><div class="when">Apr 2025 to Jan 2026</div><div class="what">Webmistress, alpha Kappa Delta Phi</div><div class="desc">Redesigned the chapter website from the ground up, rebuilding the visual system and navigation.</div></div>
+          <div class="cv-item"><div class="when">Jan to June 2026</div><div class="what">Rush Chair &amp; VP Service, alpha Kappa Delta Phi</div><div class="desc">Directed spring rush recruitment and led chapter-wide service events focused on Breast Cancer Awareness.</div></div>
+          <div class="cv-item"><div class="when">Jan 2023 to May 2024</div><div class="what">Member, Economics and Business Student Association</div><div class="desc">Finalist, KPMG-sponsored AI consulting case competition (market sizing, competitive analysis, financial projections for an AI-powered e-commerce pitch); third place, EBSA marketing case competition (Home Depot holiday campaign concept).</div></div>
         </div>
 
         <h3>Skills</h3>
@@ -688,39 +670,41 @@ const MOTION = [
   </section>
 </main>
 
-<footer class="panel">
+<footer>
+  <canvas id="pond" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="foot rv">
       <div>
-        <div class="sm" style="color:var(--ink-3);margin-bottom:18px">Contact</div>
+        <div class="lbl" style="margin-bottom:18px">Contact<span class="h">联系</span> · click the water to feed the goldfish</div>
         <div class="foot-big">We can build<br>something <span class="script">together.</span></div>
-        <a class="foot-mail" id="foot-mail" href="#"></a>
+        <a class="foot-mail" id="foot-mail" href="#" data-cur="Say hi"></a>
       </div>
       <div class="sign" aria-label="Open to work">
         <div class="neon-v" id="neon-v"></div>
         <div class="neon-r"><div class="neon-open">OPEN</div><div class="neon-sub">to work</div></div>
       </div>
     </div>
-    <div class="foot-fine sm"><span>© 2026 Caroline Chen</span><span>San Mateo, California</span></div>
+    <div class="foot-fine lbl"><span>© 2026 Caroline Chen</span><span id="clock">San Mateo, California</span></div>
   </div>
 </footer>
 
-<!-- project drawer -->
+<!-- project window -->
 <div id="drawer" aria-hidden="true">
   <div class="scrim" data-close></div>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="d-title">
     <div class="d-bar">
-      <span class="num" id="d-no"></span>
-      <span class="path sm" id="d-meta-top"></span>
+      <span class="lights"><i style="--c:#ff5f57"></i><i style="--c:#febc2e"></i><i style="--c:#28c840"></i></span>
+      <span class="path lbl" id="d-meta-top"></span>
       <button class="tbtn" id="d-close" data-close>Close ✕</button>
     </div>
     <div class="d-body" id="d-body">
+      <div class="lbl" id="d-no" style="margin-bottom:8px"></div>
       <h2 id="d-title"></h2>
       <p class="d-sub" id="d-sub"></p>
       <div class="d-media" id="d-media"></div>
       <div class="d-text">
         <div>
-          <div class="meta sm" id="d-meta"></div>
+          <div class="lbl" id="d-meta"></div>
           <div class="tags" id="d-tags"></div>
         </div>
         <p id="d-blurb"></p>
@@ -734,7 +718,6 @@ const MOTION = [
   </div>
 </div>
 
-<!-- video lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Portrait video">
   <div class="lb">
     <video id="lb-video" muted playsinline loop></video>
@@ -747,8 +730,8 @@ const MOTION = [
 "use strict";
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const TAU = Math.PI * 2;
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = matchMedia("(pointer: fine)").matches;
 const pad = (n, l=2) => String(n).padStart(l, "0");
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -756,220 +739,41 @@ const store = {
   get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
   set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} },
 };
-
-/* ============================================================
-   NOISE — seeded 3D value noise + fbm
-   ============================================================ */
-const Noise = (() => {
-  const p = new Uint8Array(512);
-  let s = 20261007;
-  const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
-  const perm = [...Array(256).keys()];
-  for(let i = 255; i > 0; i--){ const j = (rnd() * (i + 1)) | 0; [perm[i], perm[j]] = [perm[j], perm[i]]; }
-  for(let i = 0; i < 512; i++) p[i] = perm[i & 255];
-  const h = (x, y, z) => p[p[p[x & 255] + (y & 255)] + (z & 255)] / 255;
-  const fade = t => t * t * (3 - 2 * t);
-  const lerp = (a, b, t) => a + (b - a) * t;
-  function n3(x, y, z){
-    const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z);
-    const fx = fade(x - X), fy = fade(y - Y), fz = fade(z - Z);
-    return lerp(
-      lerp(lerp(h(X,Y,Z),   h(X+1,Y,Z),   fx), lerp(h(X,Y+1,Z),   h(X+1,Y+1,Z),   fx), fy),
-      lerp(lerp(h(X,Y,Z+1), h(X+1,Y,Z+1), fx), lerp(h(X,Y+1,Z+1), h(X+1,Y+1,Z+1), fx), fy), fz);
-  }
-  function fbm(x, y, z, oct = 3){
-    let v = 0, a = .5, norm = 0;
-    for(let o = 0; o < oct; o++){ v += a * n3(x, y, z); norm += a; x *= 2.03; y *= 2.03; z *= 1.7; a *= .5; }
-    return v / norm;
-  }
-  return { n3, fbm };
-})();
-const smooth = (a, b, x) => { const t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
-
-/* palette, read from CSS so every canvas follows the theme */
-let PAL = {};
 const html = document.documentElement;
 const isDark = () => html.dataset.theme === "dark" || (!html.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
-function readPalette(){
-  const cs = getComputedStyle(html);
-  const g = k => cs.getPropertyValue(k).trim();
-  PAL = { paper:g("--paper"), paper2:g("--paper-2"), ink:g("--ink"), ink3:g("--ink-3"), blue:g("--blue"), red:g("--red"),
-          pink:g("--pink"), jade:g("--jade"), jade2:g("--jade-2"), dark:isDark() };
-}
-const hexRGB = h => { h = h.replace("#",""); if(h.length === 3) h = h.replace(/./g, "$&$&"); const n = parseInt(h, 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
 
 /* ============================================================
-   SCENES — each returns { resize(w,h), draw(t, ptr) }
+   HANZI DECODE: text scrambles through characters, then resolves
    ============================================================ */
-const SCENES = {
-
-  /* porcelain line-waves breaking around a cliff, under a red sun */
-  tide: {
-    title:"Tide", sub:"Blue-and-white porcelain waves breaking around a cliff, under a red sun.",
-    make(ctx, mini){
-      let w = 0, h = 0;
-      return {
-        resize(W, H){ w = W; h = H; },
-        draw(t, ptr){
-          ctx.fillStyle = PAL.paper; ctx.fillRect(0, 0, w, h);
-          const sx = w * .7, sy = h * .27, sr = Math.min(w, h) * .09;
-          ctx.fillStyle = PAL.red; ctx.beginPath(); ctx.arc(sx, sy, sr, 0, TAU); ctx.fill();
-          const top = h * .32, gap = mini ? 6 : 9, L = Math.ceil((h - top) / gap) + 2;
-          const step = mini ? 4 : 6, R = mini ? 70 : 160;
-          const cx1 = w * .68 + Math.sin(t * .07) * w * .015, cx2 = w * .28;
-          for(let i = 0; i < L; i++){
-            const f = i / L, base = top + i * gap, amp = .35 + .65 * f, k = Math.max(0, f - .15);
-            const line = new Path2D();
-            for(let x = -step; x <= w + step; x += step){
-              let y = base;
-              y += ((Noise.n3(x * .0032, i * .06, t * .12) - .5) * gap * 5.5 +
-                    (Noise.n3(x * .013 + 40, i * .14, t * .26) - .5) * gap * 1.8) * amp;
-              const d1 = (x - cx1) / (w * .03 + w * .055 * (1 - f));
-              const d2 = (x - cx2) / (w * .05 + w * .07 * (1 - f));
-              y -= k * h * .55 * Math.exp(-d1 * d1) + k * h * .24 * Math.exp(-d2 * d2);
-              if(ptr.active){
-                const dx = x - ptr.x, dy = base - ptr.y, d = Math.sqrt(dx * dx + dy * dy);
-                if(d < R) y += Math.sin(d * .07 - t * 4) * (mini ? 6 : 13) * (1 - d / R);
-              }
-              if(x === -step) line.moveTo(x, y); else line.lineTo(x, y);
-            }
-            const fill = new Path2D(line);
-            fill.lineTo(w + step, h + 10); fill.lineTo(-step, h + 10); fill.closePath();
-            ctx.fillStyle = PAL.paper; ctx.fill(fill);
-            ctx.strokeStyle = PAL.blue; ctx.globalAlpha = .3 + .65 * f; ctx.lineWidth = .6 + .9 * f;
-            ctx.stroke(line); ctx.globalAlpha = 1;
-          }
-        },
-      };
-    },
-  },
-
-  /* 锦 — woven threads billowing like silk; a cloud motif surfaces in cinnabar */
-  brocade: {
-    title:"Brocade", sub:"Woven jade and cinnabar threads that billow like silk.",
-    make(ctx, mini){
-      let w = 0, h = 0;
-      return {
-        resize(W, H){ w = W; h = H; },
-        draw(t, ptr){
-          ctx.fillStyle = PAL.paper; ctx.fillRect(0, 0, w, h);
-          const gap = mini ? 4 : 6, step = mini ? 6 : 8, R = mini ? 70 : 170;
-          const paths = [0,1,2,3,4,5].map(() => new Path2D());
-          for(let y = -gap * 4; y < h + gap * 4; y += gap){
-            let px = 0, py = 0;
-            for(let x = 0; x <= w + step; x += step){
-              let yy = y + (Noise.n3(x * .0035, y * .004, t * .14) - .5) * 46
-                         + Math.sin(x * .009 + y * .005 + t * .55) * 9;
-              if(ptr.active){
-                const dx = x - ptr.x, dy = y - ptr.y, d2 = dx * dx + dy * dy;
-                yy += dy * .5 * Math.exp(-d2 / (R * R));
-              }
-              if(x > 0){
-                const slope = (yy - py) / step;
-                const shade = slope < -.25 ? 0 : slope > .25 ? 2 : 1;
-                const m = Noise.n3(x * .006 + 50, y * .011, t * .05);
-                const c = (m > .6 || (m > .54 && m < .56)) ? 1 : 0;
-                const P = paths[c * 3 + shade];
-                P.moveTo(px, py); P.lineTo(x, yy);
-              }
-              px = x; py = yy;
-            }
-          }
-          const alphas = [.4, .72, 1];
-          ctx.lineWidth = gap * .62; ctx.lineCap = "butt";
-          for(let c = 0; c < 2; c++) for(let s = 0; s < 3; s++){
-            ctx.strokeStyle = c ? PAL.red : PAL.jade; ctx.globalAlpha = alphas[s] * (c ? .9 : .75);
-            ctx.stroke(paths[c * 3 + s]);
-          }
-          ctx.globalAlpha = 1;
-        },
-      };
-    },
-  },
-
-  /* flowing halftone cloud, magnified under a glass lens at the cursor */
-  halftone: {
-    title:"Halftone", sub:"A drifting halftone cloud, magnified under a glass lens.",
-    make(ctx, mini){
-      let w = 0, h = 0;
-      return {
-        resize(W, H){ w = W; h = H; },
-        draw(t, ptr){
-          ctx.fillStyle = PAL.paper; ctx.fillRect(0, 0, w, h);
-          const s = mini ? 7 : 11, R = mini ? 60 : Math.min(180, w * .15), sc = mini ? 1.6 : 1;
-          const blue = new Path2D(), jade = new Path2D(), red = new Path2D();
-          for(let y = s / 2; y < h; y += s){
-            for(let x = s / 2; x < w; x += s){
-              let sx = x, sy = y, lens = false;
-              if(ptr.active){
-                const dx = x - ptr.x, dy = y - ptr.y, d = Math.sqrt(dx * dx + dy * dy);
-                if(d < R){ lens = true; const k = .42 + .58 * (d / R) * (d / R); sx = ptr.x + dx * k; sy = ptr.y + dy * k; }
-              }
-              const X = sx * .0038 * sc, Y = sy * .0052 * sc;
-              const q = Noise.n3(X * .8, Y * .8, t * .05);
-              const v = Noise.fbm(X + q * 1.7 - t * .025, Y + q * .9, t * .04, 3);
-              const m = smooth(.44, .7, v);
-              if(m < .05) continue;
-              const r = s * .5 * m;
-              const path = v > .7 ? (v > .76 ? red : jade) : blue;
-              if(lens) path.rect(x - r, y - r, r * 2, r * 2);
-              else { path.moveTo(x + r, y); path.arc(x, y, r, 0, TAU); }
-            }
-          }
-          ctx.fillStyle = PAL.blue; ctx.fill(blue);
-          ctx.fillStyle = PAL.jade; ctx.fill(jade);
-          ctx.fillStyle = PAL.red;  ctx.fill(red);
-          if(ptr.active && !mini){
-            ctx.save(); ctx.strokeStyle = PAL.ink; ctx.lineWidth = 1; ctx.globalAlpha = .5;
-            ctx.beginPath(); ctx.arc(ptr.x, ptr.y, R, 0, TAU); ctx.stroke();
-            ctx.restore();
-          }
-        },
-      };
-    },
-  },
-};
-const SCENE_KEYS = Object.keys(SCENES);
-
-/* ============================================================
-   RUNNER — one RAF loop drives every live canvas
-   ============================================================ */
-const runners = new Set();
-function mount(canvas, key, mini){
-  const ctx = canvas.getContext("2d");
-  const r = { canvas, ctx, key, mini, impl:null, ptr:{ x:-9999, y:-9999, active:false }, visible:true, t0:performance.now() };
-  r.set = k => { r.key = k; r.impl = SCENES[k].make(ctx, mini); r.resize(); };
-  r.resize = () => {
-    const b = canvas.getBoundingClientRect();
-    const dpr = Math.min(devicePixelRatio || 1, mini ? 1.5 : 1.75);
-    canvas.width = Math.max(1, Math.round(b.width * dpr)); canvas.height = Math.max(1, Math.round(b.height * dpr));
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    r.impl.resize(b.width, b.height);
-    if(reduceMotion) r.draw(performance.now());
+const POOL = "锦金鱼莲云墨梅玉光水影风铃纸剪灯笔梦星雨露香青红粉山海月心眼丝纹镜";
+function scramble(el, dur = 620){
+  if(reduceMotion) return;
+  const final = el.dataset.final || (el.dataset.final = el.textContent);
+  const t0 = performance.now();
+  cancelAnimationFrame(el._raf);
+  const step = now => {
+    const p = clamp((now - t0) / dur, 0, 1);
+    const fixed = Math.floor(p * final.length);
+    let out = final.slice(0, fixed);
+    for(let i = fixed; i < final.length; i++){
+      out += final[i] === " " ? " " : POOL[(Math.random() * POOL.length) | 0];
+    }
+    el.textContent = out;
+    if(p < 1) el._raf = requestAnimationFrame(step); else el.textContent = final;
   };
-  r.draw = now => r.impl.draw(reduceMotion ? 8 : (now - r.t0) / 1000, r.ptr);
-  r.set(key);
-  runners.add(r);
-  return r;
+  el._raf = requestAnimationFrame(step);
 }
-const frameHooks = [];
-function loop(now){
-  if(!document.hidden){
-    runners.forEach(r => { if(r.visible) r.draw(now); });
-    frameHooks.forEach(f => f(now));
-  }
-  requestAnimationFrame(loop);
-}
+window.ccScramble = scramble;
 
 /* ============================================================
-   SOUND — guzheng plucks (Karplus–Strong) over a soft sub + hats
+   SOUND: guzheng plucks (Karplus-Strong) over a soft sub + hats,
+   with bubbly blips on hover
    ============================================================ */
 const Sound = (() => {
   let ac = null, master, wet, on = false, timer = 0, step = 0, nextT = 0;
   const bufs = {};
-  // D major pentatonic — the guzheng's home scale
   const SCALE = [293.66, 329.63, 369.99, 440, 493.88, 587.33, 659.25, 739.99, 880];
-  const ROOTS = [73.42, 61.74, 49.0, 55.0];   // D – B – G – A
+  const ROOTS = [73.42, 61.74, 49.0, 55.0];
   const BPM = 92, S16 = 60 / BPM / 4;
   function init(){
     ac = new (window.AudioContext || window.webkitAudioContext)();
@@ -997,7 +801,7 @@ const Sound = (() => {
   }
   function pluck(f, when, vel){
     const s = ac.createBufferSource(); s.buffer = ks(f);
-    s.playbackRate.setValueAtTime(.982, when);                 // the little slide-in a guzheng player bends into
+    s.playbackRate.setValueAtTime(.982, when);
     s.playbackRate.linearRampToValueAtTime(1, when + .14);
     const g = ac.createGain(); g.gain.value = vel;
     const hp = ac.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 140;
@@ -1017,6 +821,14 @@ const Sound = (() => {
     s.buffer = noise; hp.type = "highpass"; hp.frequency.value = 7500;
     g.gain.setValueAtTime(v, when); g.gain.exponentialRampToValueAtTime(.001, when + .05);
     s.connect(hp); hp.connect(g); g.connect(master); s.start(when); s.stop(when + .06);
+  }
+  function blip(){
+    if(!on) return;
+    const t = ac.currentTime + .005, o = ac.createOscillator(), g = ac.createGain();
+    const f = 600 + Math.random() * 500;
+    o.type = "sine"; o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 2.4, t + .09);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.09, t + .01); g.gain.exponentialRampToValueAtTime(.001, t + .14);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + .16);
   }
   function schedule(){
     while(nextT < ac.currentTime + .2){
@@ -1038,50 +850,48 @@ const Sound = (() => {
       return on;
     },
     note(i, vel = .35){ if(on) pluck(SCALE[i % SCALE.length], ac.currentTime + .01, vel); },
+    blip,
   };
 })();
+window.ccSound = Sound;
 
 /* ============================================================
    BOOT
    ============================================================ */
 const savedTheme = store.get("cc-theme");
 if(savedTheme) html.dataset.theme = savedTheme;
-readPalette();
 
-// identity
 const [c1, c2, c3] = PORTFOLIO.chinese;
 $$("[data-seal]").forEach(s => s.innerHTML = `<span>${c1}</span><span>${c2}</span><span>${c3}</span>`);
-$("#cn-vert").textContent = $("#neon-v").textContent = PORTFOLIO.chinese.join("");
+$("#neon-v").textContent = PORTFOLIO.chinese.join("");
 $("#foot-mail").textContent = PORTFOLIO.email;
 $("#foot-mail").href = "mailto:" + PORTFOLIO.email;
 if(PORTFOLIO.resumeUrl){ $("#resume-btn").href = PORTFOLIO.resumeUrl; $("#resume-btn").setAttribute("download", "Caroline_Chen_Resume.pdf"); }
 else $("#resume-btn").classList.add("off");
 
-// background scene
-let sceneKey = store.get("cc-scene");
-if(!SCENES[sceneKey]) sceneKey = "tide";
-const bg = mount($("#bg"), sceneKey, false);
-function setScene(k, animate){
-  const c = $("#bg");
-  const apply = () => {
-    bg.set(k); sceneKey = k; store.set("cc-scene", k);
-    $$("#scene-btns .sbtn").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === k)));
-    $$(".mtile[data-scene]").forEach(m => m.classList.toggle("current", m.dataset.scene === k));
-    c.classList.remove("swap");
+// hero name: each letter is its own little object
+(() => {
+  const h = $("#hero-name");
+  h.querySelectorAll("br, .it").forEach(() => {});
+  const wrapChars = node => {
+    [...node.childNodes].forEach(n => {
+      if(n.nodeType === 3){
+        const frag = document.createDocumentFragment();
+        [...n.textContent].forEach(ch => { const s = document.createElement("span"); s.className = "ch"; s.textContent = ch; s.setAttribute("aria-hidden", "true"); frag.appendChild(s); });
+        n.replaceWith(frag);
+      } else if(n.nodeType === 1 && n.tagName !== "BR") wrapChars(n);
+    });
   };
-  if(reduceMotion || !animate){ apply(); return; }
-  c.classList.add("swap"); setTimeout(apply, 330);
-}
-$("#scene-btns").innerHTML = SCENE_KEYS.map(k => `<button class="sbtn" data-k="${k}" aria-pressed="false">${SCENES[k].title}</button>`).join("");
-$("#scene-btns").addEventListener("click", e => { const b = e.target.closest("[data-k]"); if(b) setScene(b.dataset.k, true); });
+  wrapChars(h);
+  h.addEventListener("mouseover", e => { const c = e.target.closest(".ch"); if(c) Sound.note((Math.random() * 9) | 0, .25); });
+})();
 
 // theme
 function syncTheme(){
-  readPalette();
-  $("#theme").setAttribute("aria-pressed", String(PAL.dark));
-  window.__ccDark = PAL.dark;
+  const d = isDark();
+  $("#theme").setAttribute("aria-pressed", String(d));
+  window.__ccDark = d;
   dispatchEvent(new Event("cc-theme"));
-  if(reduceMotion) runners.forEach(r => r.draw(performance.now()));
 }
 $("#theme").addEventListener("click", () => {
   html.dataset.theme = isDark() ? "light" : "dark";
@@ -1089,6 +899,7 @@ $("#theme").addEventListener("click", () => {
   syncTheme();
 });
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", syncTheme);
+syncTheme();
 
 // sound
 $("#sound").addEventListener("click", () => {
@@ -1097,37 +908,48 @@ $("#sound").addEventListener("click", () => {
   $("#sound").classList.toggle("playing", on);
 });
 
-// loader
+// loader: short, click to skip
 (function(){
-  const ld = $("#loader"), cnt = $("#ld-count");
+  const ld = $("#loader");
   const end = () => ld.classList.add("done");
   ld.addEventListener("click", end);
   if(reduceMotion){ end(); return; }
-  const t0 = performance.now(), D = 1400;
-  (function tick(now){
-    const p = Math.min(1, (now - t0) / D);
-    cnt.textContent = pad(Math.round(p * 100), 3);
-    if(p < 1) requestAnimationFrame(tick); else setTimeout(end, 250);
-  })(t0);
+  setTimeout(end, 950);
 })();
-
-// pointer → background
-addEventListener("pointermove", e => { bg.ptr.x = e.clientX; bg.ptr.y = e.clientY; bg.ptr.active = true; }, { passive:true });
-document.addEventListener("pointerleave", () => { bg.ptr.active = false; });
-addEventListener("pointerup", e => { if(e.pointerType === "touch") bg.ptr.active = false; });
 
 // clock
 const fmt = new Intl.DateTimeFormat("en-US", { timeZone:"America/Los_Angeles", hour:"numeric", minute:"2-digit" });
-const tickClock = () => { $("#clock").textContent = "San Mateo, CA — " + fmt.format(new Date()); };
+const tickClock = () => { $("#clock").textContent = "San Mateo, CA · " + fmt.format(new Date()); };
 tickClock(); setInterval(tickClock, 20000);
 
-// scroll state
+/* ---------- cursor follower ---------- */
+const cur = $("#cur"), curTxt = cur.querySelector(".txt");
+let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
+addEventListener("pointermove", e => { mx = e.clientX; my = e.clientY; }, { passive:true });
+document.addEventListener("pointerleave", () => cur.classList.add("hide"));
+document.addEventListener("pointerenter", () => cur.classList.remove("hide"));
+document.addEventListener("mouseover", e => {
+  const t = e.target.closest("[data-cur], a, button");
+  if(t && t.dataset.cur){ curTxt.textContent = t.dataset.cur; cur.classList.add("big"); }
+  else cur.classList.remove("big");
+  if(t && t.matches("a, button") && !t.closest(".card")) Sound.blip();
+});
+function curLoop(){
+  cx += (mx - cx) * .2; cy += (my - cy) * .2;
+  cur.style.transform = `translate3d(${cx}px,${cy}px,0)`;
+  requestAnimationFrame(curLoop);
+}
+if(finePointer) curLoop();
+
+/* ---------- scroll state: hide bar on the way down, show on the way up ---------- */
 const navLinks = $$("#nav a");
+let lastY = scrollY;
 function onScroll(){
-  const y = scrollY, H = innerHeight;
-  document.body.classList.toggle("scrolled", y > H * .3);
-  html.style.setProperty("--bg-dim", String(Math.max(0, 1 - y / H * 1.1)));
-  bg.visible = y < H * 1.05;
+  const y = scrollY;
+  document.body.classList.toggle("scrolled", y > 40);
+  document.body.classList.toggle("hide-top", y > innerHeight * .8 && y > lastY + 2);
+  if(y < lastY - 2) document.body.classList.remove("hide-top");
+  lastY = y;
 }
 addEventListener("scroll", onScroll, { passive:true }); onScroll();
 const secObs = new IntersectionObserver(es => es.forEach(e => {
@@ -1136,237 +958,136 @@ const secObs = new IntersectionObserver(es => es.forEach(e => {
 }), { rootMargin:"-45% 0px -50% 0px" });
 $$("main section").forEach(s => secObs.observe(s));
 const rvObs = new IntersectionObserver(es => es.forEach(e => {
-  if(e.isIntersecting){ e.target.classList.add("in"); rvObs.unobserve(e.target); }
+  if(e.isIntersecting){
+    e.target.classList.add("in");
+    e.target.querySelectorAll("[data-scr]").forEach(el => scramble(el, 800));
+    rvObs.unobserve(e.target);
+  }
 }), { threshold:.12 });
 $$(".rv").forEach(el => rvObs.observe(el));
+navLinks.forEach(a => a.addEventListener("mouseenter", () => scramble(a.querySelector("[data-scr]"), 420)));
 
-/* ============================================================
-   WORK — the reflecting pool.
-   Vertical scroll walks the row of projects sideways; below the
-   waterline a WebGL surface mirrors them, rippling where you touch.
-   ============================================================ */
-const N = PROJECTS.length;
-const sec = $("#work"), pool = $("#pool"), track = $("#track");
-track.innerHTML = PROJECTS.map((p, i) => `
-  <button class="pc" data-i="${i}" aria-label="Open ${esc(p.title)}">
-    <span class="pc-cap"><span class="pc-n">${pad(i + 1)}</span><span class="pc-t">${esc(p.title)}</span><span class="pc-s">${esc(p.sub)}</span></span>
-    <img class="pc-img" src="${esc(p.thumb)}" alt="" decoding="async">
-  </button>`).join("");
-$("#pool-idx").innerHTML = PROJECTS.map((p, i) => `<button data-i="${i}" aria-label="Go to ${esc(p.title)}">${pad(i + 1)}</button>`).join("") +
-  `<span class="hint sm">Click a project to open it</span>`;
-const cards = $$(".pc").map((el, i) => ({ el, img:el.querySelector("img"), i, ar:4 / 3, left:0, w:0, h:0 }));
-
-/* the water itself */
-const Water = (() => {
-  const glc = $("#water"), c2 = $("#water2");
-  const mirror = document.createElement("canvas"), mctx = mirror.getContext("2d");
-  let gl = null, prog, tex, uni = {}, fallback = false, W = 0, H = 0, dpr = 1;
-  const drops = [];   // {x,y,t,s}
-  let clock = 0, lastAmbient = 0;
-
-  const VS = `attribute vec2 p; varying vec2 vUv; void main(){ vUv = p * .5 + .5; gl_Position = vec4(p, 0., 1.); }`;
-  const FS = `
-    precision highp float;
-    uniform sampler2D uTex; uniform vec2 uRes; uniform float uT; uniform vec4 uD[10];
-    uniform vec3 uTint; uniform vec3 uHi;
-    varying vec2 vUv;
-    float H(vec2 p){
-      float depth = p.y / uRes.y;
-      float h = sin(p.x * .018 + uT * .9 + sin(p.y * .045 + uT * .5) * 2.) * .5
-              + sin(p.x * .031 - p.y * .11 + uT * 1.6) * .35
-              + sin(p.x * .007 + p.y * .05 - uT * .7) * .6;
-      h *= .35 + depth * 1.3;
-      for(int i = 0; i < 10; i++){
-        vec4 d = uD[i];
-        if(d.w <= 0.) continue;
-        float age = uT - d.z;
-        if(age < 0. || age > 4.5) continue;
-        vec2 q = p - d.xy; q.y *= 2.6;               // rings flatten with perspective
-        float k = length(q) - age * 160.;
-        h += d.w * exp(-k * k / 700.) * sin(k * .17) * exp(-age * .85) * 3.2;
-      }
-      return h;
-    }
-    void main(){
-      vec2 p = vec2(vUv.x, 1. - vUv.y) * uRes;
-      float e = 1.5;
-      vec2 n = vec2(H(p + vec2(e, 0.)) - H(p - vec2(e, 0.)), H(p + vec2(0., e)) - H(p - vec2(0., e)));
-      float depth = p.y / uRes.y;
-      vec2 uv = (p + n * (5. + depth * 20.)) / uRes;
-      uv = clamp(uv, vec2(0.), vec2(1.));
-      vec3 col = texture2D(uTex, uv).rgb;
-      col = mix(uTint, col, mix(.9, .5, depth));     // brighter mirror near the horizon, deeper tint below
-      vec3 N = normalize(vec3(-n * 1.3, 1.));
-      float spec = pow(clamp(dot(N, normalize(vec3(.25, -.55, 1.))), 0., 1.), 70.);
-      col += uHi * spec * .55;
-      col += uHi * exp(-p.y * .2) * .12;
-      gl_FragColor = vec4(col, 1.);
-    }`;
-
-  function initGL(){
-    gl = glc.getContext("webgl", { antialias:false, premultipliedAlpha:false });
-    if(!gl){ goFallback(); return; }
-    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
-    prog = gl.createProgram();
-    gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
-    gl.linkProgram(prog);
-    if(!gl.getProgramParameter(prog, gl.LINK_STATUS)){ goFallback(); return; }
-    gl.useProgram(prog);
-    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
-    const loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-    tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-    [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(k => gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE));
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    ["uTex","uRes","uT","uD","uTint","uHi"].forEach(k => uni[k] = gl.getUniformLocation(prog, k));
-    gl.viewport(0, 0, glc.width, glc.height);
+/* ---------- ticker: drifts on its own, speeds up with your scroll ---------- */
+(() => {
+  const words = [["graphic","平面"],["brand","品牌"],["experience","体验"],["research","研究"],["print","印刷"],["web","网页"],["editorial","编辑"],["art","艺术"]];
+  const one = words.map(([en, zh]) => `<span>${en}</span><span class="h">${zh}</span><span class="d">✿</span>`).join("");
+  const el = $("#ticker");
+  el.innerHTML = one + one + one;
+  let x = 0, vel = 0, last = scrollY, hover = false;
+  el.parentElement.addEventListener("mouseenter", () => hover = true);
+  el.parentElement.addEventListener("mouseleave", () => hover = false);
+  function f(){
+    const dy = scrollY - last; last = scrollY;
+    vel += (dy * .5 - vel) * .1;
+    const sp = hover ? .15 : 0.6 + Math.abs(vel);
+    x -= sp * Math.sign(vel || 1) * (reduceMotion ? 0 : 1);
+    const w = el.scrollWidth / 3;
+    if(x < -w) x += w; if(x > 0) x -= w;
+    el.style.transform = `translate3d(${x}px,0,0)`;
+    requestAnimationFrame(f);
   }
-  function goFallback(){ fallback = true; glc.style.display = "none"; c2.classList.remove("fallback"); resize(W, H); }
-
-  function resize(w, h){
-    W = w; H = h; dpr = Math.min(devicePixelRatio || 1, 1.5);
-    mirror.width = Math.max(1, Math.round(w)); mirror.height = Math.max(1, Math.round(h));
-    const target = fallback ? c2 : glc;
-    target.style.height = h + "px";
-    target.width = Math.max(1, Math.round(w * dpr)); target.height = Math.max(1, Math.round(h * dpr));
-    if(!fallback && gl) gl.viewport(0, 0, target.width, target.height);
-  }
-
-  function paintMirror(tx){
-    mctx.setTransform(1, 0, 0, 1, 0, 0);
-    mctx.fillStyle = PAL.paper2; mctx.fillRect(0, 0, W, H);
-    const squash = .92;
-    for(const c of cards){
-      const x = c.left + tx;
-      if(x > W || x + c.w < 0 || !c.img.complete || !c.img.naturalWidth) continue;
-      const rh = c.h * squash;
-      // object-fit: cover crop, mirrored vertically about the waterline
-      const iw = c.img.naturalWidth, ih = c.img.naturalHeight, boxAR = c.w / c.h, imAR = iw / ih;
-      let sx = 0, sy = 0, sw = iw, sh = ih;
-      if(imAR > boxAR){ sw = ih * boxAR; sx = (iw - sw) / 2; } else { sh = iw / boxAR; sy = (ih - sh) / 2; }
-      mctx.setTransform(1, 0, 0, -1, x, rh);
-      mctx.drawImage(c.img, sx, sy, sw, sh, 0, 0, c.w, rh);
-    }
-    mctx.setTransform(1, 0, 0, 1, 0, 0);
-  }
-
-  function render(t, tx){
-    if(!W || !H) return;
-    clock = reduceMotion ? 3 : t;
-    if(!reduceMotion && t - lastAmbient > 2.2 + Math.random() * 2){       // the odd drop falling on its own
-      lastAmbient = t; addDrop(Math.random() * W, H * (.25 + Math.random() * .6), .35);
-    }
-    paintMirror(tx);
-    if(!fallback && !gl) initGL();
-    if(!fallback){
-      try{ gl.bindTexture(gl.TEXTURE_2D, tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, mirror); }
-      catch(err){ goFallback(); }   // file:// pages taint the canvas; fall back to a 2D ripple
-    }
-    if(!fallback){
-      const arr = new Float32Array(40);
-      drops.forEach((d, i) => { arr[i * 4] = d.x; arr[i * 4 + 1] = d.y; arr[i * 4 + 2] = d.t; arr[i * 4 + 3] = d.s; });
-      gl.uniform1i(uni.uTex, 0); gl.uniform2f(uni.uRes, W, H); gl.uniform1f(uni.uT, clock);
-      gl.uniform4fv(uni.uD, arr);
-      gl.uniform3fv(uni.uTint, hexRGB(PAL.dark ? "#0b1416" : "#c9d6d0"));
-      gl.uniform3fv(uni.uHi, hexRGB(PAL.dark ? "#cfe9df" : "#ffffff"));
-      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    } else {
-      const ctx = c2.getContext("2d");
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.fillStyle = PAL.paper2; ctx.fillRect(0, 0, W, H);
-      for(let y = 0; y < H; y += 2){
-        let dx = Math.sin(y * .16 - clock * 2) * (1 + y * .05);
-        for(const d of drops){ const age = clock - d.t, k = Math.abs(y - d.y) * 2.6 - age * 160; if(age > 0 && age < 4) dx += Math.sin(k * .17) * Math.exp(-k * k / 700) * 8 * d.s * Math.exp(-age); }
-        ctx.drawImage(mirror, 0, y, W, 2, dx, y, W, 2);
-      }
-      const g = ctx.createLinearGradient(0, 0, 0, H);
-      g.addColorStop(0, PAL.dark ? "rgba(11,20,22,0)" : "rgba(201,214,208,0)");
-      g.addColorStop(1, PAL.dark ? "rgba(11,20,22,.7)" : "rgba(201,214,208,.6)");
-      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-    }
-  }
-  function addDrop(x, y, s){
-    drops.push({ x, y, t:clock, s });
-    if(drops.length > 10) drops.shift();
-  }
-  // touching the water
-  let lastX = -1e9, lastY = -1e9, lastT = 0;
-  [glc, c2].forEach(cv => {
-    cv.addEventListener("pointermove", e => {
-      const b = cv.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
-      if(Math.hypot(x - lastX, y - lastY) > 46 && clock - lastT > .07){ addDrop(x, y, .45); lastX = x; lastY = y; lastT = clock; }
-    });
-    cv.addEventListener("pointerdown", e => {
-      const b = cv.getBoundingClientRect(); addDrop(e.clientX - b.left, e.clientY - b.top, 1);
-      Sound.note((Math.random() * 9) | 0, .45);
-    });
-  });
-  return { resize, render };
+  f();
 })();
 
-let dist = 0, tx = 0;
-function layoutPool(){
-  const W = innerWidth, H = pool.clientHeight, mobile = W < 720;
-  const horizon = Math.round(H * (mobile ? .66 : .63));
-  const waterH = H - horizon;
-  const headB = $(".pool-head").getBoundingClientRect().height + (mobile ? 72 : 84);
-  const capH = mobile ? 88 : 78;
-  const avail = horizon - headB - capH - 18;
-  const pattern = [1, .76, .9, .7, .84, .74];
+/* ============================================================
+   WORK: cards behind reeded glass
+   ============================================================ */
+const N = PROJECTS.length;
+const RIBS = innerWidth < 640 ? 10 : 16;
+const grid = $("#grid");
+grid.innerHTML = PROJECTS.map((p, i) => {
+  let strips = "";
+  for(let k = 0; k < RIBS; k++){
+    const l = k / RIBS * 100, w = 100 / RIBS;
+    strips += `<span class="strip" style="left:${l}%;width:calc(${w}% + 1px)"><img src="${esc(p.thumb)}" alt="" loading="lazy" decoding="async" style="left:${-k * 100}%;width:${RIBS * 100}%;transform-origin:${(k + .5) / RIBS * 100}% 50%"></span>`;
+  }
+  return `<article class="card rv" data-i="${i}" data-cat="${(p.cat || []).join(" ")}">
+    <div class="glass">${strips}<span class="leak"></span><span class="fig">fig. ${pad(i + 1)}</span></div>
+    <div class="card-cap"><span class="n">${pad(i + 1)}</span><h3 class="t">${esc(p.title)}</h3><span class="yr">${esc(p.year)}</span><p class="s">${esc(p.sub)}</p></div>
+    <button class="card-hit" aria-label="Open ${esc(p.title)}" data-cur="Open 看"></button>
+  </article>`;
+}).join("");
+const cards = $$(".card");
+$$(".card").forEach(el => rvObs.observe(el));
+
+// a rhythm of sizes that re-flows whenever the filter changes
+const RHYTHM = ["s7","s5","s5","s7","s4","s4","s4"];
+function sizeCards(){
+  let k = 0;
   cards.forEach(c => {
-    let h = avail * pattern[c.i % pattern.length], w = h * c.ar;
-    const maxW = W * (mobile ? .8 : .5);
-    if(w > maxW){ w = maxW; h = w / c.ar; }
-    c.img.style.width = Math.round(w) + "px"; c.img.style.height = Math.round(h) + "px";
+    c.classList.remove("s7","s5","s4");
+    if(c.classList.contains("gone")) return;
+    c.classList.add(RHYTHM[k % RHYTHM.length]); k++;
   });
-  track.style.bottom = waterH + "px";
-  $("#pool-line").style.top = horizon + "px";
-  dist = Math.max(0, track.scrollWidth - W);
-  sec.style.height = (dist + H) + "px";
-  cards.forEach(c => { c.left = c.el.offsetLeft; c.w = c.img.offsetWidth; c.h = c.img.offsetHeight; });
-  Water.resize(W, waterH);
 }
-cards.forEach(c => {
-  const set = () => { if(c.img.naturalWidth){ c.ar = c.img.naturalWidth / c.img.naturalHeight; layoutPool(); } };
-  if(c.img.complete) set(); else c.img.addEventListener("load", set, { once:true });
+sizeCards();
+
+// the glass: ribs near the cursor relax to 1x so the picture underneath comes through
+const GLASS = 1.6;
+cards.forEach(card => {
+  const g = card.querySelector(".glass"), strips = [...g.querySelectorAll(".strip")];
+  const titleEl = card.querySelector(".t");
+  let raf = 0, px = .5, py = .5;
+  const apply = () => {
+    raf = 0;
+    strips.forEach((s, k) => {
+      const d = Math.abs((k + .5) / RIBS - px) * RIBS;           // distance in ribs
+      const f = clamp((d - .6) / 3.2, 0, 1);
+      const sc = 1 + (GLASS - 1) * f;
+      s.style.setProperty("--s", sc.toFixed(3));
+      s.style.setProperty("--g", f.toFixed(2));
+    });
+    g.style.setProperty("--ry", ((px - .5) * 10).toFixed(2) + "deg");
+    g.style.setProperty("--rx", ((.5 - py) * 8).toFixed(2) + "deg");
+    g.style.setProperty("--lx", (px * 100).toFixed(1) + "%");
+    g.style.setProperty("--ly", (py * 100).toFixed(1) + "%");
+  };
+  card.addEventListener("pointermove", e => {
+    const b = g.getBoundingClientRect();
+    px = clamp((e.clientX - b.left) / b.width, 0, 1); py = clamp((e.clientY - b.top) / b.height, 0, 1);
+    if(!raf) raf = requestAnimationFrame(apply);
+  });
+  card.addEventListener("pointerenter", () => { scramble(titleEl, 520); Sound.note(+card.dataset.i, .3); });
+  card.addEventListener("pointerleave", () => {
+    cancelAnimationFrame(raf); raf = 0;
+    strips.forEach(s => { s.style.setProperty("--s", GLASS); s.style.setProperty("--g", 1); });
+    g.style.setProperty("--rx", "0deg"); g.style.setProperty("--ry", "0deg");
+  });
+  // touch screens: tap once to clear, the glass eases back after a moment
+  card.addEventListener("touchstart", () => {
+    strips.forEach(s => { s.style.setProperty("--s", 1); s.style.setProperty("--g", 0); });
+    clearTimeout(card._t); card._t = setTimeout(() => strips.forEach(s => { s.style.setProperty("--s", GLASS); s.style.setProperty("--g", 1); }), 2200);
+  }, { passive:true });
 });
 
-const poolProgress = () => dist ? clamp((scrollY - sec.offsetTop) / dist, 0, 1) : 0;
-let activeIdx = -1;
-frameHooks.push(now => {
-  const r = sec.getBoundingClientRect();
-  if(r.bottom < 0 || r.top > innerHeight) return;
-  const target = -poolProgress() * dist;
-  tx += (target - tx) * (reduceMotion ? 1 : .14);
-  track.style.transform = `translate3d(${tx.toFixed(2)}px,0,0)`;
-  // which project sits nearest the reading line
-  let best = 0, bd = 1e9;
-  cards.forEach(c => { const d = Math.abs(c.left + tx + c.w / 2 - innerWidth * .4); if(d < bd){ bd = d; best = c.i; } });
-  if(best !== activeIdx){ activeIdx = best; $$("#pool-idx button").forEach((b, i) => b.classList.toggle("on", i === best)); }
-  Water.render(now / 1000, tx);
-});
-$("#pool-idx").addEventListener("click", e => {
-  const b = e.target.closest("button[data-i]"); if(!b) return;
-  const c = cards[+b.dataset.i];
-  const target = clamp(c.left - innerWidth * .4 + c.w / 2, 0, dist);
-  scrollTo({ top: sec.offsetTop + target, behavior: reduceMotion ? "auto" : "smooth" });
-});
-track.addEventListener("mouseover", e => {
-  const b = e.target.closest(".pc"); if(!b || b.contains(e.relatedTarget)) return;
-  Sound.note(+b.dataset.i, .3);
+// filters
+const counts = k => k === "all" ? N : PROJECTS.filter(p => (p.cat || []).includes(k)).length;
+$("#filters").innerHTML = FILTERS.map((f, i) => `<button class="chip" data-k="${f.k}" aria-pressed="${i === 0}">${f.en} <span class="han">${f.zh}</span><sup>${counts(f.k)}</sup></button>`).join("") +
+  `<span class="count lbl" id="fcount">${N} pieces</span>`;
+$("#filters").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if(!b) return;
+  const k = b.dataset.k;
+  $$("#filters .chip").forEach(c => c.setAttribute("aria-pressed", String(c === b)));
+  let n = 0;
+  cards.forEach(c => {
+    const show = k === "all" || c.dataset.cat.split(" ").includes(k);
+    c.classList.toggle("gone", !show);
+    if(show){ n++; c.classList.remove("in"); requestAnimationFrame(() => requestAnimationFrame(() => c.classList.add("in"))); }
+  });
+  $("#fcount").textContent = n + (n === 1 ? " piece" : " pieces");
+  sizeCards();
 });
 
 /* ============================================================
-   PROJECT DRAWER
+   PROJECT WINDOW
    ============================================================ */
 const drawer = $("#drawer");
 let current = 0, lastFocus = null;
 function openProject(i){
   const p = PROJECTS[i]; current = i;
   if(!drawer.classList.contains("open")) lastFocus = document.activeElement;
-  $("#d-no").textContent = pad(i + 1) + " / " + pad(N);
-  $("#d-meta-top").textContent = p.meta;
+  $("#d-no").textContent = "作品 " + pad(i + 1) + " / " + pad(N);
+  $("#d-meta-top").textContent = p.title.toLowerCase().replace(/[^a-z0-9]+/g, "_") + ".work";
   $("#d-title").textContent = p.title;
   $("#d-sub").textContent = p.sub;
   $("#d-meta").textContent = p.meta;
@@ -1374,13 +1095,14 @@ function openProject(i){
   $("#d-tags").innerHTML = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
   const imgs = (p.gallery && p.gallery.length ? p.gallery : [p.thumb]).filter(Boolean);
   $("#d-media").innerHTML = imgs.map((src, k) => `
-    <figure class="d-fig"><img src="${esc(src)}" alt="${esc(p.title)}${k ? " — detail " + k : ""}"></figure>`).join("");
+    <figure class="d-fig"><img src="${esc(src)}" alt="${esc(p.title)}${k ? ", detail " + k : ""}"></figure>`).join("");
   const open = $("#d-open");
   if(p.url){ open.href = p.url; open.classList.remove("off"); open.textContent = "Open project ↗"; }
   else { open.href = "#"; open.classList.add("off"); open.textContent = "Print piece"; }
   $("#d-body").scrollTop = 0;
   drawer.classList.add("open"); drawer.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  scramble($("#d-title"), 600);
   $("#d-close").focus({ preventScroll:true });
 }
 function closeAll(){
@@ -1391,7 +1113,7 @@ function closeAll(){
   }
   if($("#lightbox").classList.contains("open")){ $("#lightbox").classList.remove("open"); $("#lb-video").pause(); }
 }
-track.addEventListener("click", e => { const b = e.target.closest(".pc"); if(b) openProject(+b.dataset.i); });
+grid.addEventListener("click", e => { const b = e.target.closest(".card"); if(b) openProject(+b.dataset.i); });
 $$("[data-close]").forEach(b => b.addEventListener("click", closeAll));
 $("#lightbox").addEventListener("click", e => { if(e.target.id === "lightbox") closeAll(); });
 $("#d-prev").addEventListener("click", () => openProject((current - 1 + N) % N));
@@ -1409,44 +1131,26 @@ addEventListener("keydown", e => {
 });
 
 /* ============================================================
-   MOTION
+   ABOUT: justified text as atmosphere, lit by your cursor
    ============================================================ */
-$("#mgrid").innerHTML = MOTION.map((m, i) => {
-  if(m.kind === "scene"){
-    const S = SCENES[m.scene];
-    return `<div class="mtile rv" data-scene="${m.scene}">
-      <div class="box"><canvas aria-label="${esc(S.title)} — live code piece"></canvas></div>
-      <div class="row1"><span class="num">${pad(i + 1)}</span><span class="mt">${esc(S.title)}</span></div>
-      <div class="ms">${esc(S.sub)}</div>
-      <button class="tbtn act" data-set="${m.scene}">Use as background</button>
-    </div>`;
-  }
-  return `<div class="mtile rv">
-    <div class="box"><video src="${esc(m.src)}" muted playsinline loop preload="metadata"></video></div>
-    <div class="row1"><span class="num">${pad(i + 1)}</span><span class="mt">${esc(m.title)}</span></div>
-    <div class="ms">${esc(m.sub)}</div>
-    <button class="tbtn act" data-play="${esc(m.src)}">Play large</button>
-  </div>`;
-}).join("");
-$$(".mtile").forEach(el => rvObs.observe(el));
-$$(".mtile[data-scene]").forEach(el => {
-  const cv = el.querySelector("canvas");
-  const r = mount(cv, el.dataset.scene, true);
-  r.visible = false;
-  cv.addEventListener("pointermove", e => { const b = cv.getBoundingClientRect(); r.ptr.x = e.clientX - b.left; r.ptr.y = e.clientY - b.top; r.ptr.active = true; });
-  cv.addEventListener("pointerleave", () => { r.ptr.active = false; });
-  new IntersectionObserver(es => es.forEach(e => { r.visible = e.isIntersecting; if(e.isIntersecting && reduceMotion) r.draw(performance.now()); })).observe(cv);
-});
-const vidObs = new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); }), { threshold:.2 });
-$$(".mtile video").forEach(v => { if(!reduceMotion) vidObs.observe(v); });
-$("#mgrid").addEventListener("click", e => {
-  const s = e.target.closest("[data-set]"); if(s){ setScene(s.dataset.set, true); scrollTo({ top:0, behavior: reduceMotion ? "auto" : "smooth" }); return; }
-  const p = e.target.closest("[data-play]"); if(p) openVideo(p.dataset.play);
-});
+(() => {
+  const words = ["habit","习惯","irony","讽刺","productivity","工作","fieldwork","Chinatown","唐人街","storefront","calla","莲","goldfish","金鱼","hyperpop","glass","镜","jade","玉","brocade","锦","ritual","loop","screen","心","ink","墨","cloud","云","plum blossom","梅花","iPad kid","EDM","absurd optimism","fail-safe","San Mateo","圣马特奥","print","印刷","interface","research","研究","texture","light","光"];
+  let s = "";
+  for(let i = 0; i < 700; i++) s += words[(i * 7 + (i >> 3)) % words.length] + " ";
+  $("#atmo").textContent = s; $("#atmo-lit").textContent = s;
+  const about = $("#about"), lit = $("#atmo-lit");
+  about.addEventListener("pointermove", e => {
+    const b = about.getBoundingClientRect();
+    lit.style.setProperty("--mx", (e.clientX - b.left) + "px");
+    lit.style.setProperty("--my", (e.clientY - b.top) + "px");
+  });
+  about.addEventListener("pointerleave", () => { lit.style.setProperty("--mx", "-999px"); });
+})();
 
-// about — the vanity mirror; the glare slides as you move
+// the vanity mirror: tilts toward you, the glare slides
 const av = $("#about-video");
 av.src = PORTFOLIO.video;
+const vidObs = new IntersectionObserver(es => es.forEach(e => { e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause(); }), { threshold:.2 });
 if(!reduceMotion) vidObs.observe(av);
 const mirrorEl = $("#portrait"), sheen = $("#sheen");
 addEventListener("pointermove", e => {
@@ -1454,6 +1158,7 @@ addEventListener("pointermove", e => {
   if(b.bottom < 0 || b.top > innerHeight) return;
   const nx = clamp((e.clientX - (b.left + b.width / 2)) / innerWidth, -1, 1), ny = clamp((e.clientY - (b.top + b.height / 2)) / innerHeight, -1, 1);
   sheen.style.setProperty("--mx", (nx * 90).toFixed(1) + "px"); sheen.style.setProperty("--my", (ny * 60).toFixed(1) + "px");
+  mirrorEl.style.setProperty("--ry", (nx * 14).toFixed(2) + "deg"); mirrorEl.style.setProperty("--rx", (-ny * 10).toFixed(2) + "deg");
 }, { passive:true });
 function openVideo(src){
   const v = $("#lb-video");
@@ -1464,20 +1169,145 @@ function openVideo(src){
 mirrorEl.addEventListener("click", () => openVideo(PORTFOLIO.video));
 
 /* ============================================================
-   RESIZE + START
+   FOOTER: goldfish pond. They follow your cursor; click to feed.
    ============================================================ */
-setScene(sceneKey, false);
-syncTheme();
-layoutPool();
-let rz = 0;
-addEventListener("resize", () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { runners.forEach(r => r.resize()); layoutPool(); }); });
-document.fonts?.ready.then(() => { runners.forEach(r => r.resize()); layoutPool(); });
-if(reduceMotion){ runners.forEach(r => r.draw(performance.now())); }
-requestAnimationFrame(loop);
+(() => {
+  const cv = $("#pond"), ctx = cv.getContext("2d"), foot = cv.parentElement;
+  let W = 0, H = 0, dpr = 1, visible = false, t = 0;
+  const target = { x:0, y:0, on:false };
+  const food = [], rings = [];
+  const fish = [0,1,2].map(i => ({
+    x: 200 + i * 220, y: 160 + i * 60, a: Math.random() * 6, v: 1.2,
+    seg: Array.from({ length:14 }, () => ({ x:0, y:0 })),
+    size: [1.7, 1.35, 1.1][i], hue: ["#ff6a1f","#ff8a3d","#fbf3ea"][i], spot: ["#ffd9bf","#ff3d1a","#ff5a1f"][i],
+    wobble: Math.random() * 10,
+  }));
+  fish.forEach(f => f.seg.forEach((s, k) => { s.x = f.x - k * 6; s.y = f.y; }));
+  function resize(){
+    const b = foot.getBoundingClientRect();
+    dpr = Math.min(devicePixelRatio || 1, 1.75); W = b.width; H = b.height;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  foot.addEventListener("pointermove", e => { const b = foot.getBoundingClientRect(); target.x = e.clientX - b.left; target.y = e.clientY - b.top; target.on = true; });
+  foot.addEventListener("pointerleave", () => target.on = false);
+  foot.addEventListener("pointerdown", e => {
+    if(e.target.closest("a, button, .sign")) return;
+    const b = foot.getBoundingClientRect(), x = e.clientX - b.left, y = e.clientY - b.top;
+    for(let i = 0; i < 5; i++) food.push({ x: x + (Math.random() - .5) * 40, y: y + (Math.random() - .5) * 30, life: 1 });
+    rings.push({ x, y, r: 0 });
+    Sound.note((Math.random() * 9) | 0, .4); Sound.blip();
+  });
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(foot);
+  addEventListener("resize", resize); resize();
+
+  function drawFish(f){
+    const s = f.seg, sz = f.size, n = s.length;
+    // spine angles
+    const ang = k => { const p = s[Math.max(0, k - 1)], q = s[Math.min(n - 1, k + 1)]; return Math.atan2(p.y - q.y, p.x - q.x); };
+    const flap = Math.sin(t * 6 + f.wobble);
+    // tail: two long translucent veils that trail and flutter
+    const tl = s[n - 1], ta = ang(n - 1) + Math.PI;
+    ctx.save(); ctx.translate(tl.x, tl.y); ctx.rotate(ta);
+    for(const side of [-1, 1]){
+      ctx.beginPath(); ctx.moveTo(-6 * sz, 0);
+      ctx.bezierCurveTo(16 * sz, side * 10 * sz + flap * 6 * sz, 34 * sz, side * 30 * sz + flap * 12 * sz, 46 * sz, side * 18 * sz + flap * 16 * sz);
+      ctx.bezierCurveTo(36 * sz, side * 8 * sz + flap * 6 * sz, 18 * sz, side * 2 * sz, -6 * sz, 0);
+      const gr = ctx.createLinearGradient(0, 0, 46 * sz, 0);
+      gr.addColorStop(0, f.hue); gr.addColorStop(1, "rgba(255,240,230,.15)");
+      ctx.globalAlpha = .7; ctx.fillStyle = gr; ctx.fill();
+    }
+    ctx.restore();
+    // body: one smooth outline around the spine
+    const width = k => { const u = k / (n - 1); return (u < .25 ? 6 + u / .25 * 7 : 13 * (1 - (u - .25) / .75 * .82)) * sz; };
+    const L = [], R = [];
+    for(let k = 0; k < n; k++){ const a = ang(k), w = width(k); L.push([s[k].x + Math.cos(a + Math.PI / 2) * w, s[k].y + Math.sin(a + Math.PI / 2) * w]); R.push([s[k].x + Math.cos(a - Math.PI / 2) * w, s[k].y + Math.sin(a - Math.PI / 2) * w]); }
+    ctx.beginPath();
+    const h = s[0], ha = ang(0);
+    ctx.moveTo(h.x + Math.cos(ha) * 7 * sz, h.y + Math.sin(ha) * 7 * sz);
+    L.forEach(p => ctx.lineTo(p[0], p[1]));
+    for(let k = n - 1; k >= 0; k--) ctx.lineTo(R[k][0], R[k][1]);
+    ctx.closePath();
+    const bg = ctx.createLinearGradient(h.x, h.y, tl.x, tl.y);
+    bg.addColorStop(0, f.hue); bg.addColorStop(.55, f.spot); bg.addColorStop(1, f.hue);
+    ctx.globalAlpha = 1; ctx.fillStyle = bg; ctx.fill();
+    // glossy back highlight
+    ctx.beginPath(); ctx.moveTo(s[1].x, s[1].y); for(let k = 2; k < n - 3; k++) ctx.lineTo(s[k].x, s[k].y);
+    ctx.strokeStyle = "rgba(255,255,255,.55)"; ctx.lineWidth = 2.2 * sz; ctx.lineCap = "round"; ctx.stroke();
+    // pectoral fins
+    ctx.save(); ctx.translate(s[3].x, s[3].y); ctx.rotate(ang(3)); ctx.globalAlpha = .55; ctx.fillStyle = f.hue;
+    for(const side of [-1, 1]){ ctx.beginPath(); ctx.ellipse(-5 * sz, side * 13 * sz, 9 * sz, 4 * sz, side * (.7 + Math.sin(t * 5 + f.wobble) * .3), 0, Math.PI * 2); ctx.fill(); }
+    ctx.restore();
+    // eyes
+    ctx.globalAlpha = 1;
+    for(const side of [-1, 1]){
+      const ex = h.x + Math.cos(ha + side * .75) * 6 * sz, ey = h.y + Math.sin(ha + side * .75) * 6 * sz;
+      ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(ex, ey, 2.6 * sz, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#111"; ctx.beginPath(); ctx.arc(ex, ey, 1.6 * sz, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  function frame(){
+    requestAnimationFrame(frame);
+    if(!visible || document.hidden) return;
+    t += 1 / 60;
+    ctx.clearRect(0, 0, W, H);
+    // caustic light on the water
+    ctx.globalAlpha = isDark() ? .05 : .09;
+    ctx.strokeStyle = isDark() ? "#9ff0ff" : "#3ccfdd"; ctx.lineWidth = 1;
+    for(let y = 20; y < H; y += 26){
+      ctx.beginPath();
+      for(let x = 0; x <= W; x += 16){ const yy = y + Math.sin(x * .02 + t * .9 + y * .05) * 5 + Math.sin(x * .007 - t * .5) * 7; x ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy); }
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    // ripples
+    for(let i = rings.length - 1; i >= 0; i--){
+      const r = rings[i]; r.r += 2.2;
+      ctx.strokeStyle = isDark() ? "rgba(255,255,255," + (1 - r.r / 120) * .5 + ")" : "rgba(27,21,25," + (1 - r.r / 120) * .35 + ")";
+      ctx.beginPath(); ctx.ellipse(r.x, r.y, r.r, r.r * .45, 0, 0, Math.PI * 2); ctx.stroke();
+      if(r.r > 120) rings.splice(i, 1);
+    }
+    // food
+    ctx.fillStyle = "#c98a3d";
+    for(let i = food.length - 1; i >= 0; i--){
+      const p = food[i]; p.life -= .0015; p.y += .05;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2.4, 0, Math.PI * 2); ctx.fill();
+      if(p.life <= 0) food.splice(i, 1);
+    }
+    fish.forEach((f, i) => {
+      // pick a goal: nearest food, else cursor, else a lazy loop
+      let gx, gy, eager = false;
+      if(food.length){
+        let best = null, bd = 1e9;
+        food.forEach(p => { const d = (p.x - f.x) ** 2 + (p.y - f.y) ** 2; if(d < bd){ bd = d; best = p; } });
+        gx = best.x; gy = best.y; eager = true;
+        if(bd < 140){ food.splice(food.indexOf(best), 1); Sound.blip(); }
+      } else if(target.on){
+        gx = target.x + Math.cos(t * .8 + i * 2) * 60; gy = target.y + Math.sin(t * .8 + i * 2) * 40;
+      } else {
+        gx = W * (.5 + .38 * Math.sin(t * .13 + i * 2.1)); gy = H * (.5 + .32 * Math.sin(t * .21 + i * 1.3));
+      }
+      const want = Math.atan2(gy - f.y, gx - f.x);
+      let da = want - f.a; while(da > Math.PI) da -= Math.PI * 2; while(da < -Math.PI) da += Math.PI * 2;
+      f.a += da * (eager ? .09 : .045);
+      const dist = Math.hypot(gx - f.x, gy - f.y);
+      const sp = eager ? 3.4 : clamp(dist * .02, .7, 2.6);
+      f.v += (sp - f.v) * .05;
+      f.x += Math.cos(f.a) * f.v; f.y += Math.sin(f.a) * f.v + Math.sin(t * 3 + f.wobble) * .2;
+      f.seg[0].x = f.x; f.seg[0].y = f.y;
+      for(let k = 1; k < f.seg.length; k++){
+        const p = f.seg[k - 1], c = f.seg[k], dx = c.x - p.x, dy = c.y - p.y, d = Math.hypot(dx, dy) || 1, L = 4.2 * f.size;
+        c.x = p.x + dx / d * L; c.y = p.y + dy / d * L;
+      }
+      drawFish(f);
+    });
+  }
+  if(!reduceMotion) frame();
+})();
 })();
 </script>
 
-<!-- 3D calla lilies + a jade bangle (three.js) -->
+<!-- HERO: real 3D calla lilies + jade bangle, rendered through ribbed glass (three.js) -->
 <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
@@ -1489,23 +1319,24 @@ import * as THREE from "three";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
 const canvas = document.getElementById("lily");
+const hero = document.getElementById("hero");
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
-renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.05;
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:false, alpha:false });
+const DPR = Math.min(devicePixelRatio, 1.6);
+renderer.setPixelRatio(DPR);
+renderer.toneMapping = THREE.NoToneMapping;          // tone mapping happens in the glass pass
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
 const scene = new THREE.Scene();
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), .04).texture;
 
 const camera = new THREE.PerspectiveCamera(26, 1, .1, 60);
-camera.position.set(0, 1.1, 10.5);
+camera.position.set(0, 1.1, 11.5);
 camera.lookAt(0, .5, 0);
 
-const key = new THREE.DirectionalLight(0xfff1e4, 1.6); key.position.set(3, 5, 4); scene.add(key);
-const rim = new THREE.DirectionalLight(0xffd6e4, 1.4); rim.position.set(-4, 2, -4); scene.add(rim);
+const key = new THREE.DirectionalLight(0xfff1e4, 1.7); key.position.set(3, 5, 4); scene.add(key);
+const rim = new THREE.DirectionalLight(0xffc6dc, 1.6); rim.position.set(-4, 2, -4); scene.add(rim);
 scene.add(new THREE.AmbientLight(0xffffff, .25));
 
 const ss = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -1544,8 +1375,8 @@ function spatheGeometry(){
 }
 function paintSpathe(g, dark){
   const base = new THREE.Color(dark ? "#2b4a35" : "#a9c99a");
-  const throat = new THREE.Color(dark ? "#5a2048" : "#fbf1e8");
-  const petal = new THREE.Color(dark ? "#3a1430" : "#f7f3ec");    // dark mode grows a "black" calla
+  const throat = new THREE.Color(dark ? "#6a1f4a" : "#ffe3ea");
+  const petal = new THREE.Color(dark ? "#3a1430" : "#fbf4ef");
   const col = g.attributes.color, c = new THREE.Color();
   g.userData.u.forEach((u, i) => {
     c.copy(base).lerp(throat, ss(.02, .32, u)).lerp(petal, ss(.3, .7, u));
@@ -1555,19 +1386,18 @@ function paintSpathe(g, dark){
 }
 
 const jadeMat = new THREE.MeshPhysicalMaterial({
-  color:"#5c9c7f", roughness:.16, metalness:0, transmission:.55, thickness:.8, ior:1.62,
+  color:"#5c9c7f", roughness:.14, metalness:0, transmission:.55, thickness:.8, ior:1.62,
   clearcoat:1, clearcoatRoughness:.08, attenuationColor:new THREE.Color("#2c6a50"), attenuationDistance:.7,
 });
 function makeCalla(){
   const g = new THREE.Group();
   const geo = spatheGeometry();
   const mat = new THREE.MeshPhysicalMaterial({
-    vertexColors:true, side:THREE.DoubleSide, roughness:.42, metalness:0,
+    vertexColors:true, side:THREE.DoubleSide, roughness:.4, metalness:0,
     sheen:1, sheenRoughness:.45, sheenColor:new THREE.Color("#ffe6ee"),
-    clearcoat:.35, clearcoatRoughness:.4, iridescence:.35, iridescenceIOR:1.3,
+    clearcoat:.4, clearcoatRoughness:.35, iridescence:.5, iridescenceIOR:1.3,
   });
   g.add(new THREE.Mesh(geo, mat));
-  // spadix — the golden rod inside, with a pollen-rough surface
   const sg = new THREE.CapsuleGeometry(.075, 1.0, 8, 24);
   const sp = sg.attributes.position;
   for(let i = 0; i < sp.count; i++){ const k = 1 + (Math.random() - .5) * .12; sp.setX(i, sp.getX(i) * k); sp.setZ(i, sp.getZ(i) * k); }
@@ -1575,7 +1405,6 @@ function makeCalla(){
   const spadix = new THREE.Mesh(sg, new THREE.MeshStandardMaterial({ color:"#e5b42c", roughness:.85, emissive:"#5a3a00", emissiveIntensity:.25 }));
   spadix.position.set(0, .82, -.14); spadix.rotation.x = -.1;
   g.add(spadix);
-  // stem
   const curve = new THREE.CatmullRomCurve3([
     new THREE.Vector3(0, .12, 0), new THREE.Vector3(.02, -1, .04), new THREE.Vector3(.1, -2.4, .08), new THREE.Vector3(.22, -4.2, .02)]);
   g.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 80, .075, 20), new THREE.MeshPhysicalMaterial({ color:"#4f8a5e", roughness:.35, clearcoat:.5 })));
@@ -1587,38 +1416,174 @@ const flowers = new THREE.Group();
 scene.add(flowers);
 const a = makeCalla(); a.rotation.set(.32, .3, -.05); flowers.add(a);
 const b = makeCalla(); b.scale.setScalar(.72); b.position.set(-1.25, -.55, -.9); b.rotation.set(.18, 1.6, .16); flowers.add(b);
-
-// a jade bangle, hung in the air beside them
 const bangle = new THREE.Mesh(new THREE.TorusGeometry(.78, .13, 64, 160), jadeMat);
 bangle.position.set(.95, -1.35, .4); bangle.rotation.set(1.1, .3, .2);
-scene.add(bangle);
+flowers.add(bangle);
+
+/* ---------- backdrop painted in 2D: blush glow, poster-scale brush hanzi, halftone ---------- */
+const bgCanvas = document.createElement("canvas");
+const bgTex = new THREE.CanvasTexture(bgCanvas);
+bgTex.colorSpace = THREE.NoColorSpace;
+bgTex.minFilter = THREE.LinearFilter; bgTex.generateMipmaps = false;
+let W = 1, H = 1, flowerX = .68;
+function paintBg(){
+  const dark = !!window.__ccDark;
+  const s = Math.min(1.5, DPR);
+  bgCanvas.width = Math.round(W * s); bgCanvas.height = Math.round(H * s);
+  const c = bgCanvas.getContext("2d"); c.setTransform(s, 0, 0, s, 0, 0);
+  const paper = dark ? "#100C0F" : "#F7F3EE";
+  c.fillStyle = paper; c.fillRect(0, 0, W, H);
+  const fx = W * flowerX, fy = H * .42;
+  const glow = c.createRadialGradient(fx, fy, 0, fx, fy, Math.max(W, H) * .55);
+  glow.addColorStop(0, dark ? "rgba(140,40,90,.55)" : "rgba(244,180,200,.85)");
+  glow.addColorStop(.5, dark ? "rgba(70,30,90,.25)" : "rgba(214,200,250,.35)");
+  glow.addColorStop(1, "rgba(0,0,0,0)");
+  c.fillStyle = glow; c.fillRect(0, 0, W, H);
+  // giant brush 锦 (jin, brocade: the middle character of my name), cropped off the edge
+  const big = Math.max(H * 1.15, W * .5);
+  c.font = `${big}px "Ma Shan Zheng", "Noto Serif SC", serif`;
+  c.textAlign = "center"; c.textBaseline = "middle";
+  c.fillStyle = dark ? "rgba(255,120,170,.22)" : "rgba(124,29,44,.12)";
+  c.fillText("锦", W * (W > H ? .74 : .55), H * .5);
+  // columns of small hanzi, like a poster's vertical captions
+  c.font = `500 13px "Noto Serif SC", serif`;
+  c.fillStyle = dark ? "rgba(255,255,255,.22)" : "rgba(27,21,25,.28)";
+  const cols = ["金鱼 莲 云 墨 梅花 玉 光 水", "风铃 纸 剪 灯 笔 梦 星 雨", "平面 品牌 体验 研究 印刷"];
+  cols.forEach((t, k) => { [...t.replace(/ /g, "")].forEach((ch, j) => c.fillText(ch, W * (W > H ? .44 : .9) + k * 22, H * .14 + j * 19)); });
+  // halftone dots fading in from the lower right
+  for(let y = H * .55; y < H; y += 12) for(let x = W * .6; x < W; x += 12){
+    const k = Math.min(1, ((x - W * .6) / (W * .4)) * ((y - H * .55) / (H * .45)));
+    const r = 5.4 * k * k;
+    if(r < .4) continue;
+    c.fillStyle = dark ? "rgba(255,119,171,.35)" : "rgba(226,69,127,.28)";
+    c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.fill();
+  }
+  bgTex.needsUpdate = true;
+}
+
+/* ---------- glass pass ---------- */
+const rt = new THREE.WebGLRenderTarget(2, 2, { type:THREE.HalfFloatType, samples:4 });
+const post = new THREE.Scene(), postCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const uni = {
+  tScene:{ value:rt.texture }, tBg:{ value:bgTex }, uMouse:{ value:new THREE.Vector2(.7, .5) },
+  uT:{ value:0 }, uAspect:{ value:1 }, uRibs:{ value:46 }, uAmt:{ value:1 }, uExp:{ value:1 },
+};
+post.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({
+  uniforms:uni, depthTest:false, depthWrite:false,
+  vertexShader:`varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0., 1.); }`,
+  fragmentShader:`
+    precision highp float;
+    uniform sampler2D tScene, tBg; uniform vec2 uMouse; uniform float uT, uAspect, uRibs, uAmt, uExp;
+    varying vec2 vUv;
+    vec3 aces(vec3 x){ return clamp(x * (2.51 * x + .03) / (x * (2.43 * x + .59) + .14), 0., 1.); }
+    vec3 toSRGB(vec3 c){ return mix(c * 12.92, 1.055 * pow(c, vec3(1. / 2.4)) - .055, step(.0031308, c)); }
+    vec3 comp(vec2 p){
+      vec4 s = texture2D(tScene, p);
+      vec3 sc = toSRGB(aces(s.rgb * uExp));
+      vec3 bg = texture2D(tBg, p).rgb;
+      return mix(bg, sc, clamp(s.a, 0., 1.));
+    }
+    void main(){
+      vec2 uv = vUv;
+      float id = floor(uv.x * uRibs), cell = fract(uv.x * uRibs);
+      float d = length((uv - uMouse) * vec2(uAspect, 1.));
+      float k = uAmt * smoothstep(.07, .27, d);                // the glass is wiped clear around the cursor
+      float cx = (id + .5) / uRibs;
+      float wob = sin(uv.y * 5. + uT * .6 + id * .5) * .0025 * k;
+      float m = 1. - .5 * k;                                    // each rib magnifies its own slice
+      float x = cx + (uv.x - cx) * m + wob;
+      float ca = .0035 * k * (cell - .5) * 2.;
+      vec3 col;
+      col.r = comp(vec2(x + ca, uv.y)).r;
+      col.g = comp(vec2(x, uv.y)).g;
+      col.b = comp(vec2(x - ca, uv.y)).b;
+      // rib shading + a thin rainbow leak along each ridge
+      col += k * (pow(cell, 9.) * .16 - pow(1. - cell, 12.) * .06);
+      vec3 irid = .5 + .5 * cos(6.2832 * (uv.y * .7 + uT * .04 + vec3(0., .33, .67)));
+      col += irid * pow(cell, 16.) * .14 * k;
+      // a soft lens rim where the glass is clear
+      col += vec3(1.) * smoothstep(.012, 0., abs(d - .25)) * .05 * uAmt;
+      gl_FragColor = vec4(col, 1.);
+    }`,
+})));
+
+/* ---------- HUD callouts that track points on the flowers ---------- */
+const svg = document.getElementById("hud-svg");
+const hud = document.getElementById("hud");
+const ANCH = [
+  { obj:a, p:new THREE.Vector3(0, 3.0, -.55), zh:"佛焰苞", en:"spathe · calla lily", dx:110, dy:30 },
+  { obj:a, p:new THREE.Vector3(0, 1.25, -.14), zh:"肉穗", en:"spadix · pollen", dx:-150, dy:-60 },
+  { obj:bangle, p:new THREE.Vector3(-.78, 0, 0), zh:"玉镯", en:"jade bangle · ior 1.62", dx:-120, dy:20 },
+  { obj:b, p:new THREE.Vector3(0, -2.4, .08), zh:"茎", en:"stem · fig. 00", dx:-140, dy:30 },
+];
+ANCH.forEach(A => {
+  A.line = document.createElementNS("http://www.w3.org/2000/svg", "line"); svg.appendChild(A.line);
+  A.dot = document.createElementNS("http://www.w3.org/2000/svg", "circle"); A.dot.setAttribute("r", "4"); svg.appendChild(A.dot);
+  A.el = document.createElement("div"); A.el.className = "tag-hud"; A.el.innerHTML = `<b>${A.zh}</b><span>${A.en}</span>`; hud.appendChild(A.el);
+});
+setTimeout(() => ANCH.forEach((A, i) => setTimeout(() => A.el.classList.add("on"), i * 220)), 1300);
+const v3 = new THREE.Vector3();
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+function placeHud(){
+  if(W < 640) return;
+  ANCH.forEach(A => {
+    v3.copy(A.p); A.obj.localToWorld(v3); v3.project(camera);
+    const x = (v3.x * .5 + .5) * W, y = (-v3.y * .5 + .5) * H;
+    const off = y < 90 || y > H - 40 || x < 0 || x > W;
+    A.line.style.display = A.dot.style.display = off ? "none" : "";
+    A.el.style.visibility = off ? "hidden" : "";
+    const lx = x + A.dx, ly = clamp(y + A.dy, 110, H - 60);
+    A.line.setAttribute("x1", x); A.line.setAttribute("y1", y); A.line.setAttribute("x2", lx); A.line.setAttribute("y2", ly);
+    A.dot.setAttribute("cx", x); A.dot.setAttribute("cy", y);
+    A.el.style.transform = `translate(${A.dx < 0 ? lx - A.el.offsetWidth : lx}px,${ly - A.el.offsetHeight / 2}px)`;
+  });
+}
 
 function applyTheme(){
   const dark = !!window.__ccDark;
   [a, b].forEach(f => {
     paintSpathe(f.userData.geo, dark);
     f.userData.mat.sheenColor.set(dark ? "#b46a9a" : "#ffe6ee");
-    f.userData.mat.iridescence = dark ? .6 : .35;
+    f.userData.mat.iridescence = dark ? .7 : .5;
   });
   jadeMat.color.set(dark ? "#4f9a7a" : "#5c9c7f");
-  renderer.toneMappingExposure = dark ? 1.15 : 1.05;
+  uni.uExp.value = dark ? 1.25 : 1.1;
+  paintBg();
 }
 addEventListener("cc-theme", applyTheme);
-applyTheme();
 
 function resize(){
-  const w = canvas.clientWidth, h = canvas.clientHeight;
-  if(!w || !h) return;
-  renderer.setSize(w, h, false);
-  camera.aspect = w / h;
-  camera.position.z = w / h < .8 ? 13.5 : 11.5;
+  W = hero.clientWidth; H = hero.clientHeight;
+  if(!W || !H) return;
+  renderer.setSize(W, H, false);
+  rt.setSize(Math.round(W * DPR), Math.round(H * DPR));
+  const asp = W / H;
+  camera.aspect = asp;
+  // keep the flowers on the right on wide screens, up top on tall ones
+  const halfH = Math.tan(THREE.MathUtils.degToRad(13)) * 11.5, halfW = halfH * asp;
+  if(asp > 1){ flowers.position.x = halfW * .38; flowerX = .5 + .19; camera.position.z = 11.5; }
+  else { flowers.position.x = .2; flowerX = .55; camera.position.z = 14.5; }
   camera.updateProjectionMatrix();
+  uni.uAspect.value = asp;
+  uni.uRibs.value = Math.round(W / (asp > 1 ? 26 : 18));
+  paintBg();
 }
-addEventListener("resize", resize); resize();
+addEventListener("resize", resize);
+resize();
+applyTheme();
+document.fonts.load('400 200px "Ma Shan Zheng"', "锦").then(paintBg).catch(() => {});
+document.fonts.ready.then(paintBg);
 
-let px = 0, py = 0, tx = 0, ty = 0, visible = true;
+let px = 0, py = 0, tx = 0, ty = 0, visible = true, inside = false, lastMove = 0;
+const mouse = new THREE.Vector2(.7, .5), mTarget = new THREE.Vector2(.7, .5);
 addEventListener("pointermove", e => { tx = e.clientX / innerWidth * 2 - 1; ty = e.clientY / innerHeight * 2 - 1; }, { passive:true });
-new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(document.getElementById("hero"));
+hero.addEventListener("pointermove", e => {
+  const r = hero.getBoundingClientRect();
+  mTarget.set((e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height);
+  inside = true; lastMove = performance.now();
+});
+hero.addEventListener("pointerleave", () => { inside = false; });
+new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(hero);
 
 const clock = new THREE.Clock();
 function frame(){
@@ -1633,7 +1598,19 @@ function frame(){
   bangle.rotation.z = .2 + t * .25;
   bangle.rotation.x = 1.1 + Math.sin(t * .4) * .15 + py * .2;
   bangle.position.y = -1.35 + Math.sin(t * .7 + .6) * .07;
+  // when nobody is touching it, the clear patch drifts over the flower on its own
+  if(!inside || performance.now() - lastMove > 2500){
+    mTarget.set(flowerX + Math.sin(t * .35) * .12, .55 + Math.sin(t * .5) * .16);
+  }
+  mouse.lerp(mTarget, .08);
+  uni.uMouse.value.copy(mouse);
+  uni.uT.value = t;
+  renderer.setRenderTarget(rt);
+  renderer.setClearColor(0x000000, 0); renderer.clear();
   renderer.render(scene, camera);
+  renderer.setRenderTarget(null);
+  renderer.render(post, postCam);
+  placeHud();
 }
 frame();
 </script>
