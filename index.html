@@ -171,6 +171,10 @@ section{position:relative;}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:52px 28px;}
 .card{position:relative;perspective:900px;}
 .card.gone{display:none;}
+.fs-note{max-width:760px;margin:-12px 0 36px;padding:22px 26px;border-radius:16px;border:1px dashed color-mix(in srgb,#9B6BFF 60%,transparent);background:var(--glass);display:flex;flex-direction:column;gap:12px;font-size:15.5px;line-height:1.65;color:var(--ink-2);}
+.fs-note[hidden]{display:none;}
+.fs-note strong{color:var(--ink);font-weight:600;}
+.d-fig video{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;margin:0 auto;border-radius:6px;background:#000;}
 .card .hit{position:absolute;inset:0;z-index:4;border-radius:16px;}
 .mount{position:relative;padding:8px;border-radius:16px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--glass-edge);
   transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;}
@@ -616,12 +620,33 @@ const PROJECTS = [
     url: "",
     tags: ["Print design","Data visualization","Event signage"],
   },
+  {
+    title: "Absurd Optimism", year: "", type: "Motion graphics", cat: ["failsafe"],
+    sub: "A 10-second hand-drawn motion piece: a glitching brain that resolves into dripping type.",
+    meta: "Motion graphics · Fail-Safe experiment",
+    blurb: "My first real attempt at motion graphics, made in Pikimov just for fun. A pixelated brain glitches through color shifts until one thought takes hold and melts into the words \"Absurd Optimism.\" Every frame is drawn and edited by hand, no AI. The timing is choppy in spots and the easing is rough, and those rough spots taught me more about keyframing and visual rhythm than any tutorial did. It's also my motto: stay optimistic even when the odds look ridiculous.",
+    thumb: "assets/absurd_optimism_thumb.jpg",
+    video: "assets/absurd_optimism.mp4",
+    url: "assets/absurd_optimism.mp4",
+    tags: ["Motion graphics","Hand-drawn","Pikimov","Experiment"],
+  },
+  {
+    title: "Fail-Safe", year: "", type: "Motion graphics", cat: ["failsafe"],
+    sub: "A hand-drawn eye that blinks through shifting color, wrapped in a loop of scribbled ink.",
+    meta: "Motion graphics · Fail-Safe experiment",
+    blurb: "A companion experiment, also made in Pikimov. A scribble of ink opens into a hand-drawn pair of eyes that blink and cycle through color, then close back into the scribble so the piece loops. I wanted to test frame-by-frame animation, color transitions and loop timing on something small enough to finish in a sitting. A few transitions jump instead of flow, and I kept them, because the point was to practice, not to perfect. The title is the mindset: fail somewhere safe enough that you can try again tomorrow.",
+    thumb: "assets/fail_safe_thumb.jpg",
+    video: "assets/fail_safe.mp4",
+    url: "assets/fail_safe.mp4",
+    tags: ["Motion graphics","Frame-by-frame","Pikimov","Experiment"],
+  },
 ];
 const FILTERS = [
   { k:"all", en:"All" }, { k:"ux", en:"UX & product" }, { k:"web", en:"Web" },
   { k:"editorial", en:"Editorial" }, { k:"print", en:"Print" }, { k:"art", en:"Art & photo" },
+  { k:"failsafe", en:"Fail-Safe" },
 ];
-const CAT_COLOR = { ux:"var(--jade)", web:"#7FB8FF", editorial:"var(--red)", print:"var(--pink)", art:"#F2C65E", all:"var(--ink-2)" };
+const CAT_COLOR = { ux:"var(--jade)", web:"#7FB8FF", editorial:"var(--red)", print:"var(--pink)", art:"#F2C65E", failsafe:"#9B6BFF", all:"var(--ink-2)" };
 </script>
 
 <div id="loader" role="presentation">
@@ -683,9 +708,14 @@ const CAT_COLOR = { ux:"var(--jade)", web:"#7FB8FF", editorial:"var(--red)", pri
       <div class="head rv">
         <span class="num">01</span>
         <h2><span data-scr>Selected</span> <em>work</em></h2>
-        <span class="aside lbl">Thirteen projects across UX, web, editorial, print and art. Click any one to open it.</span>
+        <span class="aside lbl">Thirteen projects across UX, web, editorial, print and art, plus a Fail-Safe tab of experiments. Click any one to open it.</span>
       </div>
       <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+      <div class="fs-note" id="fs-note" hidden>
+        <div class="lbl">Fail-Safe · experiments in progress</div>
+        <p><strong>This is where the experiments live.</strong> Nothing in this tab is polished, and that's on purpose. I treat every project like a prototype: try the thing I don't know how to do yet, ship a rough version, and learn from whatever breaks.</p>
+        <p>"Fail-Safe" is how I think. A failed experiment is safe as long as it teaches me something I can carry into the next build, and "Absurd Optimism" is what keeps me trying the next one. These pieces are hand-drawn and hand-edited, no AI, made just to see if I could. Seeing where my skills stop is how I figure out where to push next.</p>
+      </div>
       <div class="grid" id="grid"></div>
     </div>
   </section>
@@ -974,7 +1004,7 @@ const grid = $("#grid");
 grid.innerHTML = PROJECTS.map((p, i) => {
   const c = CAT_COLOR[(p.cat || ["ux"])[0]];
   return `
-  <article class="card rv" data-i="${i}" data-cat="${(p.cat || []).join(" ")}" style="--c:${c}">
+  <article class="card rv${(p.cat || []).includes("failsafe") ? " gone" : ""}" data-i="${i}" data-cat="${(p.cat || []).join(" ")}" style="--c:${c}">
     <div class="mount"><div class="ph"><img src="${esc(p.thumb)}" alt="${esc(p.title)}" loading="lazy" decoding="async"></div><span class="view" aria-hidden="true">View ↗</span></div>
     <div class="cap">
       <div class="type"><i class="cdot"></i>${esc(p.type)}</div>
@@ -997,17 +1027,19 @@ cards.forEach(c => {
 });
 
 $("#filters").innerHTML = FILTERS.map((f, i) => `<button class="chip" data-k="${f.k}" aria-pressed="${i === 0}"><i class="cdot" style="--c:${CAT_COLOR[f.k]}"></i>${f.en}</button>`).join("") +
-  `<span class="count lbl" id="fcount">${N} projects</span>`;
+  `<span class="count lbl" id="fcount">${PROJECTS.filter(p => !(p.cat || []).includes("failsafe")).length} projects</span>`;
 $("#filters").addEventListener("click", e => {
   const b = e.target.closest(".chip"); if(!b) return;
   const k = b.dataset.k; let n = 0;
   $$("#filters .chip").forEach(c => c.setAttribute("aria-pressed", String(c === b)));
   cards.forEach(c => {
-    const show = k === "all" || c.dataset.cat.split(" ").includes(k);
+    const cs = c.dataset.cat.split(" ");
+    const show = k === "all" ? !cs.includes("failsafe") : cs.includes(k);
     c.classList.toggle("gone", !show);
     if(show){ n++; c.classList.remove("in"); requestAnimationFrame(() => requestAnimationFrame(() => c.classList.add("in"))); }
   });
   $("#fcount").textContent = n + (n === 1 ? " project" : " projects");
+  $("#fs-note").hidden = k !== "failsafe";
 });
 
 /* ============================================================
@@ -1031,7 +1063,9 @@ function openProject(i){
   $("#d-blurb").textContent = p.blurb || "";
   $("#d-tags").innerHTML = (p.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
   const imgs = (p.gallery && p.gallery.length ? p.gallery : [p.thumb]).filter(Boolean);
-  $("#d-media").innerHTML = imgs.map((src, k) => `<figure class="d-fig"><img src="${esc(src)}" alt="${esc(p.title)}${k ? ", detail " + k : ""}"></figure>`).join("");
+  $("#d-media").innerHTML = p.video
+    ? `<figure class="d-fig"><video src="${esc(p.video)}" controls autoplay muted loop playsinline aria-label="${esc(p.title)} motion graphic"></video></figure>`
+    : imgs.map((src, k) => `<figure class="d-fig"><img src="${esc(src)}" alt="${esc(p.title)}${k ? ", detail " + k : ""}"></figure>`).join("");
   const open = $("#d-open");
   if(p.url){ open.href = p.url; open.classList.remove("off"); open.textContent = "Open project ↗"; }
   else { open.href = "#"; open.classList.add("off"); open.textContent = "Print piece"; }
@@ -1045,6 +1079,7 @@ function openCV(){
   openWin(cvwin);
 }
 function closeAll(){
+  $$("#d-media video").forEach(v => v.pause());
   [drawer, cvwin].forEach(w => { if(w.classList.contains("open")){ w.classList.remove("open"); w.setAttribute("aria-hidden", "true"); } });
   if($("#lightbox").classList.contains("open")){ $("#lightbox").classList.remove("open"); $("#lb-video").pause(); }
   document.body.style.overflow = "";
